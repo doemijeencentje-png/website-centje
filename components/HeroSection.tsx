@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 
 const PLAYBACK_RATE = 0.75;
 const MOBILE_QUERY = "(max-width: 639px)";
@@ -25,15 +24,14 @@ function useIsMobile() {
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isMobile = useIsMobile();
-  const [webpFallback, setWebpFallback] = useState(false);
+  const [needsPlay, setNeedsPlay] = useState(false);
 
   const applyPlaybackRate = useCallback((video: HTMLVideoElement) => {
-    video.playbackRate = PLAYBACK_RATE;
+    // Mobiele mp4 heeft 0,75× al ingebakken
+    video.playbackRate = window.matchMedia(MOBILE_QUERY).matches ? 1 : PLAYBACK_RATE;
   }, []);
 
   useEffect(() => {
-    if (webpFallback) return;
-
     const v = videoRef.current;
     if (!v) return;
 
@@ -43,9 +41,7 @@ export default function HeroSection() {
       applyPlaybackRate(v);
       const p = v.play();
       if (p) {
-        p.catch(() => {
-          if (window.matchMedia(MOBILE_QUERY).matches) setWebpFallback(true);
-        });
+        p.then(() => setNeedsPlay(false)).catch(() => setNeedsPlay(true));
       }
     };
 
@@ -57,52 +53,61 @@ export default function HeroSection() {
     };
 
     document.addEventListener("touchstart", onInteract, { passive: true });
+    document.addEventListener("click", onInteract);
     document.addEventListener("visibilitychange", onVisible);
 
     return () => {
       document.removeEventListener("touchstart", onInteract);
+      document.removeEventListener("click", onInteract);
       document.removeEventListener("visibilitychange", onVisible);
     };
-  }, [webpFallback, isMobile, applyPlaybackRate]);
+  }, [isMobile, applyPlaybackRate]);
 
   const videoClass =
     "absolute inset-0 h-full w-full object-cover object-bottom origin-bottom scale-[1.12] transform-gpu sm:scale-100 sm:object-center";
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {isMobile !== false && webpFallback ? (
-        <Image
-          src="/centje-hero.webp"
-          alt="Centje munt animatie"
-          fill
-          unoptimized
-          priority
-          sizes="100vw"
-          className={videoClass}
+      <video
+        ref={videoRef}
+        className={videoClass}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        disablePictureInPicture
+        onLoadedMetadata={(e) => applyPlaybackRate(e.currentTarget)}
+        onCanPlay={(e) => {
+          applyPlaybackRate(e.currentTarget);
+          e.currentTarget.play().catch(() => setNeedsPlay(true));
+        }}
+        onPlay={() => setNeedsPlay(false)}
+        aria-label="Centje munt animatie"
+      >
+        <source
+          src="/centje-hero-mobile.mp4"
+          type="video/mp4"
+          media="(max-width: 639px)"
         />
-      ) : (
-        <video
-          ref={videoRef}
-          className={videoClass}
+        <source
           src="/centje-hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          disablePictureInPicture
-          onLoadedMetadata={(e) => applyPlaybackRate(e.currentTarget)}
-          onCanPlay={(e) => {
-            applyPlaybackRate(e.currentTarget);
-            e.currentTarget.play().catch(() => {
-              if (window.matchMedia(MOBILE_QUERY).matches) setWebpFallback(true);
-            });
-          }}
-          onError={() => {
-            if (window.matchMedia(MOBILE_QUERY).matches) setWebpFallback(true);
-          }}
-          aria-label="Centje munt animatie"
+          type="video/mp4"
+          media="(min-width: 640px)"
         />
+      </video>
+
+      {needsPlay && (
+        <button
+          type="button"
+          onClick={() => videoRef.current?.play()}
+          className="absolute inset-0 z-10 flex items-center justify-center bg-black/30"
+          aria-label="Animatie afspelen"
+        >
+          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-2xl text-black shadow-lg">
+            ▶
+          </span>
+        </button>
       )}
     </div>
   );
