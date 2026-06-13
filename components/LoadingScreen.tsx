@@ -33,16 +33,18 @@ export function LoadingScreen() {
       }, wait + 200);
     };
 
-    if (document.readyState === "complete") {
+    if (document.readyState === "interactive" || document.readyState === "complete") {
       finish();
     } else {
+      document.addEventListener("DOMContentLoaded", finish);
       window.addEventListener("load", finish);
     }
-    // Vangnet: nooit langer dan 6s blijven hangen
-    const maxTimer = window.setTimeout(finish, 6000);
+    // Vangnet: laadscherm max ~2,5s — wacht niet op alle grote assets
+    const maxTimer = window.setTimeout(finish, 2500);
 
     return () => {
       cancelAnimationFrame(raf);
+      document.removeEventListener("DOMContentLoaded", finish);
       window.removeEventListener("load", finish);
       clearTimeout(maxTimer);
     };
@@ -59,11 +61,12 @@ export function LoadingScreen() {
     >
       <div className="relative mb-8 aspect-[2172/724] w-64 sm:w-80">
         <Image
-          src="/centje-logo.png"
+          src="/centje-logo-sm.webp"
           alt="Centje"
           fill
           className="object-contain"
           sizes="(max-width: 640px) 256px, 320px"
+          unoptimized
           priority
         />
       </div>

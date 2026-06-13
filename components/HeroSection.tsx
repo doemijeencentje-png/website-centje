@@ -28,7 +28,7 @@ export default function HeroSection() {
     <div className="relative h-screen w-full overflow-hidden bg-black">
       {/* Mobiel: geanimeerde WebP — loopt altijd, ook in iOS-energiebesparingsmodus */}
       <Image
-        src="/centje-hero.webp"
+        src="/centje-hero-mobile.webp"
         alt="Centje munt animatie"
         fill
         unoptimized

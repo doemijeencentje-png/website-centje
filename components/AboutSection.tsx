@@ -66,7 +66,6 @@ export function AboutSection() {
               fill
               className="object-contain"
               sizes="(max-width: 768px) 45vw, 500px"
-              priority
             />
           </div>
         </motion.div>
