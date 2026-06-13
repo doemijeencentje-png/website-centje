@@ -1,0 +1,67 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #0B0F12;
+  --color-green: #00D26A;
+  --color-green-glow: #00FF7F;
+  --color-green-deep: #00A855;
+  --color-graphite: #E5E7EB;
+  --color-graphite-light: #F3F4F6;
+  --color-muted: #6B7280;
+  --font-sans: "Satoshi", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: #ffffff;
+    color: #0B0F12;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(0, 210, 106, 0.2);
+    color: #0B0F12;
+  }
+}
+
+@keyframes shimmer-slide {
+  to {
+    translate: 100% 0;
+  }
+}
+
+@keyframes spin-around {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed, 3s) ease-in-out infinite;
+}
+
+.animate-spin-around {
+  animation: spin-around 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer base {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
