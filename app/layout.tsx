@@ -49,13 +49,6 @@ export default function RootLayout({
           type="video/mp4"
           media="(max-width: 639px)"
         />
-        <link
-          rel="preload"
-          href="/centje-hero.mp4"
-          as="video"
-          type="video/mp4"
-          media="(min-width: 640px)"
-        />
       </head>
       <body className="antialiased bg-white">
         <LoadingScreen />

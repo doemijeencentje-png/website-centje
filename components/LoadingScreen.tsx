@@ -26,7 +26,7 @@ export function LoadingScreen() {
       window.addEventListener("load", finish, { once: true });
     }
 
-    const maxTimer = window.setTimeout(finish, 1800);
+    const maxTimer = window.setTimeout(finish, 2500);
 
     return () => {
       document.removeEventListener("DOMContentLoaded", finish);
