@@ -4,46 +4,31 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export function LoadingScreen() {
-  const [progress, setProgress] = useState(8);
   const [fading, setFading] = useState(false);
   const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
-    const start = Date.now();
-    let raf = 0;
     let done = false;
-
-    // Voortgang langzaam laten oplopen tot ~92% terwijl de site laadt
-    const tick = () => {
-      setProgress((p) => (p < 92 ? p + (92 - p) * 0.035 + 0.3 : p));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
 
     const finish = () => {
       if (done) return;
       done = true;
-      cancelAnimationFrame(raf);
-      setProgress(100);
-      const elapsed = Date.now() - start;
-      const wait = Math.max(0, 600 - elapsed); // minimale weergave
       window.setTimeout(() => {
         setFading(true);
-        window.setTimeout(() => setMounted(false), 550); // unmount na fade
-      }, wait + 200);
+        window.setTimeout(() => setMounted(false), 550);
+      }, 400);
     };
 
     if (document.readyState === "interactive" || document.readyState === "complete") {
       finish();
     } else {
-      document.addEventListener("DOMContentLoaded", finish);
-      window.addEventListener("load", finish);
+      document.addEventListener("DOMContentLoaded", finish, { once: true });
+      window.addEventListener("load", finish, { once: true });
     }
-    // Vangnet: laadscherm max ~2,5s — wacht niet op alle grote assets
-    const maxTimer = window.setTimeout(finish, 2500);
+
+    const maxTimer = window.setTimeout(finish, 1800);
 
     return () => {
-      cancelAnimationFrame(raf);
       document.removeEventListener("DOMContentLoaded", finish);
       window.removeEventListener("load", finish);
       clearTimeout(maxTimer);
@@ -71,10 +56,7 @@ export function LoadingScreen() {
         />
       </div>
       <div className="h-1.5 w-44 overflow-hidden rounded-full bg-white/10 sm:w-56">
-        <div
-          className="h-full rounded-full bg-[#00D26A] transition-[width] duration-200 ease-out"
-          style={{ width: `${Math.min(progress, 100)}%` }}
-        />
+        <div className="loading-progress h-full rounded-full bg-[#00D26A]" />
       </div>
       <span className="mt-4 text-xs font-medium tracking-wide text-white/40">
         Laden…

@@ -41,6 +41,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
+      <head>
+        <link
+          rel="preload"
+          href="/centje-hero.mp4"
+          as="video"
+          type="video/mp4"
+        />
+      </head>
       <body className="antialiased bg-white">
         <LoadingScreen />
         {children}
