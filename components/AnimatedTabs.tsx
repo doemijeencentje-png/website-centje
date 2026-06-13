@@ -110,7 +110,7 @@ export function AnimatedTabs({ tabs, variant = "light" }: AnimatedTabsProps) {
         className="absolute z-10 w-full overflow-hidden [clip-path:inset(0px_75%_0px_0%_round_17px)] [transition:clip-path_0.25s_ease]"
       >
         <div
-          className={`relative flex w-full justify-center transition-colors duration-500 ${
+          className={`relative flex w-full items-center justify-center transition-colors duration-500 ${
             isDark ? "bg-white" : "bg-neutral-900"
           }`}
         >
@@ -118,7 +118,7 @@ export function AnimatedTabs({ tabs, variant = "light" }: AnimatedTabsProps) {
             <button
               key={index}
               onClick={() => handleClick(tab)}
-              className={`flex h-7 sm:h-8 items-center rounded-full px-2 sm:p-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-colors duration-500 ${
+              className={`flex h-7 sm:h-8 items-center rounded-full px-2 sm:p-3 text-xs sm:text-sm font-medium leading-none whitespace-nowrap transition-colors duration-500 ${
                 isDark ? "text-neutral-900" : "text-white"
               }`}
               tabIndex={-1}
@@ -129,7 +129,7 @@ export function AnimatedTabs({ tabs, variant = "light" }: AnimatedTabsProps) {
         </div>
       </div>
 
-      <div className="relative flex w-full justify-center">
+      <div className="relative flex w-full items-center justify-center">
         {tabs.map((tab, index) => {
           const isActive = activeTab === tab.label;
 
@@ -138,7 +138,7 @@ export function AnimatedTabs({ tabs, variant = "light" }: AnimatedTabsProps) {
               key={index}
               ref={isActive ? activeTabRef : null}
               onClick={() => handleClick(tab)}
-              className={`flex h-7 sm:h-8 items-center cursor-pointer rounded-full px-2 sm:p-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-colors duration-500 ${
+              className={`flex h-7 sm:h-8 items-center cursor-pointer rounded-full px-2 sm:p-3 text-xs sm:text-sm font-medium leading-none whitespace-nowrap transition-colors duration-500 ${
                 isDark ? "text-white/60" : "text-neutral-500"
               }`}
             >

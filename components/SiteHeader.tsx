@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatedTabs } from "./AnimatedTabs";
 
 const NAV_TABS = [
@@ -31,15 +32,22 @@ export function SiteHeader() {
           : "bg-black/20 backdrop-blur-md border-b border-white/5"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
-        <span
-          className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-500 cursor-pointer shrink-0 ${
-            isLight ? "text-neutral-900" : "text-white"
-          }`}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+        <button
+          type="button"
+          aria-label="Centje home"
+          className="relative h-[28px] w-[84px] shrink-0 cursor-pointer sm:h-[48px] sm:w-[142px]"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          CENTJE
-        </span>
+          <Image
+            src="/centje-wordmark.png"
+            alt="Centje"
+            fill
+            className="object-contain object-left"
+            sizes="(max-width: 640px) 84px, 142px"
+            priority
+          />
+        </button>
         <AnimatedTabs tabs={NAV_TABS} variant={isLight ? "light" : "dark"} />
       </div>
     </header>

@@ -73,27 +73,27 @@ export function Steps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-                className={`flex flex-col items-center gap-5 sm:gap-8 md:gap-12 ${
-                  isEven ? "md:flex-row" : "md:flex-row-reverse"
+                className={`flex items-center gap-4 sm:gap-8 md:gap-12 ${
+                  isEven ? "flex-row" : "flex-row-reverse"
                 }`}
               >
                 {/* Text */}
-                <div className="flex-1 text-center md:text-left">
+                <div className="flex-1 text-left">
                   <CentjeCard>
-                    <span className="text-3xl sm:text-4xl md:text-5xl font-black text-[#00D26A]/20 block leading-none mb-1.5">
+                    <span className="text-2xl sm:text-4xl md:text-5xl font-black text-[#00D26A]/20 block leading-none mb-1.5">
                       {step.number}
                     </span>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-neutral-900 tracking-tight mb-2">
+                    <h3 className="text-base sm:text-xl md:text-2xl font-black text-neutral-900 tracking-tight mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-sm md:text-base text-neutral-600 font-medium max-w-md leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base text-neutral-600 font-medium max-w-md leading-relaxed">
                       {step.description}
                     </p>
                   </CentjeCard>
                 </div>
 
                 {/* iPhone */}
-                <div className="flex-shrink-0 w-[150px] sm:w-[175px] md:w-[200px]">
+                <div className="flex-shrink-0 w-[120px] sm:w-[175px] md:w-[200px]">
                   <IPhoneFrame>
                     <Image
                       src={step.image}

@@ -40,46 +40,46 @@ export function DownloadSection() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-4 py-24 sm:px-6 sm:py-28 md:grid-cols-2 md:py-36">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-[1.3fr_1fr] items-center gap-5 px-4 py-20 sm:gap-10 sm:px-6 sm:py-28 md:grid-cols-2 md:gap-16 md:py-36">
         {/* CTA-kolom */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="text-center md:text-left"
+          className="text-left"
         >
-          <span className="block text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#00D26A]">
+          <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#00D26A] sm:text-sm">
             Klaar om te beginnen?
           </span>
-          <h2 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-white sm:mt-5 sm:text-5xl md:text-6xl">
             Download Centje.
             <br />
             <span className="text-[#00D26A]">Betaal leuker.</span>
           </h2>
-          <p className="mx-auto mt-7 max-w-[540px] text-lg leading-relaxed text-white/60 sm:text-xl md:mx-0">
+          <p className="mt-4 max-w-[540px] text-xs leading-relaxed text-white/60 sm:mt-7 sm:text-xl">
             Maak je betaalverzoeken leuker met games. Speel, win en betaal
             minder. Beschikbaar voor iPhone.
           </p>
 
-          <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row md:items-center">
+          <div className="mt-6 flex flex-col items-start gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-5">
             <a
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3.5 rounded-[18px] border border-[#2a2e2a] bg-black px-7 py-4 shadow-[0_20px_50px_rgba(0,0,0,.5)] transition-transform hover:scale-[1.03]"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#2a2e2a] bg-black px-4 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,.5)] transition-transform hover:scale-[1.03] sm:gap-3.5 sm:rounded-[18px] sm:px-7 sm:py-4"
             >
-              <AppleLogo className="h-9 w-9 shrink-0 text-white" />
+              <AppleLogo className="h-6 w-6 shrink-0 text-white sm:h-9 sm:w-9" />
               <span className="text-left text-white">
-                <span className="block text-[13px] opacity-80">
+                <span className="block text-[10px] opacity-80 sm:text-[13px]">
                   Download on the
                 </span>
-                <span className="block text-2xl font-bold leading-tight">
+                <span className="block text-base font-bold leading-tight sm:text-2xl">
                   App Store
                 </span>
               </span>
             </a>
-            <span className="text-sm text-white/50">
+            <span className="text-[11px] text-white/50 sm:text-sm">
               Gratis · Beschikbaar voor iPhone
             </span>
           </div>
@@ -95,7 +95,7 @@ export function DownloadSection() {
           style={{ perspective: 1500 }}
         >
           <div
-            className="w-[260px] sm:w-[300px]"
+            className="w-[120px] sm:w-[240px] md:w-[300px]"
             style={{
               transform: "rotateY(-18deg) rotateX(5deg)",
               transformStyle: "preserve-3d",
@@ -118,13 +118,18 @@ export function DownloadSection() {
       <div className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
           <div className="flex items-center gap-3 text-sm text-white/50">
-            <span className="font-bold text-white">centje</span>
+            <div className="relative h-5 w-[60px]">
+              <Image
+                src="/centje-wordmark.png"
+                alt="Centje"
+                fill
+                className="object-contain object-left"
+                sizes="60px"
+              />
+            </div>
             <span>© {new Date().getFullYear()}</span>
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/50">
-            <Link href="/privacy" className="transition-colors hover:text-white">
-              Privacy
-            </Link>
             <a
               href={CENTJE_EMAIL_MAILTO}
               className="transition-colors hover:text-white"

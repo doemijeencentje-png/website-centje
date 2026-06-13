@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Centje — Speel & pak je voordeel",
@@ -40,7 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className="antialiased bg-white">{children}</body>
+      <body className="antialiased bg-white">
+        <LoadingScreen />
+        {children}
+      </body>
     </html>
   );
 }
