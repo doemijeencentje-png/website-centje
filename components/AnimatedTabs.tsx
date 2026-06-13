@@ -83,10 +83,8 @@ export function AnimatedTabs({ tabs, variant = "light" }: AnimatedTabsProps) {
     isClickScrolling.current = true;
 
     const target = document.querySelector(tab.href);
-    if (target) {
-      const headerOffset = 80;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top, behavior: "smooth" });
+    if (target instanceof HTMLElement) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     setTimeout(() => {

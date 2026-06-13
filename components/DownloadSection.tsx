@@ -20,7 +20,7 @@ export function DownloadSection() {
   return (
     <section
       id="download"
-      className="relative overflow-hidden bg-[#0A0C0A] scroll-mt-20"
+      className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[#0A0C0A] scroll-mt-16 sm:scroll-mt-20 sm:min-h-0"
     >
       {/* Subtiel stippenraster */}
       <div
@@ -40,7 +40,8 @@ export function DownloadSection() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-[1.3fr_1fr] items-center gap-5 px-4 py-20 sm:gap-10 sm:px-6 sm:py-28 md:grid-cols-2 md:gap-16 md:py-36">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 sm:flex-none sm:justify-start sm:px-6">
+        <div className="grid grid-cols-[1.3fr_1fr] items-center gap-5 py-6 sm:gap-10 sm:py-28 md:grid-cols-2 md:gap-16 md:py-36">
         {/* CTA-kolom */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -112,10 +113,11 @@ export function DownloadSection() {
             </IPhoneFrame>
           </div>
         </motion.div>
+        </div>
       </div>
 
       {/* Footer-balk geïntegreerd in de donkere finale */}
-      <div className="relative border-t border-white/10">
+      <div className="relative mt-auto shrink-0 border-t border-white/10 sm:mt-0">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
           <div className="flex items-center gap-3 text-sm text-white/50">
             <div className="relative h-5 w-[60px]">

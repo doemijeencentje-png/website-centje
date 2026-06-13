@@ -7,9 +7,10 @@ export function AboutSection() {
   return (
     <section
       id="over-ons"
-      className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28 md:py-36"
+      className="about-fullpage relative flex h-[100dvh] flex-col overflow-hidden scroll-mt-16 sm:h-auto sm:min-h-0 sm:scroll-mt-20 sm:py-28 md:py-36"
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-[1.4fr_1fr] items-center gap-5 px-4 sm:gap-8 sm:px-6 md:grid-cols-2 md:gap-16">
+      <div className="about-fullpage-main mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 sm:flex-none sm:justify-start sm:px-6">
+        <div className="grid grid-cols-[1.4fr_1fr] items-center gap-4 py-4 sm:gap-8 sm:py-0 md:grid-cols-2 md:gap-16">
         {/* Tekstkolom */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -21,12 +22,12 @@ export function AboutSection() {
           <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#009652] sm:text-sm">
             Ons verhaal
           </span>
-          <h2 className="mt-2 text-2xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:mt-4 sm:text-5xl md:text-6xl">
+          <h2 className="mt-1.5 text-xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:mt-4 sm:text-5xl md:text-6xl">
             Hoe het begon
           </h2>
-          <div className="mt-4 h-1 w-10 rounded-full bg-[#00D26A] sm:mt-7 sm:w-14" />
+          <div className="mt-3 h-1 w-10 rounded-full bg-[#00D26A] sm:mt-7 sm:w-14" />
 
-          <div className="mt-5 max-w-[620px] space-y-3 text-sm leading-relaxed text-neutral-600 sm:mt-8 sm:space-y-5 sm:text-xl">
+          <div className="mt-3 max-w-[620px] space-y-2 text-[13px] leading-snug text-neutral-600 sm:mt-8 sm:space-y-5 sm:text-xl sm:leading-relaxed">
             <p>
               Het begon op een terras. De rekening kwam en daar was het weer:
               wie betaalt wat?
@@ -46,12 +47,12 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="mt-5 text-xs italic text-neutral-400 sm:mt-10 sm:text-base">
+          <div className="mt-3 text-[11px] italic text-neutral-400 sm:mt-10 sm:text-base">
             Team Centje, 2025
           </div>
         </motion.div>
 
-        {/* Echte Centje-logo */}
+        {/* Echte Centje-logo — mobiel iets smaller */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -59,7 +60,7 @@ export function AboutSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="order-2 flex items-center justify-center"
         >
-          <div className="relative aspect-[2172/724] w-full">
+          <div className="relative aspect-[2172/724] w-[90%] sm:w-full">
             <Image
               src="/centje-logo.png"
               alt="Centje logo"
@@ -69,6 +70,7 @@ export function AboutSection() {
             />
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );

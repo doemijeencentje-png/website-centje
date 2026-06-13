@@ -69,6 +69,56 @@
   animation: loading-progress 1.6s ease-out forwards;
 }
 
+/* Hero: mobiel vs desktop — expliciet via CSS (betrouwbaarder dan sm:hidden) */
+.hero-video-mobile {
+  display: block;
+}
+
+.hero-video-desktop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hero-video-mobile {
+    display: none !important;
+  }
+
+  .hero-video-desktop {
+    display: block !important;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Mobiel: About + Download = 1 vol scherm */
+@media (max-width: 639px) {
+  #over-ons.about-fullpage,
+  #download.download-fullpage {
+    display: flex;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-margin-top: 4rem;
+    overflow: hidden;
+  }
+
+  #over-ons .about-fullpage-main,
+  #download .download-fullpage-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  #download .download-fullpage-footer {
+    flex-shrink: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   @layer base {
     * {
