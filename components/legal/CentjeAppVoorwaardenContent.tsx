@@ -183,10 +183,12 @@ export function CentjeAppVoorwaardenContent() {
       </LegalSection>
 
       <p className="text-xs text-neutral-500 leading-relaxed mt-12 pt-8 border-t border-neutral-200 max-w-2xl">
-        <span className="font-medium text-neutral-600">Over kans:</span> bij challenges speelt vooral
-        je keuze, inzicht en de afspraken in de app een rol; een eventueel kanselement is daardoor
-        beperkt. Dit is geen kansspel in de zin van de wet. Je bepaalt zelf of je meedoet en of je
-        betaalt.
+        <span className="font-medium text-neutral-600">Over vaardigheid:</span> challenges bij
+        Centje zijn vaardigheidsspellen. Beide spelers spelen onder exact gelijke omstandigheden
+        (hetzelfde level), en de uitkomst wordt uitsluitend bepaald door de behaalde score — dus
+        door inzicht, timing en vaardigheid. De winnaar wordt niet door een kansbepaling
+        aangewezen; dit is geen kansspel in de zin van de Wet op de kansspelen. Deelname is
+        volledig vrijwillig: je bepaalt zelf of je meedoet en of je betaalt.
       </p>
     </>
   );
