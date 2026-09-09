@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
 // De browser blijft op centje.app, dus de Supabase-sessie van het dashboard
 // leeft op dit domein. Het dashboard zelf is gebouwd met base "/intern/".
 const INTERN_UPSTREAM =
-  process.env.INTERN_UPSTREAM ?? "https://centje-intern.vercel.app";
+  process.env.INTERN_UPSTREAM ?? "https://dashboard-rouge-nine-29.vercel.app";
 
 const nextConfig: NextConfig = {
   images: {
