@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { IPhoneFrame } from "./IPhoneFrame";
@@ -138,12 +137,6 @@ export function DownloadSection() {
             >
               {CENTJE_EMAIL_DISPLAY}
             </a>
-            <Link
-              href="/voorwaarden"
-              className="font-medium text-white transition-colors hover:text-white/80"
-            >
-              Voorwaarden
-            </Link>
           </nav>
         </div>
       </div>
