@@ -5,6 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // Intern dashboard (rewrite naar het Dashboard-project): niet indexeren
+      disallow: "/intern",
     },
     sitemap: "https://centje.app/sitemap.xml",
   };
