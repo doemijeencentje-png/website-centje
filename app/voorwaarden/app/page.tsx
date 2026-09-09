@@ -3,8 +3,10 @@ import { LegalPageShell } from "@/components/LegalPageShell";
 import { CentjeAppVoorwaardenContent } from "@/components/legal/CentjeAppVoorwaardenContent";
 
 export const metadata: Metadata = {
-  title: "Gebruiksvoorwaarden app — Centje",
-  description: "Gebruiksvoorwaarden voor de Centje-app.",
+  title: "Gebruiksvoorwaarden app",
+  description:
+    "De gebruiksvoorwaarden van de Centje-app: hoe challenges en betaalverzoeken werken, wat er van je verwacht wordt en waar je aan toe bent.",
+  alternates: { canonical: "/voorwaarden/app" },
 };
 
 export default function VoorwaardenAppPage() {

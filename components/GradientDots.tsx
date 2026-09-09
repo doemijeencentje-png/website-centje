@@ -1,33 +1,29 @@
-'use client';
+import React from "react";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-
-type GradientDotsProps = React.ComponentProps<typeof motion.div> & {
-	dotSize?: number;
-	spacing?: number;
-	duration?: number;
-	colorCycleDuration?: number;
-	backgroundColor?: string;
+type GradientDotsProps = React.HTMLAttributes<HTMLDivElement> & {
+  dotSize?: number;
+  spacing?: number;
+  duration?: number;
+  backgroundColor?: string;
 };
 
 export function GradientDots({
-	dotSize = 8,
-	spacing = 10,
-	duration = 30,
-	colorCycleDuration = 6,
-	backgroundColor = '#ffffff',
-	className,
-	...props
+  dotSize = 8,
+  spacing = 10,
+  duration = 30,
+  backgroundColor = "#ffffff",
+  className,
+  style,
+  ...props
 }: GradientDotsProps) {
-	const hexSpacing = spacing * 1.732;
+  const hexSpacing = spacing * 1.732;
 
-	return (
-		<motion.div
-			className={`absolute inset-0 ${className ?? ''}`}
-			style={{
-				backgroundColor,
-				backgroundImage: `
+  return (
+    <div
+      className={`gradient-dots absolute inset-0 ${className ?? ""}`}
+      style={{
+        backgroundColor,
+        backgroundImage: `
           radial-gradient(circle at 50% 50%, transparent 1.5px, ${backgroundColor} 0 ${dotSize}px, transparent ${dotSize}px),
           radial-gradient(circle at 50% 50%, transparent 1.5px, ${backgroundColor} 0 ${dotSize}px, transparent ${dotSize}px),
           radial-gradient(circle at 50% 50%, #00D26A, transparent 60%),
@@ -35,7 +31,7 @@ export function GradientDots({
           radial-gradient(circle at 50% 50%, #00FF7F, transparent 60%),
           radial-gradient(ellipse at 50% 50%, #00B050, transparent 60%)
         `,
-				backgroundSize: `
+        backgroundSize: `
           ${spacing}px ${hexSpacing}px,
           ${spacing}px ${hexSpacing}px,
           200% 200%,
@@ -43,27 +39,10 @@ export function GradientDots({
           200% 200%,
           200% ${hexSpacing}px
         `,
-				backgroundPosition: `
-          0px 0px, ${spacing / 2}px ${hexSpacing / 2}px,
-          0% 0%,
-          0% 0%,
-          0% 0px
-        `,
-			}}
-			animate={{
-				backgroundPosition: [
-					`0px 0px, ${spacing / 2}px ${hexSpacing / 2}px, 800% 400%, 1000% -400%, -1200% -600%, 400% ${hexSpacing}px`,
-					`0px 0px, ${spacing / 2}px ${hexSpacing / 2}px, 0% 0%, 0% 0%, 0% 0%, 0% 0%`,
-				],
-			}}
-			transition={{
-				backgroundPosition: {
-					duration: duration,
-					ease: 'linear',
-					repeat: Number.POSITIVE_INFINITY,
-				},
-			}}
-			{...props}
-		/>
-	);
+        animationDuration: `${duration}s`,
+        ...style,
+      }}
+      {...props}
+    />
+  );
 }

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { LegalPageShell } from "@/components/LegalPageShell";
 
 export const metadata: Metadata = {
-  title: "Gebruiksvoorwaarden en privacy — Centje",
+  title: "Gebruiksvoorwaarden en privacy",
+  alternates: { canonical: "/voorwaarden" },
   description:
     "Gebruiksvoorwaarden app, gebruiksvoorwaarden Centje betalingen en privacyverklaring.",
 };
@@ -42,7 +43,7 @@ export default function VoorwaardenHubPage() {
           <p className="text-sm text-neutral-600 mb-3 leading-relaxed">
             Alleen voor een eenmalige betaling wanneer iemand jou een betaallink of verzoek stuurt
             (bijvoorbeeld via iDEAL of een vergelijkbare route in je bankomgeving). Dit stuk gaat
-            niet over het dagelijks gebruik van de app zelf — dat staat hierboven.
+            niet over het dagelijks gebruik van de app zelf. Dat staat hierboven.
           </p>
           <Link href="/voorwaarden/betalingen" className={linkClass}>
             Lees de gebruiksvoorwaarden voor betalingen

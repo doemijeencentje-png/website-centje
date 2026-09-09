@@ -7,7 +7,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
 
-  if (reduceMotion) {
+  if (reduceMotion || pathname === "/") {
     return <>{children}</>;
   }
 

@@ -1,10 +1,22 @@
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import { SiteHeader } from "@/components/SiteHeader";
-import { GradientDots } from "@/components/GradientDots";
-import { Steps } from "@/components/Steps";
-import { AboutSection } from "@/components/AboutSection";
-import { DownloadSection } from "@/components/DownloadSection";
 import { HomeScrollRestore } from "@/components/HomeScrollRestore";
+
+const GradientDots = dynamic(() =>
+  import("@/components/GradientDots").then((m) => ({ default: m.GradientDots }))
+);
+const Steps = dynamic(() =>
+  import("@/components/Steps").then((m) => ({ default: m.Steps }))
+);
+const AboutSection = dynamic(() =>
+  import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
+);
+const DownloadSection = dynamic(() =>
+  import("@/components/DownloadSection").then((m) => ({
+    default: m.DownloadSection,
+  }))
+);
 
 export default function Home() {
   return (
@@ -17,7 +29,7 @@ export default function Home() {
 
       {/* Section 2: Gradient transition zwart tot aan de bolletjes — ingekort naar 70% */}
       <div
-        className="h-[28vh] relative"
+        className="relative h-[28vh]"
         style={{
           background:
             "linear-gradient(to bottom, #000000 0%, #000000 10%, #0B0F12 18%, #11161b 26%, #181f26 36%, #222b34 48%, #2f3a45 60%, #45515f 74%, #6b7686 86%, #9ca3b0 95%, #ffffff 100%)",
@@ -29,8 +41,10 @@ export default function Home() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            maskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 88%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 88%)",
+            maskImage:
+              "linear-gradient(to bottom, black 0%, black 55%, transparent 88%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, black 0%, black 55%, transparent 88%)",
           }}
         >
           <GradientDots className="!absolute inset-0" />

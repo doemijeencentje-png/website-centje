@@ -108,7 +108,7 @@ export function CentjeAppVoorwaardenContent() {
         </p>
         <p>
           Voor challenges kunnen kosten in rekening worden gebracht, maar alleen bij de winnende
-          partij van die challenge — niet bij de verliezer. Hoe hoog dat bedrag is en wanneer het
+          partij van die challenge, niet bij de verliezer. Hoe hoog dat bedrag is en wanneer het
           verschuldigd is, staat in de app bij de betreffende challenge of uitleg.
         </p>
         <p>

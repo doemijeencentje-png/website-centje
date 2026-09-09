@@ -11,19 +11,24 @@ export default function HeroSection() {
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 640px)");
 
+    const prepareVideo = (video: HTMLVideoElement | null, isDesktop: boolean) => {
+      if (!video) return;
+      video.preload = "auto";
+      if (isDesktop) video.playbackRate = PLAYBACK_RATE;
+      video.load();
+      video.play().catch(() => {});
+    };
+
     const playActive = () => {
       const mobile = mobileRef.current;
       const desktop = desktopRef.current;
 
       if (mq.matches) {
         mobile?.pause();
-        if (desktop) {
-          desktop.playbackRate = PLAYBACK_RATE;
-          desktop.play().catch(() => {});
-        }
+        prepareVideo(desktop, true);
       } else {
         desktop?.pause();
-        mobile?.play().catch(() => {});
+        prepareVideo(mobile, false);
       }
     };
 
@@ -52,7 +57,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         aria-label="Centje munt animatie"
       />
 
@@ -65,10 +70,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        preload="auto"
-        onLoadedMetadata={(e) => {
-          e.currentTarget.playbackRate = PLAYBACK_RATE;
-        }}
+        preload="none"
         aria-label="Centje munt animatie"
       />
     </div>

@@ -3,8 +3,10 @@ import { LegalPageShell } from "@/components/LegalPageShell";
 import { CentjePrivacyContent } from "@/components/legal/CentjePrivacyContent";
 
 export const metadata: Metadata = {
-  title: "Privacyverklaring — Centje",
-  description: "Privacyverklaring van Centje.",
+  title: "Privacyverklaring",
+  description:
+    "Lees hoe Centje omgaat met je persoonsgegevens: welke gegevens we verzamelen, waarvoor we ze gebruiken en wat je rechten zijn.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

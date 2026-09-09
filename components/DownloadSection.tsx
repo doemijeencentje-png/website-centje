@@ -53,7 +53,7 @@ export function DownloadSection() {
           <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#00D26A] sm:text-sm">
             Klaar om te beginnen?
           </span>
-          <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-white sm:mt-5 sm:text-5xl md:text-6xl">
+          <h2 className="font-heading mt-3 text-2xl font-bold leading-tight tracking-tight text-white sm:mt-5 sm:text-5xl md:text-6xl">
             Download Centje.
             <br />
             <span className="text-[#00D26A]">Betaal leuker.</span>
@@ -104,7 +104,7 @@ export function DownloadSection() {
           >
             <IPhoneFrame>
               <Image
-                src="/steps/step-1.png"
+                src="/steps/step-1-v2.png"
                 alt="Centje app"
                 fill
                 className="object-cover object-top"

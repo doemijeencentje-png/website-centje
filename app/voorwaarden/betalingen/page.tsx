@@ -3,8 +3,10 @@ import { LegalPageShell } from "@/components/LegalPageShell";
 import { CentjeBetalingenVoorwaardenContent } from "@/components/legal/CentjeBetalingenVoorwaardenContent";
 
 export const metadata: Metadata = {
-  title: "Gebruiksvoorwaarden Centje betalingen — Centje",
-  description: "Gebruiksvoorwaarden voor eenmalige betalingen via Centje.",
+  title: "Gebruiksvoorwaarden betalingen",
+  description:
+    "De voorwaarden voor eenmalige betalingen via Centje, bijvoorbeeld wanneer iemand je een betaallink of betaalverzoek stuurt.",
+  alternates: { canonical: "/voorwaarden/betalingen" },
 };
 
 export default function VoorwaardenBetalingenPage() {

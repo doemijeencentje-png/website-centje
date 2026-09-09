@@ -22,7 +22,7 @@ export function AboutSection() {
             <span className="block text-xs font-semibold uppercase tracking-widest text-[#009652] sm:text-sm">
               Ons verhaal
             </span>
-            <h2 className="mt-2 text-2xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:mt-4 sm:text-5xl md:text-6xl">
+            <h2 className="font-heading mt-2 text-2xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:mt-4 sm:text-5xl md:text-6xl">
               Hoe het begon
             </h2>
             <div className="mt-3 h-1 w-10 rounded-full bg-[#00D26A] sm:mt-7 sm:w-14" />
@@ -52,7 +52,7 @@ export function AboutSection() {
               <p className="text-sm italic text-neutral-400">Team Centje, 2025</p>
               <div className="relative aspect-[2172/724] w-[110px] shrink-0">
                 <Image
-                  src="/centje-logo.png"
+                  src="/centje-logo-sm.webp"
                   alt="Centje logo"
                   fill
                   className="object-contain object-right"

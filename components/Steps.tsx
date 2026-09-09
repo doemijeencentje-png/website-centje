@@ -11,7 +11,7 @@ const STEPS = [
     title: "Maak een verzoek",
     description:
       "Start een betaalverzoek en kies tussen een individueel verzoek of een groepscentje.",
-    image: "/steps/step-1.png",
+    image: "/steps/step-1-v2.png",
   },
   {
     number: "02",
@@ -24,7 +24,7 @@ const STEPS = [
     number: "03",
     title: "Kies je spel",
     description:
-      "Selecteer een spel voor je challenge. Van Flappy Bird tot Sudoku — er is voor iedereen iets.",
+      "Selecteer een spel voor je challenge. Van Flappy Bird tot Sudoku, er is voor iedereen iets.",
     image: "/steps/step-3.png",
   },
   {
@@ -39,7 +39,7 @@ const STEPS = [
     title: "Bekijk je verzoeken",
     description:
       "Houd al je betaalverzoeken bij op één plek. Betaald, openstaand of wachtend op je tegenstander.",
-    image: "/steps/step-5.png",
+    image: "/steps/step-5-v2.png",
   },
 ];
 
@@ -54,7 +54,7 @@ export function Steps() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-20 md:mb-28"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black leading-tight">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-black leading-tight">
             Hoe centje werkt
           </h2>
           <p className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-600 mt-3">

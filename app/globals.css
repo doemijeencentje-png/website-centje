@@ -1,5 +1,3 @@
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -13,7 +11,8 @@
   --color-graphite: #E5E7EB;
   --color-graphite-light: #F3F4F6;
   --color-muted: #6B7280;
-  --font-sans: "Satoshi", system-ui, -apple-system, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
@@ -25,6 +24,7 @@
     background: #ffffff;
     color: #0B0F12;
     font-family: var(--font-sans);
+    letter-spacing: -0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -67,6 +67,44 @@
 .loading-progress {
   width: 8%;
   animation: loading-progress 1.6s ease-out forwards;
+}
+
+@keyframes gradient-dots-drift {
+  from {
+    background-position:
+      0px 0px,
+      5px 8.66px,
+      800% 400%,
+      1000% -400%,
+      -1200% -600%,
+      400% 17.32px;
+  }
+  to {
+    background-position:
+      0px 0px,
+      5px 8.66px,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%;
+  }
+}
+
+.gradient-dots {
+  background-position:
+    0px 0px,
+    5px 8.66px,
+    800% 400%,
+    1000% -400%,
+    -1200% -600%,
+    400% 17.32px;
+  animation: gradient-dots-drift 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-dots {
+    animation: none;
+  }
 }
 
 /* Hero: mobiel vs desktop — expliciet via CSS (betrouwbaarder dan sm:hidden) */
@@ -128,4 +166,9 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }

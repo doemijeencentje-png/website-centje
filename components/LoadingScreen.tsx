@@ -51,8 +51,6 @@ export function LoadingScreen() {
           fill
           className="object-contain"
           sizes="(max-width: 640px) 256px, 320px"
-          unoptimized
-          priority
         />
       </div>
       <div className="h-1.5 w-44 overflow-hidden rounded-full bg-white/10 sm:w-56">
