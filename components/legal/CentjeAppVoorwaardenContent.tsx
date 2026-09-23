@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { LegalSection } from "@/components/LegalSection";
-import { CENTJE_EMAIL_DISPLAY } from "@/lib/centje-contact";
 
 const a = "text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";
 
@@ -93,11 +92,7 @@ export function CentjeAppVoorwaardenContent() {
           discriminerend zijn. Centje mag inhoud weigeren of verwijderen.
         </p>
         <p>
-          Vragen of meldingen:{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          .
+          Voor vragen of meldingen kun je contact met ons opnemen.
         </p>
       </LegalSection>
 
@@ -174,11 +169,7 @@ export function CentjeAppVoorwaardenContent() {
           zo nodig de bevoegde rechter en dwingend consumentenrecht waar dat geldt.
         </p>
         <p>
-          Vragen:{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          .
+          Vragen kun je aan ons stellen.
         </p>
       </LegalSection>
 

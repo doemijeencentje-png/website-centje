@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { LegalSection } from "@/components/LegalSection";
-import { CENTJE_EMAIL_DISPLAY } from "@/lib/centje-contact";
 
 const a = "text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";
 
@@ -42,11 +41,7 @@ export function CentjePrivacyContent() {
 
       <LegalSection title="Contact over privacy">
         <p>
-          Vragen over privacy:{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          . Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.
+          Vragen over privacy kun je aan ons stellen. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.
         </p>
       </LegalSection>
 
@@ -139,11 +134,7 @@ export function CentjePrivacyContent() {
         <p>
           Wij nemen passende maatregelen om gegevens te beschermen. Geen systeem is volledig
           risicovrij; ook jij kunt helpen met een veilig toestel en sterke toegang. Verdenk je
-          misbruik, meld het via{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          .
+          misbruik, meld het dan bij ons.
         </p>
         <p>
           Centje is niet aansprakelijk voor het verlies van gegevens (bijvoorbeeld door storing,
@@ -160,11 +151,7 @@ export function CentjePrivacyContent() {
         <p>
           Je hebt recht op inzage, correctie, verwijdering, beperking, bezwaar en dataportabiliteit
           waar de AVG dat voorschrijft. Niet alles kan altijd worden gewist, bijvoorbeeld bij
-          wettelijke bewaarplicht. Verzoeken:{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          . Let op veiligheid als je gegevens deelt met anderen.
+          wettelijke bewaarplicht. Verzoeken kun je bij ons indienen. Let op veiligheid als je gegevens deelt met anderen.
         </p>
       </LegalSection>
 

@@ -73,7 +73,6 @@ const structuredData = {
       name: "Centje",
       url: "https://centje.app",
       logo: "https://centje.app/centje-logo.png",
-      email: "Doemijeencentje@gmail.com",
       description:
         "Centje is een Nederlandse fintech-app die betaalverzoeken leuker maakt met vaardigheidsspelletjes.",
     },
