@@ -1,7 +1,5 @@
 "use client";
 
-import { CENTJE_EMAIL_DISPLAY, CENTJE_EMAIL_MAILTO } from "@/lib/centje-contact";
-
 export function Footer() {
   return (
     <footer
@@ -18,18 +16,6 @@ export function Footer() {
               &copy; {new Date().getFullYear()}
             </span>
           </div>
-
-          <nav
-            className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-2 text-xs sm:text-sm text-neutral-400"
-            aria-label="Footer"
-          >
-            <a
-              href={CENTJE_EMAIL_MAILTO}
-              className="hover:text-neutral-700 transition-colors"
-            >
-              {CENTJE_EMAIL_DISPLAY}
-            </a>
-          </nav>
         </div>
       </div>
     </footer>

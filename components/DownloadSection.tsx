@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { IPhoneFrame } from "./IPhoneFrame";
-import { CENTJE_EMAIL_DISPLAY, CENTJE_EMAIL_MAILTO } from "@/lib/centje-contact";
 
 const APP_STORE_URL = "https://apps.apple.com/app/centje/id000000000"; // Vervang met echte App Store-link
 
@@ -130,14 +129,6 @@ export function DownloadSection() {
             </div>
             <span>© {new Date().getFullYear()}</span>
           </div>
-          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/50">
-            <a
-              href={CENTJE_EMAIL_MAILTO}
-              className="transition-colors hover:text-white"
-            >
-              {CENTJE_EMAIL_DISPLAY}
-            </a>
-          </nav>
         </div>
       </div>
     </section>

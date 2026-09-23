@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LegalSection } from "@/components/LegalSection";
-import { CENTJE_EMAIL_DISPLAY, OPP_KVK_NUMBER } from "@/lib/centje-contact";
+import { OPP_KVK_NUMBER } from "@/lib/centje-contact";
 
 const a = "text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";
 
@@ -97,11 +97,7 @@ export function CentjeBetalingenVoorwaardenContent() {
 
       <LegalSection title="Klachten over de betaling">
         <p>
-          Neem bij klachten over deze betaling contact op via{" "}
-          <a href={`mailto:${CENTJE_EMAIL_DISPLAY}`} className={a}>
-            {CENTJE_EMAIL_DISPLAY}
-          </a>
-          .
+          Neem bij klachten over deze betaling contact met ons op.
         </p>
       </LegalSection>
 
