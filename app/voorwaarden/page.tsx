@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPageShell } from "@/components/LegalPageShell";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gebruiksvoorwaarden en privacy",
-  alternates: { canonical: "/voorwaarden" },
   description:
     "Gebruiksvoorwaarden app, gebruiksvoorwaarden Centje betalingen en privacyverklaring.",
-};
+  path: "/voorwaarden",
+});
 
 const linkClass =
   "text-sm font-medium text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";

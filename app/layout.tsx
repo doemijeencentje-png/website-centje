@@ -120,22 +120,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl" className={`light ${archivo.variable}`}>
-      <head>
-        <link
-          rel="preload"
-          href="/centje-hero-mobile.mp4"
-          as="video"
-          type="video/mp4"
-          media="(max-width: 639px)"
-        />
-        <link
-          rel="preload"
-          href="/centje-hero.mp4"
-          as="video"
-          type="video/mp4"
-          media="(min-width: 640px)"
-        />
-      </head>
       <body className="antialiased bg-white">
         <script
           type="application/ld+json"

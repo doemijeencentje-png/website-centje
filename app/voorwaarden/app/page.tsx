@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPageShell } from "@/components/LegalPageShell";
 import { CentjeAppVoorwaardenContent } from "@/components/legal/CentjeAppVoorwaardenContent";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gebruiksvoorwaarden app",
   description:
     "De gebruiksvoorwaarden van de Centje-app: hoe challenges en betaalverzoeken werken, wat er van je verwacht wordt en waar je aan toe bent.",
-  alternates: { canonical: "/voorwaarden/app" },
-};
+  path: "/voorwaarden/app",
+});
 
 export default function VoorwaardenAppPage() {
   return (

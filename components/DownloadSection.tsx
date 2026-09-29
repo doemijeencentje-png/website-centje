@@ -1,8 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { IPhoneFrame } from "./IPhoneFrame";
+
+const FOOTER_LINKS = [
+  { label: "Hoe het werkt", href: "/#stappen" },
+  { label: "Veelgestelde vragen", href: "/veelgestelde-vragen" },
+  { label: "Artikelen", href: "/artikelen" },
+  { label: "Adverteren", href: "/adverteren" },
+];
 
 const APP_STORE_URL = "https://apps.apple.com/app/centje/id000000000"; // Vervang met echte App Store-link
 
@@ -129,6 +137,17 @@ export function DownloadSection() {
             </div>
             <span>© {new Date().getFullYear()}</span>
           </div>
+          <nav aria-label="Voettekst">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/50">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </section>

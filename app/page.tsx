@@ -16,6 +16,9 @@ const Highlights = dynamic(() =>
 const AboutSection = dynamic(() =>
   import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
 );
+const FaqTeaser = dynamic(() =>
+  import("@/components/FaqTeaser").then((m) => ({ default: m.FaqTeaser }))
+);
 const DownloadSection = dynamic(() =>
   import("@/components/DownloadSection").then((m) => ({
     default: m.DownloadSection,
@@ -25,6 +28,9 @@ const DownloadSection = dynamic(() =>
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Alleen de homepage heeft de hero-video; React plaatst deze links in de head. */}
+      <link rel="preload" href="/centje-hero-mobile.mp4" as="video" type="video/mp4" media="(max-width: 639px)" />
+      <link rel="preload" href="/centje-hero.mp4" as="video" type="video/mp4" media="(min-width: 640px)" />
       <HomeScrollRestore />
       <SiteHeader />
 
@@ -52,6 +58,8 @@ export default function Home() {
         <Highlights />
         <AboutSection />
       </div>
+
+      <FaqTeaser />
 
       <DownloadSection />
     </main>
