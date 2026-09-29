@@ -25,8 +25,8 @@ export const FLOWS: Flow[] = [
     summary:
       "Stuur één vriend een challenge. Speelt je vriend beter, dan betaalt die minder. Speel jij beter, dan krijg je meer.",
     photo: {
-      src: "/foto/vriendinnen-cafe.jpg",
-      position: "80% 40%",
+      src: "/foto/vrienden-bank.jpg",
+      position: "50% 25%",
     },
     steps: [
       {
@@ -68,8 +68,8 @@ export const FLOWS: Flow[] = [
     summary:
       "Iedereen speelt hetzelfde spel. De beste speler betaalt het minst, de slechtste het meest.",
     photo: {
-      src: "/foto/groep-proosten.jpg",
-      position: "50% 35%",
+      src: "/foto/groep-gracht.jpg",
+      position: "50% 30%",
     },
     steps: [
       {

@@ -1,16 +1,16 @@
 # Fotobronnen
 
-Alle foto's in `public/foto/` zijn echte foto's van Unsplash, gebruikt onder de
-[Unsplash-licentie](https://unsplash.com/license): gratis, ook commercieel, zonder
-verplichte naamsvermelding. De camera staat erbij als bewijs dat het geen AI-beeld is.
-Unsplash levert geen modelreleases mee; voor een betaalde advertentiecampagne liever
-stockfoto's met release gebruiken.
+De sfeerfoto's in `public/foto/` zijn eigen AI-beelden uit de Centje-promo's
+(Higgsfield Soul v2 en Veo 3.1), bewerkt tot losse foto's. Alleen Nederlandse
+mensen en Nederlandse terrassen, passend bij de app.
 
-| Bestand | Waar op de site | Fotograaf | Camera | Bron |
-|---|---|---|---|---|
-| `vriendinnen-cafe.jpg` | Hoe het werkt, paneel Individueel verzoek | Brooke Cagle | Canon EOS R | https://unsplash.com/photos/two-women-sitting-at-a-table-looking-at-a-cell-phone-0RiYUXie8nQ |
-| `groep-proosten.jpg` | Hoe het werkt, paneel Groepscentje | Sweet Life | Canon EOS 5D Mark III | https://unsplash.com/photos/a-group-of-people-sitting-around-a-wooden-table-zbI9maUvcaM |
-| `tafel-buiten.jpg` | Hoe het begon | Bohdan | Olympus E-M10 Mark III | https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-eating-food-F2lsSOd2DS8 |
-| `samen-spelen.jpg` | Makkelijk voor iedereen aan tafel, Eerlijk spel | Afif Ramdhasuma | Sony A7 II | https://unsplash.com/photos/a-man-and-woman-sitting-on-a-couch-looking-at-a-cell-phone-ImsEAEQSMbo |
+| Bestand | Waar op de site | Bron | Bewerking |
+|---|---|---|---|
+| `vrienden-bank.jpg` | Hoe het werkt, paneel Individueel verzoek | Still uit `centje-ad.mp4` (twee vrienden naast elkaar op hun telefoon) | Uitsnede, Real-ESRGAN x4, kleur en korrel |
+| `groep-gracht.jpg` | Hoe het werkt, paneel Groepscentje | Startbeeld van de terrasvideo (Higgsfield Soul v2, 1152 x 2048) | Witte spikkels op een gezicht weggeretoucheerd, Real-ESRGAN, kleur en korrel |
+| `terras-munt.jpg` | Hoe het begon | Still uit `Centje-terras-intro.mp4` | Munt vervangen door de echte Centje-munt, onleesbare tekst op de bon vervangen door nette bonregels, bord met nepletters vervaagd, oververscherping verzacht, Real-ESRGAN, blauw en geel minder fel |
+| `terras-uitslag.jpg` | Makkelijk voor iedereen aan tafel, Eerlijk spel | Still uit `Centje-promo-v2.mp4` | Uitsnede zonder de vervormde handen links in beeld, Real-ESRGAN, kleur en korrel |
 
-Nooit stills uit AI-video's gebruiken voor mensen (handen en gezichten klopten niet).
+Elke foto is op volle resolutie gecontroleerd op handen, gezichten en nepletters.
+Bij een nieuwe AI-foto altijd hetzelfde doen, en nooit beelden uit
+`Centje-FILM-groepscentje.mp4` gebruiken (daar staan echte namen in).
