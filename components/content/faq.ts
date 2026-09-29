@@ -188,5 +188,8 @@ export const FAQ: FaqCategory[] = [
   },
 ];
 
-/** Selectie voor het vragenblok op de homepage. */
-export const FAQ_HOME: FaqItem[] = [Q.geenApp, Q.verschil, Q.eerlijk, Q.kosten, Q.hoeBetalen, Q.veilig];
+/**
+ * Selectie voor het vragenblok op de homepage. Vult aan wat de secties erboven al
+ * uitleggen (geen app nodig, eerlijk spel, veilig betalen, de kosten).
+ */
+export const FAQ_HOME: FaqItem[] = [Q.spellen, Q.gelijkspel, Q.organisator, Q.nietBetaald, Q.verificatie, Q.telefoons];

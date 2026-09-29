@@ -49,7 +49,8 @@ export default function AdverterenPage() {
               src="/adverteren/kart-start.webp"
               alt="De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan en een startboog met het Centje-logo"
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="(min-width: 1152px) 1104px, 100vw"
               className="object-cover object-[50%_40%]"
             />
@@ -105,7 +106,7 @@ export default function AdverterenPage() {
       </section>
 
       {/* Op het bedankscherm */}
-      <section aria-labelledby="bedankscherm" className="border-y border-[#E3EAE6] bg-[#F3F6F4]">
+      <section aria-labelledby="bedankscherm" className="overflow-hidden border-y border-[#E3EAE6] bg-[#F3F6F4]">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <div className="relative mx-auto w-[230px] sm:w-[260px] lg:order-first">
             <div
@@ -175,10 +176,11 @@ export default function AdverterenPage() {
       <section aria-labelledby="interesse" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
         <div className="relative overflow-hidden rounded-[28px] bg-[#00D26A] px-6 py-12 sm:px-12 sm:py-16">
           <Image
-            src="/munt.webp"
+            src="/merk/munt.webp"
             alt=""
-            width={192}
-            height={192}
+            width={384}
+            height={384}
+            sizes="192px"
             className="pointer-events-none absolute -bottom-10 -right-8 h-32 w-32 rotate-12 opacity-90 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:bottom-auto sm:right-10 sm:top-1/2 sm:h-48 sm:w-48 sm:-translate-y-1/2"
           />
           <div className="relative max-w-xl">

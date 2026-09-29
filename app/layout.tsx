@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
-import { LoadingScreen } from "@/components/LoadingScreen";
 import { MotionProvider } from "@/components/MotionProvider";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
-// De wdth-as is nodig voor de brede koppen (font-stretch in .font-heading).
+// De wdth-as is nodig voor de brede koppen (font-stretch in .font-heading). Alleen "latin"
+// wordt vooraf geladen: Nederlandse tekst heeft niets uit latin-ext nodig.
 const archivo = Archivo({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   axes: ["wdth"],
   display: "swap",
   variable: "--font-archivo",
@@ -125,8 +127,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <LoadingScreen />
-        <MotionProvider>{children}</MotionProvider>
+        {/* Kopbalk en voettekst buiten template.tsx: ze blijven staan tijdens het wisselen van pagina. */}
+        <MotionProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );

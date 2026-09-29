@@ -65,7 +65,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
   return (
     <div ref={track} className="relative" style={{ height: `calc(100svh + ${count * STEP_SCROLL_SVH}svh)` }}>
-      <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center sm:top-20 sm:h-[calc(100svh_-_5rem)]">
+      <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center lg:top-[72px] lg:h-[calc(100svh_-_72px)]">
         <div className="grid w-full items-center gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           {/* Telefoon met de schermen van beide speelvormen boven elkaar */}
           <div className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]">

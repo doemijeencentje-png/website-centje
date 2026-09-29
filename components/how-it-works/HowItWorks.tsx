@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { MODE_BY_HASH, MODE_EVENT } from "../site/inPage";
 import { ModeSwitcher } from "./ModeSwitcher";
 import { FlowStepper } from "./FlowStepper";
 import { FLOWS, type FlowId } from "./flows";
@@ -12,12 +13,32 @@ export function HowItWorks() {
   const [mode, setMode] = useState<FlowId>("individueel");
   const flow = FLOWS.find((f) => f.id === mode) ?? FLOWS[0];
 
+  // Menu-links (/#individueel, /#groepscentje) openen direct de juiste speelvorm.
+  useEffect(() => {
+    const fromHash = () => {
+      const fromUrl = MODE_BY_HASH[window.location.hash.slice(1)];
+      if (fromUrl) setMode(fromUrl);
+    };
+    const fromMenu = (event: Event) => setMode((event as CustomEvent<FlowId>).detail);
+    const frame = requestAnimationFrame(fromHash);
+    window.addEventListener("hashchange", fromHash);
+    window.addEventListener(MODE_EVENT, fromMenu);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", fromHash);
+      window.removeEventListener(MODE_EVENT, fromMenu);
+    };
+  }, []);
+
   return (
     <section
       id="stappen"
       aria-labelledby="stappen-titel"
-      className="relative scroll-mt-16 pb-16 pt-14 sm:scroll-mt-20 sm:pb-24 sm:pt-20 lg:pb-28"
+      className="relative scroll-mt-16 overflow-x-clip pb-16 pt-14 sm:pb-24 sm:pt-20 lg:scroll-mt-[72px] lg:pb-28"
     >
+      {/* Ankers voor het menu; ze wijzen naar het begin van deze sectie. */}
+      <span id="individueel" aria-hidden className="absolute top-0 scroll-mt-16 lg:scroll-mt-[72px]" />
+      <span id="groepscentje" aria-hidden className="absolute top-0 scroll-mt-16 lg:scroll-mt-[72px]" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

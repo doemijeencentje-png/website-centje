@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { APP_STORE_URL, DOWNLOAD_PATH } from "./lib/links";
 
 // Het interne dashboard (repo doemijeencentje-png/Dashboard, eigen
 // Vercel-project) wordt onder centje.app/intern geserveerd via een rewrite.
@@ -17,6 +18,10 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["@phosphor-icons/react"],
   },
   compress: true,
+  async redirects() {
+    // Vaste link achter de QR-code: blijft werken als de App Store-link verandert.
+    return [{ source: DOWNLOAD_PATH, destination: APP_STORE_URL, permanent: false }];
+  },
   async rewrites() {
     return {
       beforeFiles: [

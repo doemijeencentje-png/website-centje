@@ -15,24 +15,25 @@ export function AboutSection() {
     <section
       id="over-ons"
       aria-labelledby="verhaal-titel"
-      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:scroll-mt-20 sm:pb-28 sm:pt-8 lg:pb-36"
+      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px] lg:pb-36"
     >
       <div className="mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         <motion.div {...enter()} className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#0A0C0A] sm:aspect-[16/11] lg:aspect-[4/5]">
             <Image
-              src="/foto/terras-munt.jpg"
-              alt="Twee vrienden op een vol terras; zij houdt een groene Centje-munt vast en de rekening staat op tafel"
+              src="/foto/groep-gracht.jpg"
+              alt="Zes vrienden aan tafel op een terras aan de gracht, met pizza en drinken"
               fill
               sizes="(min-width: 1024px) 560px, 100vw"
-              className="object-cover object-[50%_22%]"
+              className="object-cover object-[50%_33%]"
             />
           </div>
           <Image
-            src="/munt.webp"
+            src="/merk/munt.webp"
             alt=""
             width={192}
             height={192}
+            sizes="96px"
             className="pointer-events-none absolute -left-3 -top-6 h-20 w-20 -rotate-12 drop-shadow-[0_16px_28px_rgba(0,60,30,0.35)] sm:-left-5 sm:h-24 sm:w-24"
           />
         </motion.div>

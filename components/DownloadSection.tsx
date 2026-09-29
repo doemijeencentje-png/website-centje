@@ -1,153 +1,108 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { APP_STORE_URL } from "@/lib/links";
 import { IPhoneFrame } from "./IPhoneFrame";
 
-const FOOTER_LINKS = [
-  { label: "Hoe het werkt", href: "/#stappen" },
-  { label: "Veelgestelde vragen", href: "/veelgestelde-vragen" },
-  { label: "Adverteren", href: "/adverteren" },
-];
+const reveal = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+});
 
-const APP_STORE_URL = "https://apps.apple.com/app/centje/id000000000"; // Vervang met echte App Store-link
-
-function AppleLogo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-    </svg>
-  );
-}
-
+/** Downloadblok onderaan elke pagina; het doel van elke "Download de app"-knop. */
 export function DownloadSection() {
   return (
     <section
       id="download"
-      className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[#0A0C0A] scroll-mt-16 sm:scroll-mt-20 sm:min-h-0"
+      data-kop="donker"
+      aria-labelledby="download-titel"
+      className="relative isolate scroll-mt-16 overflow-hidden bg-[#0A0C0A] text-white lg:scroll-mt-[72px]"
     >
-      {/* Subtiel stippenraster */}
       <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-      {/* Groene glow rechts */}
-      <div
-        className="pointer-events-none absolute right-[-25%] top-1/2 hidden h-[900px] w-[900px] -translate-y-1/2 rounded-full md:block"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(0,210,106,0.30), transparent 60%)",
-        }}
+        aria-hidden
+        className="absolute -right-40 top-1/2 -z-10 h-[820px] w-[820px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
       />
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 sm:flex-none sm:justify-start sm:px-6">
-        <div className="grid grid-cols-[1.3fr_1fr] items-center gap-5 py-6 sm:gap-10 sm:py-28 md:grid-cols-2 md:gap-16 md:py-36">
-        {/* CTA-kolom */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="text-left"
-        >
-          <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#00D26A] sm:text-sm">
-            Klaar om te beginnen?
-          </span>
-          <h2 className="font-heading mt-3 text-2xl font-bold leading-tight tracking-tight text-white [font-stretch:100%] sm:mt-5 sm:text-5xl md:text-6xl">
-            Download Centje.
-            <br />
-            <span className="text-[#00D26A]">Betaal leuker.</span>
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:py-32">
+        <motion.div {...reveal()}>
+          <h2
+            id="download-titel"
+            className="font-heading text-balance text-[40px] font-extrabold leading-[1.02] sm:text-5xl xl:text-[56px]"
+          >
+            Download Centje. <span className="text-[#00D26A]">Betaal leuker.</span>
           </h2>
-          <p className="mt-4 max-w-[540px] text-xs leading-relaxed text-white/60 sm:mt-7 sm:text-xl">
-            Maak je betaalverzoeken leuker met games. Speel, win en betaal
-            minder. Beschikbaar voor iPhone.
+          <p className="mt-6 max-w-[42ch] text-[17px] leading-relaxed text-white/70 sm:text-xl">
+            Stuur vandaag nog je eerste challenge. Centje is er voor iPhone, en je vrienden hebben
+            de app niet eens nodig.
           </p>
 
-          <div className="mt-6 flex flex-col items-start gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-5">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-6">
             <a
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-[#2a2e2a] bg-black px-4 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,.5)] transition-transform hover:scale-[1.03] sm:gap-3.5 sm:rounded-[18px] sm:px-7 sm:py-4"
+              className="rounded-[12px] outline-none transition-transform duration-200 hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 active:scale-[0.98]"
             >
-              <AppleLogo className="h-6 w-6 shrink-0 text-white sm:h-9 sm:w-9" />
-              <span className="text-left text-white">
-                <span className="block text-[10px] opacity-80 sm:text-[13px]">
-                  Download on the
-                </span>
-                <span className="block text-base font-bold leading-tight sm:text-2xl">
-                  App Store
-                </span>
-              </span>
+              <Image
+                src="/merk/app-store-badge.svg"
+                alt="Download in de App Store"
+                width={180}
+                height={60}
+                unoptimized
+                className="h-[54px] w-auto sm:h-[60px]"
+              />
             </a>
-            <span className="text-[11px] text-white/50 sm:text-sm">
-              Gratis · Beschikbaar voor iPhone
-            </span>
-          </div>
-        </motion.div>
 
-        {/* Echte Centje-app in de telefoon */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="flex justify-center"
-          style={{ perspective: 1500 }}
-        >
-          <div
-            className="w-[120px] sm:w-[240px] md:w-[300px]"
-            style={{
-              transform: "rotateY(-18deg) rotateX(5deg)",
-              transformStyle: "preserve-3d",
-            }}
-          >
-            <IPhoneFrame>
-              <Image
-                src="/steps/step-1-v2.png"
-                alt="Centje app"
-                fill
-                className="object-cover object-top"
-                sizes="300px"
-              />
-            </IPhoneFrame>
-          </div>
-        </motion.div>
-        </div>
-      </div>
-
-      {/* Footer-balk geïntegreerd in de donkere finale */}
-      <div className="relative mt-auto shrink-0 border-t border-white/10 sm:mt-0">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
-          <div className="flex items-center gap-3 text-sm text-white/50">
-            <div className="relative h-5 w-[60px]">
-              <Image
-                src="/centje-wordmark.png"
-                alt="Centje"
-                fill
-                className="object-contain object-left"
-                sizes="60px"
-              />
+            {/* Op een computer: scan de code met je telefoon. */}
+            <div className="hidden items-center gap-4 rounded-[24px] bg-white/[0.06] p-3 pr-6 ring-1 ring-white/10 lg:flex">
+              <div className="relative h-[120px] w-[120px] shrink-0 rounded-[16px] bg-white p-3">
+                <Image
+                  src="/merk/qr-download.svg"
+                  alt="QR-code om Centje te downloaden"
+                  width={96}
+                  height={96}
+                  unoptimized
+                  className="h-full w-full"
+                />
+                <span className="absolute left-1/2 top-1/2 flex h-[27px] w-[27px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white">
+                  <Image src="/merk/munt.webp" alt="" width={48} height={48} sizes="22px" className="h-[21px] w-[21px]" />
+                </span>
+              </div>
+              <p className="text-[15px] leading-snug">
+                <span className="block font-semibold text-white">Scan met je iPhone</span>
+                <span className="mt-1 block text-white/60">en download Centje meteen</span>
+              </p>
             </div>
-            <span>© {new Date().getFullYear()}</span>
           </div>
-          <nav aria-label="Voettekst">
-            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/50">
-              {FOOTER_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="transition-colors hover:text-white">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+        </motion.div>
+
+        <motion.div {...reveal(0.1)} className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
+          <div
+            aria-hidden
+            className="absolute -inset-16 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.25),rgba(0,210,106,0))]"
+          />
+          <IPhoneFrame>
+            <Image
+              src="/app/overzicht.webp"
+              alt="Overzicht in de Centje-app met verzoeken zoals Etentje, Pizza-avond en Taxi, en wie er al betaald heeft"
+              fill
+              quality={90}
+              sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 240px"
+              className="object-cover object-top"
+            />
+          </IPhoneFrame>
+          <Image
+            src="/merk/munt.webp"
+            alt=""
+            width={256}
+            height={256}
+            sizes="128px"
+            className="pointer-events-none absolute -left-10 bottom-20 h-24 w-24 -rotate-12 drop-shadow-[0_20px_30px_rgba(0,0,0,0.55)] sm:-left-14 sm:h-28 sm:w-28"
+          />
+        </motion.div>
       </div>
     </section>
   );

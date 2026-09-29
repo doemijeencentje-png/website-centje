@@ -12,7 +12,11 @@ const reveal = (delay = 0) => ({
 
 export function Highlights() {
   return (
-    <section aria-labelledby="gemak-titel" className="relative bg-white pb-20 pt-4 sm:pb-28 sm:pt-8">
+    <section
+      id="spellen"
+      aria-labelledby="gemak-titel"
+      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px]"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.h2
           {...reveal()}
@@ -23,29 +27,37 @@ export function Highlights() {
         </motion.h2>
 
         <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(2,minmax(300px,auto))_minmax(280px,auto)]">
-          {/* Foto: samen spelen */}
+          {/* Eerlijk spel: de echte uitslag uit de app */}
           <motion.article
             {...reveal()}
-            className="relative isolate flex min-h-[440px] flex-col justify-end overflow-hidden rounded-[28px] bg-[#0A0C0A] p-6 sm:p-9 md:col-span-2 lg:row-span-2 lg:min-h-0"
+            className="relative isolate flex flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] px-6 pt-7 sm:px-9 sm:pt-9 md:col-span-2 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6 lg:row-span-2 lg:flex lg:gap-0"
           >
-            <Image
-              src="/foto/terras-uitslag.jpg"
-              alt="Vrienden op een terras aan de gracht; een van hen grijpt lachend naar zijn hoofd"
-              fill
-              sizes="(min-width: 1024px) 760px, (min-width: 768px) 100vw, 100vw"
-              className="-z-10 object-cover object-[50%_15%]"
-            />
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/35 to-black/0"
+              className="absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,0.9),rgba(255,255,255,0))]"
             />
-            <h3 className="font-heading max-w-[18ch] text-[26px] font-extrabold leading-[1.05] text-white sm:text-4xl">
-              Eerlijk spel, voor iedereen gelijk
-            </h3>
-            <p className="mt-3 max-w-[44ch] text-[15px] leading-relaxed text-white/85 sm:text-lg">
-              Iedereen speelt hetzelfde level en krijgt één poging. Wie het best
-              speelt, betaalt het minst.
-            </p>
+            <div className="md:pb-9 lg:pb-0">
+              <h3 className="font-heading max-w-[18ch] text-[26px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-4xl">
+                Eerlijk spel, voor iedereen gelijk
+              </h3>
+              <p className="mt-3 max-w-[44ch] text-[15px] leading-relaxed text-neutral-600 sm:text-lg">
+                Geen geluk, alleen je score telt. Het draait om inzicht, timing en
+                vaardigheid, voor iedereen onder dezelfde omstandigheden.
+              </p>
+            </div>
+            <div className="relative mx-auto mt-8 w-full max-w-[380px] self-end md:mt-0 lg:mt-auto lg:max-w-[470px] lg:pt-8">
+              <div className="translate-y-6 -rotate-2 overflow-hidden rounded-t-[26px] bg-white shadow-[0_2px_4px_rgba(10,12,10,0.05),0_30px_70px_-26px_rgba(0,90,45,0.45)] ring-1 ring-[#CDEFDB] sm:translate-y-8">
+                <Image
+                  src="/app/uitslag-score.webp"
+                  alt="Uitslag in de app: Gewonnen, met de scores 34 voor Sanne en 41 voor jou"
+                  width={1170}
+                  height={1180}
+                  quality={90}
+                  sizes="(min-width: 1024px) 470px, (min-width: 768px) 45vw, 90vw"
+                  className="h-auto w-full"
+                />
+              </div>
+            </div>
           </motion.article>
 
           {/* Overzicht */}
@@ -110,11 +122,12 @@ export function Highlights() {
             </p>
             {/* In de flow in plaats van absoluut, zodat de munt nooit over de tekst valt. */}
             <Image
-              src="/munt.webp"
+              src="/merk/munt.webp"
               alt=""
-              width={192}
-              height={192}
-              className="pointer-events-none -mb-10 -mr-8 mt-auto h-32 w-32 shrink-0 self-end rotate-[-14deg] pt-4 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:h-36 sm:w-36"
+              width={288}
+              height={288}
+              sizes="144px"
+              className="pointer-events-none -mb-5 -mr-3 mt-auto h-28 w-28 shrink-0 self-end rotate-[-14deg] pt-4 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:h-32 sm:w-32"
             />
           </motion.article>
 

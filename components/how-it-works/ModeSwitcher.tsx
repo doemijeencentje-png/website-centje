@@ -1,16 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { ArrowRight, User, UsersThree } from "@phosphor-icons/react";
 import { FLOWS, type FlowId } from "./flows";
+import { PanelArt } from "./PanelArt";
 
 const ICONS = { individueel: User, groep: UsersThree } as const;
-const SHORT_LABEL = { individueel: "1 tegen 1", groep: "Groep" } as const;
+// Harde spaties: in het smalle paneel blijft het label op één regel.
+const SHORT_LABEL = { individueel: "1\u00a0op\u00a01", groep: "Groep" } as const;
 
-// Breedte van een paneel in actieve toestand. Beeld en tekst krijgen die vaste
-// breedte, zodat het paneel ze bij het krimpen alleen afdekt in plaats van ze
-// te laten meeschalen of opnieuw af te breken.
+// Breedte van een paneel in actieve toestand. De tekst krijgt die vaste breedte, zodat
+// het paneel hem bij het krimpen alleen afdekt in plaats van hem opnieuw af te breken.
 const ACTIVE_WIDTH = "calc((100cqw - var(--gap)) * var(--grow) / (var(--grow) + 1))";
 
 interface ModeSwitcherProps {
@@ -66,39 +66,33 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
             onClick={() => onChange(flow.id)}
             onKeyDown={(event) => handleKeyDown(event, index)}
             style={{ flexGrow: active ? "var(--grow)" : 1 }}
-            className={`group relative min-w-0 basis-0 overflow-hidden rounded-[28px] bg-[#0A0C0A] text-left outline-none transition-[flex-grow,scale,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-4 focus-visible:ring-[#00D26A]/70 focus-visible:ring-offset-2 ${
+            className={`group relative isolate min-w-0 basis-0 overflow-hidden rounded-[28px] text-left outline-none transition-[flex-grow,scale,background-color,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-4 focus-visible:ring-[#00D26A]/70 focus-visible:ring-offset-2 ${
               isLeft ? "origin-left" : "origin-right"
             } ${
               active
-                ? "scale-100 shadow-[0_28px_70px_-28px_rgba(0,80,40,0.55)]"
-                : "scale-[0.96] cursor-pointer hover:scale-[0.975]"
+                ? "scale-100 bg-[#00D26A] shadow-[0_30px_70px_-30px_rgba(0,120,60,0.6)]"
+                : "scale-[0.96] cursor-pointer bg-[#0A0C0A] hover:scale-[0.975]"
             }`}
           >
+            {/* Zachte lichtval over het groene vlak */}
             <span
               aria-hidden
-              className={`absolute inset-y-0 ${edge} block`}
-              style={{ width: ACTIVE_WIDTH }}
-            >
-              <Image
-                src={flow.photo.src}
-                alt=""
-                fill
-                sizes="(min-width: 1280px) 740px, (min-width: 640px) 64vw, 76vw"
-                className={`object-cover transition-[filter,scale] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  active
-                    ? "scale-100"
-                    : "scale-105 brightness-[0.5] grayscale group-hover:brightness-[0.62]"
-                }`}
-                style={{ objectPosition: flow.photo.position }}
-              />
-            </span>
-
-            <span
-              aria-hidden
-              className={`absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-black/5 transition-opacity duration-700 ${
-                active ? "opacity-100" : "opacity-70"
+              className={`absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_80%_20%,rgba(255,255,255,0.28),rgba(255,255,255,0)_55%),linear-gradient(to_bottom,rgba(0,0,0,0),rgba(0,70,35,0.18))] transition-opacity duration-700 ${
+                active ? "opacity-100" : "opacity-0"
               }`}
             />
+
+            {/* Illustratie: alleen in het actieve paneel */}
+            <span
+              aria-hidden
+              className={`absolute inset-0 -z-10 transition-[opacity,scale] ${
+                active
+                  ? "scale-100 opacity-100 duration-700 delay-200"
+                  : "scale-90 opacity-0 duration-200"
+              } ${isLeft ? "origin-right" : "origin-center"}`}
+            >
+              <PanelArt mode={flow.id} />
+            </span>
 
             {/* Actief: omschrijving van de speelvorm */}
             <span
@@ -109,17 +103,17 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
               }`}
               style={{ width: ACTIVE_WIDTH }}
             >
-              <span className="flex items-center gap-2 text-[13px] font-semibold text-white/85 sm:text-sm">
+              <span className="flex items-center gap-2 text-[13px] font-semibold text-[#0A0C0A]/75 sm:text-sm">
                 <Icon weight="bold" className="h-4 w-4" aria-hidden />
                 {flow.tagline}
               </span>
               <span
                 id={`tab-${flow.id}-naam`}
-                className="font-heading mt-2 block text-[26px] font-extrabold leading-[1.02] text-white sm:mt-3 sm:text-4xl lg:text-5xl"
+                className="font-heading mt-2 block text-[clamp(18px,calc(9cqw_-_7px),26px)] font-extrabold leading-[1.02] text-[#0A0C0A] sm:mt-3 sm:text-4xl lg:text-5xl"
               >
                 {flow.label}
               </span>
-              <span className="mt-3 hidden max-w-[42ch] text-base leading-relaxed text-white/85 sm:block">
+              <span className="mt-3 hidden max-w-[40ch] text-base font-medium leading-relaxed text-[#0A0C0A]/75 sm:block">
                 {flow.summary}
               </span>
             </span>
@@ -131,7 +125,7 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
                 isLeft ? "items-start" : "items-end text-right"
               } ${active ? "opacity-0 duration-150" : "opacity-100 duration-300 delay-300"}`}
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md transition-colors group-hover:bg-white/25 sm:h-14 sm:w-14">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 transition-colors group-hover:bg-[#00D26A] group-hover:text-[#0A0C0A] group-hover:ring-transparent sm:h-14 sm:w-14">
                 <Icon weight="bold" className="h-5 w-5 sm:h-6 sm:w-6" />
               </span>
               <span className="font-heading mt-3 block text-[15px] font-extrabold leading-tight text-white sm:hidden">
@@ -140,7 +134,7 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
               <span className="font-heading mt-4 hidden text-2xl font-extrabold leading-tight text-white sm:block">
                 {flow.label}
               </span>
-              <span className="mt-1.5 hidden items-center gap-1.5 text-sm font-medium text-white/75 sm:inline-flex">
+              <span className="mt-1.5 hidden items-center gap-1.5 text-sm font-medium text-white/70 sm:inline-flex">
                 Bekijk hoe het werkt
                 <ArrowRight
                   weight="bold"

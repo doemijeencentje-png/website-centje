@@ -27,46 +27,13 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
     background: rgba(0, 210, 106, 0.2);
     color: #0B0F12;
   }
-}
-
-@keyframes shimmer-slide {
-  to {
-    translate: 100% 0;
-  }
-}
-
-@keyframes spin-around {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-shimmer-slide {
-  animation: shimmer-slide var(--speed, 3s) ease-in-out infinite;
-}
-
-.animate-spin-around {
-  animation: spin-around 8s linear infinite;
-}
-
-@keyframes loading-progress {
-  from {
-    width: 8%;
-  }
-  to {
-    width: 92%;
-  }
-}
-
-.loading-progress {
-  width: 8%;
-  animation: loading-progress 1.6s ease-out forwards;
 }
 
 @keyframes gradient-dots-drift {
@@ -107,41 +74,36 @@
   }
 }
 
-/* Hero: mobiel vs desktop — expliciet via CSS (betrouwbaarder dan sm:hidden) */
-.hero-video-mobile {
-  display: block;
-}
-
-.hero-video-desktop {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .hero-video-mobile {
-    display: none !important;
+/* Hero: in CSS in plaats van JavaScript, zodat de kop meteen bij de eerste weergave verschijnt. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
-
-  .hero-video-desktop {
-    display: block !important;
-    object-fit: cover;
-    object-position: center center;
-  }
-}
-
-/* Tekstband onder de hero: twee identieke rijen, de baan schuift precies één rij op. */
-@keyframes ticker-slide {
   to {
-    transform: translateX(-50%);
+    opacity: 1;
+    transform: none;
   }
 }
 
-.ticker-track {
-  animation: ticker-slide 42s linear infinite;
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track {
-    animation: none;
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rise {
+    animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-pop {
+    animation: hero-pop 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 

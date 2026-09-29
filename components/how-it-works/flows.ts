@@ -12,7 +12,6 @@ export interface Flow {
   label: string;
   tagline: string;
   summary: string;
-  photo: { src: string; position: string };
   steps: FlowStep[];
 }
 
@@ -24,10 +23,6 @@ export const FLOWS: Flow[] = [
     tagline: "Jij tegen je maat",
     summary:
       "Stuur één vriend een challenge. Speelt je vriend beter, dan betaalt die minder. Speel jij beter, dan krijg je meer.",
-    photo: {
-      src: "/foto/vrienden-bank.jpg",
-      position: "50% 25%",
-    },
     steps: [
       {
         title: "Start een verzoek",
@@ -67,10 +62,6 @@ export const FLOWS: Flow[] = [
     tagline: "Met de hele groep",
     summary:
       "Iedereen speelt hetzelfde spel. De beste speler betaalt het minst, de slechtste het meest.",
-    photo: {
-      src: "/foto/groep-gracht.jpg",
-      position: "50% 30%",
-    },
     steps: [
       {
         title: "Start een Groepscentje",

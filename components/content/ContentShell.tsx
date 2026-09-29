@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SiteHeader } from "../SiteHeader";
 import { DownloadSection } from "../DownloadSection";
 import { JsonLd } from "./JsonLd";
 
@@ -39,7 +38,7 @@ function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   );
 }
 
-/** Opmaak van de losse pagina's: lichte kopbalk, paginakop en de downloadfinale onderaan. */
+/** Opmaak van de losse pagina's: paginakop met kruimelpad, inhoud en het downloadblok. */
 export function ContentShell({
   crumbs,
   title,
@@ -57,8 +56,7 @@ export function ContentShell({
 
   return (
     <>
-      <SiteHeader variant="page" />
-      <main className="bg-white pt-16 sm:pt-20">
+      <main className="bg-white pt-16 lg:pt-[72px]">
         {showTrail ? (
           <JsonLd
             data={{

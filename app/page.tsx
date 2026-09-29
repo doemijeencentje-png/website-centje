@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
-import { SiteHeader } from "@/components/SiteHeader";
-import { HomeScrollRestore } from "@/components/HomeScrollRestore";
-import { Ticker } from "@/components/Ticker";
+import { TrustStrip } from "@/components/TrustStrip";
 
 const GradientDots = dynamic(() =>
   import("@/components/GradientDots").then((m) => ({ default: m.GradientDots }))
@@ -13,6 +11,9 @@ const HowItWorks = dynamic(() =>
 const Highlights = dynamic(() =>
   import("@/components/Highlights").then((m) => ({ default: m.Highlights }))
 );
+const SafetySection = dynamic(() =>
+  import("@/components/SafetySection").then((m) => ({ default: m.SafetySection }))
+);
 const AboutSection = dynamic(() =>
   import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
 );
@@ -20,26 +21,17 @@ const FaqTeaser = dynamic(() =>
   import("@/components/FaqTeaser").then((m) => ({ default: m.FaqTeaser }))
 );
 const DownloadSection = dynamic(() =>
-  import("@/components/DownloadSection").then((m) => ({
-    default: m.DownloadSection,
-  }))
+  import("@/components/DownloadSection").then((m) => ({ default: m.DownloadSection }))
 );
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Alleen de homepage heeft de hero-video; React plaatst deze links in de head. */}
-      <link rel="preload" href="/centje-hero-mobile.mp4" as="video" type="video/mp4" media="(max-width: 639px)" />
-      <link rel="preload" href="/centje-hero.mp4" as="video" type="video/mp4" media="(min-width: 640px)" />
-      <HomeScrollRestore />
-      <SiteHeader />
+    <>
+      <main>
+        <HeroSection />
+        <TrustStrip />
 
-      <HeroSection />
-
-      <Ticker />
-
-      <div className="relative bg-white">
-        <div className="relative">
+        <div className="relative bg-white">
           {/* Stippen alleen achter Hoe het werkt, zacht uitlopend naar onderen */}
           <div
             aria-hidden
@@ -55,13 +47,13 @@ export default function Home() {
             <HowItWorks />
           </div>
         </div>
+
         <Highlights />
+        <SafetySection />
         <AboutSection />
-      </div>
-
-      <FaqTeaser />
-
-      <DownloadSection />
-    </main>
+        <FaqTeaser />
+        <DownloadSection />
+      </main>
+    </>
   );
 }
