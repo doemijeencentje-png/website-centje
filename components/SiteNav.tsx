@@ -22,7 +22,6 @@ const NAV: NavItem[] = [
   { label: "Hoe het werkt", href: "/#stappen", section: "stappen", from: "base" },
   { label: "Ons verhaal", href: "/#over-ons", section: "over-ons", from: "md" },
   { label: "Vragen", href: "/veelgestelde-vragen", page: "/veelgestelde-vragen", section: "vragen", from: "base" },
-  { label: "Artikelen", href: "/artikelen", page: "/artikelen", from: "md" },
   { label: "Adverteren", href: "/adverteren", page: "/adverteren", from: "lg" },
   { label: "Download", href: "#download", section: "download", from: "base" },
 ];

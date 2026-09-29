@@ -21,11 +21,11 @@ export function AboutSection() {
         <motion.div {...enter()} className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#0A0C0A] sm:aspect-[16/11] lg:aspect-[4/5]">
             <Image
-              src="/foto/rekening.jpg"
-              alt="Vrienden aan tafel op een terras aan de gracht. Eén van hen slaat de handen voor zijn hoofd terwijl de rest lacht."
+              src="/foto/tafel-buiten.jpg"
+              alt="Vrienden eten samen buiten aan tafel; een vriendin houdt haar telefoon vast en glimlacht"
               fill
               sizes="(min-width: 1024px) 560px, 100vw"
-              className="object-cover object-[50%_40%]"
+              className="object-cover object-[5%_45%]"
             />
           </div>
           <Image

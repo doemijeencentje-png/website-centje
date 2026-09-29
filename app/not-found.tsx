@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 const LINKS = [
   { label: "Naar de homepage", href: "/" },
   { label: "Veelgestelde vragen", href: "/veelgestelde-vragen" },
-  { label: "Artikelen", href: "/artikelen" },
 ];
 
 export default function NotFound() {

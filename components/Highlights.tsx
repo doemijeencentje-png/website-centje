@@ -29,11 +29,11 @@ export function Highlights() {
             className="relative isolate flex min-h-[440px] flex-col justify-end overflow-hidden rounded-[28px] bg-[#0A0C0A] p-6 sm:p-9 md:col-span-2 lg:row-span-2 lg:min-h-0"
           >
             <Image
-              src="/foto/spelen.jpg"
-              alt="Een groep vrienden speelt aan tafel op hun telefoon"
+              src="/foto/samen-spelen.jpg"
+              alt="Twee vrienden spelen allebei een spelletje op hun telefoon en lachen"
               fill
               sizes="(min-width: 1024px) 760px, (min-width: 768px) 100vw, 100vw"
-              className="-z-10 object-cover object-[50%_45%]"
+              className="-z-10 object-cover object-[32%_40%]"
             />
             <div
               aria-hidden

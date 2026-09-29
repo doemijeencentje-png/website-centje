@@ -12,13 +12,11 @@ export function pageMetadata({
   description,
   path,
   image,
-  type = "website",
 }: {
   title: string;
   description: string;
   path: string;
   image?: { url: string; alt: string };
-  type?: "website" | "article";
 }): Metadata {
   const images = image ? [image] : [DEFAULT_IMAGE];
   const fullTitle = `${title} | Centje`;
@@ -27,7 +25,7 @@ export function pageMetadata({
     description,
     alternates: { canonical: path },
     openGraph: {
-      type,
+      type: "website",
       title: fullTitle,
       description,
       url: `${SITE}${path}`,

@@ -8,7 +8,6 @@ import { IPhoneFrame } from "./IPhoneFrame";
 const FOOTER_LINKS = [
   { label: "Hoe het werkt", href: "/#stappen" },
   { label: "Veelgestelde vragen", href: "/veelgestelde-vragen" },
-  { label: "Artikelen", href: "/artikelen" },
   { label: "Adverteren", href: "/adverteren" },
 ];
 

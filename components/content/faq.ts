@@ -3,8 +3,9 @@ export type FaqItem = { question: string; answer: string[] };
 export type FaqCategory = { id: string; title: string; items: FaqItem[] };
 
 // Elk antwoord is gecontroleerd tegen de app (Centje-back main, sept 2026) en de
-// voorwaarden. Bewust niet genoemd: maximumbedragen (app en voorwaarden verschillen
-// nog) en spelnamen van anderen (de app toont die ook niet).
+// voorwaarden. Bewust niet noemen (wens Lodewijk): transactiekosten, rekenvoorbeelden
+// of hoe bedragen berekend worden. Ook niet: maximumbedragen (app en voorwaarden
+// verschillen nog) en spelnamen van anderen (de app toont die ook niet).
 // Tussen euroteken en bedrag staat een harde spatie (U+00A0), zodat ze op één regel blijven.
 
 const Q = {
@@ -60,7 +61,7 @@ const Q = {
     question: "Wat gebeurt er bij een gelijkspel?",
     answer: [
       "Bij een individueel verzoek beslist bij een gelijke score de afgelegde afstand, als het spel die bijhoudt. Is alles gelijk, dan hoeft niemand te betalen en kun je opnieuw spelen.",
-      "Bij een Groepscentje delen spelers met dezelfde score hun plek. Ze betalen dan elk het gemiddelde van die plekken.",
+      "Bij een Groepscentje delen spelers met dezelfde score hun plek op de ranglijst.",
     ],
   },
   arcade: {
@@ -78,28 +79,29 @@ const Q = {
   percentage: {
     question: "Hoe werkt het percentage?",
     answer: [
-      "Het percentage bepaalt hoeveel de uitslag uitmaakt. Bij € 20 en 33 procent betaalt je vriend € 13,40 als die beter speelt, en € 26,60 als jij beter speelt.",
-      "Je kiest het percentage zelf, van 0 tot 100 procent. Standaard staat het op 50 procent.",
+      "Met het percentage kies je hoeveel de uitslag uitmaakt. Hoe hoger het percentage, hoe groter het verschil tussen winnen en verliezen.",
+      "Terwijl je het instelt, zie je in de app meteen wat je ontvangt als je vriend beter of slechter speelt dan jij.",
     ],
   },
   verdeling: {
     question: "Hoe werkt de verdeling bij een Groepscentje?",
     answer: [
-      "Het totaalbedrag wordt verdeeld over de plekken op de ranglijst. Met de variatie, van 30 tot 100 procent, kies je hoe groot het verschil tussen de plekken is.",
-      "Voorbeeld: € 100 met vier spelers en 40 procent variatie wordt € 15,00, € 21,67, € 28,33 en € 35,00.",
+      "De ranglijst bepaalt wie wat betaalt: de beste speler betaalt het minst, de slechtste het meest. Met de variatie kies je hoe groot de verschillen tussen de plekken zijn.",
+      "Terwijl je het Groepscentje instelt, zie je meteen wat elke plek betaalt.",
     ],
   },
   kosten: {
     question: "Wat kost Centje?",
     answer: [
-      "Centje downloaden is gratis. Per betaling rekenen we € 0,60 transactiekosten.",
-      "Bij een individueel verzoek zijn die kosten altijd voor de winnaar. Wint je vriend, dan komen ze bovenop het bedrag. Win jij, dan gaan ze van je winst af. Bij een Groepscentje worden de kosten verdeeld over iedereen die betaalt. Het bedrag dat je betaalt, zie je altijd vooraf.",
+      "Centje downloaden is gratis. Bij het aanmaken van je account betaal je eenmalig € 1 voor de verificatie.",
+      "Die euro betaal je met iDEAL, vanaf de bankrekening waarop je je geld wilt ontvangen. Zo bevestig je in één keer dat die rekening echt van jou is, en weet je zeker dat je centjes altijd veilig bij jou aankomen.",
+      "Wat je bij een verzoek afrekent, zie je altijd vooraf in de app.",
     ],
   },
   organisator: {
     question: "Betaalt de organisator van een Groepscentje mee?",
     answer: [
-      "De organisator speelt mee, maar maakt zelf niets over: de anderen betalen hun deel aan de organisator. Op welke plek de organisator ook eindigt, dat bedrag is gewoon het eigen deel van de rekening.",
+      "De organisator speelt gewoon mee, maar betaalt niets aan zichzelf. De anderen betalen hun deel aan de organisator.",
     ],
   },
   hoeBetalen: {
@@ -138,10 +140,10 @@ const Q = {
     ],
   },
   verificatie: {
-    question: "Waarom moet ik mijn identiteit verifiëren?",
+    question: "Waarom moet ik mijn account verifiëren?",
     answer: [
-      "Omdat je via Centje geld ontvangt, is verificatie wettelijk verplicht, net als bij een bank. Onze betaalpartner Online Payment Platform (OPP) regelt dat veilig.",
-      "Je bevestigt je telefoonnummer en je identiteit, bijvoorbeeld met iDIN, en je koppelt je bankrekening met een eenmalige iDEAL-betaling van € 1. Die euro is een eenmalige bijdrage voor de verificatie. Het geheel kost je een paar minuten.",
+      "Omdat je via Centje echt geld ontvangt, is verificatie wettelijk verplicht, net als bij een bank. Dat heet KYC, van het Engelse ‘know your customer’. Zo weet onze betaalpartner Online Payment Platform zeker wie er achter elk account zit, en dat maakt Centje veilig voor iedereen.",
+      "Je bevestigt je telefoonnummer en je identiteit, bijvoorbeeld met iDIN, en je koppelt je bankrekening met de eenmalige iDEAL-betaling van € 1. Alles bij elkaar kost het je een paar minuten.",
     ],
   },
   veilig: {
