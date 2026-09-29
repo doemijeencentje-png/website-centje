@@ -48,6 +48,8 @@ export default function HeroSection() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
+      <h1 className="sr-only">Centje: betaalverzoeken leuker maken met spelletjes</h1>
+
       {/* Mobiel */}
       <video
         ref={mobileRef}

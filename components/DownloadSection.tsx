@@ -51,7 +51,7 @@ export function DownloadSection() {
           <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#00D26A] sm:text-sm">
             Klaar om te beginnen?
           </span>
-          <h2 className="font-heading mt-3 text-2xl font-bold leading-tight tracking-tight text-white sm:mt-5 sm:text-5xl md:text-6xl">
+          <h2 className="font-heading mt-3 text-2xl font-bold leading-tight tracking-tight text-white [font-stretch:100%] sm:mt-5 sm:text-5xl md:text-6xl">
             Download Centje.
             <br />
             <span className="text-[#00D26A]">Betaal leuker.</span>
@@ -66,7 +66,7 @@ export function DownloadSection() {
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-[#2a2e2a] bg-black px-4 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,.5)] transition-transform hover:scale-[1.03] sm:gap-3.5 sm:rounded-[18px] sm:px-7 sm:py-4"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-[#2a2e2a] bg-black px-4 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,.5)] transition-transform hover:scale-[1.03] sm:gap-3.5 sm:rounded-[18px] sm:px-7 sm:py-4"
             >
               <AppleLogo className="h-6 w-6 shrink-0 text-white sm:h-9 sm:w-9" />
               <span className="text-left text-white">

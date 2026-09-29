@@ -3,89 +3,79 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const enter = (delay = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
+});
+
 export function AboutSection() {
   return (
     <section
       id="over-ons"
-      className="about-fullpage relative flex h-[100dvh] flex-col overflow-hidden scroll-mt-16 sm:h-auto sm:min-h-0 sm:scroll-mt-20 sm:py-28 md:py-36"
+      aria-labelledby="verhaal-titel"
+      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:scroll-mt-20 sm:pb-28 sm:pt-8 lg:pb-36"
     >
-      <div className="about-fullpage-main mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 sm:flex-none sm:justify-start sm:px-6">
-        <div className="grid grid-cols-1 items-center gap-4 py-4 sm:grid-cols-[1.4fr_1fr] sm:gap-8 sm:py-0 md:grid-cols-2 md:gap-16">
-          {/* Tekstkolom */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="order-1"
+      <div className="mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+        <motion.div {...enter()} className="relative">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#0A0C0A] sm:aspect-[16/11] lg:aspect-[4/5]">
+            <Image
+              src="/foto/rekening.jpg"
+              alt="Vrienden aan tafel op een terras aan de gracht. Eén van hen slaat de handen voor zijn hoofd terwijl de rest lacht."
+              fill
+              sizes="(min-width: 1024px) 560px, 100vw"
+              className="object-cover object-[50%_40%]"
+            />
+          </div>
+          <Image
+            src="/munt.webp"
+            alt=""
+            width={192}
+            height={192}
+            className="pointer-events-none absolute -left-3 -top-6 h-20 w-20 -rotate-12 drop-shadow-[0_16px_28px_rgba(0,60,30,0.35)] sm:-left-5 sm:h-24 sm:w-24"
+          />
+        </motion.div>
+
+        <motion.div
+          {...enter(0.1)}
+          className="relative mx-3 -mt-20 rounded-[28px] bg-white p-6 shadow-[0_2px_4px_rgba(10,12,10,0.04),0_30px_80px_-30px_rgba(0,70,35,0.35)] ring-1 ring-black/5 sm:mx-10 sm:-mt-28 sm:p-10 lg:mx-0 lg:-ml-16 lg:mt-0 lg:p-12"
+        >
+          {/* Kleine groene tekst op wit in #007F45: merkgroen #00D26A haalt daar maar 2:1 contrast. */}
+          <span className="block text-xs font-bold uppercase tracking-[0.14em] text-[#007F45] sm:text-sm">
+            Ons verhaal
+          </span>
+          <h2
+            id="verhaal-titel"
+            className="font-heading mt-3 text-[34px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-5xl"
           >
-            <span className="block text-xs font-semibold uppercase tracking-widest text-[#009652] sm:text-sm">
-              Ons verhaal
-            </span>
-            <h2 className="font-heading mt-2 text-2xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:mt-4 sm:text-5xl md:text-6xl">
-              Hoe het begon
-            </h2>
-            <div className="mt-3 h-1 w-10 rounded-full bg-[#00D26A] sm:mt-7 sm:w-14" />
+            Hoe het begon
+          </h2>
 
-            <div className="mt-4 max-w-[620px] space-y-3 text-[15px] leading-relaxed text-neutral-600 sm:mt-8 sm:space-y-5 sm:text-xl">
-              <p>
-                Het begon op een terras. De rekening kwam en daar was het weer:
-                wie betaalt wat?
-              </p>
-              <p>
-                Waarom moet zoiets altijd zo droog en zakelijk zijn? Het gaat om
-                vrienden. Dat mag ook een beetje leuk zijn.
-              </p>
-              <p>
-                Dus gaven we betaalverzoeken een{" "}
-                <b className="text-[#00D26A]">sociale twist</b>: je stuurt een
-                challenge in plaats van een kaal verzoek. Win je het spelletje,
-                dan betaal je minder.
-              </p>
-              <p>
-                Geen saaie fintech. Gewoon geld terugvragen, maar dan leuker.
-              </p>
-            </div>
+          <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-neutral-600 sm:mt-7 sm:text-lg">
+            <p>
+              Het begon op een terras. De rekening kwam en daar was het weer: wie
+              betaalt wat?
+            </p>
+            <p>
+              Waarom moet zoiets altijd zo droog en zakelijk zijn? Het gaat om
+              vrienden. Dat mag ook een beetje leuk zijn.
+            </p>
+            <p>
+              Dus gaven we betaalverzoeken een{" "}
+              <strong className="font-semibold text-[#007F45]">sociale twist</strong>: je
+              stuurt een challenge in plaats van een kaal verzoek. Win je het
+              spelletje, dan betaal je minder.
+            </p>
+          </div>
 
-            {/* Mobiel: logo naast Team Centje */}
-            <div className="mt-5 flex items-center justify-between gap-4 sm:hidden">
-              <p className="text-sm italic text-neutral-400">Team Centje, 2025</p>
-              <div className="relative aspect-[2172/724] w-[110px] shrink-0">
-                <Image
-                  src="/centje-logo-sm.webp"
-                  alt="Centje logo"
-                  fill
-                  className="object-contain object-right"
-                  sizes="110px"
-                />
-              </div>
-            </div>
-
-            {/* Desktop: alleen handtekening */}
-            <div className="mt-3 hidden text-base italic text-neutral-400 sm:mt-10 sm:block">
-              Team Centje, 2025
-            </div>
-          </motion.div>
-
-          {/* Desktop: logo rechts */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="order-2 hidden items-center justify-center sm:flex"
-          >
-            <div className="relative aspect-[2172/724] w-full">
-              <Image
-                src="/centje-logo.png"
-                alt="Centje logo"
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 45vw, 500px"
-              />
-            </div>
-          </motion.div>
-        </div>
+          <figure className="mt-7 border-l-4 border-[#00D26A] pl-5 sm:mt-9 sm:pl-6">
+            <blockquote className="font-heading text-[22px] font-extrabold leading-[1.15] text-[#0A0C0A] sm:text-[28px]">
+              Geen saaie fintech. Gewoon geld terugvragen, maar dan leuker.
+            </blockquote>
+            <figcaption className="mt-3 text-sm text-neutral-500">Team Centje, 2025</figcaption>
+          </figure>
+        </motion.div>
       </div>
     </section>
   );

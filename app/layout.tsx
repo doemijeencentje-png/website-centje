@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import { LoadingScreen } from "@/components/LoadingScreen";
+import { MotionProvider } from "@/components/MotionProvider";
+
+// De wdth-as is nodig voor de brede koppen (font-stretch in .font-heading).
+const archivo = Archivo({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  display: "swap",
+  variable: "--font-archivo",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -92,7 +102,7 @@ const structuredData = {
       applicationCategory: "FinanceApplication",
       inLanguage: "nl-NL",
       description:
-        "Met Centje stuur je een betaalverzoek als challenge: jij en je vriend spelen een vaardigheidsspelletje (zoals Flappy Bird of Sudoku) en de winnaar betaalt minder. Individuele verzoeken en groepscentjes, betalen via iDEAL.",
+        "Met Centje stuur je een betaalverzoek als challenge: je speelt hetzelfde vaardigheidsspelletje en wie beter speelt, betaalt minder. Individueel met één vriend of als Groepscentje met de hele groep, betalen via iDEAL.",
       offers: {
         "@type": "Offer",
         price: "0",
@@ -109,14 +119,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" className="light">
+    <html lang="nl" className={`light ${archivo.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <link
           rel="preload"
           href="/centje-hero-mobile.mp4"
@@ -138,7 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <LoadingScreen />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

@@ -10,6 +10,11 @@ const INTERN_UPSTREAM =
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // 90 voor app-schermen: bij de standaard 75 worden kleine letters in de schermen vlekkerig.
+    qualities: [75, 90],
+  },
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react"],
   },
   compress: true,
   async rewrites() {

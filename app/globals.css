@@ -11,20 +11,20 @@
   --color-graphite: #E5E7EB;
   --color-graphite-light: #F3F4F6;
   --color-muted: #6B7280;
-  --font-sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
-  --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-archivo), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-archivo), system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: auto;
+    overflow-x: clip;
   }
 
   body {
     background: #ffffff;
     color: #0B0F12;
     font-family: var(--font-sans);
-    letter-spacing: -0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -128,32 +128,35 @@
   }
 }
 
-/* Mobiel: About + Download = 1 vol scherm */
-@media (max-width: 639px) {
-  #over-ons.about-fullpage,
-  #download.download-fullpage {
-    display: flex;
-    height: 100dvh;
-    min-height: 100dvh;
-    max-height: 100dvh;
-    flex-direction: column;
-    scroll-snap-align: start;
-    scroll-margin-top: 4rem;
-    overflow: hidden;
+/* Tekstband onder de hero: twee identieke rijen, de baan schuift precies één rij op. */
+@keyframes ticker-slide {
+  to {
+    transform: translateX(-50%);
   }
+}
 
-  #over-ons .about-fullpage-main,
-  #download .download-fullpage-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 0;
-    overflow: hidden;
+.ticker-track {
+  animation: ticker-slide 42s linear infinite;
+}
+
+/* Voortgangsbalk van de stappen; het einde van de animatie zet de volgende stap. */
+@keyframes step-progress {
+  from {
+    transform: scaleX(0);
   }
+  to {
+    transform: scaleX(1);
+  }
+}
 
-  #download .download-fullpage-footer {
-    flex-shrink: 0;
+.step-progress {
+  transform-origin: left center;
+  animation: step-progress var(--step-duration, 6s) linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
   }
 }
 
@@ -168,7 +171,8 @@
   }
 }
 
-.font-heading {
+@utility font-heading {
   font-family: var(--font-heading);
+  font-stretch: 118%;
   letter-spacing: -0.02em;
 }
