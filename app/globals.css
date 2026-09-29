@@ -139,21 +139,6 @@
   animation: ticker-slide 42s linear infinite;
 }
 
-/* Voortgangsbalk van de stappen; het einde van de animatie zet de volgende stap. */
-@keyframes step-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.step-progress {
-  transform-origin: left center;
-  animation: step-progress var(--step-duration, 6s) linear forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .ticker-track {
     animation: none;
