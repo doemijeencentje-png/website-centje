@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { GroenKader } from "./GroenKader";
 import { IPhoneFrame } from "./IPhoneFrame";
+import { MintVlak } from "./MintVlak";
 
 // Alle punten komen uit de veelgestelde vragen (gecontroleerd tegen app en voorwaarden).
 const POINTS = [
@@ -28,37 +30,34 @@ export function SafetySection() {
     <section
       id="veilig"
       aria-labelledby="veilig-titel"
-      className="relative scroll-mt-16 overflow-x-clip bg-white py-24 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative isolate scroll-mt-16 overflow-x-clip py-24 sm:py-32 lg:scroll-mt-[72px]"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-20">
-        <div>
+      <MintVlak />
+      <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
+        <GroenKader>
           <h2
             id="veilig-titel"
-            className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl lg:max-w-[16ch]"
+            className="font-heading text-balance text-[30px] font-extrabold leading-[1.08] text-[#0A0C0A] sm:text-[40px]"
           >
             Veilig betalen, gewoon via je bank
           </h2>
-          <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
+          <p className="mt-6 max-w-[48ch] text-base leading-[1.75] text-neutral-600 sm:text-[17px]">
             De betalingen lopen via Online Payment Platform, een betaalinstelling met een vergunning
             van De Nederlandsche Bank.
           </p>
 
-          <ul className="mt-12 space-y-8 sm:mt-14 sm:space-y-9">
+          <ul className="mt-10 space-y-7">
             {POINTS.map(({ title, text }) => (
               <li key={title}>
-                <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A] sm:text-xl">
-                  {title}
-                </span>
-                <span className="mt-2 block max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
-                  {text}
-                </span>
+                <span className="block text-base font-semibold text-[#0A0C0A] sm:text-[17px]">{title}</span>
+                <span className="mt-1.5 block max-w-[50ch] text-[15px] leading-[1.7] text-neutral-600">{text}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </GroenKader>
 
-        {/* Het moment na het betalen, met eronder wat Centje kost. */}
-        <div className="relative mx-auto w-full max-w-[340px]">
+        {/* Het moment na het betalen, met eronder wat Centje kost. Eigen laag (isolate), zodat de gloed zichtbaar is. */}
+        <div className="relative isolate mx-auto w-full max-w-[340px]">
           <div
             aria-hidden
             className="absolute left-1/2 top-[36%] -z-10 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.2),rgba(0,210,106,0))]"

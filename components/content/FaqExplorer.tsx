@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import { GroenKader } from "../GroenKader";
 import { FaqList } from "./FaqList";
 import type { FaqCategory } from "./faq";
 
@@ -73,7 +74,7 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
               <li key={category.id}>
                 <a
                   href={`#${category.id}`}
-                  className="block rounded-xl px-3 py-2 text-[15px] font-medium text-neutral-600 transition-colors hover:bg-[#F4F7F5] hover:text-[#0A0C0A]"
+                  className="block rounded-xl px-3 py-2 text-[15px] font-medium text-neutral-600 transition-colors hover:bg-white hover:text-[#0A0C0A]"
                 >
                   {category.title}
                 </a>
@@ -92,16 +93,20 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
             >
               {category.title}
             </h2>
-            <FaqList key={`${category.id}-${deferred}`} items={category.items} />
+            <GroenKader padding="px-6 py-2 sm:px-8 sm:py-3">
+              <FaqList key={`${category.id}-${deferred}`} items={category.items} />
+            </GroenKader>
           </section>
         ))}
         {filtered.length === 0 ? (
-          <div className="rounded-[24px] bg-[#F4F7F5] p-8 text-center">
-            <p className="font-heading text-xl font-extrabold text-[#0A0C0A]">Geen vraag gevonden</p>
-            <p className="mt-2 text-neutral-600">
-              Probeer een ander woord, bijvoorbeeld &lsquo;Groepscentje&rsquo;, &lsquo;spel&rsquo; of &lsquo;betalen&rsquo;.
-            </p>
-          </div>
+          <GroenKader padding="p-8">
+            <div className="text-center">
+              <p className="font-heading text-xl font-extrabold text-[#0A0C0A]">Geen vraag gevonden</p>
+              <p className="mt-2 text-neutral-600">
+                Probeer een ander woord, bijvoorbeeld &lsquo;Groepscentje&rsquo;, &lsquo;spel&rsquo; of &lsquo;betalen&rsquo;.
+              </p>
+            </div>
+          </GroenKader>
         ) : null}
       </div>
     </div>

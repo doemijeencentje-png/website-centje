@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { GroenKader } from "./GroenKader";
+import { MintVlak } from "./MintVlak";
 import { FaqList } from "./content/FaqList";
 import { FAQ_HOME } from "./content/faq";
 
@@ -8,8 +10,9 @@ export function FaqTeaser() {
     <section
       id="vragen"
       aria-labelledby="vragen-titel"
-      className="relative scroll-mt-16 bg-white py-24 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative isolate scroll-mt-16 py-24 sm:py-32 lg:scroll-mt-[72px]"
     >
+      <MintVlak />
       <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2
@@ -30,9 +33,9 @@ export function FaqTeaser() {
           </Link>
         </div>
 
-        <div>
+        <GroenKader padding="px-6 py-2 sm:px-8 sm:py-3">
           <FaqList items={FAQ_HOME} />
-        </div>
+        </GroenKader>
       </div>
     </section>
   );

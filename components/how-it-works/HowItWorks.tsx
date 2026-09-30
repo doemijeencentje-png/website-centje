@@ -44,9 +44,10 @@ export function HowItWorks() {
       className="relative scroll-mt-16 overflow-x-clip pb-16 pt-12 sm:pb-24 sm:pt-16 lg:scroll-mt-[72px] lg:pb-28"
     >
       {/* Achtergrond over de hele sectie, ook achter de vaststaande stappen; alleen de randen lopen zacht uit. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#F2FAF5]" />
       <div aria-hidden className="pointer-events-none absolute inset-0" style={DOTS} />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-white to-white/0" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-white to-white/0" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-white to-white/0" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-white to-white/0" />
       {/* Ankers voor het menu; ze wijzen naar het begin van deze sectie. */}
       <span id="individueel" aria-hidden className="absolute top-0 scroll-mt-16 lg:scroll-mt-[72px]" />
       <span id="groepscentje" aria-hidden className="absolute top-0 scroll-mt-16 lg:scroll-mt-[72px]" />

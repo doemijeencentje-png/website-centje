@@ -11,6 +11,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { User, UsersThree } from "@phosphor-icons/react";
+import { GroenKader } from "../GroenKader";
 import { IPhoneFrame } from "../IPhoneFrame";
 import { FLOWS, type Flow } from "./flows";
 
@@ -83,9 +84,10 @@ export function FlowStepper({ flow }: { flow: Flow }) {
       <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center lg:top-[72px] lg:h-[calc(100svh_-_72px)]">
         <div className="grid w-full items-center gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           {/* Telefoon met de schermen van beide speelvormen boven elkaar */}
+          {/* Eigen laag (isolate): anders valt de gloed achter de achtergrond van de sectie. */}
           <div
             ref={phone}
-            className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
+            className="relative isolate mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
           >
             <div
               aria-hidden
@@ -118,7 +120,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
           </div>
 
           <div className="mx-auto w-full max-w-xl lg:mx-0">
-            <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#007F45] lg:mb-4 lg:px-5">
+            <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#007F45] lg:mb-4 lg:px-8">
               <FlowIcon weight="bold" className="h-4 w-4" aria-hidden />
               {flow.label}
             </p>
@@ -157,54 +159,58 @@ export function FlowStepper({ flow }: { flow: Flow }) {
               </div>
             </div>
 
-            {/* Desktop: alle stappen met vaste plek; alleen de actieve stap licht op, er verschuift niets. */}
-            <ol className="hidden space-y-1 lg:block">
-              {flow.steps.map((s, i) => {
-                const active = i === step;
-                return (
-                  <li key={`${flow.id}-${s.title}`}>
-                    <button
-                      type="button"
-                      onClick={() => goTo(i)}
-                      aria-current={active ? "step" : undefined}
-                      className="group relative flex w-full gap-4 rounded-2xl px-5 py-4 text-left outline-none focus-visible:ring-4 focus-visible:ring-[#00D26A]/50"
-                    >
-                      <span
-                        className={`w-4 shrink-0 pt-0.5 text-base font-bold tabular-nums transition-colors duration-300 ${
-                          active ? "text-[#007F45]" : "text-neutral-400"
+            {/* Desktop: alle stappen met vaste plek in de groene kaart; alleen de actieve stap licht op, er verschuift niets. */}
+            <GroenKader className="hidden lg:block" padding="p-3">
+              <ol className="space-y-1">
+                {flow.steps.map((s, i) => {
+                  const active = i === step;
+                  return (
+                    <li key={`${flow.id}-${s.title}`}>
+                      <button
+                        type="button"
+                        onClick={() => goTo(i)}
+                        aria-current={active ? "step" : undefined}
+                        className={`group relative flex w-full gap-4 rounded-[20px] px-5 py-4 text-left outline-none transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 ${
+                          active ? "bg-[#F2FAF5]" : "hover:bg-[#F7FBF9]"
                         }`}
                       >
-                        {i + 1}
-                      </span>
-                      <span className="min-w-0">
                         <span
-                          className={`font-heading block text-lg font-extrabold leading-snug transition-colors duration-300 ${
-                            active ? "text-[#0A0C0A]" : "text-neutral-500 group-hover:text-neutral-700"
+                          className={`w-4 shrink-0 pt-0.5 text-base font-bold tabular-nums transition-colors duration-300 ${
+                            active ? "text-[#007F45]" : "text-neutral-400"
                           }`}
                         >
-                          {s.title}
+                          {i + 1}
                         </span>
-                        <span
-                          className={`mt-1 block text-[15px] leading-relaxed transition-colors duration-300 ${
-                            active ? "text-neutral-600" : "text-neutral-500"
-                          }`}
-                        >
-                          {s.text}
+                        <span className="min-w-0">
+                          <span
+                            className={`font-heading block text-lg font-extrabold leading-snug transition-colors duration-300 ${
+                              active ? "text-[#0A0C0A]" : "text-neutral-500 group-hover:text-neutral-700"
+                            }`}
+                          >
+                            {s.title}
+                          </span>
+                          <span
+                            className={`mt-1 block text-[15px] leading-relaxed transition-colors duration-300 ${
+                              active ? "text-neutral-600" : "text-neutral-500"
+                            }`}
+                          >
+                            {s.text}
+                          </span>
                         </span>
-                      </span>
-                      {active && (
-                        <span
-                          aria-hidden
-                          className="absolute bottom-1 left-14 right-5 h-[2px] overflow-hidden rounded-full bg-[#E3EAE6]"
-                        >
-                          <StepBar progress={scrollYProgress} index={i} count={count} />
-                        </span>
-                      )}
-                    </button>
-                  </li>
-                );
-              })}
-            </ol>
+                        {active && (
+                          <span
+                            aria-hidden
+                            className="absolute bottom-1 left-14 right-5 h-[2px] overflow-hidden rounded-full bg-[#E3EAE6]"
+                          >
+                            <StepBar progress={scrollYProgress} index={i} count={count} />
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+            </GroenKader>
           </div>
         </div>
       </div>

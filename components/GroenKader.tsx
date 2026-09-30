@@ -96,7 +96,16 @@ function Gloeirand() {
   );
 }
 
-export function GroenKader({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function GroenKader({
+  children,
+  className = "",
+  padding = "p-7 sm:p-10 lg:p-12",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  /** Binnenruimte van de kaart; lijsten met eigen ruimte (vragen, stappen) krijgen minder. */
+  padding?: string;
+}) {
   const [glow, setGlow] = useState(false);
 
   useEffect(() => {
@@ -110,7 +119,7 @@ export function GroenKader({ children, className = "" }: { children: React.React
   return (
     <div className={`relative rounded-[28px] ${className}`}>
       {glow ? <Gloeirand /> : null}
-      <div className="relative rounded-[28px] border border-[#CDEFDB] bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,210,106,0.06)] sm:p-10 lg:p-12">
+      <div className={`relative rounded-[28px] border border-[#CDEFDB] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,210,106,0.06)] ${padding}`}>
         {children}
       </div>
     </div>

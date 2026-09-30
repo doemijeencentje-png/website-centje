@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ContentShell } from "@/components/content/ContentShell";
 import { FaqExplorer } from "@/components/content/FaqExplorer";
 import { JsonLd } from "@/components/content/JsonLd";
+import { MintVlak } from "@/components/MintVlak";
 import { FAQ } from "@/components/content/faq";
 
 export const metadata: Metadata = pageMetadata({
@@ -18,6 +19,7 @@ export default function VeelgesteldeVragenPage() {
       crumbs={[{ label: "Veelgestelde vragen", href: "/veelgestelde-vragen" }]}
       title="Veelgestelde vragen"
       intro="Alles over challenges, Groepscentjes, de spellen en betalen. Kort en duidelijk, zodat je snel verder kunt."
+      decor
     >
       <JsonLd
         data={{
@@ -32,7 +34,11 @@ export default function VeelgesteldeVragenPage() {
           ),
         }}
       />
-      <FaqExplorer categories={FAQ} />
+      {/* Mint met stippen achter alle vragen, zoals op de homepage. */}
+      <div className="relative isolate overflow-x-clip">
+        <MintVlak />
+        <FaqExplorer categories={FAQ} />
+      </div>
     </ContentShell>
   );
 }
