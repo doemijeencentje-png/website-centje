@@ -9,11 +9,11 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Adverteren",
   description:
-    "Adverteren bij Centje: je merk op het volledige bedankscherm na elke betaling, dat ook mensen zonder de app zien, in de app en in de spellen.",
+    "Adverteren bij Centje: je merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in de spellen.",
   path: "/adverteren",
   image: {
     url: "/adverteren/og-adverteren.jpg",
-    alt: "Adverteren bij Centje: je merk op het volledige bedankscherm na een betaling",
+    alt: "Adverteren bij Centje: je merk op het bedankscherm na een betaling",
   },
 });
 
@@ -61,37 +61,29 @@ export default function AdverterenPage() {
       title="Adverteren bij Centje"
       intro="Laat je merk zien op het moment dat de rekening geregeld is: na elke betaling, in de app en in de browser."
     >
-      {/* Hoofdplaatsing: het hele bedankscherm, op donker zodat het scherm en de plekken eruit springen. */}
-      <section
-        aria-labelledby="bedankscherm"
-        data-kop="donker"
-        className="relative isolate mt-6 overflow-hidden bg-[#060807] text-white sm:mt-10"
-      >
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-[radial-gradient(50%_65%_at_76%_50%,rgba(0,210,106,0.17),rgba(0,210,106,0)_70%)]"
-        />
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
+      {/* Hoofdplaatsing: het bedankscherm */}
+      <section aria-labelledby="bedankscherm" className="mx-auto max-w-6xl overflow-x-clip px-4 py-20 sm:px-6 sm:py-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
           <div>
-            <p className="text-sm font-semibold text-[#00D26A]">Hoofdplaatsing</p>
+            <p className="text-sm font-semibold text-[#007F45]">Hoofdplaatsing</p>
             <h2
               id="bedankscherm"
-              className="font-heading mt-3 text-balance text-[32px] font-extrabold leading-[1.04] sm:text-5xl"
+              className="font-heading mt-3 text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
             >
-              Het hele bedankscherm, na elke betaling
+              Op het bedankscherm na elke betaling
             </h2>
-            <p className="mt-6 max-w-[50ch] text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mt-6 max-w-[50ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
               Zodra een verzoek betaald is, verschijnt het bedankscherm. De rekening is geregeld en de
-              sfeer is goed: het moment waarop je merk het meest positief binnenkomt. Je merk krijgt
-              het volledige scherm: groot in het midden en onderaan, onder het betaalde bedrag.
+              sfeer is goed: het moment waarop je merk het meest positief binnenkomt. Je merk kan het
+              volledige scherm krijgen: in het midden en onderaan, onder het betaalde bedrag.
             </p>
             <ul className="mt-10 space-y-8">
               {BEDANKSCHERM.map(({ title, text }) => (
                 <li key={title}>
-                  <span className="font-heading block text-lg font-extrabold leading-tight text-white">
+                  <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A]">
                     {title}
                   </span>
-                  <span className="mt-2 block max-w-[52ch] text-[15px] leading-relaxed text-white/65 sm:text-base">
+                  <span className="mt-2 block max-w-[52ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
                     {text}
                   </span>
                 </li>
@@ -102,7 +94,7 @@ export default function AdverterenPage() {
           <figure className="relative mx-auto w-[250px] sm:w-[280px]">
             <div
               aria-hidden
-              className="absolute -inset-14 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.26),rgba(0,210,106,0))] blur-2xl"
+              className="absolute -inset-14 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.2),rgba(0,210,106,0))]"
             />
             <IPhoneFrame>
               <Image
@@ -115,7 +107,7 @@ export default function AdverterenPage() {
                 sizes="280px"
                 className="object-cover object-top"
               />
-              {/* Plek 1: groot in het midden, precies over de binnenste cirkel; de ringen eromheen blijven zichtbaar. */}
+              {/* Plek in het midden, precies over de binnenste cirkel; de ringen eromheen blijven zichtbaar. */}
               <span
                 aria-hidden
                 className="font-heading absolute left-1/2 top-[37.05%] flex aspect-square w-[37.2cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0A0C0A] text-center text-[5cqw] font-extrabold leading-[1.1] text-white"
@@ -124,7 +116,7 @@ export default function AdverterenPage() {
                 <br />
                 logo
               </span>
-              {/* Plek 2: onderaan, onder het betaalde bedrag; even breed en even rond als dat blok. */}
+              {/* Plek onderaan, onder het betaalde bedrag; even breed en even rond als dat blok. */}
               <span
                 aria-hidden
                 className="font-heading absolute inset-x-[5.6%] top-[88.5%] flex h-[8%] items-center justify-center rounded-[4.75cqw] bg-[#0A0C0A] text-[4.4cqw] font-extrabold text-white"
@@ -132,8 +124,8 @@ export default function AdverterenPage() {
                 Jouw merk hier
               </span>
             </IPhoneFrame>
-            <figcaption className="mt-5 text-center text-sm text-white/55">
-              Het bedankscherm, met je merk in het midden en onderaan.
+            <figcaption className="mt-5 text-center text-sm text-neutral-500">
+              Het bedankscherm, met in het midden en onderaan de plek voor je merk.
             </figcaption>
           </figure>
         </div>
@@ -148,21 +140,13 @@ export default function AdverterenPage() {
           >
             Je bereikt ook mensen zonder de app
           </h2>
-          {/* Zonder de app in merkgroen, net als "Je vrienden hebben geen app nodig" op de homepage. */}
-          <ul className="mt-10 grid gap-4 sm:gap-6 md:grid-cols-2">
-            {BEREIK.map(({ title, text }, index) => (
-              <li
-                key={title}
-                className={`rounded-[28px] p-7 sm:p-10 ${index === 1 ? "bg-[#00D26A]" : "bg-[#F4F7F5]"}`}
-              >
+          <ul className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
+            {BEREIK.map(({ title, text }) => (
+              <li key={title}>
                 <span className="font-heading block text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
                   {title}
                 </span>
-                <span
-                  className={`mt-3 block max-w-[46ch] text-[15px] leading-relaxed sm:text-base ${
-                    index === 1 ? "font-medium text-[#0A0C0A]/80" : "text-neutral-600"
-                  }`}
-                >
+                <span className="mt-3 block max-w-[46ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
                   {text}
                 </span>
               </li>
