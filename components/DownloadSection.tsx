@@ -1,9 +1,42 @@
 import Image from "next/image";
+import { AndroidLogo, AppleLogo } from "@phosphor-icons/react/ssr";
 import { APP_STORE_URL } from "@/lib/links";
 import { IPhoneFrame } from "./IPhoneFrame";
 
 // Beelden laden meteen mee (met lage voorrang), zodat ze klaarstaan als je hier bent.
 const EARLY = { loading: "eager", fetchPriority: "low" } as const;
+
+/** Kleine vlag van gewone vlakken (geen emoji: die tonen niet overal hetzelfde). */
+function Vlag({ land }: { land: "nl" | "be" }) {
+  const banen = land === "nl" ? ["bg-[#AE1C28]", "bg-white", "bg-[#21468B]"] : ["bg-black", "bg-[#FDDA24]", "bg-[#EF3340]"];
+  return (
+    <span
+      aria-hidden
+      className={`flex h-3 w-[18px] shrink-0 overflow-hidden rounded-[3px] ring-1 ring-white/25 ${
+        land === "nl" ? "flex-col" : "grayscale"
+      }`}
+    >
+      {banen.map((kleur) => (
+        <span key={kleur} className={`flex-1 ${kleur}`} />
+      ))}
+    </span>
+  );
+}
+
+/** Waar Centje nu is en wat eraan komt. Wat nog komt staat bewust klein en grijs: een plaagstootje. */
+function Beschikbaar({ binnenkort = false, children }: { binnenkort?: boolean; children: React.ReactNode }) {
+  return (
+    <li
+      className={`inline-flex h-8 items-center gap-2 rounded-full px-3 text-[13px] font-medium ${
+        binnenkort
+          ? "border border-dashed border-white/15 text-white/40"
+          : "bg-white/[0.07] text-white/85 ring-1 ring-inset ring-white/15"
+      }`}
+    >
+      {children}
+    </li>
+  );
+}
 
 /** Downloadblok onderaan elke pagina; het doel van elke "Download de app"-knop. */
 export function DownloadSection() {
@@ -72,6 +105,27 @@ export function DownloadSection() {
               </p>
             </div>
           </div>
+
+          <ul aria-label="Waar Centje beschikbaar is" className="mt-8 flex flex-wrap gap-2">
+            <Beschikbaar>
+              <AppleLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
+              iPhone
+            </Beschikbaar>
+            <Beschikbaar binnenkort>
+              <AndroidLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
+              Android · binnenkort
+            </Beschikbaar>
+            <Beschikbaar>
+              <Vlag land="nl" />
+              Nederland
+            </Beschikbaar>
+            <Beschikbaar binnenkort>
+              <span className="opacity-60">
+                <Vlag land="be" />
+              </span>
+              België · binnenkort
+            </Beschikbaar>
+          </ul>
         </div>
 
         <div className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
