@@ -36,16 +36,16 @@ export function Highlights() {
                 vaardigheid, voor iedereen onder dezelfde omstandigheden.
               </p>
             </div>
-            <div className="relative mx-auto mt-8 w-full max-w-[380px] self-end md:mt-0 lg:mt-auto lg:max-w-[470px] lg:pt-8">
+            <div className="relative mx-auto mt-8 w-full max-w-[380px] self-end md:mt-0 lg:mt-auto lg:max-w-[520px] lg:pt-8">
               <div className="translate-y-6 -rotate-2 overflow-hidden rounded-t-[26px] bg-white shadow-[0_2px_4px_rgba(10,12,10,0.05),0_30px_70px_-26px_rgba(0,90,45,0.45)] ring-1 ring-[#CDEFDB] sm:translate-y-8">
                 <Image
-                  src="/app/uitslag-score.webp"
+                  src="/app/uitslag-lang.webp"
                   {...EARLY}
-                  alt="Uitslag in de app: Gewonnen, met de scores 34 voor Sanne en 41 voor jou"
+                  alt="Uitslag in de app: Gewonnen, met de scores 34 voor Sanne en 41 voor jou, en daaronder: je betaalt 14 euro, gewonnen, minder betalen"
                   width={1170}
-                  height={1180}
+                  height={1785}
                   quality={90}
-                  sizes="(min-width: 1024px) 470px, (min-width: 768px) 45vw, 90vw"
+                  sizes="(min-width: 1024px) 520px, (min-width: 768px) 380px, 90vw"
                   className="h-auto w-full"
                 />
               </div>
@@ -64,11 +64,11 @@ export function Highlights() {
             </p>
             <div className="relative mt-7 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
-                src="/app/fragment-overzicht.webp"
+                src="/app/overzicht-lijst.webp"
                 {...EARLY}
-                alt="Twee verzoeken in de app: Etentje wacht op de tegenstander, van Pizza-avond is 2 van de 3 betaald"
-                width={1122}
-                height={714}
+                alt="Overzicht in de Centje-app: Etentje wacht op de tegenstander, van Pizza-avond is 2 van de 3 betaald en Taxi is betaald"
+                width={1170}
+                height={1315}
                 quality={90}
                 sizes="(min-width: 1024px) 330px, (min-width: 768px) 45vw, 90vw"
                 className="h-auto w-full"
@@ -89,11 +89,11 @@ export function Highlights() {
             </p>
             <div className="relative mt-7 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
-                src="/app/fragment-ontvanger.webp"
+                src="/app/ranglijst-groep.webp"
                 {...EARLY}
-                alt="Ranglijst van een Groepscentje: Tim en Noor hebben betaald, Daan nog niet, Sanne is de ontvanger"
+                alt="Ranglijst van het Groepscentje Pizza-avond: Tim en Noor hebben betaald, Daan nog niet, Sanne is de ontvanger"
                 width={1098}
-                height={740}
+                height={1003}
                 quality={90}
                 sizes="(min-width: 1024px) 330px, (min-width: 768px) 45vw, 90vw"
                 className="h-auto w-full"

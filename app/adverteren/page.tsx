@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Adverteren",
   description:
-    "Adverteren bij Centje: je merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in Centje Kart.",
+    "Adverteren bij Centje: je merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in de spellen.",
   path: "/adverteren",
   image: {
     url: "/adverteren/og-adverteren.jpg",
@@ -166,18 +166,31 @@ export default function AdverterenPage() {
 
       {/* Bijzaak: in de spellen */}
       <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-14">
-          <figure>
+        <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14">
+          {/* Twee echte spellen: de racebaan, met een tweede spel in de telefoon ervoor. */}
+          <div className="relative pb-8 pr-6 sm:pb-10 sm:pr-8">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[#0A0C0A]">
               <Image
                 src="/adverteren/kart-start.webp"
-                alt="De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan en een sponsorbrug met het Centje-logo"
+                alt="Racespel in Centje: de start, met reclameborden langs de baan en een sponsorbrug met het Centje-logo"
                 fill
-                sizes="(min-width: 768px) 460px, 100vw"
+                sizes="(min-width: 1152px) 510px, (min-width: 768px) 45vw, 100vw"
                 className="object-cover object-[50%_40%]"
               />
             </div>
-          </figure>
+            <div className="absolute bottom-0 right-0 w-[24%] min-w-[84px] max-w-[132px]">
+              <IPhoneFrame>
+                <Image
+                  src="/adverteren/flappy.webp"
+                  alt="Behendigheidsspel in Centje: een vogeltje vliegt tussen buizen door"
+                  fill
+                  quality={90}
+                  sizes="132px"
+                  className="object-cover object-top"
+                />
+              </IPhoneFrame>
+            </div>
+          </div>
           <div>
             <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
             <h2
@@ -187,9 +200,9 @@ export default function AdverterenPage() {
               In de spellen
             </h2>
             <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
-              In Centje Kart, ons eigen racespel, kan je merk op de reclameborden langs de baan en op de
-              sponsorbrug boven het circuit. Er zijn drie circuits: GP Muntbaai, GP Oostenrijk en GP
-              Nederland.
+              Alle spellen in Centje maken we zelf. Daardoor kan je merk ook in de spelwereld een plek
+              krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
+              spel. Welke plek het beste past, bepalen we samen.
             </p>
           </div>
         </div>

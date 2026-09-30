@@ -42,7 +42,8 @@ const Q = {
   spellen: {
     question: "Welke spellen kan ik spelen?",
     answer: [
-      "Bij een verzoek kies je uit korte vaardigheidsspellen die iedereen meteen snapt. In de Arcade staan nog veel meer spellen, van kaartspellen en puzzels tot Centje Kart, ons eigen racespel. In de app zie je ook welke spellen binnenkort komen.",
+      "Alle spellen in Centje maken we zelf. Er zijn skillgames, waarin het draait om timing en behendigheid, en denkspellen, waarin je slim moet nadenken.",
+      "Bij een verzoek kies je uit korte skillgames die iedereen meteen snapt. In de Arcade speel je alle spellen voor de lol, ook de denkspellen. Bij het kiezen van een spel zie je ook welke spellen binnenkort komen.",
     ],
   },
   eerlijk: {
