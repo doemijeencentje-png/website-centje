@@ -131,37 +131,53 @@ export default function AdverterenPage() {
         </div>
       </section>
 
-      {/* Bereik */}
-      <section aria-labelledby="bereik" className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <h2
-            id="bereik"
-            className="font-heading max-w-[20ch] text-balance text-[28px] font-extrabold leading-[1.06] text-[#0A0C0A] sm:text-4xl"
-          >
-            Je bereikt ook mensen zonder de app
-          </h2>
-          <ul className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
-            {BEREIK.map(({ title, text }) => (
-              <li key={title}>
-                <span className="font-heading block text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
-                  {title}
-                </span>
-                <span className="mt-3 block max-w-[46ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
-                  {text}
-                </span>
-              </li>
-            ))}
-          </ul>
+      {/* Vanaf hier om en om: beeld links, dan rechts. Op mobiel steeds eerst de tekst. */}
+
+      {/* Bereik: beeld links, tekst rechts */}
+      <section aria-labelledby="bereik" className="mx-auto max-w-6xl overflow-x-clip px-4 pb-20 sm:px-6 sm:pb-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
+          <div>
+            <h2
+              id="bereik"
+              className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            >
+              Je bereikt ook mensen zonder de app
+            </h2>
+            <ul className="mt-10 space-y-8">
+              {BEREIK.map(({ title, text }) => (
+                <li key={title}>
+                  <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A]">
+                    {title}
+                  </span>
+                  <span className="mt-2 block max-w-[52ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                    {text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative isolate mx-auto w-[250px] sm:w-[280px] lg:order-first">
+            <div
+              aria-hidden
+              className="absolute -inset-14 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.2),rgba(0,210,106,0))]"
+            />
+            <IPhoneFrame>
+              <Image
+                src="/app/individueel-4-delen.webp"
+                alt="Een challenge delen in de Centje-app, via WhatsApp of met een QR-code"
+                fill
+                quality={90}
+                sizes="280px"
+                className="object-cover object-top"
+              />
+            </IPhoneFrame>
+          </div>
         </div>
       </section>
 
-      {/* Door de hele app */}
-      <section aria-labelledby="in-de-app" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
-          <div className="flex justify-center gap-3 sm:gap-6 lg:order-first">
-            <Scherm src="/app/overzicht.webp" alt="Overzicht van verzoeken in de Centje-app" />
-            <Scherm src="/app/arcade.webp" alt="De Arcade in de Centje-app met alle spellen" className="mt-12" />
-          </div>
+      {/* Door de hele app: tekst links, beeld rechts */}
+      <section aria-labelledby="in-de-app" className="mx-auto max-w-6xl overflow-x-clip px-4 pb-20 sm:px-6 sm:pb-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
           <div>
             <h2
               id="in-de-app"
@@ -174,14 +190,36 @@ export default function AdverterenPage() {
               in de Arcade. Welke plek het beste bij je merk past, bepalen we samen.
             </p>
           </div>
+          <div className="relative isolate flex justify-center gap-3 sm:gap-6">
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 -z-10 h-[125%] w-[125%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))]"
+            />
+            <Scherm src="/app/overzicht.webp" alt="Overzicht van verzoeken in de Centje-app" />
+            <Scherm src="/app/arcade.webp" alt="De Arcade in de Centje-app met alle spellen" className="mt-12" />
+          </div>
         </div>
       </section>
 
-      {/* Bijzaak: in de spellen */}
+      {/* Bijzaak, in de spellen: beeld links, tekst rechts */}
       <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14">
+          <div>
+            <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
+            <h2
+              id="in-de-spellen"
+              className="font-heading mt-2 text-2xl font-extrabold leading-tight text-[#0A0C0A] sm:text-3xl"
+            >
+              In de spellen
+            </h2>
+            <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+              Alle spellen in Centje maken we zelf. Daardoor kan je merk ook in de spelwereld een plek
+              krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
+              spel. Welke plek het beste past, bepalen we samen.
+            </p>
+          </div>
           {/* Twee echte spellen: de racebaan, met een tweede spel in de telefoon ervoor. */}
-          <div className="relative pb-8 pr-6 sm:pb-10 sm:pr-8">
+          <div className="relative pb-8 pr-6 sm:pb-10 sm:pr-8 md:order-first">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[#0A0C0A]">
               <Image
                 src="/adverteren/kart-start.webp"
@@ -203,20 +241,6 @@ export default function AdverterenPage() {
                 />
               </IPhoneFrame>
             </div>
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
-            <h2
-              id="in-de-spellen"
-              className="font-heading mt-2 text-2xl font-extrabold leading-tight text-[#0A0C0A] sm:text-3xl"
-            >
-              In de spellen
-            </h2>
-            <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
-              Alle spellen in Centje maken we zelf. Daardoor kan je merk ook in de spelwereld een plek
-              krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
-              spel. Welke plek het beste past, bepalen we samen.
-            </p>
           </div>
         </div>
       </section>
