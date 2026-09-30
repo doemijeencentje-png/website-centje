@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-/** Woordmerk als link naar de homepage; op de homepage zelf terug naar boven. */
+/** Het officiële logo (munt + woordmerk) als link naar de homepage; op de homepage terug naar boven. */
 export function Logo({ className = "" }: { className?: string }) {
   const onHome = usePathname() === "/";
 
@@ -19,18 +19,18 @@ export function Logo({ className = "" }: { className?: string }) {
         window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
         history.replaceState(null, "", "/");
       }}
-      className={`block shrink-0 rounded-md py-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A] ${className}`}
+      className={`block shrink-0 rounded-md py-2 outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A] ${className}`}
     >
-      <span className="relative block h-[19px] w-[84px] lg:h-6 lg:w-[107px]">
-        <Image
-          src="/merk/woordmerk.png"
-          alt=""
-          fill
-          priority
-          sizes="(min-width: 1024px) 107px, 84px"
-          className="object-contain object-left"
-        />
-      </span>
+      {/* Verhouding van merk/logo.webp: 1950 x 522. */}
+      <Image
+        src="/merk/logo.webp"
+        alt=""
+        width={1950}
+        height={522}
+        priority
+        sizes="(min-width: 1024px) 128px, 112px"
+        className="h-[30px] w-auto lg:h-[34px]"
+      />
     </Link>
   );
 }

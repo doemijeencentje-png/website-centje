@@ -75,19 +75,18 @@ export default function HeroSection() {
         <div>
           <h1
             id="hero-titel"
-            className="hero-rise font-heading text-balance text-[42px] font-extrabold leading-[1.02] sm:text-6xl lg:text-[50px] xl:text-[58px]"
+            className="font-heading text-balance text-[42px] font-extrabold leading-[1.02] sm:text-6xl lg:text-[50px] xl:text-[58px]"
           >
             Splits de rekening.{" "}
             <span className="text-[#00D26A]">Speel erom.</span>
           </h1>
           <p
-            style={{ animationDelay: "0.1s" }}
-            className="hero-rise mt-6 max-w-[36ch] text-[17px] leading-relaxed text-white/70 sm:mt-7 sm:text-xl"
+            className="mt-6 max-w-[36ch] text-[17px] leading-relaxed text-white/70 sm:mt-7 sm:text-xl"
           >
             Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best
             speelt, betaalt het minst.
           </p>
-          <div style={{ animationDelay: "0.2s" }} className="hero-rise mt-8 flex flex-wrap gap-3 sm:mt-10">
+          <div className="mt-8 flex flex-wrap gap-3 sm:mt-10">
             <Link
               href={DOWNLOAD_ANCHOR}
               onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
@@ -111,8 +110,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          style={{ animationDelay: "0.1s" }}
-          className="hero-pop relative mx-auto w-[min(100%,340px)] sm:w-[min(100%,400px)] lg:mx-0 lg:ml-auto lg:w-[min(100%,400px,calc((100svh-12rem)*0.8))]"
+          className="relative mx-auto w-[min(100%,340px)] sm:w-[min(100%,400px)] lg:mx-0 lg:ml-auto lg:w-[min(100%,400px,calc((100svh-12rem)*0.8))]"
         >
           <div
             aria-hidden

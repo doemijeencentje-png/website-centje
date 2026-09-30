@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, Confetti, FlagCheckered, Globe } from "@phosphor-icons/react/ssr";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ContentShell } from "@/components/content/ContentShell";
 import { IPhoneFrame } from "@/components/IPhoneFrame";
 import { ADVERTEREN_CONTACT } from "@/lib/centje-contact";
@@ -19,17 +19,14 @@ export const metadata: Metadata = pageMetadata({
 
 const REASONS = [
   {
-    icon: Confetti,
     title: "Op positieve momenten",
     text: "Centje draait om samen plezier maken: spelen, winnen en de rekening afronden. Daar hoort je merk bij.",
   },
   {
-    icon: FlagCheckered,
     title: "Passend in de beleving",
     text: "Je merk krijgt een vanzelfsprekende plek in de spelwereld, zoals de borden langs een echt circuit.",
   },
   {
-    icon: Globe,
     title: "Ook buiten de app",
     text: "Wie via een link betaalt, heeft de app niet nodig en ziet het bedankscherm toch. Zo bereik je ook mensen die Centje nog niet kennen.",
   },
@@ -157,15 +154,10 @@ export default function AdverterenPage() {
             Waarom adverteren bij Centje
           </h2>
           <ul className="mt-8 divide-y divide-white/10 lg:mt-0">
-            {REASONS.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#00D26A]/15 text-[#00D26A]">
-                  <Icon weight="bold" aria-hidden className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-lg font-semibold text-white">{title}</span>
-                  <span className="mt-1 block text-[15px] leading-relaxed text-white/70 sm:text-base">{text}</span>
-                </span>
+            {REASONS.map(({ title, text }) => (
+              <li key={title} className="py-5 first:pt-0 last:pb-0">
+                <span className="font-heading block text-lg font-extrabold leading-tight text-white">{title}</span>
+                <span className="mt-1.5 block text-[15px] leading-relaxed text-white/70 sm:text-base">{text}</span>
               </li>
             ))}
           </ul>
@@ -176,12 +168,12 @@ export default function AdverterenPage() {
       <section aria-labelledby="interesse" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
         <div className="relative overflow-hidden rounded-[28px] bg-[#00D26A] px-6 py-12 sm:px-12 sm:py-16">
           <Image
-            src="/merk/munt.webp"
+            src="/merk/logo-munt.webp"
             alt=""
-            width={384}
-            height={384}
-            sizes="192px"
-            className="pointer-events-none absolute -bottom-10 -right-8 h-32 w-32 rotate-12 opacity-90 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:bottom-auto sm:right-10 sm:top-1/2 sm:h-48 sm:w-48 sm:-translate-y-1/2"
+            width={1024}
+            height={1024}
+            sizes="(min-width: 640px) 192px, 128px"
+            className="pointer-events-none absolute -bottom-8 -right-6 h-32 w-32 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:bottom-auto sm:right-10 sm:top-1/2 sm:h-48 sm:w-48 sm:-translate-y-1/2"
           />
           <div className="relative max-w-xl">
             <h2

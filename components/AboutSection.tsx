@@ -1,14 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-
-const enter = (delay = 0) => ({
-  initial: { opacity: 0, y: 32 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
-});
 
 export function AboutSection() {
   return (
@@ -18,28 +8,31 @@ export function AboutSection() {
       className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px] lg:pb-36"
     >
       <div className="mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-        <motion.div {...enter()} className="relative">
+        <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-[#0A0C0A] sm:aspect-[16/11] lg:aspect-[4/5]">
             <Image
               src="/foto/groep-gracht.jpg"
               alt="Zes vrienden aan tafel op een terras aan de gracht, met pizza en drinken"
               fill
+              loading="eager"
+              fetchPriority="low"
               sizes="(min-width: 1024px) 560px, 100vw"
               className="object-cover object-[50%_33%]"
             />
           </div>
           <Image
-            src="/merk/munt.webp"
+            src="/merk/logo-munt.webp"
             alt=""
-            width={192}
-            height={192}
+            width={1024}
+            height={1024}
             sizes="96px"
-            className="pointer-events-none absolute -left-3 -top-6 h-20 w-20 -rotate-12 drop-shadow-[0_16px_28px_rgba(0,60,30,0.35)] sm:-left-5 sm:h-24 sm:w-24"
+            loading="eager"
+            fetchPriority="low"
+            className="pointer-events-none absolute -left-3 -top-6 h-20 w-20 drop-shadow-[0_16px_28px_rgba(0,60,30,0.35)] sm:-left-5 sm:h-24 sm:w-24"
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          {...enter(0.1)}
+        <div
           className="relative mx-3 -mt-20 rounded-[28px] bg-white p-6 shadow-[0_2px_4px_rgba(10,12,10,0.04),0_30px_80px_-30px_rgba(0,70,35,0.35)] ring-1 ring-black/5 sm:mx-10 sm:-mt-28 sm:p-10 lg:mx-0 lg:-ml-16 lg:mt-0 lg:p-12"
         >
           {/* Kleine groene tekst op wit in #007F45: merkgroen #00D26A haalt daar maar 2:1 contrast. */}
@@ -76,7 +69,7 @@ export function AboutSection() {
             </blockquote>
             <figcaption className="mt-3 text-sm text-neutral-500">Team Centje, 2025</figcaption>
           </figure>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

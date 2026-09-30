@@ -1,14 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 
-const reveal = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
-});
+// Beelden laden meteen mee (met lage voorrang), zodat ze klaarstaan als je hier bent.
+const EARLY = { loading: "eager", fetchPriority: "low" } as const;
 
 export function Highlights() {
   return (
@@ -18,18 +11,16 @@ export function Highlights() {
       className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <motion.h2
-          {...reveal()}
+        <h2
           id="gemak-titel"
           className="font-heading max-w-3xl text-balance text-[30px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-5xl"
         >
           Makkelijk voor iedereen aan tafel
-        </motion.h2>
+        </h2>
 
         <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(2,minmax(300px,auto))_minmax(280px,auto)]">
           {/* Eerlijk spel: de echte uitslag uit de app */}
-          <motion.article
-            {...reveal()}
+          <article
             className="relative isolate flex flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] px-6 pt-7 sm:px-9 sm:pt-9 md:col-span-2 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6 lg:row-span-2 lg:flex lg:gap-0"
           >
             <div
@@ -49,6 +40,7 @@ export function Highlights() {
               <div className="translate-y-6 -rotate-2 overflow-hidden rounded-t-[26px] bg-white shadow-[0_2px_4px_rgba(10,12,10,0.05),0_30px_70px_-26px_rgba(0,90,45,0.45)] ring-1 ring-[#CDEFDB] sm:translate-y-8">
                 <Image
                   src="/app/uitslag-score.webp"
+                  {...EARLY}
                   alt="Uitslag in de app: Gewonnen, met de scores 34 voor Sanne en 41 voor jou"
                   width={1170}
                   height={1180}
@@ -58,11 +50,10 @@ export function Highlights() {
                 />
               </div>
             </div>
-          </motion.article>
+          </article>
 
           {/* Overzicht */}
-          <motion.article
-            {...reveal(0.05)}
+          <article
             className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-6 sm:p-7"
           >
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
@@ -74,6 +65,7 @@ export function Highlights() {
             <div className="relative mt-5 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
                 src="/app/fragment-overzicht.webp"
+                {...EARLY}
                 alt="Twee verzoeken in de app: Etentje wacht op de tegenstander, van Pizza-avond is 2 van de 3 betaald"
                 width={1122}
                 height={714}
@@ -82,11 +74,10 @@ export function Highlights() {
                 className="h-auto w-full"
               />
             </div>
-          </motion.article>
+          </article>
 
           {/* Ontvanger ziet wie betaald heeft */}
-          <motion.article
-            {...reveal(0.1)}
+          <article
             className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-6 sm:p-7"
           >
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
@@ -99,6 +90,7 @@ export function Highlights() {
             <div className="relative mt-5 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
                 src="/app/fragment-ontvanger.webp"
+                {...EARLY}
                 alt="Ranglijst van een Groepscentje: Tim en Noor hebben betaald, Daan nog niet, Sanne is de ontvanger"
                 width={1098}
                 height={740}
@@ -107,12 +99,11 @@ export function Highlights() {
                 className="h-auto w-full"
               />
             </div>
-          </motion.article>
+          </article>
 
           {/* Geen app nodig */}
-          <motion.article
-            {...reveal()}
-            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-[#00D26A] p-6 pb-0 sm:p-7 sm:pb-0"
+          <article
+            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-[#00D26A] p-6 sm:p-7"
           >
             <h3 className="font-heading max-w-[14ch] text-[26px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-3xl">
               Je vrienden hebben geen app nodig
@@ -122,18 +113,18 @@ export function Highlights() {
             </p>
             {/* In de flow in plaats van absoluut, zodat de munt nooit over de tekst valt. */}
             <Image
-              src="/merk/munt.webp"
+              src="/merk/logo-munt.webp"
               alt=""
-              width={288}
-              height={288}
-              sizes="144px"
-              className="pointer-events-none -mb-5 -mr-3 mt-auto h-28 w-28 shrink-0 self-end rotate-[-14deg] pt-4 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:h-32 sm:w-32"
+              width={1024}
+              height={1024}
+              sizes="(min-width: 640px) 112px, 96px"
+              {...EARLY}
+              className="pointer-events-none mt-auto h-24 w-24 shrink-0 self-end drop-shadow-[0_14px_24px_rgba(0,60,30,0.3)] sm:h-28 sm:w-28"
             />
-          </motion.article>
+          </article>
 
           {/* Arcade */}
-          <motion.article
-            {...reveal(0.05)}
+          <article
             className="relative isolate grid min-h-[280px] overflow-hidden rounded-[28px] bg-[#0A0C0A] p-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center sm:gap-6 sm:p-9 md:grid-cols-1 lg:col-span-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
           >
             <div
@@ -152,6 +143,7 @@ export function Highlights() {
             <div className="relative mt-6 overflow-hidden rounded-2xl bg-white p-1.5 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] sm:mt-0 sm:rotate-2 md:mt-6 lg:mt-0">
               <Image
                 src="/app/fragment-arcade.webp"
+                {...EARLY}
                 alt="Spellen in de Arcade van Centje"
                 width={1110}
                 height={705}
@@ -160,7 +152,7 @@ export function Highlights() {
                 className="h-auto w-full rounded-xl"
               />
             </div>
-          </motion.article>
+          </article>
         </div>
       </div>
     </section>

@@ -1,16 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { APP_STORE_URL } from "@/lib/links";
 import { IPhoneFrame } from "./IPhoneFrame";
 
-const reveal = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
-});
+// Beelden laden meteen mee (met lage voorrang), zodat ze klaarstaan als je hier bent.
+const EARLY = { loading: "eager", fetchPriority: "low" } as const;
 
 /** Downloadblok onderaan elke pagina; het doel van elke "Download de app"-knop. */
 export function DownloadSection() {
@@ -27,7 +20,7 @@ export function DownloadSection() {
       />
 
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:py-32">
-        <motion.div {...reveal()}>
+        <div>
           <h2
             id="download-titel"
             className="font-heading text-balance text-[40px] font-extrabold leading-[1.02] sm:text-5xl xl:text-[56px]"
@@ -52,6 +45,7 @@ export function DownloadSection() {
                 width={180}
                 height={60}
                 unoptimized
+                {...EARLY}
                 className="h-[54px] w-auto sm:h-[60px]"
               />
             </a>
@@ -65,10 +59,11 @@ export function DownloadSection() {
                   width={96}
                   height={96}
                   unoptimized
+                  {...EARLY}
                   className="h-full w-full"
                 />
                 <span className="absolute left-1/2 top-1/2 flex h-[27px] w-[27px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white">
-                  <Image src="/merk/munt.webp" alt="" width={48} height={48} sizes="22px" className="h-[21px] w-[21px]" />
+                  <Image src="/merk/logo-munt.webp" alt="" width={1024} height={1024} sizes="22px" {...EARLY} className="h-[21px] w-[21px]" />
                 </span>
               </div>
               <p className="text-[15px] leading-snug">
@@ -77,9 +72,9 @@ export function DownloadSection() {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div {...reveal(0.1)} className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
+        <div className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
           <div
             aria-hidden
             className="absolute -inset-16 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.25),rgba(0,210,106,0))]"
@@ -91,18 +86,20 @@ export function DownloadSection() {
               fill
               quality={90}
               sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 240px"
+              {...EARLY}
               className="object-cover object-top"
             />
           </IPhoneFrame>
           <Image
-            src="/merk/munt.webp"
+            src="/merk/logo-munt.webp"
             alt=""
-            width={256}
-            height={256}
-            sizes="128px"
-            className="pointer-events-none absolute -left-10 bottom-20 h-24 w-24 -rotate-12 drop-shadow-[0_20px_30px_rgba(0,0,0,0.55)] sm:-left-14 sm:h-28 sm:w-28"
+            width={1024}
+            height={1024}
+            sizes="(min-width: 640px) 112px, 96px"
+            {...EARLY}
+            className="pointer-events-none absolute -left-10 bottom-20 h-24 w-24 drop-shadow-[0_20px_30px_rgba(0,0,0,0.55)] sm:-left-14 sm:h-28 sm:w-28"
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

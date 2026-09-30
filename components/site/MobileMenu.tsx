@@ -106,11 +106,9 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
                   <Link
                     href={href}
                     onClick={(event) => go(event, href)}
-                    className="flex items-center gap-4 rounded-[20px] p-3 outline-none transition-colors active:bg-[#F3F6F4] focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                    className="flex items-start gap-4 rounded-[20px] p-3 outline-none transition-colors active:bg-[#F3F6F4] focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                   >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] bg-[#E7F8EE] text-[#007F45]">
-                      <Icon weight="bold" aria-hidden className="h-6 w-6" />
-                    </span>
+                    <Icon weight="bold" aria-hidden className="mt-0.5 h-6 w-6 shrink-0 text-[#007F45]" />
                     <span className="min-w-0">
                       <span className="block text-[17px] font-semibold text-[#0A0C0A]">{label}</span>
                       <span className="mt-0.5 block text-sm leading-snug text-neutral-500">{text}</span>

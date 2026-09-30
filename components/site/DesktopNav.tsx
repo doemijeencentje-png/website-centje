@@ -129,10 +129,12 @@ function HowItWorksMenu({ tone, active, onHome }: { tone: Tone; active: boolean;
                       onClick={(event) => choose(event, href)}
                       className="group flex items-start gap-3.5 rounded-[20px] p-3 outline-none transition-colors hover:bg-[#F3F6F4] focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                     >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-[#E7F8EE] text-[#007F45] transition-colors group-hover:bg-[#00D26A] group-hover:text-[#0A0C0A]">
-                        <Icon weight="bold" aria-hidden className="h-5 w-5" />
-                      </span>
-                      <span className="min-w-0 pt-0.5">
+                      <Icon
+                        weight="bold"
+                        aria-hidden
+                        className="mt-px h-[22px] w-[22px] shrink-0 text-[#007F45] transition-colors group-hover:text-[#0A0C0A]"
+                      />
+                      <span className="min-w-0">
                         <span className="block text-[15px] font-semibold text-[#0A0C0A]">{label}</span>
                         <span className="mt-0.5 block text-sm leading-snug text-neutral-500">{text}</span>
                       </span>
@@ -152,12 +154,12 @@ function HowItWorksMenu({ tone, active, onHome }: { tone: Tone; active: boolean;
                   className="absolute -right-10 -top-12 -z-10 h-48 w-48 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.35),rgba(0,210,106,0))]"
                 />
                 <Image
-                  src="/merk/munt.webp"
+                  src="/merk/logo-munt.webp"
                   alt=""
-                  width={112}
-                  height={112}
-                  sizes="112px"
-                  className="absolute right-4 top-4 h-[88px] w-[88px] -rotate-12 transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-105"
+                  width={1024}
+                  height={1024}
+                  sizes="80px"
+                  className="absolute right-5 top-5 h-20 w-20 transition-transform duration-500 group-hover:scale-105"
                 />
                 <span className="font-heading block text-lg font-extrabold leading-tight text-white">Download de app</span>
                 <span className="mt-1 flex items-center gap-1.5 text-sm text-white/65">

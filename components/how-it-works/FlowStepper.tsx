@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
-  AnimatePresence,
   motion,
   useMotionValueEvent,
   useReducedMotion,
@@ -31,6 +30,7 @@ function StepBar({ progress, index, count }: { progress: MotionValue<number>; in
 
 export function FlowStepper({ flow }: { flow: Flow }) {
   const track = useRef<HTMLDivElement>(null);
+  const phone = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
   const reduceMotion = useReducedMotion();
   const count = flow.steps.length;
@@ -41,6 +41,15 @@ export function FlowStepper({ flow }: { flow: Flow }) {
   useMotionValueEvent(scrollYProgress, "change", (v) =>
     setStep(Math.min(count - 1, Math.max(0, Math.floor(v * count)))),
   );
+  useEffect(() => {
+    // Alle schermen alvast decoderen, zodat een stapwissel nooit een leeg scherm laat zien.
+    phone.current?.querySelectorAll("img").forEach((img) => {
+      const decode = () => img.decode().catch(() => {});
+      if (img.complete) decode();
+      else img.addEventListener("load", decode, { once: true });
+    });
+  }, []);
+
   useEffect(() => {
     // Wie halverwege de pagina binnenkomt (bv. terug van een andere pagina), ziet meteen de juiste stap.
     const frame = requestAnimationFrame(() =>
@@ -68,7 +77,10 @@ export function FlowStepper({ flow }: { flow: Flow }) {
       <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center lg:top-[72px] lg:h-[calc(100svh_-_72px)]">
         <div className="grid w-full items-center gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           {/* Telefoon met de schermen van beide speelvormen boven elkaar */}
-          <div className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]">
+          <div
+            ref={phone}
+            className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
+          >
             <div
               aria-hidden
               className="absolute -inset-16 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
@@ -85,9 +97,12 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       aria-hidden={!visible}
                       fill
                       quality={90}
+                      // Alles laadt meteen (de eerste schermen met voorrang), zodat de telefoon nooit leeg is.
+                      loading="eager"
+                      fetchPriority={i === 0 ? "auto" : "low"}
                       sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 220px"
-                      className={`object-cover object-top transition-[opacity,scale] duration-500 ease-out ${
-                        visible ? "scale-100 opacity-100" : "scale-[1.015] opacity-0"
+                      className={`object-cover object-top transition-opacity duration-200 ease-out ${
+                        visible ? "opacity-100" : "opacity-0"
                       }`}
                     />
                   );
@@ -121,25 +136,18 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                 ))}
               </div>
               <div className="relative mt-3 min-h-[8.5rem] sm:min-h-[7.5rem]">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={`${flow.id}-${step}`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.22, ease: "easeOut" }}
-                  >
-                    <p className="flex items-baseline gap-2.5">
-                      <span className="text-sm font-bold tabular-nums text-[#007F45]">{step + 1}</span>
-                      <span className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
-                        {current.title}
-                      </span>
-                    </p>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-neutral-600 sm:text-base">
-                      {current.text}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
+                {/* Korte overgang zonder uitfaden: de nieuwe stap staat er meteen. */}
+                <div key={`${flow.id}-${step}`} className="stap-in">
+                  <p className="flex items-baseline gap-2.5">
+                    <span className="text-sm font-bold tabular-nums text-[#007F45]">{step + 1}</span>
+                    <span className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
+                      {current.title}
+                    </span>
+                  </p>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                    {current.text}
+                  </p>
+                </div>
               </div>
             </div>
 

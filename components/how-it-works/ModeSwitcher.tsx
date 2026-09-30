@@ -125,9 +125,10 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
                 isLeft ? "items-start" : "items-end text-right"
               } ${active ? "opacity-0 duration-150" : "opacity-100 duration-300 delay-300"}`}
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 transition-colors group-hover:bg-[#00D26A] group-hover:text-[#0A0C0A] group-hover:ring-transparent sm:h-14 sm:w-14">
-                <Icon weight="bold" className="h-5 w-5 sm:h-6 sm:w-6" />
-              </span>
+              <Icon
+                weight="bold"
+                className="h-7 w-7 text-white transition-colors group-hover:text-[#00D26A] sm:h-8 sm:w-8"
+              />
               <span className="font-heading mt-3 block text-[15px] font-extrabold leading-tight text-white sm:hidden">
                 {SHORT_LABEL[flow.id]}
               </span>
