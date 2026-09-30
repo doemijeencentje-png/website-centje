@@ -9,106 +9,91 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Adverteren",
   description:
-    "Adverteren in de Centje-app: je merk op de reclameborden en de sponsorbrug van Centje Kart en op het bedankscherm na een betaling.",
+    "Adverteren bij Centje: je merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in Centje Kart.",
   path: "/adverteren",
   image: {
     url: "/adverteren/og-adverteren.jpg",
-    alt: "De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan",
+    alt: "Adverteren bij Centje: je merk op het bedankscherm na een betaling",
   },
 });
 
-const REASONS = [
+const BEDANKSCHERM = [
   {
-    title: "Op positieve momenten",
-    text: "Centje draait om samen plezier maken: spelen, winnen en de rekening afronden. Daar hoort je merk bij.",
+    title: "Voor iedereen die betaalt",
+    text: "Ook vrienden zonder de app zien het scherm: zij betalen via de link in hun browser.",
   },
   {
-    title: "Passend in de beleving",
-    text: "Je merk krijgt een vanzelfsprekende plek in de spelwereld, zoals de borden langs een echt circuit.",
+    title: "Na elke betaling",
+    text: "Bij individuele verzoeken en bij Groepscentjes, telkens als iemand betaalt.",
   },
   {
-    title: "Ook buiten de app",
-    text: "Wie via een link betaalt, heeft de app niet nodig en ziet het bedankscherm toch. Zo bereik je ook mensen die Centje nog niet kennen.",
+    title: "Op het beste moment",
+    text: "Geen onderbreking: je merk verschijnt als de rekening net geregeld is.",
   },
 ];
+
+const BEREIK = [
+  {
+    title: "Met de app",
+    text: "Wie Centje gebruikt, ziet je merk in de app en na elke betaling.",
+  },
+  {
+    title: "Zonder de app",
+    text: "Vrienden die via een link spelen en betalen, zien het bedankscherm in hun browser. Zo bereik je ook mensen die Centje nog niet kennen.",
+  },
+];
+
+// Een plaats in de app zelf; de exacte plekken spreken we per merk af.
+function Scherm({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={`w-[clamp(128px,40vw,200px)] sm:w-[230px] ${className}`}>
+      <IPhoneFrame>
+        <Image src={src} alt={alt} fill quality={90} sizes="(min-width: 640px) 230px, 40vw" className="object-cover object-top" />
+      </IPhoneFrame>
+    </div>
+  );
+}
 
 export default function AdverterenPage() {
   return (
     <ContentShell
       crumbs={[{ label: "Adverteren", href: "/adverteren" }]}
       title="Adverteren bij Centje"
-      intro="Laat je merk zien op de leukste momenten: als vrienden samen spelen, en als de rekening net is geregeld."
+      intro="Laat je merk zien op het moment dat de rekening geregeld is: na elke betaling, in de app en in de browser."
     >
-      <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6 sm:pt-14">
-        <figure>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-[#0A0C0A] sm:aspect-[16/9]">
-            <Image
-              src="/adverteren/kart-start.webp"
-              alt="De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan en een startboog met het Centje-logo"
-              fill
-              loading="eager"
-              fetchPriority="high"
-              sizes="(min-width: 1152px) 1104px, 100vw"
-              className="object-cover object-[50%_40%]"
-            />
-          </div>
-          <figcaption className="mt-3 text-sm text-neutral-500">
-            De start van GP Oostenrijk in Centje Kart, ons eigen racespel.
-          </figcaption>
-        </figure>
-      </div>
-
-      {/* In de spellen */}
-      <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+      {/* Hoofdplaatsing: het bedankscherm */}
+      <section aria-labelledby="bedankscherm" className="mx-auto max-w-6xl overflow-x-clip px-4 py-20 sm:px-6 sm:py-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
           <div>
+            <p className="text-sm font-semibold text-[#007F45]">Hoofdplaatsing</p>
             <h2
-              id="in-de-spellen"
-              className="font-heading text-[30px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-5xl"
+              id="bedankscherm"
+              className="font-heading mt-3 text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
             >
-              In de spellen
+              Op het bedankscherm na elke betaling
             </h2>
-            <p className="mt-5 max-w-[48ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
-              In Centje Kart staan reclameborden langs de baan en hangt er een sponsorbrug over het
-              circuit, net als bij een echte Grand Prix. Je merk wordt onderdeel van de race.
+            <p className="mt-6 max-w-[50ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Zodra een verzoek betaald is, verschijnt het bedankscherm. De rekening is geregeld en de
+              sfeer is goed: het moment waarop je merk het meest positief binnenkomt.
             </p>
-            <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-neutral-700 sm:text-base">
-              {[
-                "Borden langs de baan, op de rechte stukken en in de bochten",
-                "Eén sponsorbrug per circuit, groot en goed zichtbaar",
-                "Drie circuits: GP Muntbaai, GP Oostenrijk en GP Nederland",
-              ].map((item) => (
-                <li key={item} className="relative pl-6">
-                  <span aria-hidden className="absolute left-0 top-[0.6em] h-2 w-2 rounded-full bg-[#00D26A]" />
-                  {item}
+            <ul className="mt-10 space-y-7">
+              {BEDANKSCHERM.map(({ title, text }) => (
+                <li key={title} className="border-t border-[#E3EAE6] pt-6">
+                  <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A]">
+                    {title}
+                  </span>
+                  <span className="mt-2 block max-w-[52ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                    {text}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
-          <figure>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] bg-[#0A0C0A]">
-              <Image
-                src="/adverteren/kart-brug.webp"
-                alt="Sponsorbrug met het Centje-logo over het circuit van GP Muntbaai"
-                fill
-                sizes="(min-width: 1024px) 590px, 100vw"
-                className="object-cover object-[50%_45%]"
-              />
-            </div>
-            <figcaption className="mt-3 text-sm text-neutral-500">
-              Nu staat hier het Centje-logo. Dit kan jouw merk zijn.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
 
-      {/* Op het bedankscherm */}
-      <section aria-labelledby="bedankscherm" className="overflow-hidden border-y border-[#E3EAE6] bg-[#F3F6F4]">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
-          <div className="relative mx-auto w-[230px] sm:w-[260px] lg:order-first">
+          <figure className="relative mx-auto w-[250px] sm:w-[280px]">
             <div
               aria-hidden
-              className="absolute -inset-14 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
+              className="absolute -inset-14 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.2),rgba(0,210,106,0))]"
             />
             <IPhoneFrame>
               <Image
@@ -116,79 +101,122 @@ export default function AdverterenPage() {
                 alt="Bedankscherm na een betaling: Sanne bedankt je dat je hebt betaald, betaald bedrag 14 euro"
                 fill
                 quality={90}
-                sizes="260px"
+                loading="eager"
+                fetchPriority="high"
+                sizes="280px"
                 className="object-cover object-top"
               />
+              {/* De advertentieplek onderaan het scherm, onder het betaalde bedrag. */}
+              <span className="absolute inset-x-[7%] top-[88.5%] flex h-[8%] items-center justify-center rounded-[3.5cqw] border-2 border-dashed border-[#00A855] bg-white/90 text-[3.8cqw] font-semibold text-[#007F45]">
+                Jouw merk hier
+              </span>
             </IPhoneFrame>
-          </div>
-          <div>
-            <h2
-              id="bedankscherm"
-              className="font-heading text-[30px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-5xl"
-            >
-              Op het bedankscherm
-            </h2>
-            <p className="mt-5 max-w-[48ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
-              Na elke betaling verschijnt een bedankscherm. Een fijn moment: de rekening is geregeld.
-              Hier kan je merk rustig in beeld komen.
-            </p>
-            <p className="mt-4 max-w-[48ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
-              Dit scherm zien ook vrienden zonder de app, want zij betalen gewoon via de link in hun
-              browser.
-            </p>
-          </div>
+            <figcaption className="mt-5 text-center text-sm text-neutral-500">
+              Het bedankscherm, met onderaan de plek voor je merk.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* Waarom */}
-      <section aria-labelledby="waarom" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <div className="relative isolate overflow-hidden rounded-[28px] bg-[#0A0C0A] px-6 py-10 sm:px-12 sm:py-14 lg:grid lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-          <div
-            aria-hidden
-            className="absolute -left-24 -top-24 -z-10 h-96 w-96 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
-          />
+      {/* Bereik */}
+      <section aria-labelledby="bereik" className="border-y border-[#E3EAE6] bg-[#F4F7F5]">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <h2
-            id="waarom"
-            className="font-heading text-[30px] font-extrabold leading-[1.05] text-white sm:text-4xl"
+            id="bereik"
+            className="font-heading max-w-[20ch] text-balance text-[28px] font-extrabold leading-[1.06] text-[#0A0C0A] sm:text-4xl"
           >
-            Waarom adverteren bij Centje
+            Je bereikt ook mensen zonder de app
           </h2>
-          <ul className="mt-8 divide-y divide-white/10 lg:mt-0">
-            {REASONS.map(({ title, text }) => (
-              <li key={title} className="py-5 first:pt-0 last:pb-0">
-                <span className="font-heading block text-lg font-extrabold leading-tight text-white">{title}</span>
-                <span className="mt-1.5 block text-[15px] leading-relaxed text-white/70 sm:text-base">{text}</span>
+          <ul className="mt-10 grid gap-px overflow-hidden rounded-[28px] bg-[#E3EAE6] ring-1 ring-[#E3EAE6] md:grid-cols-2">
+            {BEREIK.map(({ title, text }) => (
+              <li key={title} className="bg-white px-7 py-8 sm:px-10 sm:py-10">
+                <span className="font-heading block text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
+                  {title}
+                </span>
+                <span className="mt-3 block max-w-[46ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                  {text}
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
+      {/* Door de hele app */}
+      <section aria-labelledby="in-de-app" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
+          <div className="flex justify-center gap-3 sm:gap-6 lg:order-first">
+            <Scherm src="/app/overzicht.webp" alt="Overzicht van verzoeken in de Centje-app" />
+            <Scherm src="/app/arcade.webp" alt="De Arcade in de Centje-app met alle spellen" className="mt-12" />
+          </div>
+          <div>
+            <h2
+              id="in-de-app"
+              className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            >
+              Door de hele app
+            </h2>
+            <p className="mt-6 max-w-[50ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Ook in de app zelf is ruimte voor je merk, bijvoorbeeld in het overzicht van verzoeken en
+              in de Arcade. Welke plek het beste bij je merk past, bepalen we samen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Bijzaak: in de spellen */}
+      <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
+        <div className="grid items-center gap-8 rounded-[28px] bg-[#F4F7F5] p-6 ring-1 ring-[#E3EAE6] sm:p-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10">
+          <figure>
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-[#0A0C0A]">
+              <Image
+                src="/adverteren/kart-start.webp"
+                alt="De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan en een sponsorbrug met het Centje-logo"
+                fill
+                sizes="(min-width: 768px) 460px, 100vw"
+                className="object-cover object-[50%_40%]"
+              />
+            </div>
+          </figure>
+          <div>
+            <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
+            <h2
+              id="in-de-spellen"
+              className="font-heading mt-2 text-2xl font-extrabold leading-tight text-[#0A0C0A] sm:text-3xl"
+            >
+              In de spellen
+            </h2>
+            <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+              In Centje Kart, ons eigen racespel, kan je merk op de reclameborden langs de baan en op de
+              sponsorbrug boven het circuit. Er zijn drie circuits: GP Muntbaai, GP Oostenrijk en GP
+              Nederland.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section aria-labelledby="interesse" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="relative overflow-hidden rounded-[28px] bg-[#00D26A] px-6 py-12 sm:px-12 sm:py-16">
+        <div className="relative overflow-hidden rounded-[28px] bg-[#0A0C0A] px-7 py-12 text-white sm:px-12 sm:py-16">
           <Image
             src="/merk/logo-munt.webp"
             alt=""
             width={1024}
             height={1024}
-            sizes="(min-width: 640px) 192px, 128px"
-            className="pointer-events-none absolute -bottom-8 -right-6 h-32 w-32 drop-shadow-[0_18px_30px_rgba(0,60,30,0.35)] sm:bottom-auto sm:right-10 sm:top-1/2 sm:h-48 sm:w-48 sm:-translate-y-1/2"
+            sizes="(min-width: 640px) 160px, 112px"
+            className="pointer-events-none absolute -bottom-6 -right-4 h-28 w-28 opacity-95 sm:bottom-auto sm:right-12 sm:top-1/2 sm:h-40 sm:w-40 sm:-translate-y-1/2"
           />
           <div className="relative max-w-xl">
-            <h2
-              id="interesse"
-              className="font-heading text-[30px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-5xl"
-            >
+            <h2 id="interesse" className="font-heading text-[30px] font-extrabold leading-[1.05] sm:text-5xl">
               Interesse?
             </h2>
-            <p className="mt-4 text-base font-medium leading-relaxed text-[#0A0C0A]/80 sm:text-lg">
-              Vertel ons over je merk en je idee, ook als het iets anders is dan hierboven. We denken
-              graag met je mee over de mogelijkheden.
+            <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
+              Vertel ons over je merk en wat je zoekt. We denken graag mee over de plek die het beste
+              past: op het bedankscherm, in de app of in de spellen.
             </p>
             <a
               href={ADVERTEREN_CONTACT.href}
-              className="group mt-7 inline-flex h-12 items-center gap-2 rounded-full bg-[#0A0C0A] px-6 text-[15px] font-semibold text-white outline-none transition-transform hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#0A0C0A]/30 active:scale-[0.98]"
+              className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#00D26A] px-6 text-[15px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
             >
               {ADVERTEREN_CONTACT.label}
               <ArrowRight weight="bold" aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
