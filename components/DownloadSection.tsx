@@ -83,49 +83,48 @@ export function DownloadSection() {
               />
             </a>
 
-            {/* Op een computer: scan de code met je telefoon. */}
-            <div className="hidden items-center gap-5 lg:flex">
-              <div className="relative h-[112px] w-[112px] shrink-0 rounded-[14px] bg-white p-3">
-                <Image
-                  src="/merk/qr-download.svg"
-                  alt="QR-code om Centje te downloaden"
-                  width={96}
-                  height={96}
-                  unoptimized
-                  {...EARLY}
-                  className="h-full w-full"
-                />
-                <span className="absolute left-1/2 top-1/2 flex h-[27px] w-[27px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white">
-                  <Image src="/merk/logo-munt.webp" alt="" width={1024} height={1024} sizes="22px" {...EARLY} className="h-[21px] w-[21px]" />
-                </span>
-              </div>
-              <p className="text-[15px] leading-snug">
-                <span className="block font-semibold text-white">Scan met je iPhone</span>
-                <span className="mt-1 block text-white/60">en download Centje meteen</span>
-              </p>
+            {/* Op een computer: de code scannen met je telefoon. */}
+            <div className="relative hidden h-[112px] w-[112px] shrink-0 rounded-[14px] bg-white p-3 lg:block">
+              <Image
+                src="/merk/qr-download.svg"
+                alt="QR-code om Centje te downloaden"
+                width={96}
+                height={96}
+                unoptimized
+                {...EARLY}
+                className="h-full w-full"
+              />
+              <span className="absolute left-1/2 top-1/2 flex h-[27px] w-[27px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white">
+                <Image src="/merk/logo-munt.webp" alt="" width={1024} height={1024} sizes="22px" {...EARLY} className="h-[21px] w-[21px]" />
+              </span>
             </div>
           </div>
 
-          <ul aria-label="Waar Centje beschikbaar is" className="mt-8 flex flex-wrap gap-2">
-            <Beschikbaar>
-              <AppleLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
-              iPhone
-            </Beschikbaar>
-            <Beschikbaar binnenkort>
-              <AndroidLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
-              Android · binnenkort
-            </Beschikbaar>
-            <Beschikbaar>
-              <Vlag land="nl" />
-              Nederland
-            </Beschikbaar>
-            <Beschikbaar binnenkort>
-              <span className="opacity-60">
-                <Vlag land="be" />
-              </span>
-              België · binnenkort
-            </Beschikbaar>
-          </ul>
+          {/* Twee rijen: eerst de telefoons, daaronder de landen. */}
+          <div className="mt-8 space-y-2">
+            <ul aria-label="Telefoons" className="flex flex-wrap gap-2">
+              <Beschikbaar>
+                <AppleLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
+                iPhone
+              </Beschikbaar>
+              <Beschikbaar binnenkort>
+                <AndroidLogo weight="fill" aria-hidden className="h-3.5 w-3.5" />
+                Android · binnenkort
+              </Beschikbaar>
+            </ul>
+            <ul aria-label="Landen" className="flex flex-wrap gap-2">
+              <Beschikbaar>
+                <Vlag land="nl" />
+                Nederland
+              </Beschikbaar>
+              <Beschikbaar binnenkort>
+                <span className="opacity-60">
+                  <Vlag land="be" />
+                </span>
+                België · binnenkort
+              </Beschikbaar>
+            </ul>
+          </div>
         </div>
 
         <div className="relative mx-auto w-[240px] sm:w-[270px] lg:w-[300px]">
