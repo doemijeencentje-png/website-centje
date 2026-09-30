@@ -8,7 +8,7 @@ export function FaqTeaser() {
     <section
       id="vragen"
       aria-labelledby="vragen-titel"
-      className="relative scroll-mt-16 bg-white py-24 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 bg-white py-16 sm:py-32 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">

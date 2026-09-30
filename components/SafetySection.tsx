@@ -26,7 +26,7 @@ export function SafetySection() {
     <section
       id="veilig"
       aria-labelledby="veilig-titel"
-      className="relative scroll-mt-16 overflow-x-clip bg-white py-24 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 overflow-x-clip bg-white py-16 sm:py-32 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-20">
         <div>
@@ -82,7 +82,7 @@ export function SafetySection() {
           <aside
             aria-labelledby="kosten-titel"
             id="kosten"
-            className="relative mx-auto -mt-14 flex w-full max-w-[320px] scroll-mt-24 items-center gap-4 rounded-[24px] bg-[#00D26A] p-6 shadow-[0_24px_50px_-24px_rgba(0,90,45,0.55)] sm:p-7"
+            className="relative mx-auto -mt-14 flex w-full max-w-[320px] scroll-mt-24 items-center gap-4 rounded-[24px] bg-[#00D26A] p-5 shadow-[0_24px_50px_-24px_rgba(0,90,45,0.55)] sm:p-7"
           >
             <div className="min-w-0 flex-1">
               <h3
@@ -104,7 +104,7 @@ export function SafetySection() {
               sizes="64px"
               loading="eager"
               fetchPriority="low"
-              className="pointer-events-none h-14 w-14 shrink-0 drop-shadow-[0_10px_18px_rgba(0,60,30,0.3)] sm:h-16 sm:w-16"
+              className="pointer-events-none h-12 w-12 shrink-0 drop-shadow-[0_10px_18px_rgba(0,60,30,0.3)] sm:h-16 sm:w-16"
             />
           </aside>
         </div>

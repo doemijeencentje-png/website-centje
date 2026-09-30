@@ -51,13 +51,13 @@ export function SiteFooter() {
               <h2 id={`voet-${column.title}`} className="text-sm font-semibold text-white">
                 {column.title}
               </h2>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2 sm:mt-4 sm:space-y-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       onClick={(event) => followLink(event, link.href, onHome)}
-                      className="rounded text-[15px] text-white/60 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+                      className="inline-block rounded py-[11px] text-[15px] text-white/60 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#00D26A] sm:py-0"
                     >
                       {link.label}
                     </Link>

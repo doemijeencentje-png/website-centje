@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const linkClass =
-  "text-sm font-medium text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";
+  "-my-2 inline-block py-2 text-sm font-medium text-[#009652] hover:text-[#007a45] hover:underline underline-offset-2";
 
 export default function VoorwaardenHubPage() {
   return (

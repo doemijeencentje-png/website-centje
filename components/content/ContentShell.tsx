@@ -23,7 +23,7 @@ function Breadcrumbs({ trail }: { trail: Crumb[] }) {
                 </span>
               ) : (
                 <>
-                  <Link href={crumb.href} className="transition-colors hover:text-[#007F45]">
+                  <Link href={crumb.href} className="-my-2 inline-block py-2 transition-colors hover:text-[#007F45]">
                     {crumb.label}
                   </Link>
                   <span aria-hidden className="text-neutral-400">

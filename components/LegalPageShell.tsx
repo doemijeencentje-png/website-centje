@@ -21,7 +21,7 @@ export function LegalPageShell({
         {headerVariant === "sub" ? (
           <Link
             href="/voorwaarden"
-            className="group mb-6 inline-flex items-center gap-2 rounded text-sm font-medium text-neutral-600 outline-none transition-colors hover:text-[#0A0C0A] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+            className="group -my-2 mb-4 inline-flex items-center gap-2 rounded py-2 text-sm font-medium text-neutral-600 outline-none transition-colors hover:text-[#0A0C0A] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
           >
             <ArrowLeft weight="bold" aria-hidden className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
             Alle voorwaarden

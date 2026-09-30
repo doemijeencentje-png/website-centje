@@ -34,6 +34,24 @@
     background: rgba(0, 210, 106, 0.2);
     color: #0B0F12;
   }
+
+  /* Telefoon: koppen gelijk verdeeld over de regels en geen los woord op de laatste regel.
+     Alleen onder 640px, zodat de regelval op grotere schermen blijft zoals hij is. */
+  @media (max-width: 639px) {
+    h1,
+    h2,
+    h3,
+    h4 {
+      text-wrap: balance;
+    }
+
+    p,
+    li,
+    blockquote,
+    figcaption {
+      text-wrap: pretty;
+    }
+  }
 }
 
 /* Stapwissel in de stappen: de tekst staat er meteen, met een heel korte overgang. */

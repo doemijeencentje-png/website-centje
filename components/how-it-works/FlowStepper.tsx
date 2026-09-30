@@ -85,7 +85,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
           {/* Telefoon met de schermen van beide speelvormen boven elkaar */}
           <div
             ref={phone}
-            className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
+            className="relative mx-auto w-[min(220px,calc((100svh_-_19.5rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
           >
             <div
               aria-hidden
@@ -125,6 +125,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
             {/* Mobiel en tablet: balkjes per stap met daaronder de huidige stap */}
             <div className="lg:hidden">
+              {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
               <div className="flex gap-1.5" role="group" aria-label="Stappen">
                 {flow.steps.map((s, i) => (
                   <button
@@ -133,7 +134,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                     onClick={() => goTo(i)}
                     aria-label={`Stap ${i + 1}: ${s.title}`}
                     aria-current={i === step ? "step" : undefined}
-                    className="group flex-1 py-2 focus-visible:outline-none"
+                    className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
                   >
                     <span className="block h-1.5 overflow-hidden rounded-full bg-[#E3EAE6] ring-offset-2 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
                       <StepBar progress={scrollYProgress} index={i} count={count} />

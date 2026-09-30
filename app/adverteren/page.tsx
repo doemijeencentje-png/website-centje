@@ -129,7 +129,7 @@ export default function AdverterenPage() {
             style={fadedDots("linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)")}
           />
 
-          <div className="mx-auto max-w-6xl space-y-24 px-4 sm:space-y-32 sm:px-6">
+          <div className="mx-auto max-w-6xl space-y-16 px-4 sm:space-y-32 sm:px-6">
             {/* Het bedankscherm: tekst links, beeld rechts */}
             <section
               aria-labelledby="bedankscherm"

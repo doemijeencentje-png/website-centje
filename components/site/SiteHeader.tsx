@@ -98,7 +98,7 @@ export function SiteHeader() {
             <Link
               href={DOWNLOAD_ANCHOR}
               onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, onHome)}
-              className="inline-flex h-10 items-center whitespace-nowrap rounded-full bg-[#00D26A] px-4 text-sm font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.97] max-[359px]:hidden lg:h-11 lg:px-5 lg:text-[15px]"
+              className="inline-flex h-11 items-center whitespace-nowrap rounded-full bg-[#00D26A] px-4 text-sm font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.97] max-[359px]:hidden lg:px-5 lg:text-[15px]"
             >
               Download de app
             </Link>
@@ -109,7 +109,7 @@ export function SiteHeader() {
               aria-expanded={menuOpen}
               aria-controls={MOBILE_MENU_ID}
               onClick={() => setMenuAt(pathname)}
-              className={`flex h-10 w-10 items-center justify-center rounded-full outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#00D26A] lg:hidden ${
+              className={`flex h-11 w-11 items-center justify-center rounded-full outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#00D26A] lg:hidden ${
                 tone === "dark"
                   ? "bg-white/10 text-white ring-1 ring-inset ring-white/15 hover:bg-white/15"
                   : "bg-[#F4F7F5] text-[#0A0C0A] hover:bg-[#E7EDE9]"
