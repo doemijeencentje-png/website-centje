@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Check } from "@phosphor-icons/react/ssr";
 import { IPhoneFrame } from "./IPhoneFrame";
 
 // Alle punten komen uit de veelgestelde vragen (gecontroleerd tegen app en voorwaarden).
@@ -79,51 +77,34 @@ export function SafetySection() {
             </IPhoneFrame>
           </div>
 
-          {/* Klein prijskaartje dat over de lege onderkant van het scherm schuift, onder het betaalde bedrag. */}
+          {/* Klein en rustig: wat Centje kost, over de lege onderkant van het scherm. */}
           <aside
             aria-labelledby="kosten-titel"
             id="kosten"
-            className="relative mx-auto -mt-16 w-full max-w-[310px] scroll-mt-24 rounded-[24px] border border-[#CDEFDB] bg-white p-6 shadow-[0_2px_6px_rgba(10,12,10,0.06),0_30px_70px_-28px_rgba(10,40,25,0.45)] sm:p-7"
+            className="relative mx-auto -mt-12 flex w-full max-w-[320px] scroll-mt-24 items-start gap-3 rounded-[20px] border border-[#CDEFDB] bg-white p-4 shadow-[0_2px_6px_rgba(10,12,10,0.05),0_20px_50px_-24px_rgba(10,40,25,0.4)] sm:p-5"
           >
-            <div className="flex items-center gap-2.5">
-              <Image
-                src="/merk/logo-munt.webp"
-                alt=""
-                width={1024}
-                height={1024}
-                sizes="28px"
-                loading="eager"
-                fetchPriority="low"
-                className="h-7 w-7 shrink-0"
-              />
-              <h3 id="kosten-titel" className="text-sm font-semibold text-neutral-600">
+            <Image
+              src="/merk/logo-munt.webp"
+              alt=""
+              width={1024}
+              height={1024}
+              sizes="28px"
+              loading="eager"
+              fetchPriority="low"
+              className="mt-0.5 h-7 w-7 shrink-0"
+            />
+            <div className="min-w-0">
+              <h3 id="kosten-titel" className="text-xs font-semibold text-neutral-500">
                 Wat kost Centje?
               </h3>
+              <p className="mt-1 flex items-baseline gap-2">
+                <span className="font-heading text-2xl font-extrabold leading-none text-[#007F45]">€1</span>
+                <span className="text-sm font-semibold text-[#0A0C0A]">eenmalig, voor je verificatie</span>
+              </p>
+              <p className="mt-2 text-pretty text-[13px] leading-snug text-neutral-500">
+                Downloaden is gratis. Wat je bij een verzoek afrekent, zie je altijd vooraf in de app.
+              </p>
             </div>
-            <div className="mt-5 flex items-end gap-3">
-              <p className="font-heading text-[52px] font-extrabold leading-[0.8] text-[#007F45]">€1</p>
-              <span className="rounded-full bg-[#EEFBF4] px-3 py-1 text-sm font-semibold text-[#007F45] ring-1 ring-inset ring-[#CDEFDB]">
-                eenmalig
-              </span>
-            </div>
-            <p className="mt-3 text-base font-semibold text-[#0A0C0A]">Voor je verificatie</p>
-            <ul className="mt-5 space-y-2.5 border-t border-[#E3F2E9] pt-5 text-[15px] leading-snug text-neutral-600">
-              <li className="flex gap-2.5">
-                <Check weight="bold" aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[#00A855]" />
-                Downloaden is gratis
-              </li>
-              <li className="flex gap-2.5">
-                <Check weight="bold" aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[#00A855]" />
-                Wat je bij een verzoek afrekent, zie je altijd vooraf in de app
-              </li>
-            </ul>
-            <Link
-              href="/veelgestelde-vragen#account-en-veiligheid"
-              className="group mt-5 inline-flex items-center gap-2 rounded-full text-[15px] font-semibold text-[#007F45] outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A] focus-visible:ring-offset-4"
-            >
-              Meer over verificatie
-              <ArrowRight weight="bold" aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
           </aside>
         </div>
       </div>
