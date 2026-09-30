@@ -115,7 +115,7 @@ const Q = {
   wanneerGeld: {
     question: "Wanneer staat het geld op mijn rekening?",
     answer: [
-      "Na een betaling wordt het geld overgemaakt naar je gekoppelde bankrekening, in veel gevallen de eerstvolgende werkdag.",
+      "Na een betaling wordt het geld direct overgemaakt naar je gekoppelde bankrekening. Binnen een paar seconden staat het er al op. Alleen als de ontvangende of versturende bank een storing heeft, kan het wat langer duren.",
     ],
   },
   melding: {

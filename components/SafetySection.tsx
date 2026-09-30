@@ -15,7 +15,7 @@ const POINTS = [
   },
   {
     title: "Snel op je rekening",
-    text: "Na een betaling gaat het geld naar je gekoppelde rekening, vaak al de eerstvolgende werkdag.",
+    text: "Na een betaling wordt het geld direct overgemaakt en staat het binnen een paar seconden op je gekoppelde rekening.",
   },
   {
     title: "Altijd overzicht",
