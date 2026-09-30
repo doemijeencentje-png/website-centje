@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { ContentShell } from "@/components/content/ContentShell";
+import { GroenKader } from "@/components/GroenKader";
 import { IPhoneFrame } from "@/components/IPhoneFrame";
 import { fadedDots } from "@/components/decor";
 import { ADVERTEREN_CONTACT } from "@/lib/centje-contact";
@@ -43,10 +44,6 @@ const BEREIK = [
     text: "Vrienden die via een link spelen en betalen, zien het bedankscherm in hun browser. Zo bereik je ook mensen die Centje nog niet kennen.",
   },
 ];
-
-// Lichtgroen vlak achter de tekst, zelfde verloop als de kaart Eerlijk spel op de homepage:
-// zo zweeft de tekst niet los op het wit.
-const VLAK = "rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] p-7 sm:p-10 lg:p-12";
 
 // Beeld dat bij aanwijzen met de muis een fractie omhoog komt.
 const OPTIL = "transition-transform duration-500 ease-out hover:-translate-y-1.5";
@@ -105,7 +102,7 @@ export default function AdverterenPage() {
         {/* Het bedankscherm: tekst links, beeld rechts */}
         <section aria-labelledby="bedankscherm" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
-            <div className={VLAK}>
+            <GroenKader>
               <h2
                 id="bedankscherm"
                 className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
@@ -129,7 +126,7 @@ export default function AdverterenPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GroenKader>
 
             <figure className="relative isolate mx-auto w-[250px] sm:w-[280px]">
               <Gloed className="-inset-x-24 -inset-y-12" />
@@ -168,7 +165,7 @@ export default function AdverterenPage() {
         {/* Bereik: beeld links, tekst rechts */}
         <section aria-labelledby="bereik" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
           <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
-            <div className={VLAK}>
+            <GroenKader>
               <h2
                 id="bereik"
                 className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
@@ -187,7 +184,7 @@ export default function AdverterenPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GroenKader>
             <div className="relative isolate mx-auto w-[250px] sm:w-[280px] lg:order-first">
               <Gloed className="-inset-x-24 -inset-y-12" />
               <IPhoneFrame className={OPTIL}>
@@ -207,7 +204,7 @@ export default function AdverterenPage() {
         {/* Door de hele app: tekst links, beeld rechts */}
         <section aria-labelledby="in-de-app" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
           <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
-            <div className={VLAK}>
+            <GroenKader>
               <h2
                 id="in-de-app"
                 className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
@@ -218,7 +215,7 @@ export default function AdverterenPage() {
                 Ook in de app zelf is ruimte voor je merk, bijvoorbeeld in het overzicht van verzoeken en
                 in de Arcade. Welke plek het beste bij je merk past, bepalen we samen.
               </p>
-            </div>
+            </GroenKader>
             <div className="relative isolate flex justify-center gap-3 sm:gap-6">
               {/* Smaller dan bij één telefoon: dit blok vult de kolom al, anders loopt de gloed tegen de rand van de pagina. */}
               <Gloed className="-inset-x-6 -inset-y-12" />
@@ -231,8 +228,8 @@ export default function AdverterenPage() {
         {/* Bijzaak, in de spellen: beeld links, tekst rechts */}
         <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
           <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14">
-            <div className={VLAK}>
-              <p className="text-sm font-semibold text-neutral-600">Ook mogelijk</p>
+            <GroenKader>
+              <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
               <h2
                 id="in-de-spellen"
                 className="font-heading mt-2 text-2xl font-extrabold leading-tight text-[#0A0C0A] sm:text-3xl"
@@ -244,7 +241,7 @@ export default function AdverterenPage() {
                 krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
                 spel. Welke plek het beste past, bepalen we samen.
               </p>
-            </div>
+            </GroenKader>
             {/* Twee echte spellen: de racebaan, met een tweede spel in de telefoon ervoor. */}
             <div className="group relative pb-8 pr-6 sm:pb-10 sm:pr-8 md:order-first">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[#0A0C0A]">
