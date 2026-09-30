@@ -283,14 +283,19 @@ export default function AdverterenPage() {
               className="pointer-events-none absolute inset-0 -z-10"
               style={fadedDots("radial-gradient(45% 85% at 85% 50%, #000 0%, transparent 100%)")}
             />
-            <Image
-              src="/merk/logo-munt.webp"
-              alt=""
-              width={1024}
-              height={1024}
-              sizes="208px"
-              className="pointer-events-none absolute right-20 top-1/2 hidden h-52 w-52 -translate-y-1/2 -rotate-12 drop-shadow-[0_24px_40px_rgba(0,60,30,0.3)] lg:block"
-            />
+            {/* De munt met een zachte ronde schaduw als los vlak eronder. Bewust geen CSS drop-shadow:
+                Safari knipt die bij een gedraaid beeld af op de rand van het plaatje (grijs vierkant). */}
+            <div aria-hidden className="pointer-events-none absolute right-20 top-1/2 hidden h-52 w-52 -translate-y-1/2 lg:block">
+              <div className="absolute -inset-6 translate-y-6 rounded-full bg-[radial-gradient(closest-side,rgba(0,60,30,0.28)_40%,rgba(0,60,30,0)_100%)]" />
+              <Image
+                src="/merk/logo-munt.webp"
+                alt=""
+                width={1024}
+                height={1024}
+                sizes="208px"
+                className="relative h-full w-full -rotate-12"
+              />
+            </div>
             <div className="max-w-xl">
               <h2
                 id="interesse"
