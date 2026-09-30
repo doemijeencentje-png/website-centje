@@ -16,36 +16,15 @@ import { FLOWS, type Flow } from "./flows";
 
 // Scrollafstand per stap terwijl het blok vaststaat, in svh.
 const STEP_SCROLL_SVH = 65;
-// Deel van elke stap waarin het volgende scherm binnenschuift; de rest van de stap staat het scherm stil.
-const SLIDE = 0.35;
-// Marge rond het omslagpunt, zodat de tekst niet heen en weer springt als je daar precies stilstaat.
-const HYSTERESIS = 0.08;
+// Marge rond een stapgrens (in stappen), zodat de stap niet heen en weer springt als je er precies op stilstaat.
+const HYSTERESIS = 0.04;
 
-const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+/** Stap bij een scrollvoortgang van 0 tot 1. */
+const stepAt = (progress: number, count: number) => Math.min(count - 1, Math.max(0, Math.floor(progress * count)));
 
-/** Positie in de rij schermen (0 = eerste scherm) bij een scrollvoortgang van 0 tot 1. */
-function slidePosition(progress: number, count: number) {
-  const raw = Math.min(count, Math.max(0, progress * count));
-  const index = Math.min(count - 1, Math.floor(raw));
-  const within = raw - index;
-  if (index >= count - 1 || within < 1 - SLIDE) return index;
-  return index + easeInOut((within - (1 - SLIDE)) / SLIDE);
-}
-
-/**
- * Vulling van het balkje van een stap (0 tot 1). Een stap is actief vanaf het midden van het
- * inschuiven tot het midden van het volgende inschuiven; het balkje loopt precies over dat stuk.
- */
-function barFill(progress: number, index: number, count: number) {
-  const raw = progress * count;
-  const start = index === 0 ? 0 : index - SLIDE / 2;
-  const end = index === count - 1 ? count : index + 1 - SLIDE / 2;
-  return Math.min(1, Math.max(0, (raw - start) / (end - start)));
-}
-
-// Balkje dat meeloopt met het scrollen binnen één stap.
+// Balkje dat meeloopt met het scrollen binnen één stap (0 tot 1).
 function StepBar({ progress, index, count }: { progress: MotionValue<number>; index: number; count: number }) {
-  const fill = useTransform(progress, (v) => barFill(v, index, count));
+  const fill = useTransform(progress, (v) => Math.min(1, Math.max(0, v * count - index)));
   return (
     <motion.span
       className="block h-full origin-left rounded-full bg-[#00D26A]"
@@ -64,16 +43,14 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
   // 0 zodra het blok vaststaat, 1 op het moment dat het weer loslaat.
   const { scrollYProgress } = useScroll({ target: track, offset: ["start start", "end end"] });
-  // De schermen schuiven mee met het scrollen, als één rij in de telefoon.
-  const slideX = useTransform(scrollYProgress, (v) => `${-slidePosition(v, count) * 100}%`);
-
+  // Het scrollen kiest de stap; de wissel zelf is een vaste overgang op tijd, los van het scrolltempo.
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const position = slidePosition(v, count);
-    setStep((prev) => (Math.abs(position - prev) >= 0.5 + HYSTERESIS ? Math.round(position) : prev));
+    const raw = v * count;
+    setStep((prev) => (raw >= prev + 1 + HYSTERESIS || raw < prev - HYSTERESIS ? stepAt(v, count) : prev));
   });
 
   useEffect(() => {
-    // Alle schermen alvast decoderen, zodat er tijdens het schuiven nooit een leeg scherm te zien is.
+    // Alle schermen alvast decoderen, zodat een stapwissel nooit een leeg scherm laat zien.
     phone.current?.querySelectorAll("img").forEach((img) => {
       const decode = () => img.decode().catch(() => {});
       if (img.complete) decode();
@@ -83,21 +60,18 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
   useEffect(() => {
     // Wie halverwege de pagina binnenkomt (bv. terug van een andere pagina), ziet meteen de juiste stap.
-    const frame = requestAnimationFrame(() =>
-      setStep(Math.round(slidePosition(scrollYProgress.get(), count))),
-    );
+    const frame = requestAnimationFrame(() => setStep(stepAt(scrollYProgress.get(), count)));
     return () => cancelAnimationFrame(frame);
   }, [scrollYProgress, count]);
 
-  // Een stap aanklikken scrolt naar het rustige deel van die stap, waar het scherm stilstaat.
+  // Een stap aanklikken scrolt naar het midden van die stap, zodat scrollpositie en stap gelijk blijven.
   const goTo = (index: number) => {
     const el = track.current;
     if (!el) return;
     const top = window.scrollY + el.getBoundingClientRect().top;
     const distance = el.offsetHeight - window.innerHeight;
-    const middle = index === count - 1 ? index + 0.5 : index + (1 - SLIDE) / 2;
     window.scrollTo({
-      top: top + distance * (middle / count),
+      top: top + distance * ((index + 0.5) / count),
       behavior: reduceMotion ? "auto" : "smooth",
     });
   };
@@ -108,7 +82,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     <div ref={track} className="relative" style={{ height: `calc(100svh + ${count * STEP_SCROLL_SVH}svh)` }}>
       <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center lg:top-[72px] lg:h-[calc(100svh_-_72px)]">
         <div className="grid w-full items-center gap-5 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-          {/* Telefoon: per speelvorm een rij schermen die met het scrollen meeschuift */}
+          {/* Telefoon met de schermen van beide speelvormen boven elkaar */}
           <div
             ref={phone}
             className="relative mx-auto w-[min(220px,calc((100svh_-_18rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_19rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_9rem)_*_0.4615))]"
@@ -118,35 +92,28 @@ export function FlowStepper({ flow }: { flow: Flow }) {
               className="absolute -inset-16 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
             />
             <IPhoneFrame>
-              {FLOWS.map((f) => {
-                const active = f.id === flow.id;
-                return (
-                  <motion.div
-                    key={f.id}
-                    aria-hidden={!active}
-                    className={`absolute inset-0 flex transition-opacity duration-300 ${
-                      active ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={reduceMotion ? { transform: `translateX(${-step * 100}%)` } : { x: slideX }}
-                  >
-                    {f.steps.map((s, i) => (
-                      <div key={s.image} className="relative h-full w-full shrink-0">
-                        <Image
-                          src={s.image}
-                          alt={active && i === step ? s.alt : ""}
-                          fill
-                          quality={90}
-                          // Alles laadt meteen (de eerste schermen met voorrang), zodat de telefoon nooit leeg is.
-                          loading="eager"
-                          fetchPriority={i === 0 ? "auto" : "low"}
-                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 220px"
-                          className="object-cover object-top"
-                        />
-                      </div>
-                    ))}
-                  </motion.div>
-                );
-              })}
+              {FLOWS.flatMap((f) =>
+                f.steps.map((s, i) => {
+                  const visible = f.id === flow.id && i === step;
+                  return (
+                    <Image
+                      key={s.image}
+                      src={s.image}
+                      alt={visible ? s.alt : ""}
+                      aria-hidden={!visible}
+                      fill
+                      quality={90}
+                      // Alles laadt meteen (de eerste schermen met voorrang), zodat de telefoon nooit leeg is.
+                      loading="eager"
+                      fetchPriority={i === 0 ? "auto" : "low"}
+                      sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 220px"
+                      className={`object-cover object-top transition-[opacity,scale] duration-500 ease-out ${
+                        visible ? "scale-100 opacity-100" : "scale-[1.015] opacity-0"
+                      }`}
+                    />
+                  );
+                }),
+              )}
             </IPhoneFrame>
           </div>
 
