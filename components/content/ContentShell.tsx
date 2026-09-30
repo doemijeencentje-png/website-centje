@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DownloadSection } from "../DownloadSection";
+import { fadedDots } from "../decor";
 import { JsonLd } from "./JsonLd";
 
 export type Crumb = { label: string; href: string };
@@ -43,12 +44,18 @@ export function ContentShell({
   crumbs,
   title,
   intro,
+  actions,
+  decor = false,
   children,
 }: {
   /** Leeg = geen kruimelpad (bijvoorbeeld op de 404-pagina). */
   crumbs: Crumb[];
   title: string;
   intro?: React.ReactNode;
+  /** Knoppen onder de intro. */
+  actions?: React.ReactNode;
+  /** Stippen en een groene gloed rechtsboven in de paginakop. */
+  decor?: boolean;
   children: React.ReactNode;
 }) {
   const trail = [{ label: "Home", href: "/" }, ...crumbs];
@@ -72,7 +79,20 @@ export function ContentShell({
           />
         ) : null}
 
-        <header className="bg-white">
+        <header className={decor ? "relative isolate overflow-hidden bg-white" : "bg-white"}>
+          {decor ? (
+            <>
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10"
+                style={fadedDots("radial-gradient(50% 90% at 90% 20%, #000 0%, transparent 100%)")}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-40 -top-48 -z-10 h-[560px] w-[560px] rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))]"
+              />
+            </>
+          ) : null}
           <div className="mx-auto max-w-6xl px-4 pb-6 pt-12 sm:px-6 sm:pb-8 sm:pt-20">
             {showTrail ? <Breadcrumbs trail={trail} /> : null}
             <h1 className="font-heading max-w-3xl text-balance text-[34px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl lg:text-6xl">
@@ -81,6 +101,7 @@ export function ContentShell({
             {intro ? (
               <div className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">{intro}</div>
             ) : null}
+            {actions ? <div className="mt-8 flex flex-wrap gap-3">{actions}</div> : null}
           </div>
         </header>
 
