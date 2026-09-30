@@ -71,7 +71,7 @@ export default function HeroSection() {
         className="absolute inset-0 -z-10 bg-[radial-gradient(55%_65%_at_78%_50%,rgba(0,210,106,0.17),rgba(0,210,106,0)_70%)]"
       />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-14 pt-28 sm:px-6 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12 lg:pb-16 lg:pt-24">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-14 pt-28 sm:px-6 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-12 lg:pb-16 lg:pt-24">
         <div>
           <h1
             id="hero-titel"
@@ -110,7 +110,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="relative mx-auto w-[min(100%,340px)] sm:w-[min(100%,400px)] lg:mx-0 lg:ml-auto lg:w-[min(100%,424px,calc((100svh-12rem)*0.8))]"
+          className="relative mx-auto w-[min(100%,340px)] sm:w-[min(100%,400px)] lg:mx-0 lg:ml-auto lg:w-[min(100%,400px,calc((100svh-12rem)*0.8))]"
         >
           <div
             aria-hidden
@@ -125,7 +125,7 @@ export default function HeroSection() {
               loading="eager"
               fetchPriority="high"
               quality={90}
-              sizes="(min-width: 1024px) 424px, (min-width: 640px) 400px, 340px"
+              sizes="(min-width: 640px) 400px, 340px"
               className="object-cover"
             />
             <video
