@@ -27,9 +27,9 @@ export function SafetySection() {
     <section
       id="veilig"
       aria-labelledby="veilig-titel"
-      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 border-y border-[#E3EAE6] bg-[#F4F7F5] py-20 sm:py-28 lg:scroll-mt-[72px] lg:py-32"
     >
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+      <div className="mx-auto grid max-w-6xl gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
         <div>
           <h2
             id="veilig-titel"
@@ -37,14 +37,14 @@ export function SafetySection() {
           >
             Veilig betalen, gewoon via je bank
           </h2>
-          <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
+          <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
             De betalingen lopen via Online Payment Platform, een betaalinstelling met een vergunning
             van De Nederlandsche Bank.
           </p>
 
-          <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          <ul className="mt-12 grid gap-x-12 gap-y-10 sm:mt-14 sm:grid-cols-2">
             {POINTS.map(({ title, text }) => (
-              <li key={title} className="border-t border-[#DCE6E0] pt-5">
+              <li key={title} className="border-t border-[#D5E0D9] pt-6">
                 <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A]">
                   {title}
                 </span>
@@ -57,7 +57,7 @@ export function SafetySection() {
         <aside
           aria-labelledby="kosten-titel"
           id="kosten"
-          className="relative flex scroll-mt-24 flex-col overflow-hidden rounded-[28px] bg-[#0A0C0A] p-7 text-white sm:p-10 lg:self-start"
+          className="relative flex scroll-mt-24 flex-col overflow-hidden rounded-[28px] bg-[#0A0C0A] p-8 text-white sm:p-11 lg:self-start"
         >
           <Image
             src="/merk/logo-munt.webp"

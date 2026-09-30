@@ -8,7 +8,7 @@ export function Highlights() {
     <section
       id="spellen"
       aria-labelledby="gemak-titel"
-      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 bg-white pb-24 pt-20 sm:pb-32 sm:pt-28 lg:scroll-mt-[72px] lg:pb-36 lg:pt-32"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2
@@ -18,10 +18,10 @@ export function Highlights() {
           Makkelijk voor iedereen aan tafel
         </h2>
 
-        <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(2,minmax(300px,auto))_minmax(280px,auto)]">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(2,minmax(320px,auto))_minmax(300px,auto)]">
           {/* Eerlijk spel: de echte uitslag uit de app */}
           <article
-            className="relative isolate flex flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] px-6 pt-7 sm:px-9 sm:pt-9 md:col-span-2 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6 lg:row-span-2 lg:flex lg:gap-0"
+            className="relative isolate flex flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] px-7 pt-8 sm:px-10 sm:pt-10 md:col-span-2 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6 lg:row-span-2 lg:flex lg:gap-0"
           >
             <div
               aria-hidden
@@ -54,7 +54,7 @@ export function Highlights() {
 
           {/* Overzicht */}
           <article
-            className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-6 sm:p-7"
+            className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-7 sm:p-9"
           >
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
               Alles op één plek
@@ -62,7 +62,7 @@ export function Highlights() {
             <p className="mt-2 text-[15px] leading-relaxed text-neutral-600">
               Zie in één oogopslag wat betaald is en op wie je nog wacht.
             </p>
-            <div className="relative mt-5 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
+            <div className="relative mt-7 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
                 src="/app/fragment-overzicht.webp"
                 {...EARLY}
@@ -78,7 +78,7 @@ export function Highlights() {
 
           {/* Ontvanger ziet wie betaald heeft */}
           <article
-            className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-6 sm:p-7"
+            className="relative flex flex-col overflow-hidden rounded-[28px] bg-[#F3F6F4] p-7 sm:p-9"
           >
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
               Zie wie al betaald heeft
@@ -87,7 +87,7 @@ export function Highlights() {
               Per vriend het bedrag en de status. Een herinnering sturen kan
               direct vanuit de app.
             </p>
-            <div className="relative mt-5 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
+            <div className="relative mt-7 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
                 src="/app/fragment-ontvanger.webp"
                 {...EARLY}
@@ -103,7 +103,7 @@ export function Highlights() {
 
           {/* Geen app nodig */}
           <article
-            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-[#00D26A] p-6 sm:p-7"
+            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-[#00D26A] p-7 sm:p-9"
           >
             <h3 className="font-heading max-w-[14ch] text-[26px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-3xl">
               Je vrienden hebben geen app nodig
@@ -125,7 +125,7 @@ export function Highlights() {
 
           {/* Arcade */}
           <article
-            className="relative isolate grid min-h-[280px] overflow-hidden rounded-[28px] bg-[#0A0C0A] p-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center sm:gap-6 sm:p-9 md:grid-cols-1 lg:col-span-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+            className="relative isolate grid min-h-[280px] overflow-hidden rounded-[28px] bg-[#0A0C0A] p-7 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center sm:gap-8 sm:p-10 md:grid-cols-1 lg:col-span-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
           >
             <div
               aria-hidden

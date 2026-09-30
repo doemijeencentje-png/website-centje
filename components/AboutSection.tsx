@@ -5,7 +5,7 @@ export function AboutSection() {
     <section
       id="over-ons"
       aria-labelledby="verhaal-titel"
-      className="relative scroll-mt-16 bg-white pb-20 pt-4 sm:pb-28 sm:pt-8 lg:scroll-mt-[72px] lg:pb-36"
+      className="relative scroll-mt-16 bg-white pb-24 pt-24 sm:pb-32 sm:pt-32 lg:scroll-mt-[72px] lg:pb-36 lg:pt-36"
     >
       <div className="mx-auto grid max-w-6xl items-center px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         <div className="relative">
