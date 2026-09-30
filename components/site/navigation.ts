@@ -51,8 +51,3 @@ export const TOP_ITEMS: TopItem[] = [
 ];
 
 export const HOME_SECTIONS = ["stappen", "spellen", "veilig", "over-ons", "vragen"];
-
-export const LEGAL_LINKS = [
-  { label: "Voorwaarden", href: "/voorwaarden" },
-  { label: "Privacy", href: "/privacy" },
-];

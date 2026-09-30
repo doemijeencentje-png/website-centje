@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { followLink } from "./inPage";
 import { Logo } from "./Logo";
 
+// Bewust geen juridische links: die staan sinds 9-9-2026 niet meer op de site (de pagina's zelf
+// blijven bereikbaar voor de app en de App Store).
 const COLUMNS = [
   {
     title: "Centje",
@@ -28,15 +30,6 @@ const COLUMNS = [
     title: "Zakelijk",
     links: [{ label: "Adverteren", href: "/adverteren" }],
   },
-  {
-    title: "Juridisch",
-    links: [
-      { label: "Voorwaarden", href: "/voorwaarden" },
-      { label: "Voorwaarden app", href: "/voorwaarden/app" },
-      { label: "Voorwaarden betalingen", href: "/voorwaarden/betalingen" },
-      { label: "Privacy", href: "/privacy" },
-    ],
-  },
 ];
 
 export function SiteFooter() {
@@ -45,7 +38,7 @@ export function SiteFooter() {
   return (
     <footer data-kop="donker" className="bg-[#0A0C0A] text-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pb-14 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pb-14 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] lg:gap-8">
           <div className="col-span-2 lg:col-span-1">
             <Logo />
             <p className="mt-5 max-w-[30ch] text-[15px] leading-relaxed text-white/55">

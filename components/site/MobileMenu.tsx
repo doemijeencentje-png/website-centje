@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, X } from "@phosphor-icons/react";
 import { DOWNLOAD_ANCHOR } from "@/lib/links";
-import { HOW_IT_WORKS, HOW_IT_WORKS_LABEL, LEGAL_LINKS, TOP_ITEMS } from "./navigation";
+import { HOW_IT_WORKS, HOW_IT_WORKS_LABEL, TOP_ITEMS } from "./navigation";
 import { inPageId, scrollToId } from "./inPage";
 import { Logo } from "./Logo";
 
@@ -142,19 +142,6 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
             >
               Download de app
             </Link>
-            <ul className="mt-3 flex justify-center gap-6 text-sm text-neutral-500">
-              {LEGAL_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => onClose(false)}
-                    className="rounded outline-none hover:text-[#0A0C0A] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </motion.div>
       ) : null}
