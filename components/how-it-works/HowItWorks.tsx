@@ -41,7 +41,7 @@ export function HowItWorks() {
     <section
       id="stappen"
       aria-labelledby="stappen-titel"
-      className="relative scroll-mt-16 overflow-x-clip pb-16 pt-14 sm:pb-24 sm:pt-20 lg:scroll-mt-[72px] lg:pb-28"
+      className="relative scroll-mt-16 overflow-x-clip pb-16 pt-12 sm:pb-24 sm:pt-16 lg:scroll-mt-[72px] lg:pb-28"
     >
       {/* Achtergrond over de hele sectie, ook achter de vaststaande stappen; alleen de randen lopen zacht uit. */}
       <div aria-hidden className="pointer-events-none absolute inset-0" style={DOTS} />
@@ -54,11 +54,11 @@ export function HowItWorks() {
         <div className="max-w-2xl">
           <h2
             id="stappen-titel"
-            className="font-heading text-[34px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-5xl lg:text-6xl"
+            className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
           >
             Hoe Centje werkt
           </h2>
-          <p className="mt-4 max-w-[46ch] text-base leading-relaxed text-neutral-600 sm:mt-5 sm:text-xl">
+          <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
             Kies hoe je speelt: samen met één vriend, of met de hele groep tegelijk.
           </p>
         </div>

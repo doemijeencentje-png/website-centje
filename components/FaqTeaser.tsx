@@ -8,22 +8,22 @@ export function FaqTeaser() {
     <section
       id="vragen"
       aria-labelledby="vragen-titel"
-      className="relative scroll-mt-16 border-t border-[#E3EAE6] bg-[#F4F7F5] py-20 sm:py-28 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 bg-white py-24 sm:py-32 lg:scroll-mt-[72px]"
     >
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2
             id="vragen-titel"
-            className="font-heading text-[34px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
           >
             Goed om te weten
           </h2>
-          <p className="mt-4 max-w-[40ch] text-base leading-relaxed text-neutral-600 sm:text-lg">
+          <p className="mt-5 max-w-[40ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
             De vragen die we het vaakst krijgen, kort beantwoord.
           </p>
           <Link
             href="/veelgestelde-vragen"
-            className="group mt-7 inline-flex h-12 items-center gap-2 rounded-full bg-[#0A0C0A] px-6 text-[15px] font-semibold text-white outline-none transition-transform hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+            className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#0A0C0A] px-6 text-[15px] font-semibold text-white outline-none transition-transform hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
           >
             Alle vragen
             <ArrowRight weight="bold" aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

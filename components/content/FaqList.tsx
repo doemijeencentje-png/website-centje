@@ -9,7 +9,7 @@ export function FaqList({ items, defaultOpen }: { items: FaqItem[]; defaultOpen?
   const baseId = useId();
 
   return (
-    <ul className="divide-y divide-[#E3EAE6] overflow-hidden rounded-[24px] bg-white ring-1 ring-[#E3EAE6]">
+    <ul className="divide-y divide-[#E3EAE6]">
       {items.map((item, index) => {
         const expanded = open === index;
         const buttonId = `${baseId}-vraag-${index}`;
@@ -23,19 +23,18 @@ export function FaqList({ items, defaultOpen }: { items: FaqItem[]; defaultOpen?
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 onClick={() => setOpen(expanded ? null : index)}
-                className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left outline-none transition-colors hover:bg-[#F6F9F7] focus-visible:bg-[#F6F9F7] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A] sm:px-7 sm:py-6"
+                className="group flex w-full items-center justify-between gap-6 rounded-lg py-5 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A] focus-visible:ring-offset-4 sm:py-6"
               >
-                <span className="text-base font-semibold leading-snug text-[#0A0C0A] sm:text-lg">
+                <span className="text-base font-semibold leading-snug text-[#0A0C0A] transition-colors group-hover:text-[#007F45] sm:text-lg">
                   {item.question}
                 </span>
-                <span
+                <Plus
+                  weight="bold"
                   aria-hidden
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-[background-color,rotate] duration-300 ${
-                    expanded ? "rotate-45 bg-[#00D26A] text-[#0A0C0A]" : "bg-[#EEF3F0] text-neutral-600"
+                  className={`h-5 w-5 shrink-0 transition-[color,rotate] duration-300 ${
+                    expanded ? "rotate-45 text-[#007F45]" : "text-neutral-500 group-hover:text-[#007F45]"
                   }`}
-                >
-                  <Plus weight="bold" className="h-4 w-4" />
-                </span>
+                />
               </button>
             </h3>
             <div
@@ -48,7 +47,7 @@ export function FaqList({ items, defaultOpen }: { items: FaqItem[]; defaultOpen?
               }`}
             >
               <div className="overflow-hidden">
-                <div className="space-y-3 px-5 pb-6 text-[15px] leading-relaxed text-neutral-600 sm:px-7 sm:text-base">
+                <div className="max-w-[62ch] space-y-3 pb-6 text-[15px] leading-relaxed text-neutral-600 sm:text-base">
                   {item.answer.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}

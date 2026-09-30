@@ -127,7 +127,7 @@ function HowItWorksMenu({ tone, active, onHome }: { tone: Tone; active: boolean;
                       href={href}
                       data-menu-item
                       onClick={(event) => choose(event, href)}
-                      className="group flex items-start gap-3.5 rounded-[20px] p-3 outline-none transition-colors hover:bg-[#F3F6F4] focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                      className="group flex items-start gap-3.5 rounded-[20px] p-3 outline-none transition-colors hover:bg-[#F4F7F5] focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                     >
                       <Icon
                         weight="bold"

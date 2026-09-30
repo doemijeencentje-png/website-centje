@@ -27,7 +27,7 @@ export default function NotFound() {
               <Link
                 href={link.href}
                 className={`group inline-flex h-12 items-center gap-2 rounded-full px-6 text-[15px] font-semibold outline-none transition-transform hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98] ${
-                  index === 0 ? "bg-[#0A0C0A] text-white" : "bg-[#F3F6F4] text-[#0A0C0A] ring-1 ring-[#E3EAE6]"
+                  index === 0 ? "bg-[#0A0C0A] text-white" : "bg-[#F4F7F5] text-[#0A0C0A]"
                 }`}
               >
                 {link.label}

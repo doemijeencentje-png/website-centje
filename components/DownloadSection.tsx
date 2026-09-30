@@ -23,11 +23,11 @@ export function DownloadSection() {
         <div>
           <h2
             id="download-titel"
-            className="font-heading text-balance text-[40px] font-extrabold leading-[1.02] sm:text-5xl xl:text-[56px]"
+            className="font-heading text-balance text-[36px] font-extrabold leading-[1.02] sm:text-5xl xl:text-[56px]"
           >
             Download Centje. <span className="text-[#00D26A]">Betaal leuker.</span>
           </h2>
-          <p className="mt-6 max-w-[42ch] text-[17px] leading-relaxed text-white/70 sm:text-xl">
+          <p className="mt-6 max-w-[42ch] text-base leading-relaxed text-white/70 sm:text-lg">
             Stuur vandaag nog je eerste challenge. Centje is er voor iPhone, en je vrienden hebben
             de app niet eens nodig.
           </p>
@@ -51,8 +51,8 @@ export function DownloadSection() {
             </a>
 
             {/* Op een computer: scan de code met je telefoon. */}
-            <div className="hidden items-center gap-4 rounded-[24px] bg-white/[0.06] p-3 pr-6 ring-1 ring-white/10 lg:flex">
-              <div className="relative h-[120px] w-[120px] shrink-0 rounded-[16px] bg-white p-3">
+            <div className="hidden items-center gap-5 lg:flex">
+              <div className="relative h-[112px] w-[112px] shrink-0 rounded-[14px] bg-white p-3">
                 <Image
                   src="/merk/qr-download.svg"
                   alt="QR-code om Centje te downloaden"
@@ -90,15 +90,6 @@ export function DownloadSection() {
               className="object-cover object-top"
             />
           </IPhoneFrame>
-          <Image
-            src="/merk/logo-munt.webp"
-            alt=""
-            width={1024}
-            height={1024}
-            sizes="(min-width: 640px) 112px, 96px"
-            {...EARLY}
-            className="pointer-events-none absolute -left-10 bottom-20 h-24 w-24 drop-shadow-[0_20px_30px_rgba(0,0,0,0.55)] sm:-left-14 sm:h-28 sm:w-28"
-          />
         </div>
       </div>
     </section>

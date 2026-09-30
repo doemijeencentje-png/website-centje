@@ -76,9 +76,9 @@ export default function AdverterenPage() {
               Zodra een verzoek betaald is, verschijnt het bedankscherm. De rekening is geregeld en de
               sfeer is goed: het moment waarop je merk het meest positief binnenkomt.
             </p>
-            <ul className="mt-10 space-y-7">
+            <ul className="mt-10 space-y-8">
               {BEDANKSCHERM.map(({ title, text }) => (
-                <li key={title} className="border-t border-[#E3EAE6] pt-6">
+                <li key={title}>
                   <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A]">
                     {title}
                   </span>
@@ -119,17 +119,17 @@ export default function AdverterenPage() {
       </section>
 
       {/* Bereik */}
-      <section aria-labelledby="bereik" className="border-y border-[#E3EAE6] bg-[#F4F7F5]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+      <section aria-labelledby="bereik" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <h2
             id="bereik"
             className="font-heading max-w-[20ch] text-balance text-[28px] font-extrabold leading-[1.06] text-[#0A0C0A] sm:text-4xl"
           >
             Je bereikt ook mensen zonder de app
           </h2>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-[28px] bg-[#E3EAE6] ring-1 ring-[#E3EAE6] md:grid-cols-2">
+          <ul className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
             {BEREIK.map(({ title, text }) => (
-              <li key={title} className="bg-white px-7 py-8 sm:px-10 sm:py-10">
+              <li key={title}>
                 <span className="font-heading block text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
                   {title}
                 </span>
@@ -166,9 +166,9 @@ export default function AdverterenPage() {
 
       {/* Bijzaak: in de spellen */}
       <section aria-labelledby="in-de-spellen" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="grid items-center gap-8 rounded-[28px] bg-[#F4F7F5] p-6 ring-1 ring-[#E3EAE6] sm:p-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10">
+        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-14">
           <figure>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-[#0A0C0A]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[#0A0C0A]">
               <Image
                 src="/adverteren/kart-start.webp"
                 alt="De start van GP Oostenrijk in Centje Kart, met reclameborden langs de baan en een sponsorbrug met het Centje-logo"
@@ -197,26 +197,21 @@ export default function AdverterenPage() {
 
       {/* Contact */}
       <section aria-labelledby="interesse" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
-        <div className="relative overflow-hidden rounded-[28px] bg-[#0A0C0A] px-7 py-12 text-white sm:px-12 sm:py-16">
-          <Image
-            src="/merk/logo-munt.webp"
-            alt=""
-            width={1024}
-            height={1024}
-            sizes="(min-width: 640px) 160px, 112px"
-            className="pointer-events-none absolute -bottom-6 -right-4 h-28 w-28 opacity-95 sm:bottom-auto sm:right-12 sm:top-1/2 sm:h-40 sm:w-40 sm:-translate-y-1/2"
-          />
-          <div className="relative max-w-xl">
-            <h2 id="interesse" className="font-heading text-[30px] font-extrabold leading-[1.05] sm:text-5xl">
+        <div className="rounded-[28px] bg-[#F4F7F5] px-7 py-12 sm:px-12 sm:py-16">
+          <div className="max-w-xl">
+            <h2
+              id="interesse"
+              className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            >
               Interesse?
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
               Vertel ons over je merk en wat je zoekt. We denken graag mee over de plek die het beste
               past: op het bedankscherm, in de app of in de spellen.
             </p>
             <a
               href={ADVERTEREN_CONTACT.href}
-              className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#00D26A] px-6 text-[15px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+              className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#0A0C0A] px-6 text-[15px] font-semibold text-white outline-none transition-transform duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
             >
               {ADVERTEREN_CONTACT.label}
               <ArrowRight weight="bold" aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

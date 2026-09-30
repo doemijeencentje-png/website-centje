@@ -72,24 +72,14 @@ export function ContentShell({
           />
         ) : null}
 
-        <header className="relative overflow-hidden border-b border-[#E3EAE6] bg-[#F3F6F4]">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-60"
-            style={{
-              backgroundImage: "radial-gradient(rgba(0,168,85,0.18) 1px, transparent 1px)",
-              backgroundSize: "18px 18px",
-              maskImage: "linear-gradient(to bottom, black, transparent 85%)",
-              WebkitMaskImage: "linear-gradient(to bottom, black, transparent 85%)",
-            }}
-          />
-          <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14">
+        <header className="bg-white">
+          <div className="mx-auto max-w-6xl px-4 pb-6 pt-12 sm:px-6 sm:pb-8 sm:pt-20">
             {showTrail ? <Breadcrumbs trail={trail} /> : null}
             <h1 className="font-heading max-w-3xl text-balance text-[34px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl lg:text-6xl">
               {title}
             </h1>
             {intro ? (
-              <div className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-xl">{intro}</div>
+              <div className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">{intro}</div>
             ) : null}
           </div>
         </header>

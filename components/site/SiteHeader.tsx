@@ -112,7 +112,7 @@ export function SiteHeader() {
               className={`flex h-10 w-10 items-center justify-center rounded-full outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#00D26A] lg:hidden ${
                 tone === "dark"
                   ? "bg-white/10 text-white ring-1 ring-inset ring-white/15 hover:bg-white/15"
-                  : "bg-[#F3F6F4] text-[#0A0C0A] hover:bg-[#E7EDE9]"
+                  : "bg-[#F4F7F5] text-[#0A0C0A] hover:bg-[#E7EDE9]"
               }`}
             >
               <List weight="bold" aria-hidden className="h-5 w-5" />

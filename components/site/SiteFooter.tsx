@@ -45,7 +45,7 @@ export function SiteFooter() {
   return (
     <footer data-kop="donker" className="bg-[#0A0C0A] text-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-white/10 pb-12 pt-14 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pb-14 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] lg:gap-8">
           <div className="col-span-2 lg:col-span-1">
             <Logo />
             <p className="mt-5 max-w-[30ch] text-[15px] leading-relaxed text-white/55">

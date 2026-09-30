@@ -86,7 +86,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
               type="button"
               aria-label="Menu sluiten"
               onClick={() => onClose(true)}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#F3F6F4] text-[#0A0C0A] outline-none transition-colors hover:bg-[#E7EDE9] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#F4F7F5] text-[#0A0C0A] outline-none transition-colors hover:bg-[#E7EDE9] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
             >
               <X weight="bold" aria-hidden className="h-5 w-5" />
             </button>
@@ -106,7 +106,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
                   <Link
                     href={href}
                     onClick={(event) => go(event, href)}
-                    className="flex items-start gap-4 rounded-[20px] p-3 outline-none transition-colors active:bg-[#F3F6F4] focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                    className="flex items-start gap-4 rounded-[20px] p-3 outline-none transition-colors active:bg-[#F4F7F5] focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                   >
                     <Icon weight="bold" aria-hidden className="mt-0.5 h-6 w-6 shrink-0 text-[#007F45]" />
                     <span className="min-w-0">
@@ -124,7 +124,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
                   <Link
                     href={item.href}
                     onClick={(event) => go(event, item.href)}
-                    className="font-heading flex items-center justify-between gap-4 px-3 py-4 text-[22px] font-extrabold leading-tight text-[#0A0C0A] outline-none focus-visible:bg-[#F3F6F4] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                    className="font-heading flex items-center justify-between gap-4 px-3 py-4 text-[22px] font-extrabold leading-tight text-[#0A0C0A] outline-none focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                   >
                     {item.longLabel ?? item.label}
                     <ArrowRight weight="bold" aria-hidden className="h-5 w-5 shrink-0 text-[#007F45]" />

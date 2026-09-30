@@ -73,7 +73,7 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
               <li key={category.id}>
                 <a
                   href={`#${category.id}`}
-                  className="block rounded-xl px-3 py-2 text-[15px] font-medium text-neutral-600 transition-colors hover:bg-[#F3F6F4] hover:text-[#0A0C0A]"
+                  className="block rounded-xl px-3 py-2 text-[15px] font-medium text-neutral-600 transition-colors hover:bg-[#F4F7F5] hover:text-[#0A0C0A]"
                 >
                   {category.title}
                 </a>
@@ -96,7 +96,7 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
           </section>
         ))}
         {filtered.length === 0 ? (
-          <div className="rounded-[24px] bg-[#F3F6F4] p-8 text-center">
+          <div className="rounded-[24px] bg-[#F4F7F5] p-8 text-center">
             <p className="font-heading text-xl font-extrabold text-[#0A0C0A]">Geen vraag gevonden</p>
             <p className="mt-2 text-neutral-600">
               Probeer een ander woord, bijvoorbeeld &lsquo;Groepscentje&rsquo;, &lsquo;spel&rsquo; of &lsquo;betalen&rsquo;.

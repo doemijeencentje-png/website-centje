@@ -167,11 +167,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       type="button"
                       onClick={() => goTo(i)}
                       aria-current={active ? "step" : undefined}
-                      className={`relative flex w-full gap-4 overflow-hidden rounded-2xl px-5 py-4 text-left transition-[background-color,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 ${
-                        active
-                          ? "bg-white shadow-[0_1px_2px_rgba(10,12,10,0.06),0_14px_40px_-18px_rgba(0,90,45,0.35)] ring-1 ring-[#E3EFE7]"
-                          : "hover:bg-white/60"
-                      }`}
+                      className="group relative flex w-full gap-4 rounded-2xl px-5 py-4 text-left outline-none focus-visible:ring-4 focus-visible:ring-[#00D26A]/50"
                     >
                       <span
                         className={`w-4 shrink-0 pt-0.5 text-base font-bold tabular-nums transition-colors duration-300 ${
@@ -183,7 +179,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       <span className="min-w-0">
                         <span
                           className={`font-heading block text-lg font-extrabold leading-snug transition-colors duration-300 ${
-                            active ? "text-[#0A0C0A]" : "text-neutral-500"
+                            active ? "text-[#0A0C0A]" : "text-neutral-500 group-hover:text-neutral-700"
                           }`}
                         >
                           {s.title}
@@ -199,7 +195,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       {active && (
                         <span
                           aria-hidden
-                          className="absolute inset-x-5 bottom-0 h-[3px] overflow-hidden rounded-full bg-[#EAEFEC]"
+                          className="absolute bottom-1 left-14 right-5 h-[2px] overflow-hidden rounded-full bg-[#E3EAE6]"
                         >
                           <StepBar progress={scrollYProgress} index={i} count={count} />
                         </span>
