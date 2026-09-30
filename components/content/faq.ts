@@ -43,7 +43,7 @@ const Q = {
     question: "Welke spellen kan ik spelen?",
     answer: [
       "Alle spellen in Centje maken we zelf. Er zijn skillgames, waarin het draait om timing en behendigheid, en denkspellen, waarin je slim moet nadenken.",
-      "Bij een verzoek kies je uit korte skillgames die iedereen meteen snapt. In de Arcade speel je alle spellen voor de lol, ook de denkspellen. Bij het kiezen van een spel zie je ook welke spellen binnenkort komen.",
+      "Bij een verzoek kies je uit korte skillgames die iedereen meteen snapt. In de Arcade speel je alle spellen voor de lol, ook de denkspellen.",
     ],
   },
   eerlijk: {
@@ -103,6 +103,7 @@ const Q = {
     question: "Betaalt de organisator van een Groepscentje mee?",
     answer: [
       "De organisator speelt gewoon mee, maar betaalt niets aan zichzelf. De anderen betalen hun deel aan de organisator.",
+      "Waar je als organisator eindigt, bepaalt wel hoeveel je terugkrijgt. Eindig je hoger, dan is je eigen deel van de rekening kleiner en krijg je meer terug. Eindig je lager, dan is je eigen deel helaas groter en krijg je minder terug.",
     ],
   },
   hoeBetalen: {
