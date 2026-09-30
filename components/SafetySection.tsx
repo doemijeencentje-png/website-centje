@@ -77,34 +77,35 @@ export function SafetySection() {
             </IPhoneFrame>
           </div>
 
-          {/* Klein en rustig: wat Centje kost, over de lege onderkant van het scherm. */}
+          {/* Wat Centje kost: hetzelfde groene vlak als "Je vrienden hebben geen app nodig", maar kleiner,
+              over de lege onderkant van het scherm. */}
           <aside
             aria-labelledby="kosten-titel"
             id="kosten"
-            className="relative mx-auto -mt-12 flex w-full max-w-[320px] scroll-mt-24 items-start gap-3 rounded-[20px] border border-[#CDEFDB] bg-white p-4 shadow-[0_2px_6px_rgba(10,12,10,0.05),0_20px_50px_-24px_rgba(10,40,25,0.4)] sm:p-5"
+            className="relative mx-auto -mt-14 flex w-full max-w-[320px] scroll-mt-24 items-center gap-4 rounded-[24px] bg-[#00D26A] p-6 shadow-[0_24px_50px_-24px_rgba(0,90,45,0.55)] sm:p-7"
           >
+            <div className="min-w-0 flex-1">
+              <h3
+                id="kosten-titel"
+                className="font-heading text-[22px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-2xl"
+              >
+                Wat kost Centje?
+              </h3>
+              <p className="mt-2 text-pretty text-[15px] font-medium leading-[1.5] text-[#0A0C0A]/80">
+                De app is gratis. Voor je verificatie betaal je eenmalig{" "}
+                <strong className="font-bold text-[#0A0C0A]">€&nbsp;1</strong>.
+              </p>
+            </div>
             <Image
               src="/merk/logo-munt.webp"
               alt=""
               width={1024}
               height={1024}
-              sizes="28px"
+              sizes="64px"
               loading="eager"
               fetchPriority="low"
-              className="mt-0.5 h-7 w-7 shrink-0"
+              className="pointer-events-none h-14 w-14 shrink-0 drop-shadow-[0_10px_18px_rgba(0,60,30,0.3)] sm:h-16 sm:w-16"
             />
-            <div className="min-w-0">
-              <h3 id="kosten-titel" className="text-xs font-semibold text-neutral-500">
-                Wat kost Centje?
-              </h3>
-              <p className="mt-1 flex items-baseline gap-2">
-                <span className="font-heading text-2xl font-extrabold leading-none text-[#007F45]">€1</span>
-                <span className="text-sm font-semibold text-[#0A0C0A]">eenmalig, voor je verificatie</span>
-              </p>
-              <p className="mt-2 text-pretty text-[13px] leading-snug text-neutral-500">
-                Downloaden is gratis. Wat je bij een verzoek afrekent, zie je altijd vooraf in de app.
-              </p>
-            </div>
           </aside>
         </div>
       </div>
