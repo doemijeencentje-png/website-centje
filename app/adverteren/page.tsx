@@ -110,17 +110,12 @@ export default function AdverterenPage() {
               {/* Plek in het midden, precies over de binnenste cirkel; de ringen eromheen blijven zichtbaar. */}
               <span
                 aria-hidden
-                className="font-heading absolute left-1/2 top-[37.05%] flex aspect-square w-[37.2cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0A0C0A] text-center text-[5cqw] font-extrabold leading-[1.1] text-white"
+                className="absolute left-1/2 top-[37.05%] flex aspect-square w-[37.2cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-dashed border-[#00A855] bg-white text-[3.8cqw] font-semibold text-[#007F45]"
               >
-                Jouw
-                <br />
-                logo
+                Jouw logo
               </span>
-              {/* Plek onderaan, onder het betaalde bedrag; even breed en even rond als dat blok. */}
-              <span
-                aria-hidden
-                className="font-heading absolute inset-x-[5.6%] top-[88.5%] flex h-[8%] items-center justify-center rounded-[4.75cqw] bg-[#0A0C0A] text-[4.4cqw] font-extrabold text-white"
-              >
+              {/* De advertentieplek onderaan het scherm, onder het betaalde bedrag. */}
+              <span className="absolute inset-x-[7%] top-[88.5%] flex h-[8%] items-center justify-center rounded-[3.5cqw] border-2 border-dashed border-[#00A855] bg-white/90 text-[3.8cqw] font-semibold text-[#007F45]">
                 Jouw merk hier
               </span>
             </IPhoneFrame>
