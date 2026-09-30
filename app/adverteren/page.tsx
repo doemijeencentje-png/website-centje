@@ -64,11 +64,11 @@ export default function AdverterenPage() {
       {/* Hoofdplaatsing: het bedankscherm */}
       <section aria-labelledby="bedankscherm" className="mx-auto max-w-6xl overflow-x-clip px-4 py-20 sm:px-6 sm:py-28">
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
-          <div>
-            <p className="text-sm font-semibold text-[#007F45]">Hoofdplaatsing</p>
+          {/* Lichtgroen vlak, zelfde verloop als de kaart Eerlijk spel op de homepage. */}
+          <div className="rounded-[28px] bg-[linear-gradient(160deg,#EEFBF4_0%,#D7F6E5_100%)] p-7 sm:p-10 lg:p-12">
             <h2
               id="bedankscherm"
-              className="font-heading mt-3 text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+              className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
             >
               Op het bedankscherm na elke betaling
             </h2>
