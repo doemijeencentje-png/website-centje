@@ -48,40 +48,22 @@ export function DownloadSection() {
             de app niet eens nodig.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-6">
-            <a
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-[12px] outline-none transition-transform duration-200 hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 active:scale-[0.98]"
-            >
-              <Image
-                src="/merk/app-store-badge.svg"
-                alt="Download in de App Store"
-                width={180}
-                height={60}
-                unoptimized
-                {...EARLY}
-                className="h-[54px] w-auto sm:h-[60px]"
-              />
-            </a>
-
-            {/* Op een computer: de code scannen met je telefoon. */}
-            <div className="relative hidden h-[112px] w-[112px] shrink-0 rounded-[14px] bg-white p-3 lg:block">
-              <Image
-                src="/merk/qr-download.svg"
-                alt="QR-code om Centje te downloaden"
-                width={96}
-                height={96}
-                unoptimized
-                {...EARLY}
-                className="h-full w-full"
-              />
-              <span className="absolute left-1/2 top-1/2 flex h-[27px] w-[27px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white">
-                <Image src="/merk/logo-munt.webp" alt="" width={1024} height={1024} sizes="22px" {...EARLY} className="h-[21px] w-[21px]" />
-              </span>
-            </div>
-          </div>
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-block rounded-[12px] outline-none transition-transform duration-200 hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 active:scale-[0.98]"
+          >
+            <Image
+              src="/merk/app-store-badge.svg"
+              alt="Download in de App Store"
+              width={180}
+              height={60}
+              unoptimized
+              {...EARLY}
+              className="h-[54px] w-auto sm:h-[60px]"
+            />
+          </a>
 
           <ul aria-label="Telefoons" className="mt-8 flex flex-wrap gap-2">
             <Beschikbaar>
