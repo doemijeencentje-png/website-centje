@@ -19,6 +19,9 @@
   html {
     scroll-behavior: auto;
     overflow-x: clip;
+    /* Geen verend doorscrollen boven en onder de pagina: daarboven zou een witte strook
+       boven de zwarte hero verschijnen. */
+    overscroll-behavior-y: none;
   }
 
   body {

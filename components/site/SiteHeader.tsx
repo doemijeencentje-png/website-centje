@@ -17,9 +17,13 @@ const PROBE_Y = 32;
 
 /** Donkere secties (hero, downloadblok, voettekst) dragen data-kop="donker". */
 function overDarkSection() {
+  // Bij het verende doorscrollen boven de pagina (Mac, iPhone) schuift alles even omlaag; reken
+  // dat terug, anders lijkt de zwarte hero onder de kopbalk weg en springt de balk naar wit.
+  const bounce = Math.min(window.scrollY, 0);
   for (const el of document.querySelectorAll<HTMLElement>('[data-kop="donker"]')) {
     const rect = el.getBoundingClientRect();
-    if (rect.top <= PROBE_Y && rect.bottom > PROBE_Y) return true;
+    const top = rect.top + bounce;
+    if (top <= PROBE_Y && rect.bottom + bounce > PROBE_Y) return true;
   }
   return false;
 }
