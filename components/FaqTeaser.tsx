@@ -18,9 +18,6 @@ export function FaqTeaser() {
           >
             Goed om te weten
           </h2>
-          <p className="mt-5 max-w-[40ch] text-[17px] leading-[1.6] text-neutral-700 sm:mt-6 sm:text-lg">
-            De vragen die we het vaakst krijgen, kort beantwoord.
-          </p>
           <Link
             href="/veelgestelde-vragen"
             className="group mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#0A0C0A] px-6 text-[15px] font-semibold text-white outline-none transition-transform hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"

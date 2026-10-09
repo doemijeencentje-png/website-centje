@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { ArrowDown } from "@phosphor-icons/react";
 import { DOWNLOAD_ANCHOR } from "@/lib/links";
+import { fadedDots } from "./decor";
 import { followLink } from "./site/inPage";
 
 // De poster is dit moment uit de video; de video begint daar, zodat er niets verspringt.
@@ -63,33 +64,50 @@ export default function HeroSection() {
     <section
       id="hero"
       aria-labelledby="hero-titel"
-      className="relative bg-white lg:grid lg:min-h-[100svh] lg:grid-cols-2"
+      className="relative isolate overflow-hidden bg-white lg:grid lg:min-h-[100svh] lg:grid-cols-2"
     >
-      {/* Links: de tekst, uitgelijnd met de inhoudskolom van de rest van de site. */}
-      <div className="flex items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:pb-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-16 lg:pt-28">
-        <div className="max-w-[34rem]">
+      {/* Achtergrond links: zachte mintgloed en stippen die naar de randen uitlopen. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 lg:right-1/2"
+        style={fadedDots("radial-gradient(70% 70% at 30% 40%, #000 0%, transparent 100%)")}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 -top-32 -z-10 h-[620px] w-[620px] rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))] blur-2xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 h-[520px] w-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))] blur-2xl lg:left-[15%]"
+      />
+
+      {/* Links: in één keer duidelijk wat Centje is, zonder uitleg eronder. */}
+      <div className="flex items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:pb-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-10 lg:pt-28">
+        <div className="min-w-0 max-w-[36rem]">
           <h1
             id="hero-titel"
-            className="font-heading text-balance text-[44px] font-extrabold leading-[1.0] text-[#0A0C0A] sm:text-6xl xl:text-[72px]"
+            className="font-heading text-balance text-[34px] font-extrabold leading-[1.02] text-[#0A0C0A] min-[380px]:text-[40px] sm:text-[56px] xl:text-[64px]"
           >
-            Splits de rekening. Speel erom.
+            Betaalverzoek met een spelletje.
+            {/* Tweede zin op een eigen regel, met een groene markeerstreep eronder. */}
+            <span className="mt-2 block">
+              <span className="bg-[linear-gradient(transparent_64%,rgba(0,210,106,0.5)_64%)] px-1">
+                Wie wint, betaalt minder.
+              </span>
+            </span>
           </h1>
-          <p className="mt-6 max-w-[36ch] text-lg leading-relaxed text-neutral-600 sm:mt-8 sm:text-[21px]">
-            Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best
-            speelt, betaalt het minst.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3 sm:mt-11">
+          <div className="mt-10 flex flex-wrap gap-3 sm:mt-12">
             <Link
               href={DOWNLOAD_ANCHOR}
               onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
-              className="inline-flex h-[54px] items-center rounded-full bg-[#00D26A] px-7 text-[17px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+              className="inline-flex h-[58px] items-center rounded-full bg-[#00D26A] px-8 text-lg font-semibold text-[#0A0C0A] shadow-[0_18px_40px_-18px_rgba(0,210,106,0.9)] outline-none transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
             >
               Download de app
             </Link>
             <Link
               href="/#stappen"
               onClick={(event) => followLink(event, "/#stappen", true)}
-              className="group inline-flex h-[54px] items-center gap-2 rounded-full bg-white px-6 text-[17px] font-semibold text-[#0A0C0A] outline-none ring-1 ring-inset ring-black/10 transition-colors duration-200 hover:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+              className="group inline-flex h-[58px] items-center gap-2 rounded-full bg-white/80 px-7 text-lg font-semibold text-[#0A0C0A] outline-none ring-1 ring-inset ring-black/10 backdrop-blur transition-colors duration-200 hover:bg-white focus-visible:ring-2 focus-visible:ring-[#00D26A]"
             >
               Zo werkt het
               <ArrowDown

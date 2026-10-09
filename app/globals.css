@@ -70,6 +70,22 @@
   animation: stap-in 160ms ease-out both;
 }
 
+/* Zachte ademende gloed achter de telefoon op het podium (alleen schaal en doorzicht: goedkoop). */
+@keyframes gloed {
+  from {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  to {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+.gloed {
+  animation: gloed 7s ease-in-out infinite alternate;
+}
+
 @media (prefers-reduced-motion: reduce) {
   @layer base {
     * {
