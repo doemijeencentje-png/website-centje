@@ -65,7 +65,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
   const flyPhone = useRef<HTMLDivElement>(null);
   const shownFlow = useRef(flow.id);
 
-  // Andere speelvorm gekozen: de telefoon vliegt van links binnen, de stappen van rechts.
+  // Andere speelvorm gekozen: de telefoon komt rustig van links binnen, de stappen van rechts.
   // Alleen bij een wissel (een klik of menu-link), nooit gekoppeld aan het scrollen.
   useEffect(() => {
     if (shownFlow.current === flow.id) return;
@@ -74,8 +74,8 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     const ease = [0.22, 1, 0.36, 1] as const;
     const runs = [
       flyPhone.current &&
-        animate(flyPhone.current, { opacity: [0, 1], x: [-60, 0], rotate: [-6, 0] }, { duration: 0.7, ease }),
-      steps.current && animate(steps.current, { opacity: [0, 1], x: [60, 0] }, { duration: 0.6, ease, delay: 0.08 }),
+        animate(flyPhone.current, { opacity: [0, 1], x: [-28, 0], rotate: [-2, 0] }, { duration: 1.1, ease }),
+      steps.current && animate(steps.current, { opacity: [0, 1], x: [24, 0] }, { duration: 0.9, ease, delay: 0.1 }),
     ];
     return () => runs.forEach((run) => run?.stop());
   }, [flow.id, reduceMotion]);
