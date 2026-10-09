@@ -15,12 +15,15 @@ const dots = (color: string, radius: number) =>
  */
 export function DotField({
   className = "",
+  dark = false,
   fade,
   reveal = 200,
   glow = 620,
   glowAlpha = 0.26,
 }: {
   className?: string;
+  /** Lichte stippen voor een donker vlak. */
+  dark?: boolean;
   /** Masker voor het grijze raster, bijvoorbeeld zodat het naar één kant uitloopt. */
   fade?: string;
   /** Straal in px van het gebied waarin de stippen groen worden. */
@@ -85,7 +88,12 @@ export function DotField({
     >
       <div
         className="absolute inset-0"
-        style={{ backgroundImage: dots("rgba(10,12,10,0.13)", 1), backgroundSize: GRID, maskImage: fade, WebkitMaskImage: fade }}
+        style={{
+          backgroundImage: dots(dark ? "rgba(255,255,255,0.1)" : "rgba(10,12,10,0.13)", 1),
+          backgroundSize: GRID,
+          maskImage: fade,
+          WebkitMaskImage: fade,
+        }}
       />
       <div
         ref={blob}
@@ -100,7 +108,12 @@ export function DotField({
       <div
         ref={green}
         className="absolute inset-0 opacity-0 transition-opacity duration-500"
-        style={{ backgroundImage: dots("rgba(0,184,92,0.9)", 1.25), backgroundSize: GRID, maskImage: spot, WebkitMaskImage: spot }}
+        style={{
+          backgroundImage: dots(dark ? "rgba(0,210,106,0.95)" : "rgba(0,184,92,0.9)", 1.25),
+          backgroundSize: GRID,
+          maskImage: spot,
+          WebkitMaskImage: spot,
+        }}
       />
     </div>
   );

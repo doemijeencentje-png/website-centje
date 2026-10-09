@@ -14,12 +14,13 @@ import { FLOWS } from "./how-it-works/flows";
 // De poster is dit moment uit de video; de video begint daar, zodat er niets verspringt.
 const POSTER_TIME = 2.2;
 const VIDEO_SRC = "/hero/munt-intro.mp4";
-// Zo lang blijft elk scherm van de app-demo staan.
+// Zo lang blijft elke stap van de demo staan.
 const SLIDE_MS = 3400;
+const STEPS = FLOWS[0].steps;
 
 type NetworkInfo = { saveData?: boolean };
 
-/** De muntanimatie: poster meteen, video pas als de pagina klaar is; stil buiten beeld. */
+/** De muntanimatie, groot en los in het vak: poster meteen, video pas als de pagina klaar is; stil buiten beeld. */
 function CoinVideo() {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -67,7 +68,7 @@ function CoinVideo() {
   }, [reduceMotion]);
 
   return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-[20px] bg-black ring-1 ring-black/5 lg:mx-0 lg:w-[384px] lg:max-w-none xl:w-[420px] [@media(max-height:820px)]:lg:w-[352px]">
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:mx-0 lg:h-[min(600px,calc(100svh_-_17rem))] lg:w-auto lg:max-w-none">
       {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
       <Image
         src="/hero/munt-intro-poster.webp"
@@ -76,7 +77,7 @@ function CoinVideo() {
         loading="eager"
         fetchPriority="high"
         quality={90}
-        sizes="(min-width: 1280px) 420px, (min-width: 1024px) 384px, (min-width: 640px) 460px, 100vw"
+        sizes="(min-width: 1024px) 480px, (min-width: 640px) 460px, 100vw"
         className="object-cover"
       />
       <video
@@ -100,165 +101,189 @@ function CoinVideo() {
   );
 }
 
-/**
- * De app zelf: de vijf schermen van een individueel verzoek, na elkaar, met een kaartje
- * ernaast dat de stap noemt en per scherm volloopt. Alleen in beweging zolang het in beeld is.
- */
-function AppDemo() {
-  const steps = FLOWS[0].steps;
+type Demo = { index: number; run: number; moving: boolean; show: (i: number) => void };
+
+/** Stand van de demo: welke stap, en of hij loopt (alleen in beeld en zonder "minder beweging"). */
+function useDemo(target: React.RefObject<HTMLElement | null>): Demo {
   const [index, setIndex] = useState(0);
-  // Telt mee bij elke herstart, zodat het streepje ook bij dezelfde stap opnieuw begint.
+  // Telt mee bij elke klik, zodat het streepje ook bij dezelfde stap opnieuw begint.
   const [run, setRun] = useState(0);
   const [inView, setInView] = useState(false);
-  const wrap = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const moving = inView && !reduceMotion;
 
   useEffect(() => {
-    const el = wrap.current;
+    const el = target.current;
     if (!el) return;
     const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [target]);
 
   useEffect(() => {
     if (!moving) return;
-    const timer = window.setTimeout(() => setIndex((i) => (i + 1) % steps.length), SLIDE_MS);
+    const timer = window.setTimeout(() => setIndex((i) => (i + 1) % STEPS.length), SLIDE_MS);
     return () => window.clearTimeout(timer);
-  }, [moving, index, run, steps.length]);
+  }, [moving, index, run]);
 
   const show = (i: number) => {
     setIndex(i);
     setRun((r) => r + 1);
   };
 
-  const step = steps[index];
+  return { index, run, moving, show };
+}
 
+/** Kaartje met de stap: vijf streepjes die per stap vollopen (klikbaar) en de naam van de stap. */
+function StepCard({ demo, className = "" }: { demo: Demo; className?: string }) {
+  const { index, run, moving, show } = demo;
   return (
-    <div ref={wrap} role="group" aria-label="Voorbeeld van een individueel verzoek in de app" className="relative h-full">
-      {/* De telefoon loopt onder de onderrand van het podium door. */}
-      <div className="absolute right-[6%] top-0 w-[240px] xl:right-[10%] xl:w-[268px] [@media(max-height:820px)]:lg:w-[228px]">
-        <IPhoneFrame>
-          {steps.map((s, i) => (
-            <Image
-              key={s.image}
-              src={s.image}
-              alt={i === index ? s.alt : ""}
-              aria-hidden={i !== index}
-              fill
-              quality={90}
-              // Lazy: op telefoon en tablet staat de demo verborgen en worden deze schermen niet geladen.
-              loading="lazy"
-              sizes="268px"
-              className={`object-cover object-top transition-opacity duration-700 ease-out ${
-                i === index ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-        </IPhoneFrame>
+    <div
+      className={`rounded-[20px] bg-white p-5 text-[#0A0C0A] shadow-[0_30px_70px_-30px_rgba(0,0,0,0.75)] ring-1 ring-black/5 ${className}`}
+    >
+      <div className="flex gap-1.5">
+        {STEPS.map((s, i) => (
+          <button
+            key={s.title}
+            type="button"
+            onClick={() => show(i)}
+            aria-label={`Stap ${i + 1}: ${s.title}`}
+            aria-current={i === index ? "step" : undefined}
+            className="group relative flex-1 py-2 outline-none before:absolute before:inset-x-0 before:-inset-y-2 before:content-['']"
+          >
+            <span className="block h-1.5 overflow-hidden rounded-full bg-[#E3EAE6] ring-offset-2 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
+              {i < index || (i === index && !moving) ? (
+                <span className="block h-full w-full bg-[#00D26A]" />
+              ) : i === index ? (
+                <span
+                  key={`${index}-${run}`}
+                  className="vul block h-full w-full bg-[#00D26A]"
+                  style={{ "--duur": `${SLIDE_MS}ms` } as React.CSSProperties}
+                />
+              ) : null}
+            </span>
+          </button>
+        ))}
       </div>
-
-      {/* Kaartje met de stap, half over de telefoon, zoals een los paneel in een schermafbeelding. */}
-      <div className="absolute left-0 top-[34%] z-10 w-[268px] rounded-[20px] border border-[#E3EAE6] bg-white p-5 shadow-[0_2px_4px_rgba(10,12,10,0.04),0_24px_60px_-28px_rgba(0,60,30,0.4)] xl:left-[2%] xl:w-[292px]">
-        <div className="flex gap-1.5">
-          {steps.map((s, i) => (
-            <button
-              key={s.title}
-              type="button"
-              onClick={() => show(i)}
-              aria-label={`Stap ${i + 1}: ${s.title}`}
-              aria-current={i === index ? "step" : undefined}
-              className="group relative flex-1 py-2 outline-none before:absolute before:inset-x-0 before:-inset-y-2 before:content-['']"
-            >
-              <span className="block h-1.5 overflow-hidden rounded-full bg-[#E3EAE6] ring-offset-2 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
-                {i < index || (i === index && !moving) ? (
-                  <span className="block h-full w-full bg-[#00D26A]" />
-                ) : i === index ? (
-                  <span
-                    key={`${index}-${run}`}
-                    className="vul block h-full w-full bg-[#00D26A]"
-                    style={{ "--duur": `${SLIDE_MS}ms` } as React.CSSProperties}
-                  />
-                ) : null}
-              </span>
-            </button>
-          ))}
-        </div>
-        <p key={index} className="stap-in mt-3 flex min-h-[3.25rem] items-center gap-3">
-          <span className="font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold text-[#0A0C0A]">
-            {index + 1}
-          </span>
-          <span className="font-heading text-lg font-extrabold leading-[1.15] text-[#0A0C0A]">{step.title}</span>
-        </p>
-      </div>
+      <p key={index} className="stap-in mt-3 flex min-h-[3.25rem] items-center gap-3">
+        <span className="font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold">
+          {index + 1}
+        </span>
+        <span className="font-heading text-lg font-extrabold leading-[1.15]">{STEPS[index].title}</span>
+      </p>
     </div>
   );
 }
 
-export default function HeroSection() {
+/** De telefoon met het scherm van de huidige stap; de vijf schermen wisselen met een korte overgang. */
+function DemoPhone({ index }: { index: number }) {
   return (
-    <section
-      id="hero"
-      aria-labelledby="hero-titel"
-      className="relative isolate overflow-hidden bg-white pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pt-32 [@media(max-height:820px)]:lg:pt-28"
-    >
-      {/* Stippenraster achter de kop, uitlopend vanaf rechtsboven; met de muis erover kleuren de stippen groen. */}
-      <DotField
-        className="hidden sm:block"
-        fade="radial-gradient(ellipse 70% 85% at 100% 0%, #000 35%, transparent 100%)"
-        reveal={240}
-        glow={780}
-        glowAlpha={0.16}
-      />
-      {/* Eerst in één keer wat Centje is, links uitgelijnd zoals een krantenkop. */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h1
-          id="hero-titel"
-          className="font-heading text-balance text-[38px] font-extrabold leading-[1.02] text-[#0A0C0A] min-[380px]:text-[44px] sm:text-[60px] lg:text-[64px] xl:text-[72px] [@media(max-height:820px)]:lg:text-[56px]"
-        >
-          Splits de rekening.
-          {/* Tweede zin op een eigen regel; de groene markeerstift trekt er één keer onderdoor. */}
-          <span className="mt-1 block">
-            <span className="markeer px-1">Speel erom.</span>
-          </span>
-        </h1>
-        <p className="mt-6 max-w-[44ch] text-pretty text-[17px] leading-[1.55] text-neutral-600 sm:text-xl lg:mt-6 [@media(max-height:820px)]:lg:mt-4 [@media(max-height:820px)]:lg:text-lg">
-          Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best speelt, betaalt het minst.
-        </p>
-        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap lg:mt-8 [@media(max-height:820px)]:lg:mt-6">
-          <Link
-            href={DOWNLOAD_ANCHOR}
-            onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
-            className="inline-flex h-[56px] items-center justify-center rounded-full bg-[#00D26A] px-8 text-[17px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
-          >
-            Download de app
-          </Link>
-          <Link
-            href="/#stappen"
-            onClick={(event) => followLink(event, "/#stappen", true)}
-            className="group inline-flex h-[56px] items-center justify-center gap-2 rounded-full bg-white px-7 text-[17px] font-semibold text-[#0A0C0A] outline-none ring-1 ring-inset ring-black/10 transition-colors duration-200 hover:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
-          >
-            Zo werkt het
-            <ArrowDown
-              weight="bold"
-              aria-hidden
-              className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5"
-            />
-          </Link>
-        </div>
-      </div>
+    <IPhoneFrame>
+      {STEPS.map((s, i) => (
+        <Image
+          key={s.image}
+          src={s.image}
+          alt={i === index ? s.alt : ""}
+          aria-hidden={i !== index}
+          fill
+          quality={90}
+          // Lazy: op telefoon en tablet staat de telefoon verborgen en worden deze schermen niet geladen.
+          loading="lazy"
+          sizes="210px"
+          className={`object-cover object-top transition-opacity duration-700 ease-out ${
+            i === index ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+    </IPhoneFrame>
+  );
+}
 
-      {/* Het podium: de munt en de app naast elkaar op een stippenraster (zoals millimeterpapier),
-          waar een groene lichtvlek de muis volgt. Op telefoon en tablet alleen de munt, zonder kader. */}
-      <div className="mx-auto mt-10 max-w-6xl px-4 sm:mt-12 sm:px-6 lg:mt-10 [@media(max-height:820px)]:lg:mt-8">
-        <div className="relative isolate overflow-hidden lg:rounded-[28px] lg:border lg:border-[#E3EAE6] lg:bg-[#F4F7F5]">
-          <DotField className="hidden lg:block" />
-          <div className="grid lg:h-[544px] lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-8 lg:p-8 xl:h-[589px] [@media(max-height:820px)]:lg:h-[504px]">
-            <CoinVideo />
-            <div className="hidden lg:block">
-              <AppDemo />
+export default function HeroSection() {
+  const box = useRef<HTMLDivElement>(null);
+  const demo = useDemo(box);
+
+  return (
+    <section id="hero" aria-labelledby="hero-titel" className="bg-white px-3 pb-10 pt-[76px] sm:px-4 sm:pt-20 lg:px-6 lg:pt-[88px]">
+      {/* Eén groot donker vak met ronde hoeken, los van de schermrand. */}
+      <div
+        ref={box}
+        data-kop="donker"
+        className="relative isolate mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-[#0B110E] text-white lg:rounded-[36px]"
+      >
+        {/* Stippenraster; met de muis erover kleuren de stippen groen en schuift er een lichtvlek mee. */}
+        <DotField dark glowAlpha={0.22} reveal={220} glow={720} />
+
+        <div className="grid gap-8 p-5 pb-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-14 lg:p-14 [@media(max-height:820px)]:lg:p-10">
+          {/* Links de tekst, met in de hoek eronder de stappen: een schuine telefoon die uit de onderrand opduikt. */}
+          <div className="flex min-w-0 flex-col">
+            <h1
+              id="hero-titel"
+              className="font-heading text-balance text-[38px] font-extrabold leading-[1.02] min-[380px]:text-[44px] sm:text-[60px] lg:text-[56px] xl:text-[64px] [@media(max-height:820px)]:lg:text-[52px]"
+            >
+              Splits de rekening.
+              {/* Tweede zin op een groene markering die er één keer van links naar rechts onder schuift. */}
+              <span className="mt-2 block">
+                <span className="relative inline-block -rotate-1 whitespace-nowrap">
+                  <span className="block px-2 pb-[0.1em]">Speel erom.</span>
+                  <span
+                    aria-hidden
+                    className="veeg absolute inset-0 block rounded-[10px] bg-[#00D26A] px-2 pb-[0.1em] text-[#0A0C0A]"
+                  >
+                    Speel erom.
+                  </span>
+                </span>
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[40ch] text-pretty text-[17px] leading-[1.55] text-white/70 sm:text-xl lg:text-[19px] [@media(max-height:820px)]:lg:mt-4">
+              Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best speelt, betaalt het minst.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap [@media(max-height:820px)]:lg:mt-6">
+              <Link
+                href={DOWNLOAD_ANCHOR}
+                onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
+                className="inline-flex h-[56px] items-center justify-center rounded-full bg-[#00D26A] px-8 text-[17px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+              >
+                Download de app
+              </Link>
+              <Link
+                href="/#stappen"
+                onClick={(event) => followLink(event, "/#stappen", true)}
+                className="group inline-flex h-[56px] items-center justify-center gap-2 rounded-full bg-white/10 px-7 text-[17px] font-semibold text-white outline-none ring-1 ring-inset ring-white/20 transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+              >
+                Zo werkt het
+                <ArrowDown
+                  weight="bold"
+                  aria-hidden
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5"
+                />
+              </Link>
             </div>
+
+            {/* Desktop: de stappen in de hoek. De telefoon loopt door tot onder de rand van het vak. */}
+            <div
+              role="group"
+              aria-label="Voorbeeld van een individueel verzoek in de app"
+              className="relative mt-auto hidden h-[240px] lg:block [@media(max-height:820px)]:lg:h-[176px]"
+            >
+              <div className="absolute left-1 top-8 w-[196px] -rotate-[8deg] [@media(max-height:820px)]:lg:top-5 [@media(max-height:820px)]:lg:w-[168px]">
+                <div
+                  aria-hidden
+                  className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.35),rgba(0,210,106,0))] blur-xl"
+                />
+                <DemoPhone index={demo.index} />
+              </div>
+              <StepCard
+                demo={demo}
+                className="absolute left-[172px] top-16 w-[300px] [@media(max-height:820px)]:lg:left-[148px] [@media(max-height:820px)]:lg:top-8"
+              />
+            </div>
+          </div>
+
+          {/* Rechts de munt, groot; op telefoon en tablet schuift het stappenkaartje over de onderkant. */}
+          <div className="min-w-0">
+            <CoinVideo />
+            <StepCard demo={demo} className="relative z-10 mx-3 -mt-14 sm:mx-auto sm:max-w-[380px] lg:hidden" />
           </div>
         </div>
       </div>

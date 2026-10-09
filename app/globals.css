@@ -86,23 +86,19 @@
   animation: gloed 7s ease-in-out infinite alternate;
 }
 
-/* Groene markeerstift onder de tweede zin van de hero: trekt één keer van links naar rechts.
-   Over twee regels loopt hij eerst over de bovenste en dan over de onderste regel. */
-@keyframes markeer {
+/* Groene markering onder "Speel erom." in de hero: schuift één keer van links naar rechts.
+   Het groene vlak met donkere tekst ligt over de witte tekst en wordt van links af zichtbaar. */
+@keyframes veeg {
   from {
-    background-size: 0% 100%;
+    clip-path: inset(0 100% 0 0);
   }
   to {
-    background-size: 100% 100%;
+    clip-path: inset(0 0 0 0);
   }
 }
 
-.markeer {
-  background-image: linear-gradient(transparent 62%, rgba(0, 210, 106, 0.5) 62%);
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 100% 100%;
-  animation: markeer 1100ms cubic-bezier(0.65, 0, 0.35, 1) 450ms both;
+.veeg {
+  animation: veeg 900ms cubic-bezier(0.65, 0, 0.35, 1) 450ms both;
 }
 
 /* Voortgangsstreepje in de app-demo van de hero: vult in de tijd dat een scherm te zien is. */
@@ -121,7 +117,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .markeer,
+  .veeg,
   .vul {
     animation: none;
   }
