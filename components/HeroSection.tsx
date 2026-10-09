@@ -209,7 +209,7 @@ export default function HeroSection() {
       <div className="bg-[#050605] px-3 pb-3 pt-[76px] sm:px-4 sm:pb-4 sm:pt-20 lg:px-3 lg:pb-3 lg:pt-[84px]">
         <div
           ref={box}
-          className="relative isolate overflow-hidden rounded-[28px] bg-[#0B110E] text-white ring-1 ring-white/10 lg:grid lg:min-h-[min(720px,calc(100svh_-_10rem))] lg:grid-cols-[minmax(0,1fr)_44%] lg:rounded-[36px]"
+          className="relative isolate overflow-hidden rounded-[28px] bg-[#0B110E] text-white ring-1 ring-white/10 lg:grid lg:min-h-[calc(100svh_-_96px)] lg:grid-cols-[minmax(0,1fr)_44%] lg:rounded-[36px]"
         >
           {/* Stippenraster; met de muis erover kleuren de stippen groen en schuift er een lichtvlek mee. */}
           <DotField dark glowAlpha={0.22} reveal={220} glow={720} />
