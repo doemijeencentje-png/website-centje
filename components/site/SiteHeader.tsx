@@ -36,8 +36,8 @@ function sectionInView() {
 }
 
 /**
- * Vaste kopbalk van de hele site. Bovenaan doorzichtig; na scrollen licht glas, en donker
- * glas boven donkere secties (downloadblok, voettekst).
+ * Vaste kopbalk van de hele site: licht glas boven lichte delen, donker glas boven donkere
+ * secties (downloadblok, voettekst).
  */
 export function SiteHeader() {
   const pathname = usePathname();
@@ -75,11 +75,12 @@ export function SiteHeader() {
     };
   }, [pathname, update]);
 
-  const surface = !scrolled
-    ? "border-transparent bg-transparent"
-    : tone === "light"
+  const surface =
+    tone === "light"
       ? "border-[#E3EAE6]/80 bg-white/90 backdrop-blur-md"
-      : "border-white/10 bg-[#0A0C0A]/85 backdrop-blur-md";
+      : scrolled
+        ? "border-white/10 bg-[#0A0C0A]/85 backdrop-blur-md"
+        : "border-transparent bg-transparent";
 
   return (
     <>

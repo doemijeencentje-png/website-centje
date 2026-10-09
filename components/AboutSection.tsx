@@ -27,7 +27,7 @@ export function AboutSection() {
         <div className="relative mx-3 -mt-20 rounded-[28px] bg-white p-6 shadow-[0_2px_4px_rgba(10,12,10,0.04),0_30px_80px_-30px_rgba(0,70,35,0.35)] ring-1 ring-black/5 sm:mx-10 sm:-mt-28 sm:p-10 lg:mx-0 lg:-ml-16 lg:mt-0 lg:p-12">
           <h2
             id="verhaal-titel"
-            className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-[48px]"
           >
             Hoe het begon
           </h2>

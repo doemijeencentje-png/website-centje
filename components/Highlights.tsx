@@ -13,7 +13,7 @@ export function Highlights() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2
           id="gemak-titel"
-          className="font-heading max-w-3xl text-balance text-[30px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-5xl"
+          className="font-heading max-w-3xl text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-[56px]"
         >
           Makkelijk voor iedereen aan tafel
         </h2>

@@ -54,7 +54,7 @@ export function HowItWorks() {
         <div className="max-w-2xl">
           <h2
             id="stappen-titel"
-            className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            className="font-heading text-balance text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-[56px]"
           >
             Hoe Centje werkt
           </h2>

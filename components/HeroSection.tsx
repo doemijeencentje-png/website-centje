@@ -60,22 +60,21 @@ export default function HeroSection() {
   }, [reduceMotion]);
 
   return (
-    <section id="hero" aria-labelledby="hero-titel" className="relative isolate overflow-hidden bg-white">
-      {/* Licht en rustig: zwarte tekst op wit, met alleen een zachte groene gloed achter de munt. */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(45%_55%_at_80%_45%,rgba(0,210,106,0.14),rgba(0,210,106,0)_70%)]"
-      />
-
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:pb-20 lg:pt-24">
-        <div>
+    <section
+      id="hero"
+      aria-labelledby="hero-titel"
+      className="relative bg-white lg:grid lg:min-h-[100svh] lg:grid-cols-2"
+    >
+      {/* Links: de tekst, uitgelijnd met de inhoudskolom van de rest van de site. */}
+      <div className="flex items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 lg:pb-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-16 lg:pt-28">
+        <div className="max-w-[34rem]">
           <h1
             id="hero-titel"
-            className="font-heading text-balance text-[44px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-6xl xl:text-[64px]"
+            className="font-heading text-balance text-[44px] font-extrabold leading-[1.0] text-[#0A0C0A] sm:text-6xl xl:text-[72px]"
           >
             Splits de rekening. Speel erom.
           </h1>
-          <p className="mt-6 max-w-[38ch] text-lg leading-relaxed text-neutral-600 sm:mt-8 sm:text-[21px]">
+          <p className="mt-6 max-w-[36ch] text-lg leading-relaxed text-neutral-600 sm:mt-8 sm:text-[21px]">
             Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best
             speelt, betaalt het minst.
           </p>
@@ -101,35 +100,35 @@ export default function HeroSection() {
             </Link>
           </div>
         </div>
+      </div>
 
-        {/* De munt, groot: op desktop zo hoog als het scherm toelaat. */}
-        <div className="relative mx-auto w-full max-w-[440px] lg:mx-0 lg:ml-auto lg:w-[min(100%,540px,calc((100svh-11rem)*0.8))] lg:max-w-none">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black shadow-[0_2px_6px_rgba(10,12,10,0.06),0_40px_90px_-36px_rgba(0,60,30,0.5)] ring-1 ring-black/5">
-            {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
-            <Image
-              src="/hero/munt-intro-poster.webp"
-              alt=""
-              fill
-              loading="eager"
-              fetchPriority="high"
-              quality={90}
-              sizes="(min-width: 1024px) 540px, (min-width: 640px) 440px, 100vw"
-              className="object-cover"
-            />
-            <video
-              ref={video}
-              onPlaying={() => setPlaying(true)}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-                playing ? "opacity-100" : "opacity-0"
-              }`}
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden
-              tabIndex={-1}
-            />
-          </div>
+      {/* Rechts: de munt, op desktop van rand tot rand en zo hoog als het scherm; op mobiel een kaart. */}
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:p-0">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black lg:h-full lg:min-h-[100svh] lg:rounded-none">
+          {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
+          <Image
+            src="/hero/munt-intro-poster.webp"
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            quality={90}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <video
+            ref={video}
+            onPlaying={() => setPlaying(true)}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+              playing ? "opacity-100" : "opacity-0"
+            }`}
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden
+            tabIndex={-1}
+          />
         </div>
       </div>
     </section>

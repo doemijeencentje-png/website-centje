@@ -14,7 +14,7 @@ export function FaqTeaser() {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2
             id="vragen-titel"
-            className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-5xl"
+            className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-[56px]"
           >
             Goed om te weten
           </h2>
