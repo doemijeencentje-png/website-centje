@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CaretDown } from "@phosphor-icons/react";
-import { DOWNLOAD_ANCHOR } from "@/lib/links";
+import { CaretDown } from "@phosphor-icons/react";
 import { HOW_IT_WORKS, HOW_IT_WORKS_LABEL, HOW_IT_WORKS_SECTIONS, TOP_ITEMS } from "./navigation";
 import { followLink } from "./inPage";
 
@@ -118,55 +116,22 @@ function HowItWorksMenu({ tone, active, onHome }: { tone: Tone; active: boolean;
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.98 }}
               transition={{ duration: 0.22, ease: EASE }}
-              className="grid w-[700px] origin-top-left grid-cols-[minmax(0,1fr)_220px] gap-2 rounded-[28px] bg-white p-2 shadow-[0_2px_6px_rgba(10,12,10,0.06),0_30px_80px_-24px_rgba(0,60,30,0.35)] ring-1 ring-black/[0.06]"
+              className="w-[260px] origin-top-left rounded-[20px] bg-white p-2 shadow-[0_2px_6px_rgba(10,12,10,0.06),0_30px_80px_-24px_rgba(0,60,30,0.3)] ring-1 ring-black/[0.06]"
             >
-              <ul className="p-1">
-                {HOW_IT_WORKS.map(({ label, text, href, icon: Icon }) => (
+              <ul>
+                {HOW_IT_WORKS.map(({ label, href }) => (
                   <li key={href}>
                     <Link
                       href={href}
                       data-menu-item
                       onClick={(event) => choose(event, href)}
-                      className="group flex items-start gap-3.5 rounded-[20px] p-3 outline-none transition-colors hover:bg-[#F4F7F5] focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                      className="block rounded-[14px] px-4 py-3 text-[15px] font-medium text-[#0A0C0A] outline-none transition-colors hover:bg-[#F4F7F5] focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                     >
-                      <Icon
-                        weight="bold"
-                        aria-hidden
-                        className="mt-px h-[22px] w-[22px] shrink-0 text-[#007F45] transition-colors group-hover:text-[#0A0C0A]"
-                      />
-                      <span className="min-w-0">
-                        <span className="block text-[15px] font-semibold text-[#0A0C0A]">{label}</span>
-                        <span className="mt-0.5 block text-sm leading-snug text-neutral-500">{text}</span>
-                      </span>
+                      {label}
                     </Link>
                   </li>
                 ))}
               </ul>
-
-              <Link
-                href={DOWNLOAD_ANCHOR}
-                data-menu-item
-                onClick={(event) => choose(event, DOWNLOAD_ANCHOR)}
-                className="group relative isolate flex flex-col justify-end overflow-hidden rounded-[22px] bg-[#0A0C0A] p-5 outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A]"
-              >
-                <span
-                  aria-hidden
-                  className="absolute -right-10 -top-12 -z-10 h-48 w-48 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.35),rgba(0,210,106,0))]"
-                />
-                <Image
-                  src="/merk/logo-munt.webp"
-                  alt=""
-                  width={1024}
-                  height={1024}
-                  sizes="80px"
-                  className="absolute right-5 top-5 h-20 w-20 transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="font-heading block text-lg font-extrabold leading-tight text-white">Download de app</span>
-                <span className="mt-1 flex items-center gap-1.5 text-sm text-white/65">
-                  Gratis downloaden
-                  <ArrowRight weight="bold" aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </Link>
             </motion.div>
           </div>
         ) : null}

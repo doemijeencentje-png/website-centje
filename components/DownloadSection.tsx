@@ -10,7 +10,7 @@ const EARLY = { loading: "eager", fetchPriority: "low" } as const;
 function Beschikbaar({ binnenkort = false, children }: { binnenkort?: boolean; children: React.ReactNode }) {
   return (
     <li
-      className={`inline-flex h-8 items-center gap-2 rounded-full px-3 text-[13px] font-medium ${
+      className={`inline-flex h-8 items-center gap-2 rounded-full px-3 text-sm font-medium ${
         binnenkort
           ? "border border-dashed border-white/15 text-white/40"
           : "bg-white/[0.07] text-white/85 ring-1 ring-inset ring-white/15"
@@ -43,7 +43,7 @@ export function DownloadSection() {
           >
             Download Centje. <span className="text-[#00D26A]">Betaal leuker.</span>
           </h2>
-          <p className="mt-6 max-w-[42ch] text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mt-6 max-w-[42ch] text-[17px] leading-[1.6] text-white/75 sm:text-lg">
             Stuur vandaag nog je eerste challenge. Centje is er voor iPhone, en je vrienden hebben
             de app niet eens nodig.
           </p>

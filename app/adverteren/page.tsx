@@ -47,7 +47,7 @@ const BEREIK = [
 
 // Tekst in de kaarten: een rustige kop en veel lucht tussen de onderdelen.
 const KOP = "font-heading text-balance text-[30px] font-extrabold leading-[1.08] text-[#0A0C0A] sm:text-[40px]";
-const TEKST = "mt-6 max-w-[48ch] text-base leading-[1.75] text-neutral-600 sm:text-[17px]";
+const TEKST = "mt-6 max-w-[48ch] text-[17px] leading-[1.65] text-neutral-700 sm:text-lg";
 
 // Beeld dat bij aanwijzen met de muis een fractie omhoog komt.
 const OPTIL = "transition-transform duration-500 ease-out hover:-translate-y-1.5";
@@ -58,8 +58,8 @@ function Punten({ items }: { items: { title: string; text: string }[] }) {
     <ul className="mt-10 space-y-7">
       {items.map(({ title, text }) => (
         <li key={title}>
-          <span className="block text-base font-semibold text-[#0A0C0A] sm:text-[17px]">{title}</span>
-          <span className="mt-1.5 block max-w-[50ch] text-[15px] leading-[1.7] text-neutral-600">{text}</span>
+          <span className="block text-[17px] font-semibold text-[#0A0C0A] sm:text-lg">{title}</span>
+          <span className="mt-1.5 block max-w-[50ch] text-base leading-[1.6] text-neutral-700">{text}</span>
         </li>
       ))}
     </ul>
@@ -172,7 +172,7 @@ export default function AdverterenPage() {
                     Jouw merk hier
                   </span>
                 </IPhoneFrame>
-                <figcaption className="mt-5 text-center text-sm text-neutral-600">
+                <figcaption className="mt-5 text-center text-base text-neutral-600">
                   Het bedankscherm, met in het midden en onderaan de plek voor je merk.
                 </figcaption>
               </figure>
@@ -233,14 +233,13 @@ export default function AdverterenPage() {
               className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14"
             >
               <GroenKader>
-                <p className="text-sm font-semibold text-neutral-500">Ook mogelijk</p>
                 <h2
                   id="in-de-spellen"
-                  className="font-heading mt-3 text-2xl font-extrabold leading-[1.1] text-[#0A0C0A] sm:text-3xl"
+                  className="font-heading text-[30px] font-extrabold leading-[1.08] text-[#0A0C0A] sm:text-[40px]"
                 >
                   In de spellen
                 </h2>
-                <p className="mt-5 max-w-[48ch] text-[15px] leading-[1.75] text-neutral-600 sm:text-base">
+                <p className="mt-6 max-w-[48ch] text-[17px] leading-[1.65] text-neutral-700 sm:text-lg">
                   Alle spellen in Centje maken we zelf. Daardoor kan je merk ook in de spelwereld een plek
                   krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
                   spel. Welke plek het beste past, bepalen we samen.
@@ -303,7 +302,7 @@ export default function AdverterenPage() {
               >
                 Interesse?
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              <p className="mt-5 text-[17px] leading-[1.6] text-neutral-700 sm:text-lg">
                 Vertel ons over je merk en wat je zoekt. We denken graag mee over de plek die het beste
                 past: op het bedankscherm, in de app of in de spellen.
               </p>

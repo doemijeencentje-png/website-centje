@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { ArrowRight, User, UsersThree } from "@phosphor-icons/react";
+import { User, UsersThree } from "@phosphor-icons/react";
 import { FLOWS, type FlowId } from "./flows";
 import { PanelArt } from "./PanelArt";
 
@@ -103,17 +103,13 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
               }`}
               style={{ width: ACTIVE_WIDTH }}
             >
-              <span className="flex items-center gap-2 text-[13px] font-semibold text-[#0A0C0A]/75 sm:text-sm">
-                <Icon weight="bold" className="h-4 w-4" aria-hidden />
-                {flow.tagline}
-              </span>
               <span
                 id={`tab-${flow.id}-naam`}
-                className="font-heading mt-2 block text-[clamp(18px,calc(9cqw_-_7px),26px)] font-extrabold leading-[1.02] text-[#0A0C0A] sm:mt-3 sm:text-4xl lg:text-5xl"
+                className="font-heading block text-[clamp(18px,calc(9cqw_-_7px),26px)] font-extrabold leading-[1.02] text-[#0A0C0A] sm:mt-3 sm:text-4xl lg:text-5xl"
               >
                 {flow.label}
               </span>
-              <span className="mt-3 hidden max-w-[40ch] text-base font-medium leading-relaxed text-[#0A0C0A]/75 sm:block">
+              <span className="mt-3 hidden max-w-[40ch] text-[17px] font-medium leading-relaxed text-[#0A0C0A]/75 sm:block">
                 {flow.summary}
               </span>
             </span>
@@ -134,13 +130,6 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
               </span>
               <span className="font-heading mt-4 hidden text-2xl font-extrabold leading-tight text-white sm:block">
                 {flow.label}
-              </span>
-              <span className="mt-1.5 hidden items-center gap-1.5 text-sm font-medium text-white/70 sm:inline-flex">
-                Bekijk hoe het werkt
-                <ArrowRight
-                  weight="bold"
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                />
               </span>
             </span>
           </button>

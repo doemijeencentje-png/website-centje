@@ -74,7 +74,7 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
               <li key={category.id}>
                 <a
                   href={`#${category.id}`}
-                  className="block rounded-xl px-3 py-2 text-[15px] font-medium text-neutral-600 transition-colors hover:bg-white hover:text-[#0A0C0A]"
+                  className="block rounded-xl px-3 py-2 text-base font-medium text-neutral-600 transition-colors hover:bg-white hover:text-[#0A0C0A]"
                 >
                   {category.title}
                 </a>

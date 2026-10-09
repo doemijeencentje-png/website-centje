@@ -60,44 +60,37 @@ export default function HeroSection() {
   }, [reduceMotion]);
 
   return (
-    <section
-      id="hero"
-      data-kop="donker"
-      aria-labelledby="hero-titel"
-      className="relative isolate overflow-hidden bg-[#060807] text-white"
-    >
+    <section id="hero" aria-labelledby="hero-titel" className="relative isolate overflow-hidden bg-white">
+      {/* Licht en rustig: zwarte tekst op wit, met alleen een zachte groene gloed achter de munt. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(55%_65%_at_78%_50%,rgba(0,210,106,0.17),rgba(0,210,106,0)_70%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(45%_55%_at_80%_45%,rgba(0,210,106,0.14),rgba(0,210,106,0)_70%)]"
       />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-14 pt-28 sm:px-6 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-12 lg:pb-16 lg:pt-24">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:pb-20 lg:pt-24">
         <div>
           <h1
             id="hero-titel"
-            className="font-heading text-balance text-[42px] font-extrabold leading-[1.02] sm:text-6xl lg:text-[50px] xl:text-[58px]"
+            className="font-heading text-balance text-[44px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-6xl xl:text-[64px]"
           >
-            Splits de rekening.{" "}
-            <span className="text-[#00D26A]">Speel erom.</span>
+            Splits de rekening. Speel erom.
           </h1>
-          <p
-            className="mt-6 max-w-[36ch] text-[17px] leading-relaxed text-white/70 sm:mt-7 sm:text-xl"
-          >
+          <p className="mt-6 max-w-[38ch] text-lg leading-relaxed text-neutral-600 sm:mt-8 sm:text-[21px]">
             Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best
             speelt, betaalt het minst.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 sm:mt-10">
+          <div className="mt-9 flex flex-wrap gap-3 sm:mt-11">
             <Link
               href={DOWNLOAD_ANCHOR}
               onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
-              className="inline-flex h-[52px] items-center rounded-full bg-[#00D26A] px-7 text-base font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+              className="inline-flex h-[54px] items-center rounded-full bg-[#00D26A] px-7 text-[17px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
             >
               Download de app
             </Link>
             <Link
               href="/#stappen"
               onClick={(event) => followLink(event, "/#stappen", true)}
-              className="group inline-flex h-[52px] items-center gap-2 rounded-full bg-white/[0.08] px-6 text-base font-semibold text-white outline-none ring-1 ring-inset ring-white/15 transition-colors duration-200 hover:bg-white/[0.14] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+              className="group inline-flex h-[54px] items-center gap-2 rounded-full bg-white px-6 text-[17px] font-semibold text-[#0A0C0A] outline-none ring-1 ring-inset ring-black/10 transition-colors duration-200 hover:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-[#00D26A]"
             >
               Zo werkt het
               <ArrowDown
@@ -109,14 +102,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div
-          className="relative mx-auto w-[min(100%,340px)] sm:w-[min(100%,400px)] lg:mx-0 lg:ml-auto lg:w-[min(100%,400px,calc((100svh-12rem)*0.8))]"
-        >
-          <div
-            aria-hidden
-            className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.28),rgba(0,210,106,0))] blur-2xl"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)] ring-1 ring-white/10">
+        {/* De munt, groot: op desktop zo hoog als het scherm toelaat. */}
+        <div className="relative mx-auto w-full max-w-[440px] lg:mx-0 lg:ml-auto lg:w-[min(100%,540px,calc((100svh-11rem)*0.8))] lg:max-w-none">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-black shadow-[0_2px_6px_rgba(10,12,10,0.06),0_40px_90px_-36px_rgba(0,60,30,0.5)] ring-1 ring-black/5">
             {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
             <Image
               src="/hero/munt-intro-poster.webp"
@@ -125,7 +113,7 @@ export default function HeroSection() {
               loading="eager"
               fetchPriority="high"
               quality={90}
-              sizes="(min-width: 640px) 400px, 340px"
+              sizes="(min-width: 1024px) 540px, (min-width: 640px) 440px, 100vw"
               className="object-cover"
             />
             <video

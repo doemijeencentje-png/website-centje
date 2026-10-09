@@ -151,7 +151,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       {current.title}
                     </span>
                   </p>
-                  <p className="mt-1.5 text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                  <p className="mt-1.5 text-base leading-[1.6] text-neutral-700">
                     {current.text}
                   </p>
                 </div>
@@ -186,7 +186,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                           {s.title}
                         </span>
                         <span
-                          className={`mt-1 block text-[15px] leading-relaxed transition-colors duration-300 ${
+                          className={`mt-1 block text-base leading-[1.6] transition-colors duration-300 ${
                             active ? "text-neutral-600" : "text-neutral-500"
                           }`}
                         >

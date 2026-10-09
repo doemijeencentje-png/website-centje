@@ -58,7 +58,7 @@ export function HowItWorks() {
           >
             Hoe Centje werkt
           </h2>
-          <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
+          <p className="mt-5 max-w-[46ch] text-[17px] leading-[1.6] text-neutral-700 sm:mt-6 sm:text-lg">
             Kies hoe je speelt: samen met één vriend, of met de hele groep tegelijk.
           </p>
         </div>
@@ -76,7 +76,7 @@ export function HowItWorks() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25 }}
-              className="text-[15px] leading-relaxed text-neutral-600"
+              className="text-base leading-[1.6] text-neutral-700"
             >
               {flow.summary}
             </motion.p>

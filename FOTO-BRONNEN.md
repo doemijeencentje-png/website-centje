@@ -7,10 +7,10 @@ eigen merk (munt, woordmerk, schermen). Zo klopt alles wat je ziet met hoe Centj
 
 | Bestand | Waar op de site | Bron | Bewerking |
 |---|---|---|---|
-| `foto/groep-gracht.jpg` | Hoe het begon | Startbeeld van de terrasvideo (eigen AI-beeld, Higgsfield Soul v2, 1152 x 2048) | Witte spikkels op een gezicht weggeretoucheerd, Real-ESRGAN, kleur en korrel |
+| `foto/terras-gracht.jpg` | Hoe het begon | Echte foto: terras van Café 't Smalle aan de Egelantiersgracht, Amsterdam. Unsplash, fotograaf sandy, foto-id BtFY14qvgo0 (Unsplash-licentie: vrij te gebruiken, ook commercieel, zonder naamsvermelding) | Uitsnede 4:5 van de linkerkant (reclamebord buiten beeld), 1200 x 1500, geen retouche |
 
-Gecontroleerd op volle resolutie op handen, gezichten en nepletters. Bij een nieuwe
-foto: alleen Nederlandse mensen, Nederlandse terrassfeer, en altijd dezelfde controle.
+Geen AI-beelden meer op de site (besluit 9 oktober 2026): alleen echte foto's. Bij een nieuwe
+foto: Nederlandse terrassfeer, een vrije licentie, en de bron hier noteren.
 Nooit beelden uit `Centje-FILM-groepscentje.mp4` gebruiken (daar staan echte namen in).
 
 ## Merk en app

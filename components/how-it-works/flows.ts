@@ -10,7 +10,6 @@ export interface FlowStep {
 export interface Flow {
   id: FlowId;
   label: string;
-  tagline: string;
   summary: string;
   steps: FlowStep[];
 }
@@ -20,7 +19,6 @@ export const FLOWS: Flow[] = [
   {
     id: "individueel",
     label: "Individueel verzoek",
-    tagline: "Jij tegen je maat",
     summary:
       "Stuur één vriend een challenge. Speelt je vriend beter, dan betaalt die minder. Speel jij beter, dan krijg je meer.",
     steps: [
@@ -59,7 +57,6 @@ export const FLOWS: Flow[] = [
   {
     id: "groep",
     label: "Groepscentje",
-    tagline: "Met de hele groep",
     summary:
       "Iedereen speelt hetzelfde spel. De beste speler betaalt het minst, de slechtste het meest.",
     steps: [

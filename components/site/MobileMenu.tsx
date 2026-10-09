@@ -4,13 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, X } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react";
 import { DOWNLOAD_ANCHOR } from "@/lib/links";
 import { HOW_IT_WORKS, HOW_IT_WORKS_LABEL, TOP_ITEMS } from "./navigation";
 import { inPageId, scrollToId } from "./inPage";
 import { Logo } from "./Logo";
 
 export const MOBILE_MENU_ID = "mobiel-menu";
+
+const MENU = [
+  { label: HOW_IT_WORKS_LABEL, href: "/#stappen" },
+  ...HOW_IT_WORKS.map(({ label, href }) => ({ label, href })),
+  ...TOP_ITEMS.map((item) => ({ label: item.longLabel ?? item.label, href: item.href })),
+];
 
 /**
  * Menu voor telefoon en tablet. Vult het hele scherm, houdt de focus binnen het menu
@@ -99,35 +105,16 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: (restore
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 overflow-y-auto overscroll-contain px-4 pb-8 pt-6 sm:px-6"
           >
-            <p className="px-3 text-sm font-semibold text-neutral-500">{HOW_IT_WORKS_LABEL}</p>
-            <ul className="mt-2 space-y-1">
-              {HOW_IT_WORKS.map(({ label, text, href, icon: Icon }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    onClick={(event) => go(event, href)}
-                    className="flex items-start gap-4 rounded-[20px] p-3 outline-none transition-colors active:bg-[#F4F7F5] focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
-                  >
-                    <Icon weight="bold" aria-hidden className="mt-0.5 h-6 w-6 shrink-0 text-[#007F45]" />
-                    <span className="min-w-0">
-                      <span className="block text-[17px] font-semibold text-[#0A0C0A]">{label}</span>
-                      <span className="mt-0.5 block text-sm leading-snug text-neutral-500">{text}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <ul className="mt-6 divide-y divide-[#E3EAE6] border-t border-[#E3EAE6]">
-              {TOP_ITEMS.map((item) => (
+            {/* Eén lijst, alles in dezelfde stijl: eerst Hoe het werkt met de drie onderdelen, dan de rest. */}
+            <ul className="divide-y divide-[#E3EAE6]">
+              {MENU.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={(event) => go(event, item.href)}
-                    className="font-heading flex items-center justify-between gap-4 px-3 py-4 text-[22px] font-extrabold leading-tight text-[#0A0C0A] outline-none focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
+                    className="font-heading block px-3 py-4 text-[22px] font-extrabold leading-tight text-[#0A0C0A] outline-none focus-visible:bg-[#F4F7F5] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00D26A]"
                   >
-                    {item.longLabel ?? item.label}
-                    <ArrowRight weight="bold" aria-hidden className="h-5 w-5 shrink-0 text-[#007F45]" />
+                    {item.label}
                   </Link>
                 </li>
               ))}

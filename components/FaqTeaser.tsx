@@ -18,7 +18,7 @@ export function FaqTeaser() {
           >
             Goed om te weten
           </h2>
-          <p className="mt-5 max-w-[40ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
+          <p className="mt-5 max-w-[40ch] text-[17px] leading-[1.6] text-neutral-700 sm:mt-6 sm:text-lg">
             De vragen die we het vaakst krijgen, kort beantwoord.
           </p>
           <Link

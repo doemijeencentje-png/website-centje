@@ -36,7 +36,7 @@ export function SafetySection() {
           >
             Veilig betalen, gewoon via je bank
           </h2>
-          <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">
+          <p className="mt-5 max-w-[52ch] text-[17px] leading-[1.6] text-neutral-700 sm:mt-6 sm:text-lg">
             De betalingen lopen via Online Payment Platform, een betaalinstelling met een vergunning
             van De Nederlandsche Bank.
           </p>
@@ -44,10 +44,10 @@ export function SafetySection() {
           <ul className="mt-12 space-y-8 sm:mt-14 sm:space-y-9">
             {POINTS.map(({ title, text }) => (
               <li key={title}>
-                <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A] sm:text-xl">
+                <span className="font-heading block text-lg font-extrabold leading-tight text-[#0A0C0A] sm:text-[22px]">
                   {title}
                 </span>
-                <span className="mt-2 block max-w-[48ch] text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                <span className="mt-2 block max-w-[48ch] text-base leading-[1.6] text-neutral-700 sm:text-[17px]">
                   {text}
                 </span>
               </li>
@@ -91,7 +91,7 @@ export function SafetySection() {
               >
                 Wat kost Centje?
               </h3>
-              <p className="mt-2 text-pretty text-[15px] font-medium leading-[1.5] text-[#0A0C0A]/80">
+              <p className="mt-2 text-pretty text-base font-medium leading-[1.5] text-[#0A0C0A]/80">
                 De app is gratis. Voor je verificatie betaal je eenmalig{" "}
                 <strong className="font-bold text-[#0A0C0A]">€&nbsp;1</strong>.
               </p>

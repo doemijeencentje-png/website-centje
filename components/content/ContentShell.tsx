@@ -99,7 +99,7 @@ export function ContentShell({
               {title}
             </h1>
             {intro ? (
-              <div className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:mt-6 sm:text-lg">{intro}</div>
+              <div className="mt-5 max-w-2xl text-[17px] leading-[1.6] text-neutral-700 sm:mt-6 sm:text-xl">{intro}</div>
             ) : null}
             {actions ? <div className="mt-8 flex flex-wrap gap-3">{actions}</div> : null}
           </div>

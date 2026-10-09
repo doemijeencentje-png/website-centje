@@ -31,7 +31,7 @@ export function Highlights() {
               <h3 className="font-heading max-w-[18ch] text-[26px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-4xl">
                 Eerlijk spel, voor iedereen gelijk
               </h3>
-              <p className="mt-3 max-w-[44ch] text-[15px] leading-relaxed text-neutral-600 sm:text-lg">
+              <p className="mt-4 max-w-[44ch] text-[17px] leading-[1.6] text-neutral-700 sm:text-lg">
                 Geen geluk, alleen je score telt. Het draait om inzicht, timing en
                 vaardigheid, voor iedereen onder dezelfde omstandigheden.
               </p>
@@ -59,7 +59,7 @@ export function Highlights() {
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
               Alles op één plek
             </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-3 text-base leading-[1.6] text-neutral-700">
               Zie in één oogopslag wat betaald is en op wie je nog wacht.
             </p>
             <div className="relative mt-7 overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
@@ -83,7 +83,7 @@ export function Highlights() {
             <h3 className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
               Zie wie al betaald heeft
             </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-3 text-base leading-[1.6] text-neutral-700">
               Per vriend het bedrag en de status. Een herinnering sturen kan
               direct vanuit de app.
             </p>
@@ -108,7 +108,7 @@ export function Highlights() {
             <h3 className="font-heading max-w-[14ch] text-[26px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-3xl">
               Je vrienden hebben geen app nodig
             </h3>
-            <p className="mt-3 max-w-[30ch] text-[15px] font-medium leading-relaxed text-[#0A0C0A]/80">
+            <p className="mt-3 max-w-[30ch] text-base font-medium leading-[1.6] text-[#0A0C0A]/80">
               Ze openen je link, spelen in de browser en betalen met iDEAL.
             </p>
             {/* In de flow in plaats van absoluut, zodat de munt nooit over de tekst valt. */}
@@ -135,7 +135,7 @@ export function Highlights() {
               <h3 className="font-heading text-[26px] font-extrabold leading-[1.05] text-white sm:text-3xl">
                 Oefen in de Arcade
               </h3>
-              <p className="mt-3 max-w-[36ch] text-[15px] leading-relaxed text-white/70 sm:text-base">
+              <p className="mt-3 max-w-[36ch] text-base leading-[1.6] text-white/75 sm:text-[17px]">
                 Speel alle spellen gewoon voor de lol en word beter voordat het om
                 de rekening gaat.
               </p>

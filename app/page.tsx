@@ -4,14 +4,12 @@ import { FaqTeaser } from "@/components/FaqTeaser";
 import HeroSection from "@/components/HeroSection";
 import { Highlights } from "@/components/Highlights";
 import { SafetySection } from "@/components/SafetySection";
-import { TrustStrip } from "@/components/TrustStrip";
 import { HowItWorks } from "@/components/how-it-works/HowItWorks";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      <TrustStrip />
       <HowItWorks />
       <Highlights />
       <SafetySection />

@@ -36,15 +36,15 @@ function sectionInView() {
 }
 
 /**
- * Vaste kopbalk van de hele site. Kleurt mee met wat eronder ligt: doorzichtig boven
- * de hero, donker glas boven donkere secties en licht glas boven de rest.
+ * Vaste kopbalk van de hele site. Bovenaan doorzichtig; na scrollen licht glas, en donker
+ * glas boven donkere secties (downloadblok, voettekst).
  */
 export function SiteHeader() {
   const pathname = usePathname();
   const onHome = pathname === "/";
 
-  // Beginstand gelijk aan wat de server rendert: bovenaan, boven de hero of een lichte paginakop.
-  const [tone, setTone] = useState<Tone>(onHome ? "dark" : "light");
+  // Beginstand gelijk aan wat de server rendert: bovenaan, boven de lichte hero of paginakop.
+  const [tone, setTone] = useState<Tone>("light");
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
@@ -75,12 +75,11 @@ export function SiteHeader() {
     };
   }, [pathname, update]);
 
-  const surface =
-    tone === "light"
+  const surface = !scrolled
+    ? "border-transparent bg-transparent"
+    : tone === "light"
       ? "border-[#E3EAE6]/80 bg-white/90 backdrop-blur-md"
-      : scrolled
-        ? "border-white/10 bg-[#0A0C0A]/85 backdrop-blur-md"
-        : "border-transparent bg-transparent";
+      : "border-white/10 bg-[#0A0C0A]/85 backdrop-blur-md";
 
   return (
     <>

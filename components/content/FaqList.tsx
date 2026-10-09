@@ -25,7 +25,7 @@ export function FaqList({ items, defaultOpen }: { items: FaqItem[]; defaultOpen?
                 onClick={() => setOpen(expanded ? null : index)}
                 className="group flex w-full items-center justify-between gap-6 rounded-lg py-5 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#00D26A] focus-visible:ring-offset-4 sm:py-6"
               >
-                <span className="text-base font-semibold leading-snug text-[#0A0C0A] transition-colors group-hover:text-[#007F45] sm:text-lg">
+                <span className="text-[17px] font-semibold leading-snug text-[#0A0C0A] transition-colors group-hover:text-[#007F45] sm:text-xl">
                   {item.question}
                 </span>
                 <Plus
@@ -47,7 +47,7 @@ export function FaqList({ items, defaultOpen }: { items: FaqItem[]; defaultOpen?
               }`}
             >
               <div className="overflow-hidden">
-                <div className="max-w-[62ch] space-y-3 pb-6 text-[15px] leading-relaxed text-neutral-600 sm:text-base">
+                <div className="max-w-[62ch] space-y-3 pb-6 text-base leading-[1.65] text-neutral-700 sm:text-[17px]">
                   {item.answer.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
