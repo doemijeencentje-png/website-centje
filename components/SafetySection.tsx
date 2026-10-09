@@ -15,7 +15,7 @@ export function SafetySection() {
     <section
       id="veilig"
       aria-labelledby="veilig-titel"
-      className="relative scroll-mt-16 overflow-x-clip bg-[#F4F7F5] py-16 sm:py-24 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 overflow-x-clip py-16 sm:py-24 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
         <div className="min-w-0">

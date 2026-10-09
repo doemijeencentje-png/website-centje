@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { DownloadSection } from "../DownloadSection";
-import { fadedDots } from "../decor";
 import { JsonLd } from "./JsonLd";
 
 export type Crumb = { label: string; href: string };
@@ -54,7 +53,7 @@ export function ContentShell({
   intro?: React.ReactNode;
   /** Knoppen onder de intro. */
   actions?: React.ReactNode;
-  /** Stippen en een groene gloed rechtsboven in de paginakop. */
+  /** Een groene gloed rechtsboven in de paginakop (de stippen lopen over de hele site). */
   decor?: boolean;
   children: React.ReactNode;
 }) {
@@ -63,7 +62,7 @@ export function ContentShell({
 
   return (
     <>
-      <main className="bg-white pt-16 lg:pt-[72px]">
+      <main className="pt-16 lg:pt-[72px]">
         {showTrail ? (
           <JsonLd
             data={{
@@ -79,19 +78,12 @@ export function ContentShell({
           />
         ) : null}
 
-        <header className={decor ? "relative isolate overflow-hidden bg-white" : "bg-white"}>
+        <header className={decor ? "relative isolate overflow-hidden" : undefined}>
           {decor ? (
-            <>
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10"
-                style={fadedDots("radial-gradient(50% 90% at 90% 20%, #000 0%, transparent 100%)")}
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-40 -top-48 -z-10 h-[560px] w-[560px] rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))]"
-              />
-            </>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-40 -top-48 -z-10 h-[560px] w-[560px] rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))]"
+            />
           ) : null}
           <div className="mx-auto max-w-6xl px-4 pb-6 pt-12 sm:px-6 sm:pb-8 sm:pt-20">
             {showTrail ? <Breadcrumbs trail={trail} /> : null}

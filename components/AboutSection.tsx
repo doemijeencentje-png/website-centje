@@ -5,7 +5,7 @@ export function AboutSection() {
     <section
       id="over-ons"
       aria-labelledby="verhaal-titel"
-      className="relative scroll-mt-16 bg-white py-16 sm:py-24 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 py-16 sm:py-24 lg:scroll-mt-[72px]"
     >
       {/* De tekst in een witte kaart die over de foto schuift: op desktop over de rechterrand,
           op mobiel over de onderkant. */}

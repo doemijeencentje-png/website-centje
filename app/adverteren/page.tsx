@@ -117,16 +117,11 @@ export default function AdverterenPage() {
     >
       {/* Gloed en schaduwen mogen buiten de inhoudskolom vallen; alleen de schermrand knipt ze af. */}
       <div className="overflow-x-clip">
-        {/* Achter alle rijen: zacht mint met de stippen van "Hoe Centje werkt", boven en onder uitlopend in wit. */}
+        {/* Achter alle rijen: zacht doorschijnend mint, boven en onder uitlopend; het stippenraster van de site schijnt erdoor. */}
         <div className="relative isolate py-16 sm:py-24">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,#FFFFFF_0%,#F2FAF5_14%,#F2FAF5_86%,#FFFFFF_100%)]"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10"
-            style={fadedDots("linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)")}
+            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(242,250,245,0)_0%,rgba(242,250,245,0.75)_14%,rgba(242,250,245,0.75)_86%,rgba(242,250,245,0)_100%)]"
           />
 
           <div className="mx-auto max-w-6xl space-y-16 px-4 sm:space-y-32 sm:px-6">

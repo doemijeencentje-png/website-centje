@@ -4,6 +4,7 @@ import "./globals.css";
 import { MotionProvider } from "@/components/MotionProvider";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteDotField } from "@/components/SiteDotField";
 
 // De wdth-as is nodig voor de brede koppen (font-stretch in .font-heading). Alleen "latin"
 // wordt vooraf geladen: Nederlandse tekst heeft niets uit latin-ext nodig.
@@ -129,6 +130,8 @@ export default function RootLayout({
         />
         {/* Kopbalk en voettekst buiten template.tsx: ze blijven staan tijdens het wisselen van pagina. */}
         <MotionProvider>
+          {/* Licht stippenraster achter de hele site; met de muis erover worden de stippen groen. */}
+          <SiteDotField />
           <SiteHeader />
           {children}
           <SiteFooter />

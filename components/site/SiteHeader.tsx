@@ -43,8 +43,9 @@ export function SiteHeader() {
   const pathname = usePathname();
   const onHome = pathname === "/";
 
-  // Beginstand gelijk aan wat de server rendert: bovenaan, boven de lichte hero of paginakop.
-  const [tone, setTone] = useState<Tone>("light");
+  // Beginstand gelijk aan wat de server rendert: bovenaan op de homepage boven de zwarte hero,
+  // op de andere pagina's boven de lichte paginakop.
+  const [tone, setTone] = useState<Tone>(onHome ? "dark" : "light");
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 

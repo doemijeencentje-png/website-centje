@@ -8,7 +8,7 @@ export function Highlights() {
     <section
       id="spellen"
       aria-labelledby="gemak-titel"
-      className="relative scroll-mt-16 bg-white py-16 sm:py-24 lg:scroll-mt-[72px] lg:py-28"
+      className="relative scroll-mt-16 py-16 sm:py-24 lg:scroll-mt-[72px] lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2

@@ -16,7 +16,7 @@ export function LegalPageShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-white pt-16 text-neutral-900 lg:pt-[72px]">
+    <main className="pt-16 text-neutral-900 lg:pt-[72px]">
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
         {headerVariant === "sub" ? (
           <Link

@@ -3,7 +3,7 @@ import Image from "next/image";
 /** Direct onder de hero: de officiële merken groot, zonder uitleg. */
 export function PaymentBar() {
   return (
-    <section aria-label="Betalen via" className="border-y border-[#E3EAE6] bg-white">
+    <section aria-label="Betalen via" className="border-y border-[#E3EAE6]">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-5 px-4 py-7 sm:px-6 sm:py-8">
         <p className="basis-full text-center text-lg font-semibold text-neutral-700 sm:basis-auto">Veilig betalen via</p>
         <Image
