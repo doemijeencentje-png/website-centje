@@ -71,13 +71,13 @@ export function FlowStepper({ flow }: { flow: Flow }) {
   return (
     <div ref={track} className="relative" style={{ height: `calc(100svh + ${count * STEP_SCROLL_SVH}svh)` }}>
       <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] py-2 lg:top-[72px] lg:h-[calc(100svh_-_72px)] lg:items-center lg:py-5">
-        {/* Het podium: donkergroen vlak met gloed, stippen en een haarlijn bovenaan, zodat de stappen eruit springen. */}
+        {/* Het podium: een wit venster zoals "Nieuw verzoek" erboven en in de app, met groene knoppen. */}
         <div
-          className={`relative isolate flex h-full w-full flex-col overflow-hidden rounded-[28px] bg-[#07130C] px-4 pt-4 text-white ring-1 ring-inset ring-white/10 before:absolute before:inset-x-10 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(0,210,106,0.5),transparent)] before:content-[''] sm:rounded-[40px] sm:px-10 sm:pt-8 lg:flex-row lg:items-center lg:gap-16 lg:px-14 lg:py-8 [@media(max-height:820px)]:lg:py-6`}
+          className={`relative isolate flex h-full w-full flex-col overflow-hidden rounded-[32px] bg-white px-4 pt-4 text-[#0A0C0A] shadow-[0_2px_6px_rgba(10,12,10,0.05),0_30px_70px_-30px_rgba(0,90,45,0.35)] ring-1 ring-black/5 sm:rounded-[40px] sm:px-10 sm:pt-8 lg:flex-row lg:items-center lg:gap-16 lg:px-14 lg:py-8 [@media(max-height:820px)]:lg:py-6`}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute left-[4%] top-1/2 -z-10 h-[760px] w-[760px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.3),rgba(0,210,106,0))]"
+            className="pointer-events-none absolute left-[4%] top-1/2 -z-10 h-[760px] w-[760px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.14),rgba(0,210,106,0))]"
           />
 
           {/* Tekst: op mobiel bovenaan, op desktop rechts van de telefoon */}
@@ -85,7 +85,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
             <div
               role="tablist"
               aria-label="Speelvorm"
-              className={`mb-4 inline-flex rounded-full bg-white/10 p-1 lg:mb-5 [@media(max-height:820px)]:lg:mb-3`}
+              className={`mb-4 inline-flex gap-1 rounded-full bg-[#F0FBF4] p-1 ring-1 ring-inset ring-[#00C853]/20 lg:mb-5 [@media(max-height:820px)]:lg:mb-3`}
             >
               {FLOWS.map((f) => {
                 const Icon = f.id === "groep" ? UsersThree : User;
@@ -98,7 +98,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                     aria-selected={on}
                     onClick={() => choose(f.id)}
                     className={`inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-[13px] font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#00D26A] sm:gap-2 sm:px-4 sm:text-sm ${
-                      on ? "bg-[#00D26A] text-[#0A0C0A]" : "text-white/70 hover:text-white"
+                      on ? "bg-[linear-gradient(90deg,#00B84D_0%,#12C65C_55%,#2ECF70_100%)] text-white shadow-[0_8px_18px_-8px_rgba(0,150,65,0.7)]" : "text-[#00A852] hover:bg-white"
                     }`}
                   >
                     <Icon weight="bold" className="h-4 w-4" aria-hidden />
@@ -122,8 +122,8 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                     className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
                   >
                     <span
-                      className={`block h-1.5 rounded-full ring-offset-2 ring-offset-[#07130C] transition-colors duration-500 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A] ${
-                        i <= step ? "bg-[#00D26A]" : "bg-white/20"
+                      className={`block h-1.5 rounded-full ring-offset-2 ring-offset-white transition-colors duration-500 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A] ${
+                        i <= step ? "bg-[#00C853]" : "bg-[#E3EAE6]"
                       }`}
                     />
                   </button>
@@ -133,14 +133,14 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                 {/* Korte overgang zonder uitfaden: de nieuwe stap staat er meteen. */}
                 <div key={`${flow.id}-${step}`} className="stap-in">
                   <p className="flex items-center gap-3">
-                    <span className="font-heading flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold text-[#0A0C0A]">
+                    <span className="font-heading flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(90deg,#00B84D_0%,#12C65C_55%,#2ECF70_100%)] text-base font-extrabold text-white">
                       {step + 1}
                     </span>
-                    <span className="font-heading text-xl font-extrabold leading-tight text-white sm:text-2xl">
+                    <span className="font-heading text-xl font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl">
                       {current.title}
                     </span>
                   </p>
-                  <p className="mt-2 text-base leading-[1.55] text-white/70">{current.text}</p>
+                  <p className="mt-2 text-base leading-[1.55] text-neutral-600">{current.text}</p>
                 </div>
               </div>
             </div>
@@ -156,12 +156,12 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       onClick={() => goTo(i)}
                       aria-current={active ? "step" : undefined}
                       className={`group relative flex w-full gap-5 rounded-[22px] px-5 py-4 text-left outline-none transition-[background-color,box-shadow] duration-500 focus-visible:ring-4 focus-visible:ring-[#00D26A]/60 [@media(max-height:820px)]:py-2.5 ${
-                        active ? "bg-white shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]" : "hover:bg-white/[0.06]"
+                        active ? "bg-[#F0FBF4] ring-2 ring-inset ring-[#00C853]/35" : "hover:bg-[#F6FAF7]"
                       }`}
                     >
                       <span
                         className={`font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg font-extrabold transition-colors duration-500 ${
-                          active ? "bg-[#00D26A] text-[#0A0C0A]" : "bg-white/10 text-white/70"
+                          active ? "bg-[linear-gradient(90deg,#00B84D_0%,#12C65C_55%,#2ECF70_100%)] text-white shadow-[0_8px_18px_-8px_rgba(0,150,65,0.7)]" : "bg-[#EEF3F0] text-neutral-500"
                         }`}
                       >
                         {i + 1}
@@ -169,14 +169,14 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                       <span className="min-w-0">
                         <span
                           className={`font-heading block text-xl font-extrabold leading-snug transition-colors duration-500 ${
-                            active ? "text-[#0A0C0A]" : "text-white/85"
+                            active ? "text-[#0A0C0A]" : "text-neutral-700"
                           }`}
                         >
                           {s.title}
                         </span>
                         <span
                           className={`mt-1 block text-base leading-[1.55] transition-colors duration-500 [@media(max-height:820px)]:text-[14px] [@media(max-height:820px)]:leading-[1.4] ${
-                            active ? "text-neutral-600" : "text-white/50"
+                            active ? "text-neutral-600" : "text-neutral-500"
                           }`}
                         >
                           {s.text}
@@ -198,7 +198,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
             >
               <div
                 aria-hidden
-                className="gloed absolute -inset-12 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.5),rgba(0,210,106,0))] blur-2xl"
+                className="gloed absolute -inset-12 -z-10 hidden rounded-full lg:block bg-[radial-gradient(closest-side,rgba(0,210,106,0.28),rgba(0,210,106,0))] blur-2xl"
               />
               <IPhoneFrame>
                 {FLOWS.flatMap((f) =>
