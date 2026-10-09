@@ -207,15 +207,18 @@ export default function HeroSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h1
           id="hero-titel"
-          className="font-heading text-balance text-[34px] font-extrabold leading-[1.02] text-[#0A0C0A] min-[380px]:text-[40px] sm:text-[56px] lg:text-[52px] xl:text-[60px] [@media(max-height:820px)]:lg:text-[50px]"
+          className="font-heading text-balance text-[38px] font-extrabold leading-[1.02] text-[#0A0C0A] min-[380px]:text-[44px] sm:text-[60px] lg:text-[64px] xl:text-[72px] [@media(max-height:820px)]:lg:text-[56px]"
         >
-          Betaalverzoek met een spel.
+          Splits de rekening.
           {/* Tweede zin op een eigen regel; de groene markeerstift trekt er één keer onderdoor. */}
-          <span className="mt-2 block">
-            <span className="markeer px-1">De winnaar betaalt minder.</span>
+          <span className="mt-1 block">
+            <span className="markeer px-1">Speel erom.</span>
           </span>
         </h1>
-        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap lg:mt-8 [@media(max-height:820px)]:lg:mt-7">
+        <p className="mt-6 max-w-[44ch] text-pretty text-[17px] leading-[1.55] text-neutral-600 sm:text-xl lg:mt-6 [@media(max-height:820px)]:lg:mt-4 [@media(max-height:820px)]:lg:text-lg">
+          Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best speelt, betaalt het minst.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap lg:mt-8 [@media(max-height:820px)]:lg:mt-6">
           <Link
             href={DOWNLOAD_ANCHOR}
             onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
