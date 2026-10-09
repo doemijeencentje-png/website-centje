@@ -86,6 +86,32 @@
   animation: gloed 7s ease-in-out infinite alternate;
 }
 
+/* Doorlopende balk met de banken onder de hero: twee gelijke rijen, de helft opschuiven is één rondje.
+   Alleen transform, dus goedkoop; staat stil zolang de muis erop staat. */
+@keyframes band {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.band-baan {
+  animation: band 70s linear infinite;
+}
+
+.band:hover .band-baan {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band-baan {
+    animation: none;
+  }
+
+  .band {
+    overflow-x: auto;
+  }
+}
+
 /* Groene markering onder "Speel erom." in de hero: schuift één keer van links naar rechts.
    Het groene vlak met donkere tekst ligt over de witte tekst en wordt van links af zichtbaar. */
 @keyframes veeg {
