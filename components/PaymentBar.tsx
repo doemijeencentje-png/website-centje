@@ -1,23 +1,22 @@
 import Image from "next/image";
 
-// Alle banken voor consumenten die iDEAL | Wero aanbieden, volgens ideal.nl/issuers (okt 2026).
-// Bewust geen "partners": Centje werkt niet met deze banken samen; je betaalt via iDEAL met je eigen bank.
+// De bekende banken waarmee je via iDEAL | Wero betaalt (lijst: ideal.nl/issuers, okt 2026); de kleine,
+// onbekende staan er bewust niet bij. Geen "partners": Centje werkt niet met deze banken samen.
 const BANKS = [
   { name: "ABN AMRO", logo: "abn-amro" },
+  { name: "ING", logo: "ing" },
+  { name: "Rabobank", logo: "rabobank" },
+  { name: "SNS Bank", logo: "sns" },
   { name: "ASN Bank", logo: "asn-bank" },
   { name: "bunq", logo: "bunq", wordmark: true },
-  { name: "ING", logo: "ing" },
+  { name: "Revolut", logo: "revolut" },
   { name: "Knab", logo: "knab", wordmark: true },
   { name: "N26", logo: "n26", wordmark: true },
-  { name: "Nationale-Nederlanden", logo: "nationale-nederlanden" },
-  { name: "Rabobank", logo: "rabobank" },
   { name: "RegioBank", logo: "regiobank", wordmark: true },
-  { name: "Revolut", logo: "revolut" },
-  { name: "SNS Bank", logo: "sns" },
-  { name: "Triodos", logo: "triodos" },
-  { name: "Van Lanschot Kempen", logo: "van-lanschot-kempen" },
-  { name: "Yoursafe", logo: "yoursafe" },
 ];
+
+// Eén rondje is twee keer de rij, zodat het ook op een breed scherm breder is dan het beeld.
+const LAP = [...BANKS, ...BANKS];
 
 /** Een bank als los kaartje: logo met de naam ernaast; is het logo zelf de naam, dan alleen het logo. */
 function BankChip({ name, logo, wordmark = false }: { name: string; logo: string; wordmark?: boolean }) {
@@ -42,7 +41,7 @@ function BankChip({ name, logo, wordmark = false }: { name: string; logo: string
 
 /**
  * Direct onder de hero: iDEAL | Wero en Online Payment Platform groot, met daaronder een balk
- * die langzaam doorloopt met alle banken waarmee je via iDEAL betaalt.
+ * die langzaam doorloopt met de grote banken waarmee je via iDEAL betaalt.
  */
 export function PaymentBar() {
   return (
@@ -74,7 +73,7 @@ export function PaymentBar() {
           className="band relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
         >
           <div className="band-baan flex w-max gap-3 pr-3">
-            {[...BANKS, ...BANKS].map((bank, i) => (
+            {[...LAP, ...LAP].map((bank, i) => (
               <BankChip key={`${bank.logo}-${i}`} {...bank} />
             ))}
           </div>

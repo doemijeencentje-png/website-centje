@@ -23,7 +23,7 @@ Nooit beelden uit `Centje-FILM-groepscentje.mp4` gebruiken (daar staan echte nam
 | `merk/app-store-badge.svg` | Officiële badge van Apple (developer.apple.com) |
 | `merk/ideal-wero.svg` | Officiële iDEAL \| Wero-betaalkaart (co-brand sinds 2025), zoals iDEAL die aan betaaldiensten levert; naam en schrijfwijze volgens ideal.nl/marketing-ideal ("iDEAL \| Wero") |
 | `merk/opp-merk.svg` | Beeldmerk van Online Payment Platform (docs.onlinepaymentplatform.com); de naam staat er in tekst naast |
-| `merk/banken/*.svg` | Logo's van de 14 consumentenbanken die iDEAL \| Wero aanbieden (lijst: ideal.nl/issuers, okt 2026), zoals betaaldiensten ze bij de bankkeuze tonen (Adyen, checkoutshopper-live.adyen.com/checkoutshopper/images/logos/ideal/&lt;id&gt;.svg). Op de site staat "Met je eigen bank", niet "partners": Centje werkt niet met deze banken samen |
+| `merk/banken/*.svg` | Logo's van de 10 bekende banken die iDEAL \| Wero aanbieden: ABN AMRO, ING, Rabobank, SNS Bank, ASN Bank, bunq, Revolut, Knab, N26 en RegioBank (lijst: ideal.nl/issuers, okt 2026), zoals betaaldiensten ze bij de bankkeuze tonen (Adyen, checkoutshopper-live.adyen.com/checkoutshopper/images/logos/ideal/&lt;id&gt;.svg). Op de site staat "Met je eigen bank", niet "partners": Centje werkt niet met deze banken samen |
 | `hero/munt-intro.mp4` | Uitsnede 1080 x 1350 van de bestaande merkvideo, zonder geluid |
 | `app/*.webp` | Echte app-schermen met verzonnen demodata (Sanne, Tim, Noor, Daan) |
 | `og-image.png` | Deelafbeelding 1200 x 630: officieel logo, kop en de echte uitslag uit de app |
