@@ -209,7 +209,7 @@ export default function HeroSection() {
       <div className="bg-[#050605] px-3 pb-3 pt-[76px] sm:px-4 sm:pb-4 sm:pt-20 lg:px-3 lg:pb-3 lg:pt-[84px]">
         <div
           ref={box}
-          className="relative isolate overflow-hidden rounded-[28px] bg-[#0B110E] text-white ring-1 ring-white/10 lg:grid lg:min-h-[calc(100svh_-_96px)] lg:grid-cols-[minmax(0,1fr)_auto] lg:rounded-[36px]"
+          className="relative isolate flex min-h-[calc(100svh_-_88px)] flex-col overflow-hidden rounded-[28px] bg-[#0B110E] text-white ring-1 ring-white/10 sm:min-h-0 lg:grid lg:min-h-[calc(100svh_-_96px)] lg:grid-cols-[minmax(0,1fr)_auto] lg:rounded-[36px]"
         >
           {/* Stippenraster; met de muis erover kleuren de stippen groen en schuift er een lichtvlek mee. */}
           <DotField dark glowAlpha={0.22} reveal={220} glow={720} />
@@ -283,7 +283,7 @@ export default function HeroSection() {
 
           {/* Rechts de munt als losse kaart, in het midden van het vak, met een zachte groene gloed erachter.
               Op telefoon en tablet staat alleen de munt onder de tekst; de app-telefoon staat daar niet bij. */}
-          <div className="relative min-w-0 px-5 pb-5 pt-6 sm:px-8 sm:pb-8 sm:pt-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
+          <div className="relative flex min-w-0 flex-1 items-center px-5 pb-6 pt-6 sm:block sm:flex-none sm:px-8 sm:pb-8 sm:pt-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 hidden bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))] lg:block"
@@ -295,7 +295,7 @@ export default function HeroSection() {
       {/* Het zwart loopt zacht over in het wit van de rest van de site. */}
       <div
         aria-hidden
-        className="h-10 bg-[linear-gradient(to_bottom,#050605_0%,rgba(5,6,5,0.74)_19%,rgba(5,6,5,0.54)_34%,rgba(5,6,5,0.38)_47%,rgba(5,6,5,0.19)_65%,rgba(5,6,5,0.08)_80%,rgba(5,6,5,0.02)_91%,rgba(5,6,5,0)_100%)] sm:h-14"
+        className="h-20 bg-[linear-gradient(to_bottom,#050605_0%,rgba(5,6,5,0.74)_19%,rgba(5,6,5,0.54)_34%,rgba(5,6,5,0.38)_47%,rgba(5,6,5,0.19)_65%,rgba(5,6,5,0.08)_80%,rgba(5,6,5,0.02)_91%,rgba(5,6,5,0)_100%)] sm:h-14"
       />
     </section>
   );
