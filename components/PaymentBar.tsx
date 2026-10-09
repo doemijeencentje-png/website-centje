@@ -45,8 +45,8 @@ function BankChip({ name, logo, wordmark = false }: { name: string; logo: string
  */
 export function PaymentBar() {
   return (
-    <section aria-label="Betalen via" className="border-y border-[#E3EAE6]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-5 px-4 pt-7 sm:px-6 sm:pt-8">
+    <section aria-label="Betalen via" className="border-b border-[#E3EAE6]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-5 px-4 pt-4 sm:px-6 sm:pt-5">
         <p className="basis-full text-center text-lg font-semibold text-neutral-700 sm:basis-auto">Veilig betalen via</p>
         <Image
           src="/merk/ideal-wero.svg"

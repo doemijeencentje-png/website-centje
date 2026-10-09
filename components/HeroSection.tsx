@@ -260,11 +260,11 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            {/* Desktop: de stappen in de hoek. De telefoon loopt door tot onder de rand van het vak. */}
+            {/* Desktop: de stappen in de hoek, direct onder de knoppen. De telefoon loopt door tot onder de rand van het vak. */}
             <div
               role="group"
               aria-label="Voorbeeld van een individueel verzoek in de app"
-              className="relative mt-auto hidden h-[240px] lg:block [@media(max-height:820px)]:lg:h-[176px]"
+              className="relative mt-8 hidden min-h-[240px] flex-1 lg:block [@media(max-height:820px)]:lg:min-h-[176px]"
             >
               <div className="absolute left-1 top-8 w-[196px] -rotate-[8deg] [@media(max-height:820px)]:lg:top-5 [@media(max-height:820px)]:lg:w-[168px]">
                 <div
@@ -292,7 +292,7 @@ export default function HeroSection() {
       {/* Het zwart loopt zacht over in het wit van de rest van de site. */}
       <div
         aria-hidden
-        className="h-40 bg-[linear-gradient(to_bottom,#050605_0%,rgba(5,6,5,0.74)_19%,rgba(5,6,5,0.54)_34%,rgba(5,6,5,0.38)_47%,rgba(5,6,5,0.19)_65%,rgba(5,6,5,0.08)_80%,rgba(5,6,5,0.02)_91%,rgba(5,6,5,0)_100%)] sm:h-56"
+        className="h-10 bg-[linear-gradient(to_bottom,#050605_0%,rgba(5,6,5,0.74)_19%,rgba(5,6,5,0.54)_34%,rgba(5,6,5,0.38)_47%,rgba(5,6,5,0.19)_65%,rgba(5,6,5,0.08)_80%,rgba(5,6,5,0.02)_91%,rgba(5,6,5,0)_100%)] sm:h-14"
       />
     </section>
   );
