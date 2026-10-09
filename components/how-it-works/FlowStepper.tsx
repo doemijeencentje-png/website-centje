@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { animate, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { User, UsersThree } from "@phosphor-icons/react";
 import { IPhoneFrame } from "../IPhoneFrame";
 import { MODE_EVENT } from "../site/inPage";
@@ -60,6 +60,36 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     });
   };
 
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const steps = useRef<HTMLDivElement>(null);
+  const flyPhone = useRef<HTMLDivElement>(null);
+  const shownFlow = useRef(flow.id);
+
+  // Andere speelvorm gekozen: de telefoon vliegt van links binnen, de stappen van rechts.
+  // Alleen bij een wissel (een klik of menu-link), nooit gekoppeld aan het scrollen.
+  useEffect(() => {
+    if (shownFlow.current === flow.id) return;
+    shownFlow.current = flow.id;
+    if (reduceMotion) return;
+    const ease = [0.22, 1, 0.36, 1] as const;
+    const runs = [
+      flyPhone.current &&
+        animate(flyPhone.current, { opacity: [0, 1], x: [-60, 0], rotate: [-6, 0] }, { duration: 0.7, ease }),
+      steps.current && animate(steps.current, { opacity: [0, 1], x: [60, 0] }, { duration: 0.6, ease, delay: 0.08 }),
+    ];
+    return () => runs.forEach((run) => run?.stop());
+  }, [flow.id, reduceMotion]);
+
+  const onTabKey = (event: React.KeyboardEvent, index: number) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const last = FLOWS.length - 1;
+    const next =
+      event.key === "Home" ? 0 : event.key === "End" ? last : event.key === "ArrowRight" ? (index + 1) % FLOWS.length : (index + last) % FLOWS.length;
+    choose(FLOWS[next].id);
+    tabs.current[next]?.focus();
+  };
+
   // Speelvorm wisselen vanuit het podium zelf; HowItWorks luistert naar dit event.
   const choose = (id: FlowId) => {
     if (id !== flow.id) window.dispatchEvent(new CustomEvent<FlowId>(MODE_EVENT, { detail: id }));
@@ -82,32 +112,44 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
           {/* Tekst: op mobiel bovenaan, op desktop rechts van de telefoon */}
           <div className="mx-auto w-full max-w-xl shrink-0 lg:order-2 lg:mx-0 lg:min-w-0 lg:flex-1">
+            {/* De keuze uit het venster "Nieuw verzoek" van de app: twee uitgerekte ronde knoppen. */}
             <div
               role="tablist"
-              aria-label="Speelvorm"
-              className={`mb-4 inline-flex gap-1 rounded-full bg-[#F0FBF4] p-1 ring-1 ring-inset ring-[#00C853]/20 lg:mb-5 [@media(max-height:820px)]:lg:mb-3`}
+              aria-label="Kies hoe je speelt"
+              className="mb-5 grid grid-cols-2 gap-2 sm:gap-3 lg:mb-6 [@media(max-height:820px)]:lg:mb-4"
             >
-              {FLOWS.map((f) => {
+              {FLOWS.map((f, index) => {
                 const Icon = f.id === "groep" ? UsersThree : User;
                 const on = f.id === flow.id;
                 return (
                   <button
                     key={f.id}
+                    ref={(el) => {
+                      tabs.current[index] = el;
+                    }}
+                    id={`tab-${f.id}`}
                     type="button"
                     role="tab"
                     aria-selected={on}
+                    aria-controls="stappen-flow"
+                    tabIndex={on ? 0 : -1}
                     onClick={() => choose(f.id)}
-                    className={`inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-[13px] font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#00D26A] sm:gap-2 sm:px-4 sm:text-sm ${
-                      on ? "bg-[linear-gradient(90deg,#00B84D_0%,#12C65C_55%,#2ECF70_100%)] text-white shadow-[0_8px_18px_-8px_rgba(0,150,65,0.7)]" : "text-[#00A852] hover:bg-white"
+                    onKeyDown={(event) => onTabKey(event, index)}
+                    className={`flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-3 text-[14px] font-semibold outline-none transition-[background-color,color,box-shadow,transform] duration-300 focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98] sm:h-14 sm:text-base lg:h-[60px] lg:text-lg [@media(max-height:820px)]:lg:h-12 [@media(max-height:820px)]:lg:text-base ${
+                      on
+                        ? "bg-[linear-gradient(90deg,#00B84D_0%,#12C65C_55%,#2ECF70_100%)] text-white shadow-[0_14px_28px_-14px_rgba(0,150,65,0.75)]"
+                        : "bg-white text-[#00A852] ring-2 ring-inset ring-[#00C853]/35 hover:bg-[#F0FBF4]"
                     }`}
                   >
-                    <Icon weight="bold" className="h-4 w-4" aria-hidden />
+                    <Icon weight="bold" className="hidden h-5 w-5 shrink-0 sm:block" aria-hidden />
                     {f.label}
                   </button>
                 );
               })}
             </div>
 
+            {/* Bij een wissel van speelvorm vliegen de stappen en de telefoon opnieuw binnen. */}
+            <div ref={steps}>
             {/* Mobiel en tablet: balkjes per stap (gedaan en huidig groen) met daaronder de huidige stap */}
             <div className="lg:hidden">
               {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
@@ -187,11 +229,13 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                 );
               })}
             </ol>
+            </div>
           </div>
 
           {/* Telefoon: op mobiel onderaan, hij loopt onder de ronde rand door (zo blijft hij groot genoeg om te lezen);
               op desktop links, met een ademende gloed. */}
           <div className="relative mt-4 min-h-0 flex-1 overflow-y-clip sm:mt-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible">
+            <div ref={flyPhone}>
             <div
               ref={phone}
               className="relative isolate mx-auto w-[220px] sm:w-[280px] lg:w-[min(320px,calc((100svh_-_11rem)_*_0.4615))]"
@@ -224,6 +268,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                   }),
                 )}
               </IPhoneFrame>
+            </div>
             </div>
           </div>
         </div>

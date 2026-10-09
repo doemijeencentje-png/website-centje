@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { MODE_BY_HASH, MODE_EVENT } from "../site/inPage";
-import { ModeSwitcher } from "./ModeSwitcher";
 import { FlowStepper } from "./FlowStepper";
 import { FLOWS, type FlowId } from "./flows";
 
@@ -46,15 +45,11 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        <div className="mt-8 sm:mt-12">
-          <ModeSwitcher mode={mode} onChange={setMode} />
-        </div>
-
         <div
           id="stappen-flow"
           role="tabpanel"
           aria-labelledby={`tab-${mode}`}
-          className="mt-8 sm:mt-16 lg:mt-20"
+          className="mt-8 sm:mt-12"
         >
           <FlowStepper flow={flow} />
         </div>
