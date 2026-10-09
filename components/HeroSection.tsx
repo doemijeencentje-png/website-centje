@@ -68,7 +68,7 @@ function CoinVideo() {
   }, [reduceMotion]);
 
   return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:mx-0 lg:h-[min(560px,calc(100svh_-_15rem))] lg:w-auto lg:max-w-none lg:rounded-[28px]">
+    <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:mx-0 lg:aspect-[4/5] lg:h-[min(560px,calc(100svh_-_15rem))] lg:w-auto lg:max-w-none lg:rounded-[28px]">
       {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
       <Image
         src="/hero/munt-intro-poster.webp"
@@ -135,7 +135,7 @@ function useDemo(target: React.RefObject<HTMLElement | null>): Demo {
 }
 
 /** Kaartje met de stap: vijf streepjes die per stap vollopen (klikbaar) en de naam van de stap. */
-function StepCard({ demo, className = "" }: { demo: Demo; className?: string }) {
+function StepCard({ demo, compact = false, className = "" }: { demo: Demo; compact?: boolean; className?: string }) {
   const { index, run, moving, show } = demo;
   return (
     <div
@@ -166,10 +166,18 @@ function StepCard({ demo, className = "" }: { demo: Demo; className?: string }) 
         ))}
       </div>
       <p key={index} className="stap-in mt-3 flex min-h-[3.25rem] items-center gap-3">
-        <span className="font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold">
+        <span
+          className={`font-heading flex shrink-0 items-center justify-center rounded-full bg-[#00D26A] font-extrabold ${
+            compact ? "h-8 w-8 text-sm" : "h-9 w-9 text-base"
+          }`}
+        >
           {index + 1}
         </span>
-        <span className="font-heading text-lg font-extrabold leading-[1.15]">{STEPS[index].title}</span>
+        <span
+          className={`font-heading font-extrabold leading-[1.15] ${compact ? "text-[15px] min-[380px]:text-base sm:text-lg" : "text-lg"}`}
+        >
+          {STEPS[index].title}
+        </span>
       </p>
     </div>
   );
@@ -282,13 +290,32 @@ export default function HeroSection() {
 
           {/* Rechts de munt als losse kaart, in het midden van het vak, met een zachte groene gloed erachter.
               Op telefoon en tablet staat hij onder de tekst en schuift het stappenkaartje over de onderkant. */}
-          <div className="relative min-w-0 px-5 pb-6 pt-8 sm:px-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
+          <div className="relative min-w-0 px-5 pt-8 sm:px-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 hidden bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))] lg:block"
             />
             <CoinVideo />
-            <StepCard demo={demo} className="relative z-10 mx-3 -mt-14 sm:mx-auto sm:max-w-[380px] lg:hidden" />
+            {/* Telefoon en tablet: net als op de computer een schuine telefoon die uit de onderrand
+                opduikt, met het stappenkaartje ernaast, half over de munt. */}
+            <div
+              role="group"
+              aria-label="Voorbeeld van een individueel verzoek in de app"
+              className="relative mx-auto -mb-6 -mt-12 h-[250px] max-w-[560px] sm:-mt-16 sm:h-[300px] lg:hidden"
+            >
+              <div className="absolute left-1 top-0 w-[148px] -rotate-[8deg] sm:left-6 sm:w-[180px]">
+                <div
+                  aria-hidden
+                  className="absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.35),rgba(0,210,106,0))] blur-xl"
+                />
+                <DemoPhone index={demo.index} />
+              </div>
+              <StepCard
+                demo={demo}
+                compact
+                className="absolute right-0 top-20 z-10 w-[64%] !p-4 sm:top-24 sm:w-[300px] sm:!p-5"
+              />
+            </div>
           </div>
         </div>
       </div>
