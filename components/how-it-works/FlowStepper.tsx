@@ -254,7 +254,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
           {/* Telefoon: op mobiel onderaan, zo groot als de ruimte toelaat maar altijd helemaal in beeld;
               op desktop links, met een ademende gloed. */}
-          <div className="kom-binnen relative mt-4 min-h-0 flex-1 overflow-y-clip pb-4 sm:mt-6 sm:pb-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible lg:pb-0">
+          <div className="kom-binnen relative mt-4 min-h-0 flex-1 pb-4 sm:mt-6 sm:pb-6 lg:order-1 lg:mt-0 lg:flex-none lg:pb-0">
             <div ref={flyPhone} className="h-full lg:h-auto">
             <div
               ref={phone}
