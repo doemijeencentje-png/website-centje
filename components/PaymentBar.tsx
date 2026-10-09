@@ -49,7 +49,7 @@ export function PaymentBar() {
       {/* Bovenste rij: de betaalmethode en de betaalpartner, gescheiden door een streep. */}
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-4 pt-4 sm:px-6 sm:pt-5">
         <p className="sr-only">Veilig betalen via</p>
-        <div className="flex items-center gap-6 sm:gap-8">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-8">
           <Image
             src="/merk/ideal-wero.svg"
             alt="iDEAL | Wero"
@@ -58,10 +58,10 @@ export function PaymentBar() {
             unoptimized
             className="h-12 w-auto rounded-[8px] sm:h-16"
           />
-          <span aria-hidden className="h-10 w-px bg-[#D5DED9] sm:h-12" />
+          <span aria-hidden className="hidden h-12 w-px bg-[#D5DED9] sm:block" />
           <span className="flex items-center gap-3">
             <Image src="/merk/opp-merk.svg" alt="" width={172} height={88} unoptimized className="h-8 w-auto sm:h-11" />
-            <span className="text-base font-semibold leading-tight tracking-tight text-[#4642FF] sm:text-2xl">
+            <span className="whitespace-nowrap text-base font-semibold leading-tight tracking-tight text-[#4642FF] sm:text-2xl">
               Online Payment Platform
             </span>
           </span>

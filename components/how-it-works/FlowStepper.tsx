@@ -143,7 +143,9 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                     }`}
                   >
                     <Icon weight="bold" className="hidden h-5 w-5 shrink-0 sm:block" aria-hidden />
-                    {f.label}
+                    {/* Op de smalste telefoons past de volle naam niet in de knop. */}
+                    <span className="min-[380px]:hidden">{f.id === "groep" ? "Groepscentje" : "Individueel"}</span>
+                    <span className="hidden min-[380px]:inline">{f.label}</span>
                   </button>
                 );
               })}

@@ -31,7 +31,9 @@ export function SafetySection() {
               <span className={MARK}>
                 <Image src="/merk/ideal-wero.svg" alt="" width={40} height={26} unoptimized className="h-12 w-auto rounded-[8px] sm:h-16" />
               </span>
-              <span className={TITLE}>Betalen met iDEAL | Wero</span>
+              <span className={TITLE}>
+                Betalen met <span className="whitespace-nowrap">iDEAL | Wero</span>
+              </span>
             </li>
             <li className={CARD}>
               <span className={MARK}>
@@ -49,7 +51,7 @@ export function SafetySection() {
                   href={DNB_REGISTER}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 block py-1 text-[15px] font-semibold text-[#007F45] underline-offset-2 hover:underline"
+                  className="-mb-2 mt-0 block py-2.5 text-[15px] font-semibold text-[#007F45] underline-offset-2 hover:underline"
                 >
                   Bekijk het register
                 </a>
@@ -90,7 +92,7 @@ export function SafetySection() {
             <div className="min-w-0 flex-1">
               <h3
                 id="kosten-titel"
-                className="font-heading text-[22px] font-extrabold leading-[1.05] text-[#0A0C0A] sm:text-2xl"
+                className="font-heading whitespace-nowrap text-[20px] font-extrabold leading-[1.05] text-[#0A0C0A] min-[380px]:text-[22px] sm:text-2xl"
               >
                 Wat kost Centje?
               </h3>

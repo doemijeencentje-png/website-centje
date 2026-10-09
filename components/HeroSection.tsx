@@ -149,7 +149,7 @@ function StepCard({ demo, className = "" }: { demo: Demo; className?: string }) 
             onClick={() => show(i)}
             aria-label={`Stap ${i + 1}: ${s.title}`}
             aria-current={i === index ? "step" : undefined}
-            className="group relative flex-1 py-2 outline-none before:absolute before:inset-x-0 before:-inset-y-2 before:content-['']"
+            className="group relative flex-1 py-2 outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
           >
             <span className="block h-1.5 overflow-hidden rounded-full bg-[#E3EAE6] ring-offset-2 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
               {i < index || (i === index && !moving) ? (
