@@ -71,11 +71,12 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     if (shownFlow.current === flow.id) return;
     shownFlow.current = flow.id;
     if (reduceMotion) return;
-    const ease = [0.22, 1, 0.36, 1] as const;
+    // Gelijkmatig op gang en gelijkmatig tot stilstand, zodat de beweging over de hele tijd te zien is.
+    const ease = [0.45, 0, 0.25, 1] as const;
     const runs = [
       flyPhone.current &&
-        animate(flyPhone.current, { opacity: [0, 1], x: [-28, 0], rotate: [-2, 0] }, { duration: 1.1, ease }),
-      steps.current && animate(steps.current, { opacity: [0, 1], x: [24, 0] }, { duration: 0.9, ease, delay: 0.1 }),
+        animate(flyPhone.current, { opacity: [0, 1], x: [-48, 0], rotate: [-3, 0] }, { duration: 1.4, ease }),
+      steps.current && animate(steps.current, { opacity: [0, 1], x: [32, 0] }, { duration: 1.2, ease, delay: 0.15 }),
     ];
     return () => runs.forEach((run) => run?.stop());
   }, [flow.id, reduceMotion]);
