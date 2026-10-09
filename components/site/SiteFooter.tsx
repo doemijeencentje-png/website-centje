@@ -32,7 +32,7 @@ export function SiteFooter() {
                 <Link
                   href={link.href}
                   onClick={(event) => followLink(event, link.href, onHome)}
-                  className="inline-block rounded py-2 text-base text-white/70 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+                  className="inline-block rounded py-3 text-base text-white/70 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#00D26A]"
                 >
                   {link.label}
                 </Link>

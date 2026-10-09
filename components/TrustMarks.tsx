@@ -57,7 +57,7 @@ export function TrustMarks({ compact = false }: { compact?: boolean }) {
             href={DNB_REGISTER}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-[#007F45] underline-offset-2 hover:underline"
+            className="-my-2 inline-block py-2 font-semibold text-[#007F45] underline-offset-2 hover:underline"
           >
             Bekijk het register
           </a>
