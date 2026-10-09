@@ -68,7 +68,7 @@ function CoinVideo() {
   }, [reduceMotion]);
 
   return (
-    <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:mx-0 lg:aspect-[4/5] lg:h-[min(560px,calc(100svh_-_15rem))] lg:w-auto lg:max-w-none lg:rounded-[28px]">
+    <div className="relative mx-auto aspect-[16/10] w-full max-w-[560px] overflow-hidden rounded-[20px] sm:aspect-[4/3] sm:rounded-[24px] bg-black ring-1 ring-white/10 lg:mx-0 lg:aspect-[4/5] lg:h-[min(560px,calc(100svh_-_15rem))] lg:w-auto lg:max-w-none lg:rounded-[28px]">
       {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
       <Image
         src="/hero/munt-intro-poster.webp"
@@ -227,7 +227,7 @@ export default function HeroSection() {
           <div className="flex min-w-0 flex-col px-5 pt-5 sm:px-8 sm:pt-8 lg:py-14 lg:pl-14 lg:pr-10 xl:pl-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))] [@media(max-height:820px)]:lg:py-10">
             <h1
               id="hero-titel"
-              className="font-heading text-balance text-[38px] font-extrabold leading-[1.02] min-[380px]:text-[44px] sm:text-[60px] lg:text-[52px] xl:text-[56px] [@media(max-height:820px)]:lg:text-[50px]"
+              className="font-heading text-balance text-[31px] font-extrabold leading-[1.02] min-[380px]:text-[36px] sm:text-[60px] lg:text-[52px] xl:text-[56px] [@media(max-height:820px)]:lg:text-[50px]"
             >
               Splits de rekening.
               {/* Tweede zin op een groene markering die er één keer van links naar rechts onder schuift. */}
@@ -243,27 +243,28 @@ export default function HeroSection() {
                 </span>
               </span>
             </h1>
-            <p className="mt-6 max-w-[40ch] text-pretty text-[17px] leading-[1.55] text-white/70 sm:text-xl lg:text-[19px] [@media(max-height:820px)]:lg:mt-4">
+            <p className="mt-4 max-w-[40ch] text-pretty text-[16px] leading-[1.5] text-white/70 sm:mt-6 sm:text-xl lg:text-[19px] [@media(max-height:820px)]:lg:mt-4">
               Stuur je vrienden een challenge in plaats van een kaal betaalverzoek. Wie het best speelt, betaalt het minst.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap [@media(max-height:820px)]:lg:mt-6">
+            {/* Op de telefoon naast elkaar en compacter, zodat de munt en de app al in het eerste scherm staan. */}
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3 [@media(max-height:820px)]:lg:mt-6">
               <Link
                 href={DOWNLOAD_ANCHOR}
                 onClick={(event) => followLink(event, DOWNLOAD_ANCHOR, true)}
-                className="inline-flex h-[56px] items-center justify-center rounded-full bg-[#00D26A] px-8 text-[17px] font-semibold text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
+                className="inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full bg-[#00D26A] px-2 text-[14px] min-[380px]:px-4 min-[380px]:text-[15px] font-semibold sm:h-[56px] sm:px-8 sm:text-[17px] text-[#0A0C0A] outline-none transition-[background-color,transform] duration-200 hover:bg-[#1FDC7C] focus-visible:ring-4 focus-visible:ring-[#00D26A]/40 active:scale-[0.98]"
               >
                 Download de app
               </Link>
               <Link
                 href="/#stappen"
                 onClick={(event) => followLink(event, "/#stappen", true)}
-                className="group inline-flex h-[56px] items-center justify-center gap-2 rounded-full bg-white/10 px-7 text-[17px] font-semibold text-white outline-none ring-1 ring-inset ring-white/20 transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-[#00D26A]"
+                className="group inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-2 text-[14px] min-[380px]:px-4 min-[380px]:text-[15px] font-semibold sm:h-[56px] sm:px-7 sm:text-[17px] text-white outline-none ring-1 ring-inset ring-white/20 transition-colors duration-200 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-[#00D26A]"
               >
                 Zo werkt het
                 <ArrowDown
                   weight="bold"
                   aria-hidden
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5"
+                  className="hidden h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5 min-[380px]:block"
                 />
               </Link>
             </div>
@@ -290,7 +291,7 @@ export default function HeroSection() {
 
           {/* Rechts de munt als losse kaart, in het midden van het vak, met een zachte groene gloed erachter.
               Op telefoon en tablet staat hij onder de tekst en schuift het stappenkaartje over de onderkant. */}
-          <div className="relative min-w-0 px-5 pt-8 sm:px-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
+          <div className="relative min-w-0 px-5 pt-6 sm:px-8 sm:pt-8 lg:flex lg:items-center lg:py-14 lg:pl-0 lg:pr-14 xl:pr-[max(3.5rem,calc((100vw_-_1104px)/2_-_12px))]">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10 hidden bg-[radial-gradient(closest-side,rgba(0,210,106,0.16),rgba(0,210,106,0))] lg:block"
@@ -301,7 +302,7 @@ export default function HeroSection() {
             <div
               role="group"
               aria-label="Voorbeeld van een individueel verzoek in de app"
-              className="relative mx-auto -mb-6 -mt-12 h-[250px] max-w-[560px] sm:-mt-16 sm:h-[300px] lg:hidden"
+              className="relative mx-auto -mb-6 -mt-10 h-[230px] max-w-[560px] sm:-mt-16 sm:h-[300px] lg:hidden"
             >
               <div className="absolute left-1 top-0 w-[148px] -rotate-[8deg] sm:left-6 sm:w-[180px]">
                 <div
