@@ -48,7 +48,7 @@ export function PaymentBar() {
     <section aria-label="Betalen via" className="border-b border-[#E3EAE6]">
       {/* Bovenste rij: de betaalmethode en de betaalpartner, gescheiden door een streep. */}
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-4 pt-4 sm:px-6 sm:pt-5">
-        <p className="basis-full text-center text-lg font-semibold text-neutral-700 sm:basis-auto">Veilig betalen via</p>
+        <p className="sr-only">Veilig betalen via</p>
         <div className="flex items-center gap-6 sm:gap-8">
           <Image
             src="/merk/ideal-wero.svg"
@@ -69,9 +69,8 @@ export function PaymentBar() {
       </div>
 
       {/* De banken: twee gelijke rijen achter elkaar, de helft opschuiven is één rondje. Stilstaan bij aanwijzen. */}
-      <div className="mt-6 pb-7 sm:mt-7 sm:pb-8">
-        <p className="mb-4 text-center text-base font-medium text-neutral-600">Je betaalt vanuit je eigen bank:</p>
-        <div
+      <div className="mt-6 pb-6 sm:mt-7 sm:pb-7">
+                <div
           role="img"
           aria-label={`Je betaalt vanuit je eigen bank, bijvoorbeeld ${BANKS.map((b) => b.name).join(", ")}`}
           className="band relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
