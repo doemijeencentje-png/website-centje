@@ -91,7 +91,7 @@ export const FLOWS: Flow[] = [
         title: "De ranglijst beslist",
         text: "Heeft iedereen gespeeld, dan is de pot verdeeld. Hoe hoger je eindigt, hoe minder je betaalt. Jij ontvangt de pot.",
         image: "/app/groep-5-ranglijst.webp",
-        alt: "Ranglijst De pot is verdeeld met Tim op de eerste plek",
+        alt: "Uitslag van het Groepscentje Pizza-avond: Tim is 2e van 4, betaalt 21,67 euro en ziet direct de knop Betalen",
       },
     ],
   },
