@@ -72,11 +72,11 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     shownFlow.current = flow.id;
     if (reduceMotion) return;
     // Gelijkmatig op gang en gelijkmatig tot stilstand, zodat de beweging over de hele tijd te zien is.
-    const ease = [0.45, 0, 0.25, 1] as const;
+    const ease = [0.4, 0, 0.15, 1] as const;
     const runs = [
       flyPhone.current &&
-        animate(flyPhone.current, { opacity: [0, 1], x: [-48, 0], rotate: [-3, 0] }, { duration: 1.4, ease }),
-      steps.current && animate(steps.current, { opacity: [0, 1], x: [32, 0] }, { duration: 1.2, ease, delay: 0.15 }),
+        animate(flyPhone.current, { opacity: [0, 1], x: [-180, 0], y: [24, 0], rotate: [-7, 0], scale: [0.94, 1] }, { duration: 2.4, ease, opacity: { duration: 1.2, ease } }),
+      steps.current && animate(steps.current, { opacity: [0, 1], x: [90, 0] }, { duration: 2, ease, delay: 0.3, opacity: { duration: 1.1, ease, delay: 0.3 } }),
     ];
     return () => runs.forEach((run) => run?.stop());
   }, [flow.id, reduceMotion]);
@@ -104,7 +104,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
       <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] py-2 lg:top-[72px] lg:h-[calc(100svh_-_72px)] lg:items-center lg:py-5">
         {/* Het podium: een wit venster zoals "Nieuw verzoek" erboven en in de app, met groene knoppen. */}
         <div
-          className={`relative isolate flex h-full w-full flex-col overflow-hidden rounded-[32px] bg-white px-4 pt-4 text-[#0A0C0A] shadow-[0_2px_6px_rgba(10,12,10,0.05),0_30px_70px_-30px_rgba(0,90,45,0.35)] ring-1 ring-black/5 sm:rounded-[40px] sm:px-10 sm:pt-8 lg:flex-row lg:items-center lg:gap-16 lg:px-14 lg:py-8 [@media(max-height:820px)]:lg:py-6`}
+          className={`stappen-podium relative isolate flex h-full w-full flex-col overflow-hidden rounded-[32px] bg-white px-4 pt-4 text-[#0A0C0A] shadow-[0_2px_6px_rgba(10,12,10,0.05),0_30px_70px_-30px_rgba(0,90,45,0.35)] ring-1 ring-black/5 sm:rounded-[40px] sm:px-10 sm:pt-8 lg:flex-row lg:items-center lg:gap-16 lg:px-14 lg:py-8 [@media(max-height:820px)]:lg:py-6`}
         >
           <div
             aria-hidden
@@ -235,7 +235,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
           {/* Telefoon: op mobiel onderaan, hij loopt onder de ronde rand door (zo blijft hij groot genoeg om te lezen);
               op desktop links, met een ademende gloed. */}
-          <div className="relative mt-4 min-h-0 flex-1 overflow-y-clip sm:mt-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible">
+          <div className="kom-binnen relative mt-4 min-h-0 flex-1 overflow-y-clip sm:mt-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible">
             <div ref={flyPhone}>
             <div
               ref={phone}

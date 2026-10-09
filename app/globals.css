@@ -102,6 +102,34 @@
   animation-play-state: paused;
 }
 
+/* Telefoon in de stappen: komt tijdens het aanscrollen van schuin links rechtop naar zijn plek.
+   Gekoppeld aan de scroll via de browser zelf (animation-timeline), zonder JavaScript per
+   scrollstap, zodat er niets trilt. Browsers zonder ondersteuning tonen hem gewoon recht. */
+@keyframes kom-binnen {
+  from {
+    transform: translateX(-260px) translateY(60px) rotate(-14deg) scale(0.9);
+    opacity: 0.35;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .kom-binnen {
+      animation: kom-binnen linear both;
+      animation-timeline: --stappen;
+      animation-range: entry 0% entry 100%;
+    }
+
+    .stappen-podium {
+      view-timeline-name: --stappen;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .band-baan {
     animation: none;
