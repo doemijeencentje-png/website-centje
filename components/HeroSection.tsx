@@ -20,7 +20,7 @@ const STEPS = FLOWS[0].steps;
 
 type NetworkInfo = { saveData?: boolean };
 
-/** De muntanimatie, groot in het vak: poster meteen, video pas als de pagina klaar is; stil buiten beeld. */
+/** De muntanimatie: poster meteen, video pas als de pagina klaar is; stil buiten beeld. */
 function CoinVideo() {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -68,7 +68,7 @@ function CoinVideo() {
   }, [reduceMotion]);
 
   return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:absolute lg:inset-3 lg:mx-0 lg:aspect-auto lg:w-auto lg:max-w-none">
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-[24px] bg-black ring-1 ring-white/10 lg:absolute lg:inset-0 lg:mx-0 lg:aspect-auto lg:w-auto lg:max-w-none lg:rounded-none lg:border-l lg:border-white/10 lg:ring-0">
       {/* Geen preload: die zou via het vooraf laden van de homepage ook op andere pagina's afgaan. */}
       <Image
         src="/hero/munt-intro-poster.webp"
@@ -280,8 +280,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Rechts de munt, groot, tot net binnen de rand van het vak (12 px). Op telefoon en tablet
-              staat hij onder de tekst en schuift het stappenkaartje over de onderkant. */}
+          {/* Rechts de munt, groot, van de boven- tot de onderrand van het vak; de ronde hoeken van het vak
+              lopen erover door. Op telefoon en tablet staat hij onder de tekst en schuift het
+              stappenkaartje over de onderkant. */}
           <div className="min-w-0 px-5 pb-6 pt-8 sm:px-8 lg:relative lg:p-0">
             <CoinVideo />
             <StepCard demo={demo} className="relative z-10 mx-3 -mt-14 sm:mx-auto sm:max-w-[380px] lg:hidden" />
