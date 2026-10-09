@@ -8,7 +8,7 @@ import { ArrowDown } from "@phosphor-icons/react";
 import { DOWNLOAD_ANCHOR } from "@/lib/links";
 import { followLink } from "./site/inPage";
 import { IPhoneFrame } from "./IPhoneFrame";
-import { Spotlight } from "./Spotlight";
+import { DotField } from "./DotField";
 import { FLOWS } from "./how-it-works/flows";
 
 // De poster is dit moment uit de video; de video begint daar, zodat er niets verspringt.
@@ -201,8 +201,16 @@ export default function HeroSection() {
     <section
       id="hero"
       aria-labelledby="hero-titel"
-      className="bg-white pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pt-32 [@media(max-height:820px)]:lg:pt-28"
+      className="relative isolate overflow-hidden bg-white pb-12 pt-28 sm:pb-16 sm:pt-32 lg:pt-32 [@media(max-height:820px)]:lg:pt-28"
     >
+      {/* Stippenraster achter de kop, uitlopend vanaf rechtsboven; met de muis erover kleuren de stippen groen. */}
+      <DotField
+        className="hidden sm:block"
+        fade="radial-gradient(ellipse 70% 85% at 100% 0%, #000 35%, transparent 100%)"
+        reveal={240}
+        glow={780}
+        glowAlpha={0.16}
+      />
       {/* Eerst in één keer wat Centje is, links uitgelijnd zoals een krantenkop. */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h1
@@ -244,8 +252,8 @@ export default function HeroSection() {
       {/* Het podium: de munt en de app naast elkaar op een stippenraster (zoals millimeterpapier),
           waar een groene lichtvlek de muis volgt. Op telefoon en tablet alleen de munt, zonder kader. */}
       <div className="mx-auto mt-10 max-w-6xl px-4 sm:mt-12 sm:px-6 lg:mt-10 [@media(max-height:820px)]:lg:mt-8">
-        <div className="relative isolate overflow-hidden lg:rounded-[28px] lg:border lg:border-[#E3EAE6] lg:bg-[#F4F7F5] lg:[background-image:radial-gradient(circle,rgba(10,12,10,0.13)_1px,transparent_1.5px)] lg:[background-size:16px_16px]">
-          <Spotlight className="hidden lg:block" />
+        <div className="relative isolate overflow-hidden lg:rounded-[28px] lg:border lg:border-[#E3EAE6] lg:bg-[#F4F7F5]">
+          <DotField className="hidden lg:block" />
           <div className="grid lg:h-[544px] lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-8 lg:p-8 xl:h-[589px] [@media(max-height:820px)]:lg:h-[504px]">
             <CoinVideo />
             <div className="hidden lg:block">
