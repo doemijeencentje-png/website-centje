@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { IPhoneFrame } from "./IPhoneFrame";
+import { TrustMarks } from "./TrustMarks";
 
 // Alle punten komen uit de veelgestelde vragen (gecontroleerd tegen app en voorwaarden).
 const POINTS = [
   {
-    title: "Met iDEAL",
+    title: "Met iDEAL | Wero",
     text: "Je rondt elke betaling af in de vertrouwde omgeving van je eigen bank.",
   },
   {
@@ -53,6 +54,7 @@ export function SafetySection() {
               </li>
             ))}
           </ul>
+
         </div>
 
         {/* Het moment na het betalen, met eronder wat Centje kost. */}
@@ -108,6 +110,11 @@ export function SafetySection() {
             />
           </aside>
         </div>
+      </div>
+
+      {/* Waar de betalingen op rusten, met de officiële merken. */}
+      <div className="mx-auto mt-16 max-w-6xl px-4 sm:mt-20 sm:px-6">
+        <TrustMarks />
       </div>
     </section>
   );

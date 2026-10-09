@@ -20,8 +20,9 @@ Nooit beelden uit `Centje-FILM-groepscentje.mp4` gebruiken (daar staan echte nam
 | `merk/logo.webp`, `centje-logo.png` | Het officiële Centje-logo (munt + woordmerk), 1950 x 522. Randen opnieuw opgebouwd zodat er op donker geen lichte rand en op wit geen donkere rand ontstaat; binnenkant ongewijzigd |
 | `merk/logo-munt.webp` | Alleen de munt uit het officiële logo, 1024 x 1024, met een gladde rand. Gebruik deze munt, nooit een zelf gemaakte of 3D-gerenderde munt |
 | `app/icon.png` | Favicon, gemaakt van `merk/logo-munt.webp` |
-| `merk/qr-download.svg` | QR-code naar `https://centje.app/download`, foutcorrectie H (werkt met de munt in het midden) |
 | `merk/app-store-badge.svg` | Officiële badge van Apple (developer.apple.com) |
+| `merk/ideal-wero.svg` | Officiële iDEAL \| Wero-betaalkaart (co-brand sinds 2025), zoals iDEAL die aan betaaldiensten levert; naam en schrijfwijze volgens ideal.nl/marketing-ideal ("iDEAL \| Wero") |
+| `merk/opp-merk.svg` | Beeldmerk van Online Payment Platform (docs.onlinepaymentplatform.com); de naam staat er in tekst naast |
 | `hero/munt-intro.mp4` | Uitsnede 1080 x 1350 van de bestaande merkvideo, zonder geluid |
 | `app/*.webp` | Echte app-schermen met verzonnen demodata (Sanne, Tim, Noor, Daan) |
 | `og-image.png` | Deelafbeelding 1200 x 630: officieel logo, kop en de echte uitslag uit de app |

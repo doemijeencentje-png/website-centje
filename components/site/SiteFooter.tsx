@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { followLink } from "./inPage";
 import { Logo } from "./Logo";
+import { TrustMarks } from "../TrustMarks";
 
 // Bewust geen juridische links: die staan sinds 9-9-2026 niet meer op de site (de pagina's zelf
 // blijven bereikbaar voor de app en de App Store).
@@ -40,8 +41,12 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <p className="mt-10 text-center text-sm text-white/45" suppressHydrationWarning>
-          © {new Date().getFullYear()} Centje · Betalingen via Online Payment Platform
+        <div className="mt-10 w-full border-t border-white/10 pt-8">
+          <TrustMarks compact />
+        </div>
+
+        <p className="mt-8 text-center text-sm text-white/45" suppressHydrationWarning>
+          © {new Date().getFullYear()} Centje
         </p>
       </div>
     </footer>
