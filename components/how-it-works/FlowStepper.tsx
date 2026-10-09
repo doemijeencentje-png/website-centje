@@ -252,13 +252,13 @@ export function FlowStepper({ flow }: { flow: Flow }) {
             </div>
           </div>
 
-          {/* Telefoon: op mobiel onderaan, hij loopt onder de ronde rand door (zo blijft hij groot genoeg om te lezen);
+          {/* Telefoon: op mobiel onderaan, zo groot als de ruimte toelaat maar altijd helemaal in beeld;
               op desktop links, met een ademende gloed. */}
-          <div className="kom-binnen relative mt-4 min-h-0 flex-1 overflow-y-clip sm:mt-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible">
-            <div ref={flyPhone}>
+          <div className="kom-binnen relative mt-4 min-h-0 flex-1 overflow-y-clip pb-4 sm:mt-6 sm:pb-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible lg:pb-0">
+            <div ref={flyPhone} className="h-full lg:h-auto">
             <div
               ref={phone}
-              className="relative isolate mx-auto w-[220px] sm:w-[280px] lg:w-[min(320px,calc((100svh_-_11rem)_*_0.4615))]"
+              className="relative isolate mx-auto aspect-[9/19.5] h-full max-w-[220px] sm:max-w-[280px] lg:aspect-auto lg:h-auto lg:w-[min(320px,calc((100svh_-_11rem)_*_0.4615))] lg:max-w-none"
             >
               <div
                 aria-hidden
