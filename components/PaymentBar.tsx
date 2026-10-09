@@ -46,30 +46,34 @@ function BankChip({ name, logo, wordmark = false }: { name: string; logo: string
 export function PaymentBar() {
   return (
     <section aria-label="Betalen via" className="border-b border-[#E3EAE6]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-5 px-4 pt-4 sm:px-6 sm:pt-5">
+      {/* Bovenste rij: de betaalmethode en de betaalpartner, gescheiden door een streep. */}
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-4 pt-4 sm:px-6 sm:pt-5">
         <p className="basis-full text-center text-lg font-semibold text-neutral-700 sm:basis-auto">Veilig betalen via</p>
-        <Image
-          src="/merk/ideal-wero.svg"
-          alt="iDEAL | Wero"
-          width={40}
-          height={26}
-          unoptimized
-          className="h-14 w-auto rounded-[8px] sm:h-16"
-        />
-        <span className="flex items-center gap-3">
-          <Image src="/merk/opp-merk.svg" alt="" width={172} height={88} unoptimized className="h-9 w-auto sm:h-11" />
-          <span className="text-base font-semibold leading-tight tracking-tight text-[#4642FF] sm:text-2xl">
-            Online Payment Platform
+        <div className="flex items-center gap-6 sm:gap-8">
+          <Image
+            src="/merk/ideal-wero.svg"
+            alt="iDEAL | Wero"
+            width={40}
+            height={26}
+            unoptimized
+            className="h-12 w-auto rounded-[8px] sm:h-16"
+          />
+          <span aria-hidden className="h-10 w-px bg-[#D5DED9] sm:h-12" />
+          <span className="flex items-center gap-3">
+            <Image src="/merk/opp-merk.svg" alt="" width={172} height={88} unoptimized className="h-8 w-auto sm:h-11" />
+            <span className="text-base font-semibold leading-tight tracking-tight text-[#4642FF] sm:text-2xl">
+              Online Payment Platform
+            </span>
           </span>
-        </span>
+        </div>
       </div>
 
       {/* De banken: twee gelijke rijen achter elkaar, de helft opschuiven is één rondje. Stilstaan bij aanwijzen. */}
       <div className="mt-6 pb-7 sm:mt-7 sm:pb-8">
-        <p className="mb-4 text-center text-base font-medium text-neutral-600">Met je eigen bank</p>
+        <p className="mb-4 text-center text-base font-medium text-neutral-600">Je betaalt vanuit je eigen bank:</p>
         <div
           role="img"
-          aria-label={`Betalen met je eigen bank, bijvoorbeeld ${BANKS.map((b) => b.name).join(", ")}`}
+          aria-label={`Je betaalt vanuit je eigen bank, bijvoorbeeld ${BANKS.map((b) => b.name).join(", ")}`}
           className="band relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
         >
           <div className="band-baan flex w-max gap-3 pr-3">
