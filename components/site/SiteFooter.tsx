@@ -21,8 +21,8 @@ export function SiteFooter() {
   const onHome = usePathname() === "/";
 
   return (
-    <footer data-kop="donker" className="bg-[#0A0C0A] text-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-4 pb-10 pt-6 sm:px-6 sm:pt-10">
+    <footer data-kop="donker" className="border-t border-white/10 bg-[#0A0C0A] text-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-4 pb-10 pt-10 sm:px-6 sm:pt-14">
         <Logo />
 
         <nav aria-label="Voettekst" className="mt-8">

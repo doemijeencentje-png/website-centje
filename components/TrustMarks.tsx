@@ -13,13 +13,13 @@ const MARK = "flex h-14 w-20 shrink-0 items-center justify-center";
 export function TrustMarks({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
-      <ul aria-label="Betaalpartners" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-        <li className="flex items-center gap-3 text-sm text-white/60">
+      <ul aria-label="Betaalpartners" className="flex flex-col items-center gap-y-5 text-center sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-4 sm:text-left">
+        <li className="flex flex-col items-center gap-2 text-sm text-white/60 sm:flex-row sm:gap-3">
           <Image src="/merk/ideal-wero.svg" alt="iDEAL | Wero" width={40} height={26} unoptimized className="h-7 w-auto rounded-[4px]" />
           Betalen met iDEAL | Wero
         </li>
-        <li className="flex items-center gap-3 text-sm text-white/60">
-          <Image src="/merk/opp-merk.svg" alt="" width={256} height={256} unoptimized className="h-7 w-7 rounded-full bg-white p-0.5" />
+        <li className="flex flex-col items-center gap-2 text-sm text-white/60 sm:flex-row sm:gap-3">
+          <Image src="/merk/opp-merk.svg" alt="" width={172} height={88} unoptimized className="h-6 w-auto rounded-[4px] bg-white px-1.5 py-1" />
           Via Online Payment Platform, onder toezicht van De Nederlandsche Bank
         </li>
       </ul>
@@ -34,16 +34,16 @@ export function TrustMarks({ compact = false }: { compact?: boolean }) {
         </span>
         <span className="text-[15px] leading-snug text-neutral-700">
           <span className="block text-base font-semibold text-[#0A0C0A]">Betalen met iDEAL | Wero</span>
-          In de vertrouwde omgeving van je eigen bank.
+          In de vertrouwde omgeving van uw eigen bank.
         </span>
       </li>
       <li className={TILE}>
         <span className={MARK}>
-          <Image src="/merk/opp-merk.svg" alt="Online Payment Platform" width={256} height={256} unoptimized className="h-12 w-12" />
+          <Image src="/merk/opp-merk.svg" alt="Online Payment Platform" width={172} height={88} unoptimized className="h-10 w-auto" />
         </span>
         <span className="text-[15px] leading-snug text-neutral-700">
           <span className="block text-base font-semibold text-[#0A0C0A]">Online Payment Platform</span>
-          Onze betaalpartner verwerkt elke betaling en betaalt uit op je rekening.
+          Onze betaalpartner verwerkt elke betaling en betaalt uit op uw rekening.
         </span>
       </li>
       <li className={TILE}>

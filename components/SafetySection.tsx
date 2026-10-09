@@ -4,53 +4,54 @@ import { IPhoneFrame } from "./IPhoneFrame";
 const DNB_REGISTER = "https://www.dnb.nl/openbaar-register/";
 
 // Drie merken, elk met één regel. Geen uitleg: het logo zegt het.
+// Op een telefoon staat het logo boven de regel (anders passen lange woorden niet naast het logo).
 const CARD =
-  "flex items-center gap-6 rounded-[24px] border border-[#E3EAE6] bg-white p-5 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(0,60,30,0.35)] sm:p-6";
-const MARK = "flex h-16 w-24 shrink-0 items-center justify-center";
-const TITLE = "font-heading text-[22px] font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl";
+  "flex min-w-0 flex-col items-start gap-4 rounded-[24px] bg-white p-5 shadow-[0_1px_2px_rgba(10,12,10,0.05),0_12px_30px_-18px_rgba(0,60,30,0.25)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(0,60,30,0.35)] sm:flex-row sm:items-center sm:gap-6 sm:p-6";
+const MARK = "flex h-12 shrink-0 items-center justify-start sm:h-16 sm:w-24 sm:justify-center";
+const TITLE = "min-w-0 font-heading text-lg font-extrabold leading-tight text-[#0A0C0A] sm:text-2xl";
 
 export function SafetySection() {
   return (
     <section
       id="veilig"
       aria-labelledby="veilig-titel"
-      className="relative scroll-mt-16 overflow-x-clip bg-white py-16 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 overflow-x-clip bg-[#F4F7F5] py-16 sm:py-24 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-20">
-        <div>
+        <div className="min-w-0">
           <h2
             id="veilig-titel"
             className="font-heading text-balance text-[36px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-[56px]"
           >
-            Veilig betalen, gewoon via je bank
+            Veilig betalen via uw bank
           </h2>
 
-          <ul className="mt-10 space-y-4 sm:mt-12">
+          <ul className="mt-10 min-w-0 space-y-4 sm:mt-12">
             <li className={CARD}>
               <span className={MARK}>
-                <Image src="/merk/ideal-wero.svg" alt="" width={40} height={26} unoptimized className="h-16 w-auto rounded-[8px]" />
+                <Image src="/merk/ideal-wero.svg" alt="" width={40} height={26} unoptimized className="h-12 w-auto rounded-[8px] sm:h-16" />
               </span>
               <span className={TITLE}>Betalen met iDEAL | Wero</span>
             </li>
             <li className={CARD}>
               <span className={MARK}>
-                <Image src="/merk/opp-merk.svg" alt="" width={256} height={256} unoptimized className="h-16 w-16" />
+                <Image src="/merk/opp-merk.svg" alt="" width={172} height={88} unoptimized className="h-8 w-auto sm:h-10" />
               </span>
               <span className={TITLE}>
                 Betaalpartner <span className="text-[#4642FF]">Online Payment Platform</span>
               </span>
             </li>
             <li className={CARD}>
-              <span className={`${MARK} font-heading text-[30px] font-extrabold leading-none text-[#0A0C0A]`}>DNB</span>
+              <span className={`${MARK} font-heading text-[24px] font-extrabold leading-none text-[#0A0C0A] sm:text-[30px]`}>DNB</span>
               <span className={TITLE}>
-                OPP staat onder toezicht van De Nederlandsche Bank{" "}
+                OPP staat onder toezicht van De Nederlandsche Bank
                 <a
                   href={DNB_REGISTER}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="-my-2 inline-block py-2 text-base font-semibold text-[#007F45] underline-offset-2 hover:underline"
+                  className="mt-1 block py-1 text-[15px] font-semibold text-[#007F45] underline-offset-2 hover:underline"
                 >
-                  Register
+                  Bekijk het register
                 </a>
               </span>
             </li>
@@ -94,7 +95,7 @@ export function SafetySection() {
                 Wat kost Centje?
               </h3>
               <p className="mt-2 text-pretty text-base font-medium leading-[1.5] text-[#0A0C0A]/80">
-                De app is gratis. Voor je verificatie betaal je eenmalig{" "}
+                De app is gratis. Voor de verificatie betaalt u eenmalig{" "}
                 <strong className="font-bold text-[#0A0C0A]">€&nbsp;1</strong>.
               </p>
             </div>

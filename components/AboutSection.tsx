@@ -5,7 +5,7 @@ export function AboutSection() {
     <section
       id="over-ons"
       aria-labelledby="verhaal-titel"
-      className="relative scroll-mt-16 bg-white py-16 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 bg-white py-16 sm:py-24 lg:scroll-mt-[72px]"
     >
       {/* De tekst in een witte kaart die over de foto schuift: op desktop over de rechterrand,
           op mobiel over de onderkant. */}
@@ -34,24 +34,22 @@ export function AboutSection() {
 
           <div className="mt-6 space-y-4 text-[17px] leading-[1.65] text-neutral-700 sm:mt-7 sm:text-lg">
             <p>
-              Het begon op een terras. De rekening kwam en daar was het weer: wie
-              betaalt wat?
+              Het begon op een terras. De rekening kwam en de vraag was er weer: wie betaalt wat?
             </p>
             <p>
-              Waarom moet zoiets altijd zo droog en zakelijk zijn? Het gaat om
-              vrienden. Dat mag ook een beetje leuk zijn.
+              Waarom moet dat altijd zo zakelijk en droog? Het gaat om vrienden. Dat mag ook leuk
+              zijn.
             </p>
             <p>
-              Dus gaven we betaalverzoeken een{" "}
-              <strong className="font-semibold text-[#007F45]">sociale twist</strong>: je
-              stuurt een challenge in plaats van een kaal verzoek. Win je het
-              spelletje, dan betaal je minder.
+              Daarom gaven wij betaalverzoeken een{" "}
+              <strong className="font-semibold text-[#007F45]">sociale twist</strong>: u verstuurt
+              een challenge in plaats van een gewoon verzoek. Wint u het spel, dan betaalt u minder.
             </p>
           </div>
 
           <figure className="mt-8 border-l-4 border-[#00D26A] pl-5 sm:mt-10 sm:pl-6">
             <blockquote className="font-heading text-[22px] font-extrabold leading-[1.15] text-[#0A0C0A] sm:text-[28px]">
-              Geen saaie fintech. Gewoon geld terugvragen, maar dan leuker.
+              Geld terugvragen, maar dan leuker.
             </blockquote>
             <figcaption className="mt-3 text-base text-neutral-500">Team Centje, 2025</figcaption>
           </figure>

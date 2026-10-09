@@ -41,7 +41,7 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
   return (
     <div
       role="tablist"
-      aria-label="Kies hoe je speelt"
+      aria-label="Kies hoe u speelt"
       className="@container flex h-[280px] gap-3 [--gap:0.75rem] [--grow:2.6] sm:h-[380px] sm:gap-4 sm:[--gap:1rem] sm:[--grow:1.8] lg:h-[440px]"
     >
       {FLOWS.map((flow, index) => {
@@ -88,7 +88,7 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
               className={`absolute inset-0 -z-10 transition-[opacity,scale] ${
                 active
                   ? "scale-100 opacity-100 duration-700 delay-200"
-                  : "scale-90 opacity-0 duration-200"
+                  : "hidden scale-[0.8] opacity-25 duration-300 sm:block"
               } ${isLeft ? "origin-right" : "origin-center"}`}
             >
               <PanelArt mode={flow.id} />
@@ -117,7 +117,7 @@ export function ModeSwitcher({ mode, onChange }: ModeSwitcherProps) {
             {/* Inactief: korte uitnodiging om te wisselen */}
             <span
               aria-hidden
-              className={`absolute inset-0 flex flex-col justify-end p-4 transition-opacity sm:p-8 ${
+              className={`absolute inset-0 flex flex-col justify-center p-4 transition-opacity sm:justify-end sm:p-8 ${
                 isLeft ? "items-start" : "items-end text-right"
               } ${active ? "opacity-0 duration-150" : "opacity-100 duration-300 delay-300"}`}
             >

@@ -8,7 +8,7 @@ export function FaqTeaser() {
     <section
       id="vragen"
       aria-labelledby="vragen-titel"
-      className="relative scroll-mt-16 bg-white py-16 sm:py-32 lg:scroll-mt-[72px]"
+      className="relative scroll-mt-16 bg-white py-16 sm:py-24 lg:scroll-mt-[72px]"
     >
       <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
@@ -16,7 +16,7 @@ export function FaqTeaser() {
             id="vragen-titel"
             className="font-heading text-[32px] font-extrabold leading-[1.04] text-[#0A0C0A] sm:text-[56px]"
           >
-            Goed om te weten
+            Veelgestelde vragen
           </h2>
           <Link
             href="/veelgestelde-vragen"

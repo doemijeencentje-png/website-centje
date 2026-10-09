@@ -29,16 +29,17 @@ function Person({ tone, style }: { tone: Tone; style: React.CSSProperties }) {
 export function PanelArt({ mode }: { mode: FlowId }) {
   if (mode === "individueel") {
     return (
-      <span className="absolute right-5 top-5 block h-[112px] w-[112px] sm:right-8 sm:top-7 sm:h-[116px] sm:w-[116px] lg:right-10 lg:top-10 lg:h-[172px] lg:w-[172px]">
+      <span className="absolute right-5 top-5 block h-[112px] w-[112px] sm:right-8 sm:top-7 sm:h-[116px] sm:w-[116px] lg:right-10 lg:top-10 lg:h-[220px] lg:w-[220px]">
         <span className="absolute inset-[-16%] rounded-full border border-[#0A0C0A]/10" />
         <span className="absolute inset-[-36%] rounded-full border border-[#0A0C0A]/[0.06]" />
+        <span className="absolute inset-[-60%] rounded-full border border-[#0A0C0A]/[0.04]" />
         <Person tone="dark" style={{ inset: 0 }} />
       </span>
     );
   }
 
   return (
-    <span className="absolute right-4 top-5 block h-[112px] w-[150px] sm:right-7 sm:top-7 sm:h-[118px] sm:w-[158px] lg:right-9 lg:top-9 lg:h-[180px] lg:w-[240px]">
+    <span className="absolute right-4 top-5 block h-[112px] w-[150px] sm:right-7 sm:top-7 sm:h-[118px] sm:w-[158px] lg:right-9 lg:top-9 lg:h-[230px] lg:w-[300px]">
       <Person tone="light" style={{ left: "0%", top: "6%", height: "50%" }} />
       <Person tone="mint" style={{ right: "0%", top: "0%", height: "47%" }} />
       <Person tone="dark" style={{ left: "8%", bottom: "0%", height: "40%" }} />

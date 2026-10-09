@@ -35,7 +35,7 @@ export function DownloadSection() {
         className="absolute -right-40 top-1/2 -z-10 h-[820px] w-[820px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
       />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:py-32">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:pb-20 sm:pt-28 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 lg:pb-24 lg:pt-32">
         <div>
           <h2
             id="download-titel"
@@ -43,16 +43,12 @@ export function DownloadSection() {
           >
             Download Centje. <span className="text-[#00D26A]">Betaal leuker.</span>
           </h2>
-          <p className="mt-6 max-w-[42ch] text-[17px] leading-[1.6] text-white/75 sm:text-lg">
-            Stuur vandaag nog je eerste challenge. Centje is er voor iPhone, en je vrienden hebben
-            de app niet eens nodig.
-          </p>
 
           <a
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-block rounded-[12px] outline-none transition-transform duration-200 hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 active:scale-[0.98]"
+            className="mt-8 inline-block rounded-[12px] sm:mt-10 outline-none transition-transform duration-200 hover:scale-[1.03] focus-visible:ring-4 focus-visible:ring-[#00D26A]/50 active:scale-[0.98]"
           >
             <Image
               src="/merk/app-store-badge.svg"

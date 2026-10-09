@@ -77,7 +77,7 @@ export function SiteHeader() {
 
   const surface =
     tone === "light"
-      ? "border-[#E3EAE6]/80 bg-white/90 backdrop-blur-md"
+      ? "border-[#E3EAE6]/80 bg-white"
       : scrolled
         ? "border-white/10 bg-[#0A0C0A]/85 backdrop-blur-md"
         : "border-transparent bg-transparent";

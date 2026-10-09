@@ -8,7 +8,7 @@ interface IPhoneFrameProps {
 export function IPhoneFrame({ children, className = "" }: IPhoneFrameProps) {
   return (
     <div
-      className={`relative mx-auto w-full max-w-[280px] ${className}`}
+      className={`relative mx-auto w-full ${className}`}
       style={{ aspectRatio: "9 / 19.5", containerType: "inline-size" }}
     >
       {/* Outer frame — hoeken/knoppen schalen mee met de breedte (cqw)

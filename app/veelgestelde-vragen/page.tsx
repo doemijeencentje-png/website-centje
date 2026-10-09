@@ -18,7 +18,7 @@ export default function VeelgesteldeVragenPage() {
     <ContentShell
       crumbs={[{ label: "Veelgestelde vragen", href: "/veelgestelde-vragen" }]}
       title="Veelgestelde vragen"
-      intro="Alles over challenges, Groepscentjes, de spellen en betalen. Kort en duidelijk, zodat je snel verder kunt."
+      intro="Alles over betaalverzoeken, Groepscentjes, de spellen en betalen. Kort en duidelijk."
       decor
     >
       <JsonLd

@@ -2,46 +2,21 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import { useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { User, UsersThree } from "@phosphor-icons/react";
 import { IPhoneFrame } from "../IPhoneFrame";
-import { FLOWS, type Flow } from "./flows";
+import { MODE_EVENT } from "../site/inPage";
+import { FLOWS, type Flow, type FlowId } from "./flows";
 
 // Scrollafstand per stap terwijl het blok vaststaat, in svh.
 const STEP_SCROLL_SVH = 65;
 // Marge rond een stapgrens (in stappen), zodat de stap niet heen en weer springt als je er precies op stilstaat.
 const HYSTERESIS = 0.04;
 
-// Stippen op het podium: groen, zacht, hele pixels (trilt niet bij het scrollen).
-const STAGE_DOTS = {
-  backgroundImage:
-    "radial-gradient(circle, rgba(0,210,106,0.22) 1.25px, transparent 1.75px), radial-gradient(circle, rgba(0,210,106,0.22) 1.25px, transparent 1.75px)",
-  backgroundSize: "14px 24px",
-  backgroundPosition: "0 0, 7px 12px",
-  maskImage: "radial-gradient(70% 90% at 35% 50%, #000 0%, transparent 100%)",
-  WebkitMaskImage: "radial-gradient(70% 90% at 35% 50%, #000 0%, transparent 100%)",
-} as const;
+// Lage laptopschermen (1280x720, 1366x768): de klassen met [@media(max-height:820px)] maken alles iets compacter.
 
 /** Stap bij een scrollvoortgang van 0 tot 1. */
 const stepAt = (progress: number, count: number) => Math.min(count - 1, Math.max(0, Math.floor(progress * count)));
-
-// Balkje dat meeloopt met het scrollen binnen één stap (0 tot 1).
-function StepBar({ progress, index, count }: { progress: MotionValue<number>; index: number; count: number }) {
-  const fill = useTransform(progress, (v) => Math.min(1, Math.max(0, v * count - index)));
-  return (
-    <motion.span
-      className="block h-full origin-left rounded-full bg-[#00D26A]"
-      style={{ scaleX: fill }}
-    />
-  );
-}
 
 export function FlowStepper({ flow }: { flow: Flow }) {
   const track = useRef<HTMLDivElement>(null);
@@ -49,7 +24,6 @@ export function FlowStepper({ flow }: { flow: Flow }) {
   const [step, setStep] = useState(0);
   const reduceMotion = useReducedMotion();
   const count = flow.steps.length;
-  const FlowIcon = flow.id === "groep" ? UsersThree : User;
 
   // 0 zodra het blok vaststaat, 1 op het moment dat het weer loslaat.
   const { scrollYProgress } = useScroll({ target: track, offset: ["start start", "end end"] });
@@ -86,24 +60,141 @@ export function FlowStepper({ flow }: { flow: Flow }) {
     });
   };
 
+  // Speelvorm wisselen vanuit het podium zelf; HowItWorks luistert naar dit event.
+  const choose = (id: FlowId) => {
+    if (id !== flow.id) window.dispatchEvent(new CustomEvent<FlowId>(MODE_EVENT, { detail: id }));
+    goTo(0);
+  };
+
   const current = flow.steps[step];
 
   return (
     <div ref={track} className="relative" style={{ height: `calc(100svh + ${count * STEP_SCROLL_SVH}svh)` }}>
-      <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] items-center py-2 lg:top-[72px] lg:h-[calc(100svh_-_72px)] lg:py-5">
-        {/* Het podium: donkergroen vlak met gloed en stippen, zodat de stappen eruit springen. */}
-        <div className="relative isolate flex h-full w-full items-center overflow-hidden rounded-[28px] bg-[#07130C] px-4 py-4 text-white sm:rounded-[40px] sm:px-10 sm:py-8 lg:px-14">
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={STAGE_DOTS} />
+      <div className="sticky top-16 flex h-[calc(100svh_-_4rem)] py-2 lg:top-[72px] lg:h-[calc(100svh_-_72px)] lg:items-center lg:py-5">
+        {/* Het podium: donkergroen vlak met gloed, stippen en een haarlijn bovenaan, zodat de stappen eruit springen. */}
+        <div
+          className={`relative isolate flex h-full w-full flex-col overflow-hidden rounded-[28px] bg-[#07130C] px-4 pt-4 text-white ring-1 ring-inset ring-white/10 before:absolute before:inset-x-10 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(0,210,106,0.5),transparent)] before:content-[''] sm:rounded-[40px] sm:px-10 sm:pt-8 lg:flex-row lg:items-center lg:gap-16 lg:px-14 lg:py-8 [@media(max-height:820px)]:lg:py-6`}
+        >
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-48 top-1/2 -z-10 h-[760px] w-[760px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.22),rgba(0,210,106,0))]"
+            className="pointer-events-none absolute left-[4%] top-1/2 -z-10 h-[760px] w-[760px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,210,106,0.3),rgba(0,210,106,0))]"
           />
 
-          <div className="grid w-full items-center gap-4 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-            {/* Telefoon met de schermen van beide speelvormen boven elkaar, op een gloeiende sokkel */}
+          {/* Tekst: op mobiel bovenaan, op desktop rechts van de telefoon */}
+          <div className="mx-auto w-full max-w-xl shrink-0 lg:order-2 lg:mx-0 lg:min-w-0 lg:flex-1">
+            <div
+              role="tablist"
+              aria-label="Speelvorm"
+              className={`mb-4 inline-flex rounded-full bg-white/10 p-1 lg:mb-5 [@media(max-height:820px)]:lg:mb-3`}
+            >
+              {FLOWS.map((f) => {
+                const Icon = f.id === "groep" ? UsersThree : User;
+                const on = f.id === flow.id;
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => choose(f.id)}
+                    className={`inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-[13px] font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-[#00D26A] sm:gap-2 sm:px-4 sm:text-sm ${
+                      on ? "bg-[#00D26A] text-[#0A0C0A]" : "text-white/70 hover:text-white"
+                    }`}
+                  >
+                    <Icon weight="bold" className="h-4 w-4" aria-hidden />
+                    {f.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobiel en tablet: balkjes per stap (gedaan en huidig groen) met daaronder de huidige stap */}
+            <div className="lg:hidden">
+              {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
+              <div className="flex gap-1.5" role="group" aria-label="Stappen">
+                {flow.steps.map((s, i) => (
+                  <button
+                    key={`${flow.id}-${s.title}`}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    aria-label={`Stap ${i + 1}: ${s.title}`}
+                    aria-current={i === step ? "step" : undefined}
+                    className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
+                  >
+                    <span
+                      className={`block h-1.5 rounded-full ring-offset-2 ring-offset-[#07130C] transition-colors duration-500 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A] ${
+                        i <= step ? "bg-[#00D26A]" : "bg-white/20"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+              <div className="relative mt-3 min-h-[8rem] sm:min-h-[7rem]">
+                {/* Korte overgang zonder uitfaden: de nieuwe stap staat er meteen. */}
+                <div key={`${flow.id}-${step}`} className="stap-in">
+                  <p className="flex items-center gap-3">
+                    <span className="font-heading flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold text-[#0A0C0A]">
+                      {step + 1}
+                    </span>
+                    <span className="font-heading text-xl font-extrabold leading-tight text-white sm:text-2xl">
+                      {current.title}
+                    </span>
+                  </p>
+                  <p className="mt-2 text-base leading-[1.55] text-white/70">{current.text}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: alle stappen met vaste plek; de actieve stap wordt een witte kaart, er verschuift niets. */}
+            <ol className={`hidden space-y-2 lg:block [@media(max-height:820px)]:space-y-0.5`}>
+              {flow.steps.map((s, i) => {
+                const active = i === step;
+                return (
+                  <li key={`${flow.id}-${s.title}`}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(i)}
+                      aria-current={active ? "step" : undefined}
+                      className={`group relative flex w-full gap-5 rounded-[22px] px-5 py-4 text-left outline-none transition-[background-color,box-shadow] duration-500 focus-visible:ring-4 focus-visible:ring-[#00D26A]/60 [@media(max-height:820px)]:py-2.5 ${
+                        active ? "bg-white shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]" : "hover:bg-white/[0.06]"
+                      }`}
+                    >
+                      <span
+                        className={`font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg font-extrabold transition-colors duration-500 ${
+                          active ? "bg-[#00D26A] text-[#0A0C0A]" : "bg-white/10 text-white/70"
+                        }`}
+                      >
+                        {i + 1}
+                      </span>
+                      <span className="min-w-0">
+                        <span
+                          className={`font-heading block text-xl font-extrabold leading-snug transition-colors duration-500 ${
+                            active ? "text-[#0A0C0A]" : "text-white/85"
+                          }`}
+                        >
+                          {s.title}
+                        </span>
+                        <span
+                          className={`mt-1 block text-base leading-[1.55] transition-colors duration-500 [@media(max-height:820px)]:text-[14px] [@media(max-height:820px)]:leading-[1.4] ${
+                            active ? "text-neutral-600" : "text-white/50"
+                          }`}
+                        >
+                          {s.text}
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          {/* Telefoon: op mobiel onderaan, hij loopt onder de ronde rand door (zo blijft hij groot genoeg om te lezen);
+              op desktop links, met een ademende gloed. */}
+          <div className="relative mt-4 min-h-0 flex-1 overflow-y-clip sm:mt-6 lg:order-1 lg:mt-0 lg:flex-none lg:overflow-visible">
             <div
               ref={phone}
-              className="relative isolate mx-auto w-[min(220px,calc((100svh_-_22rem)_*_0.4615))] sm:w-[min(270px,calc((100svh_-_22rem)_*_0.4615))] lg:w-[min(300px,calc((100svh_-_11rem)_*_0.4615))]"
+              className="relative isolate mx-auto w-[220px] sm:w-[280px] lg:w-[min(320px,calc((100svh_-_11rem)_*_0.4615))]"
             >
               <div
                 aria-hidden
@@ -124,7 +215,7 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                         // Alles laadt meteen (de eerste schermen met voorrang), zodat de telefoon nooit leeg is.
                         loading="eager"
                         fetchPriority={i === 0 ? "auto" : "low"}
-                        sizes="(min-width: 1024px) 300px, (min-width: 640px) 270px, 220px"
+                        sizes="(min-width: 1024px) 320px, (min-width: 640px) 280px, 220px"
                         className={`object-cover object-top transition-[opacity,scale] duration-500 ease-out ${
                           visible ? "scale-100 opacity-100" : "scale-[1.015] opacity-0"
                         }`}
@@ -133,101 +224,6 @@ export function FlowStepper({ flow }: { flow: Flow }) {
                   }),
                 )}
               </IPhoneFrame>
-            </div>
-
-            <div className="mx-auto w-full max-w-xl lg:mx-0">
-              <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#00D26A] lg:mb-5 lg:px-5">
-                <FlowIcon weight="bold" className="h-4 w-4" aria-hidden />
-                {flow.label}
-              </p>
-
-              {/* Mobiel en tablet: balkjes per stap met daaronder de huidige stap */}
-              <div className="lg:hidden">
-                {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
-                <div className="flex gap-1.5" role="group" aria-label="Stappen">
-                  {flow.steps.map((s, i) => (
-                    <button
-                      key={`${flow.id}-${s.title}`}
-                      type="button"
-                      onClick={() => goTo(i)}
-                      aria-label={`Stap ${i + 1}: ${s.title}`}
-                      aria-current={i === step ? "step" : undefined}
-                      className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
-                    >
-                      <span className="block h-1.5 overflow-hidden rounded-full bg-white/20 ring-offset-2 ring-offset-[#07130C] group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
-                        <StepBar progress={scrollYProgress} index={i} count={count} />
-                      </span>
-                    </button>
-                  ))}
-                </div>
-                <div className="relative mt-3 min-h-[8.5rem] sm:min-h-[7.5rem]">
-                  {/* Korte overgang zonder uitfaden: de nieuwe stap staat er meteen. */}
-                  <div key={`${flow.id}-${step}`} className="stap-in">
-                    <p className="flex items-center gap-3">
-                      <span className="font-heading flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00D26A] text-base font-extrabold text-[#0A0C0A]">
-                        {step + 1}
-                      </span>
-                      <span className="font-heading text-xl font-extrabold leading-tight text-white sm:text-2xl">
-                        {current.title}
-                      </span>
-                    </p>
-                    <p className="mt-2 text-base leading-[1.55] text-white/70">{current.text}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Desktop: alle stappen met vaste plek; de actieve stap wordt een witte kaart, er verschuift niets. */}
-              <ol className="hidden space-y-2 lg:block">
-                {flow.steps.map((s, i) => {
-                  const active = i === step;
-                  return (
-                    <li key={`${flow.id}-${s.title}`}>
-                      <button
-                        type="button"
-                        onClick={() => goTo(i)}
-                        aria-current={active ? "step" : undefined}
-                        className={`group relative flex w-full gap-5 overflow-hidden rounded-[22px] px-5 py-4 text-left outline-none transition-[background-color,box-shadow] duration-500 focus-visible:ring-4 focus-visible:ring-[#00D26A]/60 ${
-                          active
-                            ? "bg-white shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]"
-                            : "hover:bg-white/[0.06]"
-                        }`}
-                      >
-                        <span
-                          className={`font-heading flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg font-extrabold transition-colors duration-500 ${
-                            active ? "bg-[#00D26A] text-[#0A0C0A]" : "bg-white/10 text-white/70"
-                          }`}
-                        >
-                          {i + 1}
-                        </span>
-                        <span className="min-w-0">
-                          <span
-                            className={`font-heading block text-xl font-extrabold leading-snug transition-colors duration-500 ${
-                              active ? "text-[#0A0C0A]" : "text-white/85"
-                            }`}
-                          >
-                            {s.title}
-                          </span>
-                          <span
-                            className={`mt-1 block text-base leading-[1.55] transition-colors duration-500 ${
-                              active ? "text-neutral-600" : "text-white/50"
-                            }`}
-                          >
-                            {s.text}
-                          </span>
-                        </span>
-                        {active && (
-                          <span
-                            aria-hidden
-                            className="absolute bottom-0 left-5 right-5 h-[3px] overflow-hidden rounded-full bg-black/10"
-                          >
-                            <StepBar progress={scrollYProgress} index={i} count={count} />
-                          </span>
-                        )}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ol>
             </div>
           </div>
         </div>
