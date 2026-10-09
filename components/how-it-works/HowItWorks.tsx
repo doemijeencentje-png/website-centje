@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { MODE_BY_HASH, MODE_EVENT } from "../site/inPage";
 import { ModeSwitcher } from "./ModeSwitcher";
 import { FlowStepper } from "./FlowStepper";
@@ -49,22 +48,6 @@ export function HowItWorks() {
 
         <div className="mt-8 sm:mt-12">
           <ModeSwitcher mode={mode} onChange={setMode} />
-        </div>
-
-        {/* Op mobiel past de omschrijving niet in het paneel; daarom eronder. */}
-        <div className="mt-4 min-h-[4.5rem] sm:hidden">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.p
-              key={mode}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25 }}
-              className="text-base leading-[1.6] text-neutral-700"
-            >
-              {flow.summary}
-            </motion.p>
-          </AnimatePresence>
         </div>
 
         <div
