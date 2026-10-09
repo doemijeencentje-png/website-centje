@@ -23,7 +23,7 @@ export function SafetySection() {
             id="veilig-titel"
             className="font-heading text-balance text-[36px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-[56px]"
           >
-            Veilig betalen via uw bank
+            Veilig betalen via je bank
           </h2>
 
           <ul className="mt-10 min-w-0 space-y-4 sm:mt-12">
@@ -97,7 +97,7 @@ export function SafetySection() {
                 Wat kost Centje?
               </h3>
               <p className="mt-2 text-pretty text-base font-medium leading-[1.5] text-[#0A0C0A]/80">
-                De app is gratis. Voor de verificatie betaalt u eenmalig{" "}
+                De app is gratis. Voor de verificatie betaal je eenmalig{" "}
                 <strong className="font-bold text-[#0A0C0A]">€&nbsp;1</strong>.
               </p>
             </div>

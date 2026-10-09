@@ -18,7 +18,7 @@ export default function NotFound() {
     <ContentShell
       crumbs={[]}
       title="Deze pagina bestaat niet"
-      intro="Mogelijk klopt de link niet of is de pagina verplaatst. Hieronder vindt u de belangrijkste pagina's."
+      intro="Misschien klopt de link niet, of is de pagina verhuisd. Hier kun je verder."
     >
       <nav aria-label="Verder naar" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <ul className="flex flex-wrap gap-3">

@@ -34,7 +34,7 @@ export function TrustMarks({ compact = false }: { compact?: boolean }) {
         </span>
         <span className="text-[15px] leading-snug text-neutral-700">
           <span className="block text-base font-semibold text-[#0A0C0A]">Betalen met iDEAL | Wero</span>
-          In de vertrouwde omgeving van uw eigen bank.
+          In de vertrouwde omgeving van je eigen bank.
         </span>
       </li>
       <li className={TILE}>
@@ -43,7 +43,7 @@ export function TrustMarks({ compact = false }: { compact?: boolean }) {
         </span>
         <span className="text-[15px] leading-snug text-neutral-700">
           <span className="block text-base font-semibold text-[#0A0C0A]">Online Payment Platform</span>
-          Onze betaalpartner verwerkt elke betaling en betaalt uit op uw rekening.
+          Onze betaalpartner verwerkt elke betaling en betaalt uit op je rekening.
         </span>
       </li>
       <li className={TILE}>

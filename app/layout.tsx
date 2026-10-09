@@ -105,7 +105,7 @@ const structuredData = {
       applicationCategory: "FinanceApplication",
       inLanguage: "nl-NL",
       description:
-        "Met Centje verstuurt u een betaalverzoek als challenge: beide partijen spelen hetzelfde vaardigheidsspel en wie beter speelt, betaalt minder. Individueel met één persoon of als Groepscentje met 3 tot 10 deelnemers. Betalen met iDEAL.",
+        "Met Centje stuur je een betaalverzoek als challenge: jullie spelen hetzelfde vaardigheidsspel en wie beter speelt, betaalt minder. Individueel met één vriend of als Groepscentje met 3 tot 10 spelers. Betalen met iDEAL.",
       offers: {
         "@type": "Offer",
         price: "0",

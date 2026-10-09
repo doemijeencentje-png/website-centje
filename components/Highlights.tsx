@@ -60,7 +60,7 @@ export function Highlights() {
               Alles op één plek
             </h3>
             <p className="mt-3 text-base leading-[1.6] text-neutral-700">
-              In één oogopslag ziet u wat is betaald en op wie u nog wacht.
+              Zie in één oogopslag wat betaald is en op wie je nog wacht.
             </p>
             <div className="relative mt-7 aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(10,12,10,0.05),0_18px_40px_-22px_rgba(0,70,35,0.35)] ring-1 ring-black/5">
               <Image
@@ -104,10 +104,10 @@ export function Highlights() {
             className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] bg-[#00D26A] p-7 sm:p-9"
           >
             <h3 className="font-heading max-w-[14ch] text-[26px] font-extrabold leading-[1.02] text-[#0A0C0A] sm:text-3xl">
-              Uw vrienden hebben geen app nodig
+              Je vrienden hebben geen app nodig
             </h3>
             <p className="mt-3 max-w-[30ch] text-base font-medium leading-[1.6] text-[#0A0C0A]/80">
-              Zij openen uw link, spelen in de browser en betalen met iDEAL.
+              Ze openen je link, spelen in de browser en betalen met iDEAL.
             </p>
             {/* In de flow in plaats van absoluut, zodat de munt nooit over de tekst valt. */}
             <Image
@@ -134,7 +134,7 @@ export function Highlights() {
                 Oefenen in de Arcade
               </h3>
               <p className="mt-3 max-w-[36ch] text-base leading-[1.6] text-white/75 sm:text-[17px]">
-                Speel alle spellen vrijblijvend en verbeter uw score voordat het om de
+                Speel alle spellen vrijblijvend en verbeter je score voordat het om de
                 rekening gaat.
               </p>
             </div>

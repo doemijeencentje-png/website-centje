@@ -11,11 +11,11 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Adverteren",
   description:
-    "Adverteren bij Centje: uw merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in de spellen.",
+    "Adverteren bij Centje: je merk op het bedankscherm na elke betaling, dat ook mensen zonder de app zien, door de hele app en in de spellen.",
   path: "/adverteren",
   image: {
     url: "/adverteren/og-adverteren.jpg",
-    alt: "Adverteren bij Centje: uw merk op het bedankscherm na een betaling",
+    alt: "Adverteren bij Centje: je merk op het bedankscherm na een betaling",
   },
 });
 
@@ -30,18 +30,18 @@ const BEDANKSCHERM = [
   },
   {
     title: "Op het beste moment",
-    text: "Geen onderbreking: uw merk verschijnt zodra de rekening is geregeld.",
+    text: "Geen onderbreking: je merk verschijnt als de rekening net geregeld is.",
   },
 ];
 
 const BEREIK = [
   {
     title: "Met de app",
-    text: "Wie Centje gebruikt, ziet uw merk in de app en na elke betaling.",
+    text: "Wie Centje gebruikt, ziet je merk in de app en na elke betaling.",
   },
   {
     title: "Zonder de app",
-    text: "Vrienden die via een link spelen en betalen, zien het bedankscherm in hun browser. Zo bereikt u ook mensen die Centje nog niet kennen.",
+    text: "Vrienden die via een link spelen en betalen, zien het bedankscherm in hun browser. Zo bereik je ook mensen die Centje nog niet kennen.",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function AdverterenPage() {
     <ContentShell
       crumbs={[{ label: "Adverteren", href: "/adverteren" }]}
       title="Adverteren bij Centje"
-      intro="Laat uw merk zien op het moment dat de rekening is geregeld: na elke betaling, in de app en in de browser."
+      intro="Laat je merk zien op het moment dat de rekening geregeld is: na elke betaling, in de app en in de browser."
       actions={<MailKnop />}
       decor
     >
@@ -136,7 +136,7 @@ export default function AdverterenPage() {
                 </h2>
                 <p className={TEKST}>
                   Zodra een verzoek betaald is, verschijnt het bedankscherm. De rekening is geregeld en de
-                  sfeer is goed: het moment waarop uw merk het meest positief binnenkomt. Uw merk kan het
+                  sfeer is goed: het moment waarop je merk het meest positief binnenkomt. Je merk kan het
                   volledige scherm krijgen: in het midden en onderaan, onder het betaalde bedrag.
                 </p>
                 <Punten items={BEDANKSCHERM} />
@@ -168,7 +168,7 @@ export default function AdverterenPage() {
                   </span>
                 </IPhoneFrame>
                 <figcaption className="mt-5 text-center text-base text-neutral-600">
-                  Het bedankscherm, met in het midden en onderaan de plaats voor uw merk.
+                  Het bedankscherm, met in het midden en onderaan de plek voor je merk.
                 </figcaption>
               </figure>
             </section>
@@ -211,8 +211,8 @@ export default function AdverterenPage() {
                   Door de hele app
                 </h2>
                 <p className={TEKST}>
-                  Ook in de app zelf is ruimte voor uw merk, bijvoorbeeld in het overzicht van verzoeken en
-                  in de Arcade. Welke plaats het beste bij uw merk past, bepalen wij samen met u.
+                  Ook in de app zelf is ruimte voor je merk, bijvoorbeeld in het overzicht van verzoeken en
+                  in de Arcade. Welke plek het beste bij je merk past, bepalen we samen.
                 </p>
               </GroenKader>
               <div className="relative isolate flex justify-center gap-3 sm:gap-6">
@@ -235,7 +235,7 @@ export default function AdverterenPage() {
                   In de spellen
                 </h2>
                 <p className="mt-6 max-w-[48ch] text-[17px] leading-[1.65] text-neutral-700 sm:text-lg">
-                  Alle spellen in Centje ontwikkelen wij zelf. Daardoor kan uw merk ook in de spelwereld een plaats
+                  Alle spellen in Centje maken we zelf. Daardoor kan je merk ook in de spelwereld een plek
                   krijgen, bijvoorbeeld op de reclameborden langs een racebaan of in het decor van een ander
                   spel. Welke plek het beste past, bepalen we samen.
                 </p>
@@ -298,7 +298,7 @@ export default function AdverterenPage() {
                 Interesse?
               </h2>
               <p className="mt-5 text-[17px] leading-[1.6] text-neutral-700 sm:text-lg">
-                Vertel ons over uw merk en wat u zoekt. Wij denken graag mee over de plaats die het beste
+                Vertel ons over je merk en wat je zoekt. We denken graag mee over de plek die het beste
                 past: op het bedankscherm, in de app of in de spellen.
               </p>
               <div className="mt-8">
