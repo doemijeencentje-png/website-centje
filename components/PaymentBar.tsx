@@ -45,7 +45,7 @@ function BankChip({ name, logo, wordmark = false }: { name: string; logo: string
  */
 export function PaymentBar() {
   return (
-    <section aria-label="Betalen via" className="border-b border-[#E3EAE6]">
+    <section aria-label="Betalen via" className="sm:border-b sm:border-[#E3EAE6]">
       {/* Bovenste rij: de betaalmethode en de betaalpartner, gescheiden door een streep. */}
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-4 pt-4 sm:px-6 sm:pt-5">
         <p className="sr-only">Veilig betalen via</p>

@@ -28,7 +28,18 @@ export function FlowStepper({ flow }: { flow: Flow }) {
   // 0 zodra het blok vaststaat, 1 op het moment dat het weer loslaat.
   const { scrollYProgress } = useScroll({ target: track, offset: ["start start", "end end"] });
   // Het scrollen kiest de stap; de wissel zelf is een vaste overgang op tijd, los van het scrolltempo.
+  // De balkjes lopen mee met het scrollen: alleen een schaal per balkje, direct op het element (geen re-render).
+  const fills = useRef<(HTMLSpanElement | null)[]>([]);
+  const paintFills = (v: number) => {
+    const raw = v * count;
+    fills.current.forEach((el, i) => {
+      if (el) el.style.transform = `scaleX(${Math.min(1, Math.max(0, raw - i))})`;
+    });
+  };
+  useEffect(() => paintFills(scrollYProgress.get()));
+
   useMotionValueEvent(scrollYProgress, "change", (v) => {
+    paintFills(v);
     const raw = v * count;
     setStep((prev) => (raw >= prev + 1 + HYSTERESIS || raw < prev - HYSTERESIS ? stepAt(v, count) : prev));
   });
@@ -153,27 +164,33 @@ export function FlowStepper({ flow }: { flow: Flow }) {
 
             {/* Bij een wissel van speelvorm vliegen de stappen en de telefoon opnieuw binnen. */}
             <div ref={steps}>
-            {/* Mobiel en tablet: balkjes per stap (gedaan en huidig groen) met daaronder de huidige stap */}
-            <div className="lg:hidden">
-              {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
-              <div className="flex gap-1.5" role="group" aria-label="Stappen">
-                {flow.steps.map((s, i) => (
-                  <button
-                    key={`${flow.id}-${s.title}`}
-                    type="button"
-                    onClick={() => goTo(i)}
-                    aria-label={`Stap ${i + 1}: ${s.title}`}
-                    aria-current={i === step ? "step" : undefined}
-                    className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
-                  >
+            {/* Voortgang: één balkje per stap dat tijdens het scrollen volloopt (telefoon en computer). */}
+            {/* De balkjes zijn dun; het tikvlak eromheen is 46 px hoog (before:), zonder dat er iets verschuift. */}
+            <div className="flex gap-1.5 lg:mb-4 [@media(max-height:820px)]:lg:mb-2" role="group" aria-label="Stappen">
+              {flow.steps.map((s, i) => (
+                <button
+                  key={`${flow.id}-${s.title}`}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Stap ${i + 1}: ${s.title}`}
+                  aria-current={i === step ? "step" : undefined}
+                  className="group relative flex-1 py-2 focus-visible:outline-none before:absolute before:inset-x-0 before:-inset-y-3 before:content-['']"
+                >
+                  <span className="relative block h-1.5 overflow-hidden rounded-full bg-[#E3EAE6] ring-offset-2 ring-offset-white group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A]">
                     <span
-                      className={`block h-1.5 rounded-full ring-offset-2 ring-offset-white transition-colors duration-500 group-focus-visible:ring-2 group-focus-visible:ring-[#00D26A] ${
-                        i <= step ? "bg-[#00C853]" : "bg-[#E3EAE6]"
-                      }`}
+                      ref={(el) => {
+                        fills.current[i] = el;
+                      }}
+                      className="absolute inset-0 origin-left rounded-full bg-[#00C853]"
+                      style={{ transform: "scaleX(0)" }}
                     />
-                  </button>
-                ))}
-              </div>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Mobiel en tablet: daaronder de huidige stap */}
+            <div className="lg:hidden">
               <div className="relative mt-3 min-h-[8rem] sm:min-h-[7rem]">
                 {/* Korte overgang zonder uitfaden: de nieuwe stap staat er meteen. */}
                 <div key={`${flow.id}-${step}`} className="stap-in">
