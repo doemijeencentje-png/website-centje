@@ -3,7 +3,6 @@ import { pageMetadata } from "@/lib/seo";
 import { ContentShell } from "@/components/content/ContentShell";
 import { FaqExplorer } from "@/components/content/FaqExplorer";
 import { JsonLd } from "@/components/content/JsonLd";
-import { MintVlak } from "@/components/MintVlak";
 import { FAQ } from "@/components/content/faq";
 
 export const metadata: Metadata = pageMetadata({
@@ -34,9 +33,7 @@ export default function VeelgesteldeVragenPage() {
           ),
         }}
       />
-      {/* Mint met stippen achter alle vragen, zoals op de homepage. */}
       <div className="relative isolate overflow-x-clip">
-        <MintVlak />
         <FaqExplorer categories={FAQ} />
       </div>
     </ContentShell>
